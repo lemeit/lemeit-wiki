@@ -1,23 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://lemeit.github.io/ambiental-wiki/</loc>
+         <loc>https://wiki.lemeit.ar/</loc>
          <lastmod>2026-08-31</lastmod>
     </url>
     <url>
-         <loc>https://lemeit.github.io/ambiental-wiki/01-aire-saladillo/</loc>
+         <loc>https://wiki.lemeit.ar/eureka-tutor/</loc>
          <lastmod>2026-08-31</lastmod>
     </url>
     <url>
-         <loc>https://lemeit.github.io/ambiental-wiki/02-ema-saladillo/</loc>
+         <loc>https://wiki.lemeit.ar/red-ambiental/</loc>
          <lastmod>2026-08-31</lastmod>
     </url>
     <url>
-         <loc>https://lemeit.github.io/ambiental-wiki/03-agua-saladillo/</loc>
+         <loc>https://wiki.lemeit.ar/red-ambiental/01-aire-saladillo/</loc>
          <lastmod>2026-08-31</lastmod>
     </url>
     <url>
-         <loc>https://lemeit.github.io/ambiental-wiki/99-Bitacora/</loc>
+         <loc>https://wiki.lemeit.ar/red-ambiental/02-ema-saladillo/</loc>
+         <lastmod>2026-08-31</lastmod>
+    </url>
+    <url>
+         <loc>https://wiki.lemeit.ar/red-ambiental/03-agua-saladillo/</loc>
+         <lastmod>2026-08-31</lastmod>
+    </url>
+    <url>
+         <loc>https://wiki.lemeit.ar/red-ambiental/99-bitacora/</loc>
          <lastmod>2026-08-31</lastmod>
     </url>
 </urlset>
