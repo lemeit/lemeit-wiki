@@ -29,7 +29,7 @@ Hasta agosto de 2026 la base era Supabase (PostgreSQL), con 4 tablas separadas. 
 
 ## API pública
 
-Sin autenticación, CORS abierto. Documentación con ejemplos: [emas.lemeit.ar/api.html](https://emas.lemeit.ar/api.html).
+Sin autenticación, CORS abierto. Documentación interactiva con ejemplos: [emas.lemeit.ar/api.html](https://emas.lemeit.ar/api.html).
 
 | Endpoint | Descripción |
 |---|---|
@@ -40,6 +40,49 @@ Sin autenticación, CORS abierto. Documentación con ejemplos: [emas.lemeit.ar/a
 
 Las tres primeras aceptan `&formato=csv`.
 
+## Guía de uso de la API
+
+Base URL: `https://emas.lemeit.ar`. Las rutas siguen el estilo PostgREST heredado de Supabase: filtros como `columna=eq.valor`, orden con `order=columna.desc`, límite con `limit=N`.
+
+**Últimas 100 mediciones de temperatura de una estación:**
+
+```bash
+curl "https://emas.lemeit.ar/rest/v1/mediciones_ema?parametro=eq.Temperatura&order=timestamp.desc&limit=100"
+```
+
+**Misma consulta pero en CSV, para abrir directo en una planilla:**
+
+```bash
+curl "https://emas.lemeit.ar/rest/v1/mediciones_ema?parametro=eq.Temperatura&order=timestamp.desc&limit=100&formato=csv" -o temp_eet.csv
+```
+
+**Rango de fechas absoluto (UTC) en vez de `horas`:**
+
+```bash
+curl "https://emas.lemeit.ar/rest/v1/mediciones_cfr?parametro=eq.Lluvia&desde=2026-08-01&hasta=2026-08-31&formato=csv" -o lluvia_agosto.csv
+```
+
+**Comparar temperatura de las 4 estaciones en paralelo, últimas 48 horas:**
+
+```bash
+curl "https://emas.lemeit.ar/rest/v1/v_temperatura_comparativa?horas=48"
+```
+
+**Un parámetro cualquiera armonizado entre las 4 estaciones:**
+
+```bash
+curl "https://emas.lemeit.ar/rest/v1/v_ema_armonizada?parametro=eq.Humedad&horas=24"
+```
+
+**Desde Python + pandas:**
+
+```python
+import pandas as pd
+df = pd.read_csv("https://emas.lemeit.ar/rest/v1/v_temperatura_comparativa?horas=720&formato=csv")
+```
+
+Si una consulta devuelve un CSV vacío, probablemente no es un error: puede que esa estación no tenga datos en la ventana pedida (por ejemplo, un corte de transmisión). Conviene probar primero sin `formato=csv` o con una ventana más amplia (`horas=720`) para confirmar si hay datos antes de asumir un problema.
+
 ## Hitos técnicos
 
 - **OCR de Defensa Civil**: el sitio no expone ningún endpoint de datos — todo está superpuesto como texto sobre una imagen JPG. Se resolvió con extracción de píxeles blancos (en vez de escala de grises directa, que pierde el texto blanco sobre fondos de color) + Tesseract, con validación en dos capas (rango físico plausible + delta temporal) antes de insertar.
@@ -48,4 +91,4 @@ Las tres primeras aceptan `&formato=csv`.
 - **Migración a Cloudflare D1 (agosto 2026)**: como parte de la armonización de los tres portales sobre una misma infraestructura. De 30.213 filas exportadas de Supabase, 9 se descartaron por un timestamp corrupto (error de OCR histórico).
 - **API pública (agosto 2026)**: mismo criterio que en Aire Saladillo — las rutas existentes se documentaron y se les agregó rango de fechas absoluto y export CSV.
 
-Ver la [Bitácora del proyecto](99-Bitacora.md) para el historial completo, incluyendo el análisis microclimático (efecto isla de calor urbano en EMA-CS) hecho con los primeros datos de las 4 estaciones.
+Ver la [Bitácora del proyecto](99-bitacora.md) para el historial completo, incluyendo el análisis microclimático (efecto isla de calor urbano en EMA-CS) hecho con los primeros datos de las 4 estaciones.

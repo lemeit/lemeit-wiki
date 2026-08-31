@@ -22,6 +22,14 @@ Los valores salen de los protocolos de ensayo que la Municipalidad de Saladillo 
 | `POST /api/coords` | Editar coordenadas — protegido con header `X-Admin-Key` (401 sin la clave correcta) |
 | `GET /tiles/:style/:z/:x/:y{@2x}.png` | Proxy de tiles del mapa hacia CARTO Basemaps |
 
+### Ejemplo de uso
+
+```bash
+curl "https://wq.lemeit.ar/api/coords"
+```
+
+Las muestras (`RAW`) y los límites normativos (`LIM`) no tienen API todavía — hoy la única forma de consumirlos es leyendo el objeto JS embebido en el `index.html` del dashboard, no hay un endpoint separado para pedirlos.
+
 ## Nota sobre Arsénico
 
 Es el único parámetro con una discrepancia real entre normativas: el Código Alimentario Argentino fija 0,01 mg/L (adoptado de la OMS) mientras que el texto vigente de la Ley PBA 11.820 (Anexo A) todavía dice 0,05 mg/L, sin actualizar — aunque en la práctica la Provincia adhiere al valor de OMS/CAA, que es el que citan los propios protocolos municipales. El dashboard muestra **ambos** límites en vez de elegir uno, para dejar ver la brecha entre la norma escrita y la práctica real.
@@ -30,4 +38,4 @@ Es el único parámetro con una discrepancia real entre normativas: el Código A
 
 - Backend propio para `RAW`/`LIM` (Cloudflare D1 + Worker), siguiendo el mismo patrón que ya usan `ema-saladillo` y `purpleair-saladillo` — el paso que habilitaría una API pública de datos igual que en los otros dos portales, y que la ingesta automática escriba directo a la base en vez de a un CSV de staging.
 
-Ver la [Bitácora del proyecto](99-Bitacora.md) para más contexto sobre la armonización de los tres portales.
+Ver la [Bitácora del proyecto](99-bitacora.md) para más contexto sobre la armonización de los tres portales.

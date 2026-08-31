@@ -1,27 +1,26 @@
-# Red Ambiental Saladillo
+# lemeit.ar — Documentación
 
-Documentación técnica y bitácora de desarrollo de la red de monitoreo ambiental de Saladillo, Buenos Aires: tres portales hermanos que comparten la misma infraestructura de Cloudflare (Pages + Workers + D1) y el mismo sistema de diseño ([design.lemeit.ar](https://design.lemeit.ar)).
+Wiki madre de los proyectos de **lemeit.ar**: documentación técnica, guías de uso y bitácora de desarrollo, todo en un mismo lugar. Cada proyecto tiene su propia sección en el menú; esta portada es solo el punto de entrada.
 
-| Portal | Dominio | Qué mide | Repo |
+## Proyectos documentados
+
+| Proyecto | Qué es | Sitio | Sección |
 |---|---|---|---|
-| 🌬️ Aire Saladillo | [aq.lemeit.ar](https://aq.lemeit.ar) | Calidad del aire (PM1.0/PM2.5/PM10, VOC, CO2, NOx) — sensores PurpleAir y AirGradient en escuelas y jardines | [purpleair-saladillo](https://github.com/lemeit/purpleair-saladillo) |
-| 🌡️ EMA Saladillo | [emas.lemeit.ar](https://emas.lemeit.ar) | Meteorología — temperatura, humedad, presión, viento, lluvia de 4 estaciones automáticas | [ema-saladillo](https://github.com/lemeit/ema-saladillo) |
-| 💧 Calidad del Agua | [wq.lemeit.ar](https://wq.lemeit.ar) | Arsénico, nitratos, fluoruro, metales pesados y bacteriología de la red municipal | [agua-saladillo](https://github.com/lemeit/agua-saladillo) |
+| 🌎 Red Ambiental Saladillo | Tres portales hermanos de monitoreo ambiental (aire, meteorología, agua) sobre Cloudflare | [aq](https://aq.lemeit.ar) · [emas](https://emas.lemeit.ar) · [wq](https://wq.lemeit.ar) | [Ver sección](red-ambiental/index.md) |
+| 🎓 Eureka Tutor | Tutor socrático de ciencias asistido por IA, para secundario y curso de ingreso universitario | [tutor.lemeit.ar](https://tutor.lemeit.ar) | [Ver sección](eureka-tutor/index.md) |
 
-## Origen del proyecto
-
-Nace en marzo de 2026 como proyecto educativo del espacio curricular Laboratorio de Industrias, 7° Año Técnico Químico, EEST N°1 "Gral. Savio" (Saladillo, Buenos Aires), a cargo del Ing. Luciano Lamaita. El punto de partida fue acceder programáticamente a los datos de la Estación Meteorológica Automática (EMA) del propio establecimiento — de ahí surgió EMA Saladillo, que luego se amplió a una red de 4 estaciones. En agosto de 2026 los tres proyectos (EMA, aire, agua) se armonizaron sobre una misma arquitectura de Cloudflare para poder integrarse entre sí a futuro. Ver la [Bitácora del proyecto](99-Bitacora.md) para el historial completo.
-
-## Arquitectura compartida
-
-Los tres portales siguen el mismo patrón:
-
-- **Ingesta**: scrapers en Python (GitHub Actions o Cron Trigger de Cloudflare) que escriben en una base **Cloudflare D1** propia por proyecto.
-- **API**: un **Cloudflare Worker** por proyecto expone esa base como API REST — pública, de solo lectura, sin autenticación, con CORS abierto (además de ingesta/administración protegida donde corresponde). Ver la página de cada portal para el detalle de endpoints.
-- **Dashboard**: un `index.html` estático (HTML/CSS/JS vanilla, sin build ni framework) que consulta el Worker vía `fetch()`, publicado en **Cloudflare Pages**.
-- **Diseño**: paleta, tipografía (JetBrains Mono) y componentes compartidos (header, selector de portales, footer versionado) vía [design.lemeit.ar](https://design.lemeit.ar) (`lemeit-theme.css` + `lemeit-common.js`).
-- **Mapas**: tiles de CARTO Basemaps servidos vía proxy del propio Worker, para no exponer la API key en el HTML público.
+Nuevos proyectos se van sumando como secciones nuevas a medida que se documentan — esta tabla y el menú lateral se actualizan cada vez.
 
 ## Sobre esta wiki
 
-Generada con [MkDocs](https://www.mkdocs.org/) + [Material](https://squidfunk.github.io/mkdocs-material/), mismo stack que usa la wiki de [DVBA](https://github.com/lemeit/DVBA) (`wiki-src/` → build automático vía GitHub Actions → `site/`). El código fuente de cada página vive en `wiki-src/docs/` de este repo.
+- Generada con [MkDocs](https://www.mkdocs.org/) + [Material](https://squidfunk.github.io/mkdocs-material/), el mismo stack que usa la wiki de [DVBA](https://github.com/lemeit/DVBA) (`wiki-src/` → build automático vía GitHub Actions → `site/` → GitHub Pages).
+- El código fuente de cada página vive en `wiki-src/docs/` del repo [`lemeit/wiki-lemeit`](https://github.com/lemeit/wiki-lemeit), organizado en una carpeta por proyecto.
+- Todo el contenido es público: no hay nada que ocultar en la parte técnica ni de desarrollo. La idea es que cualquiera —un colega, un alumno, alguien de la Municipalidad, un futuro yo mismo dentro de un año— pueda entender qué hace cada proyecto, con qué tecnología está armado y cómo se usa, sin tener que pedir explicaciones por privado.
+- Se actualiza a mano después de cada sesión de trabajo relevante en cualquiera de los proyectos — no hay automatización todavía que la genere sola desde los commits.
+
+## Cómo agregar un proyecto nuevo a esta wiki
+
+1. Crear una carpeta nueva en `wiki-src/docs/<nombre-proyecto>/` con al menos un `index.md`.
+2. Sumar la sección al `nav:` de `wiki-src/mkdocs.yml`.
+3. Agregar la fila correspondiente a la tabla de arriba.
+4. Commitear y pushear a `main` — el build y el deploy a `wiki.lemeit.ar` son automáticos.

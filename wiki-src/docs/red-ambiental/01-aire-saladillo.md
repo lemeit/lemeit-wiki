@@ -22,7 +22,7 @@ Triple redundancia de ingesta deliberada: si el Cron Trigger de Cloudflare falla
 
 ## API pública
 
-Sin autenticación, CORS abierto, pensada para que cualquiera la consuma directo. Documentación con ejemplos: [aq.lemeit.ar/api.html](https://aq.lemeit.ar/api.html).
+Sin autenticación, CORS abierto, pensada para que cualquiera la consuma directo — no solo el propio dashboard. También hay documentación interactiva con ejemplos en [aq.lemeit.ar/api.html](https://aq.lemeit.ar/api.html).
 
 | Endpoint | Descripción |
 |---|---|
@@ -33,6 +33,52 @@ Sin autenticación, CORS abierto, pensada para que cualquiera la consuma directo
 
 Los tres primeros aceptan `&formato=csv` para descargar CSV en vez de JSON.
 
+## Guía de uso de la API
+
+Base URL: `https://aq.lemeit.ar`. Todos los ejemplos funcionan pegados directo en la barra del navegador o con `curl`.
+
+**Metadata de los sensores activos:**
+
+```bash
+curl "https://aq.lemeit.ar/api/sensores"
+```
+
+**Última lectura de cada sensor, en CSV:**
+
+```bash
+curl "https://aq.lemeit.ar/api/ultimas?formato=csv" -o ultimas.csv
+```
+
+**Histórico de un sensor puntual, últimos 7 días:**
+
+```bash
+curl "https://aq.lemeit.ar/api/historico/12345?range=7d"
+```
+
+**Mismo sensor, rango de fechas absoluto (UTC) y en CSV:**
+
+```bash
+curl "https://aq.lemeit.ar/api/historico/12345?desde=2026-08-01&hasta=2026-08-31&formato=csv" -o agosto.csv
+```
+
+`desde`/`hasta` aceptan `YYYY-MM-DD` (toma desde el inicio/fin de ese día en UTC) o `YYYY-MM-DD HH:MM:SS` para precisión horaria. Cuando están presentes, reemplazan a `range`.
+
+**Desde JavaScript (por ejemplo, para un dashboard propio):**
+
+```javascript
+const resp = await fetch("https://aq.lemeit.ar/api/ultimas");
+const sensores = await resp.json();
+```
+
+**Desde Python + pandas, directo a un DataFrame:**
+
+```python
+import pandas as pd
+df = pd.read_csv("https://aq.lemeit.ar/api/historico/12345?range=30d&formato=csv")
+```
+
+El `sensor_index` de cada sensor sale de `GET /api/sensores` — no hay que adivinarlo.
+
 ## Hitos técnicos
 
 - **Deduplicación**: cuando un sensor pierde conexión, PurpleAir sigue devolviendo su último `last_seen` congelado — sin `UNIQUE(sensor_index, timestamp)` cada corrida del cron generaba una fila nueva con el mismo timestamp, produciendo tarjetas duplicadas/triplicadas en el dashboard.
@@ -40,4 +86,4 @@ Los tres primeros aceptan `&formato=csv` para descargar CSV en vez de JSON.
 - **Proxy de tiles**: CARTO empezó a exigir API key para servir tiles; en vez de exponerla en el HTML público, el Worker actúa de proxy y agrega la key del lado del servidor (`CARTO_API_KEY` como secret).
 - **API pública (agosto 2026)**: los endpoints de lectura, que ya existían para alimentar el propio dashboard, se documentaron y ampliaron (rango de fechas absoluto, export CSV) para que terceros —por ejemplo, otro sector de la escuela o de la Municipalidad— puedan consumir los datos sin depender del dashboard.
 
-Ver la [Bitácora del proyecto](99-Bitacora.md) para el detalle sesión por sesión.
+Ver la [Bitácora del proyecto](99-bitacora.md) para el detalle sesión por sesión.

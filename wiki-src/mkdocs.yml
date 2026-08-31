@@ -1,10 +1,10 @@
-site_name: Red Ambiental Saladillo · Documentación
-site_description: Documentación técnica y bitácora de los tres portales de monitoreo ambiental de Saladillo (aire, meteorología, agua)
+site_name: lemeit.ar · Documentación
+site_description: Documentación técnica y bitácora de los proyectos de lemeit.ar — Red Ambiental Saladillo, Eureka Tutor y los que se sumen
 site_author: Ing. Luciano Lamaita
-site_url: https://lemeit.github.io/ambiental-wiki/
+site_url: https://wiki.lemeit.ar/
 
-repo_name: lemeit/ambiental-wiki
-repo_url: https://github.com/lemeit/ambiental-wiki
+repo_name: lemeit/wiki-lemeit
+repo_url: https://github.com/lemeit/wiki-lemeit
 edit_uri: ''
 
 docs_dir: docs  # los .md editables viven directamente acá
@@ -33,6 +33,7 @@ theme:
     - navigation.tracking
     - navigation.top
     - navigation.sections
+    - navigation.indexes
     - toc.follow
     - search.suggest
     - search.highlight
@@ -43,11 +44,14 @@ plugins:
 
 nav:
   - Inicio: index.md
-  - Portales:
-      - Aire Saladillo (aq.lemeit.ar): 01-aire-saladillo.md
-      - EMA Saladillo (emas.lemeit.ar): 02-ema-saladillo.md
-      - Calidad del Agua (wq.lemeit.ar): 03-agua-saladillo.md
-  - Bitácora del proyecto: 99-Bitacora.md
+  - Red Ambiental:
+      - Resumen: red-ambiental/index.md
+      - Aire Saladillo (aq.lemeit.ar): red-ambiental/01-aire-saladillo.md
+      - EMA Saladillo (emas.lemeit.ar): red-ambiental/02-ema-saladillo.md
+      - Calidad del Agua (wq.lemeit.ar): red-ambiental/03-agua-saladillo.md
+      - Bitácora: red-ambiental/99-bitacora.md
+  - Eureka Tutor:
+      - Resumen: eureka-tutor/index.md
 
 markdown_extensions:
   - abbr
