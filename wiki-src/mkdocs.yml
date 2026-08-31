@@ -3,8 +3,8 @@ site_description: Documentación técnica y bitácora de los proyectos de lemeit
 site_author: Ing. Luciano Lamaita
 site_url: https://wiki.lemeit.ar/
 
-repo_name: lemeit/wiki-lemeit
-repo_url: https://github.com/lemeit/wiki-lemeit
+repo_name: lemeit/lemeit-wiki
+repo_url: https://github.com/lemeit/lemeit-wiki
 edit_uri: ''
 
 docs_dir: docs  # los .md editables viven directamente acá

@@ -14,7 +14,7 @@ Nuevos proyectos se van sumando como secciones nuevas a medida que se documentan
 ## Sobre esta wiki
 
 - Generada con [MkDocs](https://www.mkdocs.org/) + [Material](https://squidfunk.github.io/mkdocs-material/), el mismo stack que usa la wiki de [DVBA](https://github.com/lemeit/DVBA) (`wiki-src/` → build automático vía GitHub Actions → `site/` → GitHub Pages).
-- El código fuente de cada página vive en `wiki-src/docs/` del repo [`lemeit/wiki-lemeit`](https://github.com/lemeit/wiki-lemeit), organizado en una carpeta por proyecto.
+- El código fuente de cada página vive en `wiki-src/docs/` del repo [`lemeit/lemeit-wiki`](https://github.com/lemeit/lemeit-wiki), organizado en una carpeta por proyecto.
 - Todo el contenido es público: no hay nada que ocultar en la parte técnica ni de desarrollo. La idea es que cualquiera —un colega, un alumno, alguien de la Municipalidad, un futuro yo mismo dentro de un año— pueda entender qué hace cada proyecto, con qué tecnología está armado y cómo se usa, sin tener que pedir explicaciones por privado.
 - Se actualiza a mano después de cada sesión de trabajo relevante en cualquiera de los proyectos — no hay automatización todavía que la genere sola desde los commits.
 

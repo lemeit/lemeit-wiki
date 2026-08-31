@@ -1,4 +1,4 @@
-# wiki-lemeit
+# lemeit-wiki
 
 Wiki madre de documentación técnica y bitácora de los proyectos de **lemeit.ar**. Organizada por proyecto, todo público — sin nada que ocultar en la parte de desarrollo.
 
@@ -56,7 +56,7 @@ y abrir `http://localhost:8000`.
 ## Estructura
 
 ```
-wiki-lemeit/
+lemeit-wiki/
 ├── wiki-src/
 │   ├── mkdocs.yml
 │   ├── requirements.txt
@@ -77,4 +77,4 @@ wiki-lemeit/
 
 ## Origen
 
-Nace en agosto de 2026, primero como wiki exclusiva de la Red Ambiental (repo `ambiental-wiki`, hoy renombrado a `wiki-lemeit`) para unificar la documentación que hasta entonces solo existía, parcialmente, como 4 documentos Word sueltos dentro de `ema-saladillo/docs/`. Se reorganizó como wiki madre de todos los proyectos de lemeit.ar poco después, sumando Eureka Tutor como segunda sección.
+Nace en agosto de 2026, primero como wiki exclusiva de la Red Ambiental (repo `ambiental-wiki`, hoy renombrado a `lemeit-wiki`) para unificar la documentación que hasta entonces solo existía, parcialmente, como 4 documentos Word sueltos dentro de `ema-saladillo/docs/`. Se reorganizó como wiki madre de todos los proyectos de lemeit.ar poco después, sumando Eureka Tutor como segunda sección.
