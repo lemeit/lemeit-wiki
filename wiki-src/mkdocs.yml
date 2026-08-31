@@ -1,0 +1,82 @@
+site_name: Red Ambiental Saladillo · Documentación
+site_description: Documentación técnica y bitácora de los tres portales de monitoreo ambiental de Saladillo (aire, meteorología, agua)
+site_author: Ing. Luciano Lamaita
+site_url: https://lemeit.github.io/ambiental-wiki/
+
+repo_name: lemeit/ambiental-wiki
+repo_url: https://github.com/lemeit/ambiental-wiki
+edit_uri: ''
+
+docs_dir: docs  # los .md editables viven directamente acá
+
+theme:
+  name: material
+  language: es
+  palette:
+    - scheme: default
+      primary: teal
+      accent: deep orange
+      toggle:
+        icon: material/weather-sunny
+        name: Modo oscuro
+    - scheme: slate
+      primary: teal
+      accent: deep orange
+      toggle:
+        icon: material/weather-night
+        name: Modo claro
+  font:
+    text: -apple-system
+    code: JetBrains Mono
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.top
+    - navigation.sections
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+
+plugins:
+  - search
+
+nav:
+  - Inicio: index.md
+  - Portales:
+      - Aire Saladillo (aq.lemeit.ar): 01-aire-saladillo.md
+      - EMA Saladillo (emas.lemeit.ar): 02-ema-saladillo.md
+      - Calidad del Agua (wq.lemeit.ar): 03-agua-saladillo.md
+  - Bitácora del proyecto: 99-Bitacora.md
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: '¶'
+      toc_depth: 3
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/lemeit
+      name: Organización lemeit en GitHub
+  generator: false
