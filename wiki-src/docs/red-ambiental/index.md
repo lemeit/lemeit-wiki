@@ -1,4 +1,4 @@
-# Red Ambiental Saladillo
+# ![EMA](../assets/logos/ema.svg){: width="32" style="vertical-align:middle" } ![AQ](../assets/logos/aq.svg){: width="32" style="vertical-align:middle" } ![WQ](../assets/logos/wq.svg){: width="32" style="vertical-align:middle;margin-right:8px" } Red Ambiental Saladillo
 
 Documentación técnica y bitácora de desarrollo de la red de monitoreo ambiental de Saladillo, Buenos Aires: tres portales hermanos que comparten la misma infraestructura de Cloudflare (Pages + Workers + D1) y el mismo sistema de diseño ([design.lemeit.ar](https://design.lemeit.ar)).
 

@@ -1,4 +1,4 @@
-# Aire Saladillo — aq.lemeit.ar
+# ![AQ](../assets/logos/aq.svg){: width="36" style="vertical-align:middle;margin-right:8px" } Aire Saladillo — aq.lemeit.ar
 
 Red de sensores de calidad del aire (PM1.0/PM2.5/PM10, VOC, CO2, NOx, temperatura, humedad, presión) instalada en escuelas, jardines de infantes y domicilios de Saladillo. Combina sensores **PurpleAir** y **AirGradient** en una misma base y un mismo dashboard.
 

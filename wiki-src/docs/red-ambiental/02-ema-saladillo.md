@@ -1,4 +1,4 @@
-# EMA Saladillo — emas.lemeit.ar
+# ![EMA](../assets/logos/ema.svg){: width="36" style="vertical-align:middle;margin-right:8px" } EMA Saladillo — emas.lemeit.ar
 
 Red meteorológica de 4 estaciones automáticas de Saladillo: temperatura, humedad, presión, viento, lluvia y otros parámetros, comparables entre sí sobre una referencia temporal común.
 

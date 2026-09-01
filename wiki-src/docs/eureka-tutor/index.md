@@ -1,4 +1,4 @@
-# Eureka Tutor — tutor.lemeit.ar
+# ![Eureka AI](../assets/logos/eureka.svg){: width="36" style="vertical-align:middle;margin-right:8px" } Eureka AI — tutor.lemeit.ar
 
 Tutor digital de ciencias asistido por IA para alumnos de secundario y curso de ingreso universitario. Cubre **Física, Química, Fisicoquímica, Química del Carbono, Biofísica y Matemática** con estilo socrático: concepto inicial breve → guía paso a paso → visualizaciones automáticas (gráficos, diagramas, estructuras químicas) → pregunta de cierre.
 
@@ -9,7 +9,7 @@ Tutor digital de ciencias asistido por IA para alumnos de secundario y curso de 
 
 ## Origen del nombre
 
-**EUREKA** — Entorno de Unificación Racional Estimulando Knowledge Activo. Inspirado en la exclamación griega (εὕρηκα) atribuida a Arquímedes: el clímax del descubrimiento.
+Hoy se presenta en el sitio como **Eureka AI**, pero el nombre completo es un acrónimo: **EUREKA** — Entorno de Unificación Racional Estimulando Knowledge Activo. Inspirado en la exclamación griega (εὕρηκα) atribuida a Arquímedes: el clímax del descubrimiento.
 
 | Letra | Concepto |
 |---|---|

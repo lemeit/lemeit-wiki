@@ -1,7 +1,5 @@
 # lemeit-wiki
 
-[![wiki](https://img.shields.io/badge/wiki-wiki.lemeit.ar-009688?style=flat-square)](https://wiki.lemeit.ar) [![Build](https://img.shields.io/github/actions/workflow/status/lemeit/lemeit-wiki/wiki-build.yml?label=build&style=flat-square)](https://github.com/lemeit/lemeit-wiki/actions/workflows/wiki-build.yml)
-
 Wiki madre de documentación técnica y bitácora de los proyectos de **lemeit.ar**. Organizada por proyecto, todo público — sin nada que ocultar en la parte de desarrollo.
 
 ## Wiki publicada
@@ -15,7 +13,7 @@ Wiki madre de documentación técnica y bitácora de los proyectos de **lemeit.a
 | Red Ambiental | 🌬️ Aire Saladillo | [aq.lemeit.ar](https://aq.lemeit.ar) | [purpleair-saladillo](https://github.com/lemeit/purpleair-saladillo) |
 | Red Ambiental | 🌡️ EMA Saladillo | [emas.lemeit.ar](https://emas.lemeit.ar) | [ema-saladillo](https://github.com/lemeit/ema-saladillo) |
 | Red Ambiental | 💧 Calidad del Agua | [wq.lemeit.ar](https://wq.lemeit.ar) | [agua-saladillo](https://github.com/lemeit/agua-saladillo) |
-| — | 🎓 Eureka Tutor | [tutor.lemeit.ar](https://tutor.lemeit.ar) | `lemeit/eureka` (privado) |
+| — | 🎓 Eureka AI | [tutor.lemeit.ar](https://tutor.lemeit.ar) | `lemeit/eureka` (privado) |
 
 Más proyectos se suman como secciones nuevas a medida que se documentan (ver "Cómo agregar un proyecto" más abajo).
 
@@ -79,4 +77,4 @@ lemeit-wiki/
 
 ## Origen
 
-Nace en agosto de 2026, primero como wiki exclusiva de la Red Ambiental (repo `ambiental-wiki`, hoy renombrado a `lemeit-wiki`) para unificar la documentación que hasta entonces solo existía, parcialmente, como 4 documentos Word sueltos dentro de `ema-saladillo/docs/`. Se reorganizó como wiki madre de todos los proyectos de lemeit.ar poco después, sumando Eureka Tutor como segunda sección.
+Nace en agosto de 2026, primero como wiki exclusiva de la Red Ambiental (repo `ambiental-wiki`, hoy renombrado a `lemeit-wiki`) para unificar la documentación que hasta entonces solo existía, parcialmente, como 4 documentos Word sueltos dentro de `ema-saladillo/docs/`. Se reorganizó como wiki madre de todos los proyectos de lemeit.ar poco después, sumando Eureka AI como segunda sección.

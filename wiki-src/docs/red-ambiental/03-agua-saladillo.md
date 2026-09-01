@@ -1,4 +1,4 @@
-# Calidad del Agua — wq.lemeit.ar
+# ![WQ](../assets/logos/wq.svg){: width="36" style="vertical-align:middle;margin-right:8px" } Calidad del Agua — wq.lemeit.ar
 
 Monitoreo de calidad de agua de red en Saladillo: arsénico, nitratos, nitritos, fluoruro, metales pesados y parámetros bacteriológicos (coliformes totales, *E. coli*, *Pseudomona aeruginosa*) sobre decenas de puntos de la red municipal (bombas, escuelas, jardines, domicilios).
 

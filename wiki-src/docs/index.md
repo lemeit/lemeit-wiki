@@ -1,13 +1,13 @@
-# lemeit.ar — Documentación
+# Documentación de Proyectos Lemeit
 
 Wiki madre de los proyectos de **lemeit.ar**: documentación técnica, guías de uso y bitácora de desarrollo, todo en un mismo lugar. Cada proyecto tiene su propia sección en el menú; esta portada es solo el punto de entrada.
 
 ## Proyectos documentados
 
-| Proyecto | Qué es | Sitio | Sección |
-|---|---|---|---|
-| 🌎 Red Ambiental Saladillo | Tres portales hermanos de monitoreo ambiental (aire, meteorología, agua) sobre Cloudflare | [aq](https://aq.lemeit.ar) · [emas](https://emas.lemeit.ar) · [wq](https://wq.lemeit.ar) | [Ver sección](red-ambiental/index.md) |
-| 🎓 Eureka Tutor | Tutor socrático de ciencias asistido por IA, para secundario y curso de ingreso universitario | [tutor.lemeit.ar](https://tutor.lemeit.ar) | [Ver sección](eureka-tutor/index.md) |
+| | Proyecto | Qué es | Sitio | Sección |
+|---|---|---|---|---|
+| ![EMA](assets/logos/ema.svg){: width="28" } ![AQ](assets/logos/aq.svg){: width="28" } ![WQ](assets/logos/wq.svg){: width="28" } | Red Ambiental Saladillo | Tres portales hermanos de monitoreo ambiental (aire, meteorología, agua) sobre Cloudflare | [aq](https://aq.lemeit.ar) · [emas](https://emas.lemeit.ar) · [wq](https://wq.lemeit.ar) | [Ver sección](red-ambiental/index.md) |
+| ![Eureka AI](assets/logos/eureka.svg){: width="28" } | Eureka AI | Tutor socrático de ciencias asistido por IA, para secundario y curso de ingreso universitario | [tutor.lemeit.ar](https://tutor.lemeit.ar) | [Ver sección](eureka-tutor/index.md) |
 
 Nuevos proyectos se van sumando como secciones nuevas a medida que se documentan — esta tabla y el menú lateral se actualizan cada vez.
 

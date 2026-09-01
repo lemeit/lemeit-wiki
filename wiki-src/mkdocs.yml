@@ -1,5 +1,5 @@
-site_name: lemeit.ar · Documentación
-site_description: Documentación técnica y bitácora de los proyectos de lemeit.ar — Red Ambiental Saladillo, Eureka Tutor y los que se sumen
+site_name: Documentación de Proyectos Lemeit
+site_description: Documentación técnica y bitácora de los proyectos de lemeit.ar — Red Ambiental Saladillo, Eureka AI y los que se sumen
 site_author: Ing. Luciano Lamaita
 site_url: https://wiki.lemeit.ar/
 
@@ -50,7 +50,7 @@ nav:
       - EMA Saladillo (emas.lemeit.ar): red-ambiental/02-ema-saladillo.md
       - Calidad del Agua (wq.lemeit.ar): red-ambiental/03-agua-saladillo.md
       - Bitácora: red-ambiental/99-bitacora.md
-  - Eureka Tutor:
+  - Eureka AI:
       - Resumen: eureka-tutor/index.md
 
 markdown_extensions:
