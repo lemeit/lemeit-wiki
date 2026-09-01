@@ -5,9 +5,10 @@ on:
     paths:
       - 'wiki-src/**'
       - '.github/workflows/wiki-build.yml'
+  pull_request:
+    paths:
+      - 'wiki-src/**'
   workflow_dispatch:
-permissions:
-  contents: write
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -22,18 +23,7 @@ jobs:
           cache-dependency-path: wiki-src/requirements.txt
       - name: Install MkDocs + Material
         run: pip install -r wiki-src/requirements.txt
-      - name: Build MkDocs site → site/
+      - name: Validar build (sin commitear nada)
         run: |
           cd wiki-src
-          mkdocs build --site-dir ../site
-      - name: Commit site/ si cambió
-        run: |
-          git config user.name  "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add site/
-          if git diff --cached --quiet; then
-            echo "Sin cambios en site/ — nada que commitear."
-          else
-            git commit -m "chore(wiki): rebuild site" -m "Generado automáticamente por wiki-build.yml desde wiki-src/**."
-            git push
-          fi
+          mkdocs build --site-dir /tmp/site-check --strict
