@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- App icon PWA — lockup E^AI estilo header del tutor, escalado para dejar buen safe-area
+       alrededor del squircle de iOS/Android. -->
+  <defs>
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#3a9080"/>
+      <stop offset="100%" stop-color="#1e5b52"/>
+    </linearGradient>
+    <!-- Sombra suave para el badge AI -->
+    <filter id="ai-shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="rgba(0,0,0,.28)"/>
+    </filter>
+  </defs>
+
+  <!-- Tile redondeado verde -->
+  <rect width="512" height="512" rx="100" fill="url(#bg-grad)"/>
+
+  <!-- Lockup E^AI a escala 5.6x (más chico que antes para tener margen).
+       Posición: centrado horizontalmente con un tirón hacia arriba para apoyar visualmente. -->
+  <g transform="translate(74, 110) scale(5.6)">
+    <!-- E en serif beige -->
+    <text x="0" y="42"
+          font-family="'DM Serif Display','Playfair Display','Georgia','Times New Roman',serif"
+          font-size="54" font-weight="700"
+          fill="#faf6ed">E</text>
+
+    <!-- Badge AI — píldora beige separada del E (igual proporción que header pero
+         un toque más a la derecha y arriba para dar aire). Color del texto más fuerte. -->
+    <g filter="url(#ai-shadow)">
+      <rect x="40" y="-2" width="28" height="17" rx="3.5" fill="#faf6ed"/>
+      <text x="54" y="11"
+            font-family="'DM Sans','Inter',sans-serif"
+            font-size="12" font-weight="900"
+            text-anchor="middle"
+            fill="#0d3a33"
+            letter-spacing="1.2">AI</text>
+    </g>
+  </g>
+</svg>
