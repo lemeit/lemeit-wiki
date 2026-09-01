@@ -80,4 +80,4 @@ Sesión de alcance ampliado: unificar los tres proyectos sobre la misma infraest
 ## Notas sobre las fuentes de esta bitácora
 
 - El detalle línea por línea de cada sesión (comandos exactos, mensajes de error completos, capturas) queda en el historial de commits de cada repositorio (`git log`) y, para EMA hasta agosto 2026, en los `.docx` originales dentro de `ema-saladillo/docs/`.
-- Esta página se actualiza a mano después de cada sesión de trabajo relevante — no hay automatización todavía que la genere desde los commits.
+- Esta página se actualiza manualmente después de cada sesión de trabajo relevante — no hay automatización todavía que la genere desde los commits.
