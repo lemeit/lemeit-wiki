@@ -14,6 +14,7 @@ Wiki madre de documentación técnica y bitácora de los proyectos de **lemeit.a
 | Red Ambiental | 🌡️ EMA Saladillo | [emas.lemeit.ar](https://emas.lemeit.ar) | [ema-saladillo](https://github.com/lemeit/ema-saladillo) |
 | Red Ambiental | 💧 Calidad del Agua | [wq.lemeit.ar](https://wq.lemeit.ar) | [agua-saladillo](https://github.com/lemeit/agua-saladillo) |
 | — | 🎓 Eureka AI | [tutor.lemeit.ar](https://tutor.lemeit.ar) | `lemeit/eureka` (privado) |
+| — | 👨‍🏫 Profe Lamaita | [profe.lemeit.ar](https://profe.lemeit.ar) | [aboutme](https://github.com/lemeit/aboutme) |
 
 Más proyectos se suman como secciones nuevas a medida que se documentan (ver "Cómo agregar un proyecto" más abajo).
 

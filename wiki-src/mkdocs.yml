@@ -52,6 +52,8 @@ nav:
       - Bitácora: red-ambiental/99-bitacora.md
   - Eureka AI:
       - Resumen: eureka-tutor/index.md
+  - Profe Lamaita:
+      - Resumen: profe-lemeit/index.md
 
 markdown_extensions:
   - abbr

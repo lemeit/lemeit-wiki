@@ -8,6 +8,7 @@ Wiki madre de los proyectos de **lemeit.ar**: documentación técnica, guías de
 |---|---|---|---|---|
 | ![EMA](assets/logos/ema.svg){: width="28" } ![AQ](assets/logos/aq.svg){: width="28" } ![WQ](assets/logos/wq.svg){: width="28" } | Red Ambiental Saladillo | Tres portales hermanos de monitoreo ambiental (aire, meteorología, agua) sobre Cloudflare | [aq](https://aq.lemeit.ar) · [emas](https://emas.lemeit.ar) · [wq](https://wq.lemeit.ar) | [Ver sección](red-ambiental/index.md) |
 | ![Eureka AI](assets/logos/eureka.svg){: width="28" } | Eureka AI | Tutor socrático de ciencias asistido por IA, para secundario y curso de ingreso universitario | [tutor.lemeit.ar](https://tutor.lemeit.ar) | [Ver sección](eureka-tutor/index.md) |
+| ![Profe](assets/logos/profe.svg){: width="28" } | Profe Lamaita | Sitio personal docente: notas de Física (traducción de Bigler), apuntes de cátedra y mapa de conceptos Quartz/Obsidian | [profe.lemeit.ar](https://profe.lemeit.ar) | [Ver sección](profe-lemeit/index.md) |
 
 Nuevos proyectos se van sumando como secciones nuevas a medida que se documentan — esta tabla y el menú lateral se actualizan cada vez.
 
