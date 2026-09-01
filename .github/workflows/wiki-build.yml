@@ -34,6 +34,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "Sin cambios en site/ — nada que commitear."
           else
-            git commit -m "chore(wiki): rebuild site [skip ci]" -m "Generado automáticamente por wiki-build.yml desde wiki-src/**."
+            git commit -m "chore(wiki): rebuild site" -m "Generado automáticamente por wiki-build.yml desde wiki-src/**."
             git push
           fi
