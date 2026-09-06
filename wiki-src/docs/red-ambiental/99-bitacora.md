@@ -77,6 +77,23 @@ Sesión de alcance ampliado: unificar los tres proyectos sobre la misma infraest
 - **Corrección de dominio**: se detectó y corrigió una referencia equivocada a `ema.lemeit.ar` (dominio inexistente) en vez del dominio real `emas.lemeit.ar`, introducida en la documentación nueva de la API de EMA.
 - **Esta wiki**: se arma `ambiental-wiki`, siguiendo el mismo patrón que ya usa [DVBA](https://github.com/lemeit/DVBA) (`wiki-src/` con MkDocs Material, build automático vía GitHub Actions), para tener documentación técnica y bitácora unificadas de los tres portales en un solo lugar — hasta acá solo existía para EMA, como 4 documentos Word sueltos (`bitacora_ema_saladillo_v1..v4.docx`, migrados acá).
 
+## Septiembre 2026 — Admin de visitas, enlaces a la wiki y reportes de Historial
+
+### 2–3 de septiembre — Admin básico de visitas y enlaces a la wiki
+
+- **Log de visitas + admin básico en Aire Saladillo**: nueva tabla `visitas` en D1 (timestamp, ruta, país vía `request.cf`, user-agent/referrer), escrita en segundo plano (`ctx.waitUntil`) para no demorar la respuesta real. Dos endpoints de solo lectura (`/api/admin/visitas`, `/api/admin/resumen`) protegidos por un secret compartido (`ADMIN_KEY`).
+- **Autenticación por header, no por query param**: la clave admin pasó de `?key=...` en la URL (queda pegada en el historial del navegador y en logs) a un header `X-Admin-Key`, mismo esquema que ya usaba `X-Ingest-Key` en `/api/ingest-ahora`. Como consecuencia, los endpoints admin ya no se pueden abrir pegando la URL en el navegador — hace falta `curl` o similar que pueda mandar headers.
+- **Script `scripts/ver-visitas.ps1`**: consulta rápida por consola en PowerShell (resumen o listado de visitas), sin tener que recordar que en PowerShell `curl` es un alias de `Invoke-WebRequest` y no entiende `-H` (hace falta `curl.exe` o `Invoke-WebRequest -Headers @{...}`).
+- **Enlaces a la wiki en los tres portales**: se agregó un link a `wiki.lemeit.ar` en el footer compartido (`lemeit-common.js` — un solo cambio actualiza los tres portales) y una mención explícita de que existe documentación técnica en el texto de "Acerca de" de cada uno.
+- **Roadmap documentado**: expansión planeada a 4 sensores nuevos de aire (2 en Saladillo, 2 en el partido de 25 de Mayo — una escuela urbana y una rural en cada partido), y la necesidad de sumar una estación EMA en 25 de Mayo para que la red meteorológica cubra la misma región. Esto implica revisar a futuro el nombre "EMA Saladillo" (la "S" deja de ser literal) — ver la sección Roadmap de [Aire Saladillo](01-aire-saladillo.md) y de [EMA Saladillo](02-ema-saladillo.md).
+
+### 6 de septiembre — Vista "Reporte" en Historial, filtros y exportación a PDF
+
+- **Vista Clásica/Reporte en la pestaña Historial** (Aire Saladillo): toggle que alterna entre la tabla habitual y una vista de texto plano/fuente monoespaciada inspirada en los resúmenes climatológicos de estaciones meteorológicas (formato NOAA — ejemplo real visto en chajarialdia.com.ar/estacion). La vista "Reporte" usa fondo papel fijo, deliberadamente ajeno al tema claro/oscuro del resto del sitio.
+- **Filtro de rango de fechas personalizado** (`desde`/`hasta`, ya soportado por la API) y **checkboxes para mostrar/ocultar columnas** por parámetro — se aplican por igual a las dos vistas.
+- **Descarga a PDF de texto plano**: se sumó jsPDF (cargado desde CDN, sin backend nuevo) para generar el mismo reporte como PDF real — texto seleccionable en fuente Courier, no una captura de pantalla — con paginación automática y repetición de encabezados de columna en cada página nueva. La descarga siempre usa el formato "reporte", independientemente de qué vista esté puesta en pantalla en ese momento.
+- **Fix**: la carga de jsPDF desde cdnjs falló en el primer despliegue (probablemente un bloqueador de contenido del navegador) y tiraba una excepción sin manejar al hacer click en "Descargar PDF". Se agregó un script de respaldo a jsDelivr si cdnjs falla, y un aviso claro al usuario si ninguna de las dos CDN está disponible, en vez de romper la página.
+
 ## Notas sobre las fuentes de esta bitácora
 
 - El detalle línea por línea de cada sesión (comandos exactos, mensajes de error completos, capturas) queda en el historial de commits de cada repositorio (`git log`) y, para EMA hasta agosto 2026, en los `.docx` originales dentro de `ema-saladillo/docs/`.
