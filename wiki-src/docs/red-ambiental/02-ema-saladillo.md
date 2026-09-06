@@ -91,4 +91,10 @@ Si una consulta devuelve un CSV vacío, probablemente no es un error: puede que 
 - **Migración a Cloudflare D1 (agosto 2026)**: como parte de la armonización de los tres portales sobre una misma infraestructura. De 30.213 filas exportadas de Supabase, 9 se descartaron por un timestamp corrupto (error de OCR histórico).
 - **API pública (agosto 2026)**: mismo criterio que en Aire Saladillo — las rutas existentes se documentaron y se les agregó rango de fechas absoluto y export CSV.
 
+## Roadmap
+
+- **Cobertura regional** (en evaluación, agosto 2026): [Aire Saladillo](01-aire-saladillo.md) va a sumar 2 sensores en el partido de **25 de Mayo** (además de 2 nuevos en Saladillo). Para que la red meteorológica cubra la misma región, hace falta identificar y sumar una estación EMA en 25 de Mayo — todavía no está resuelto qué estación usar ni con qué método de acceso.
+- **El nombre "EMA Saladillo" deja de ser literal**: hoy la "S" es Saladillo; con una estación en 25 de Mayo, el proyecto pasa a ser regional aunque el nombre y el dominio (`emas.lemeit.ar`) se mantengan por ahora — a definir más adelante si conviene rebautizarlo o si "EMAS" simplemente queda leído como el plural de "EMA".
+- Igual que en Aire Saladillo, la meta de fondo es habilitar reportes combinados (EMA + AQ) con análisis espacial — hoy limitado porque las estaciones EMA y los sensores de aire no están co-ubicados.
+
 Ver la [Bitácora del proyecto](99-bitacora.md) para el historial completo, incluyendo el análisis microclimático (efecto isla de calor urbano en EMA-CS) hecho con los primeros datos de las 4 estaciones.

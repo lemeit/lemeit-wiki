@@ -86,4 +86,10 @@ El `sensor_index` de cada sensor sale de `GET /api/sensores` — no hay que adiv
 - **Proxy de tiles**: CARTO empezó a exigir API key para servir tiles; en vez de exponerla en el HTML público, el Worker actúa de proxy y agrega la key del lado del servidor (`CARTO_API_KEY` como secret).
 - **API pública (agosto 2026)**: los endpoints de lectura, que ya existían para alimentar el propio dashboard, se documentaron y ampliaron (rango de fechas absoluto, export CSV) para que terceros —por ejemplo, otro sector de la escuela o de la Municipalidad— puedan consumir los datos sin depender del dashboard.
 
+## Roadmap
+
+- **Expansión a 4 sensores nuevos** (en evaluación, agosto 2026): 2 en Saladillo y 2 en el partido de **25 de Mayo** — en cada partido, una escuela de zona urbana y una de zona rural. Es la primera vez que la red de aire deja de ser exclusivamente de Saladillo.
+- Esta expansión abre la puerta a un futuro **apartado de reportes** que combine datos de Aire Saladillo con los de [EMA](02-ema-saladillo.md) (meteorología) y análisis espacial entre sensores — hoy no es inmediato porque las estaciones EMA y los sensores de aire no comparten ubicación física.
+- La ampliación a 25 de Mayo también empuja a que la red meteorológica **EMA** sume una estación en ese partido (ver el roadmap de [EMA Saladillo](02-ema-saladillo.md)), para que ambas redes cubran la misma región.
+
 Ver la [Bitácora del proyecto](99-bitacora.md) para el detalle sesión por sesión.
