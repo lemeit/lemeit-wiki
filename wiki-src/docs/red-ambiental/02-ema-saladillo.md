@@ -83,6 +83,10 @@ df = pd.read_csv("https://emas.lemeit.ar/rest/v1/v_temperatura_comparativa?horas
 
 Si una consulta devuelve un CSV vacío, probablemente no es un error: puede que esa estación no tenga datos en la ventana pedida (por ejemplo, un corte de transmisión). Conviene probar primero sin `formato=csv` o con una ventana más amplia (`horas=720`) para confirmar si hay datos antes de asumir un problema.
 
+## Roadmap
+
+Se planea sumar una quinta estación en 25 de Mayo, en línea con la expansión de la red de aire a ese partido (ver el [roadmap de Aire Saladillo](01-aire-saladillo.md#roadmap)). Con eso, "EMA Saladillo" deja de ser un nombre literal — ya no todas las estaciones estarían en el partido de Saladillo — pendiente definir si eso implica un cambio de nombre/dominio o si se mantiene como el nombre histórico del proyecto.
+
 ## Hitos técnicos
 
 - **OCR de Defensa Civil**: el sitio no expone ningún endpoint de datos — todo está superpuesto como texto sobre una imagen JPG. Se resolvió con extracción de píxeles blancos (en vez de escala de grises directa, que pierde el texto blanco sobre fondos de color) + Tesseract, con validación en dos capas (rango físico plausible + delta temporal) antes de insertar.
