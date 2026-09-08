@@ -12,21 +12,25 @@ docs_dir: docs  # los .md editables viven directamente acá
 theme:
   name: material
   language: es
+  # Los colores reales de las dos paletas (fondo, texto, acento naranja)
+  # se pisan en stylesheets/lemeit-retro.css con los mismos hex que usan
+  # los tres dashboards — primary/accent acá abajo son solo el punto de
+  # partida antes de que cargue esa hoja de estilos.
   palette:
     - scheme: default
-      primary: teal
+      primary: white
       accent: deep orange
       toggle:
         icon: material/weather-sunny
         name: Modo oscuro
     - scheme: slate
-      primary: teal
+      primary: black
       accent: deep orange
       toggle:
         icon: material/weather-night
         name: Modo claro
   font:
-    text: -apple-system
+    text: JetBrains Mono
     code: JetBrains Mono
   features:
     - navigation.instant
@@ -38,6 +42,9 @@ theme:
     - search.suggest
     - search.highlight
     - content.code.copy
+
+extra_css:
+  - stylesheets/lemeit-retro.css
 
 plugins:
   - search
@@ -80,9 +87,9 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
 
+copyright: >
+  wiki.lemeit.ar — MkDocs Material · Cloudflare Pages · GitHub Actions ·
+  código en <a href="https://github.com/lemeit/lemeit-wiki">lemeit/lemeit-wiki</a>
+
 extra:
-  social:
-    - icon: fontawesome/brands/github
-      link: https://github.com/lemeit
-      name: Organización lemeit en GitHub
   generator: false

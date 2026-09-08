@@ -1,0 +1,187 @@
+/* ============================================================
+   Piel "retro / PC de los 80" para la wiki de lemeit.ar
+   ------------------------------------------------------------
+   Reusa la misma paleta y tipografía (JetBrains Mono, naranja
+   #D9691F, fondos cálidos oscuros/claros) que ya usan los tres
+   dashboards (aq / emas / wq . lemeit.ar), para que la wiki se
+   sienta parte de la misma familia en vez de una página Material
+   genérica. Minimalista a propósito: sin degradés, sin sombras
+   grandes, esquinas rectas, un solo acento de color.
+   ============================================================ */
+
+/* ---- Modo claro (scheme "default") ---- */
+[data-md-color-scheme="default"] {
+  --md-default-bg-color: #FAF7F2;
+  --md-default-fg-color: #2A211A;
+  --md-default-fg-color--light: #6B5C4E;
+  --md-default-fg-color--lighter: #8a7a68;
+  --md-default-fg-color--lightest: #E0D9CC;
+
+  --md-primary-fg-color: #ffffff;       /* fondo del header/nav lateral */
+  --md-primary-fg-color--light: #F0EBE2;
+  --md-primary-fg-color--dark: #E0D9CC;
+  --md-primary-bg-color: #2A211A;       /* texto/íconos sobre el header */
+  --md-primary-bg-color--light: #6B5C4E;
+
+  --md-accent-fg-color: #9B3D00;
+  --md-accent-fg-color--transparent: #9b3d001a;
+  --md-accent-bg-color: #ffffff;
+
+  --md-typeset-a-color: #9B3D00;
+
+  --md-code-fg-color: #2A211A;
+  --md-code-bg-color: #F0EBE2;
+
+  --md-footer-fg-color: #2A211A;
+  --md-footer-fg-color--light: #6B5C4E;
+  --md-footer-fg-color--lighter: #8a7a68;
+  --md-footer-bg-color: #ffffff;
+  --md-footer-bg-color--dark: #F0EBE2;
+}
+
+/* ---- Modo oscuro (scheme "slate") ---- */
+[data-md-color-scheme="slate"] {
+  --md-default-bg-color: #1A1612;
+  --md-default-fg-color: #F2ECE4;
+  --md-default-fg-color--light: #C9BEB2;
+  --md-default-fg-color--lighter: #8f8377;
+  --md-default-fg-color--lightest: #3D3028;
+
+  --md-primary-fg-color: #221E18;       /* fondo del header/nav lateral */
+  --md-primary-fg-color--light: #2B241D;
+  --md-primary-fg-color--dark: #17140F;
+  --md-primary-bg-color: #F2ECE4;       /* texto/íconos sobre el header */
+  --md-primary-bg-color--light: #C9BEB2;
+
+  --md-accent-fg-color: #D9691F;
+  --md-accent-fg-color--transparent: #d9691f1a;
+  --md-accent-bg-color: #221E18;
+
+  --md-typeset-a-color: #D9691F;
+
+  --md-code-fg-color: #F2ECE4;
+  --md-code-bg-color: #2B241D;
+
+  --md-footer-fg-color: #F2ECE4;
+  --md-footer-fg-color--light: #C9BEB2;
+  --md-footer-fg-color--lighter: #8f8377;
+  --md-footer-bg-color: #221E18;
+  --md-footer-bg-color--dark: #17140F;
+
+  --md-typeset-mark-color: #d9691f4d;
+  --md-hue: 25;
+}
+
+/* ---- Tipografía: monoespaciada en todos lados (texto y código),
+   como los tres dashboards — look "terminal", no solo los bloques
+   de código — y más chica que el tamaño por defecto de Material. ---- */
+.md-typeset,
+.md-header,
+.md-tabs,
+.md-nav,
+.md-footer,
+.md-search__input,
+.md-dialog {
+  font-family: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+.md-typeset {
+  font-size: 0.68rem;
+  line-height: 1.65;
+}
+
+.md-nav {
+  font-size: 0.62rem;
+}
+
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3 {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* Encabezado H1 con una regla superior fina, como el encabezado de un
+   listado impreso — mismo lenguaje visual que el reporte PDF de
+   aq.lemeit.ar (texto plano, línea de guiones). */
+.md-typeset h1 {
+  border-top: 2px solid var(--md-accent-fg-color);
+  padding-top: 0.6rem;
+  text-transform: uppercase;
+  font-size: 1.35rem;
+}
+
+.md-typeset h2 {
+  font-size: 1.05rem;
+  border-bottom: 1px dashed var(--md-default-fg-color--lightest);
+  padding-bottom: 0.25rem;
+}
+
+/* Títulos de sección del nav lateral en mayúsculas chicas, estilo menú
+   de programa de consola de los 80 (sin ser un pixel font ilegible). */
+.md-nav__title,
+.md-nav__link[data-md-level="0"] {
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* ---- Minimalismo: esquinas rectas en vez de redondeadas, bordes finos
+   en vez de sombras grandes, en toda la interfaz. ---- */
+.md-typeset code,
+.md-typeset pre,
+.md-typeset .highlight,
+.md-typeset .admonition,
+.md-typeset details,
+.md-search__form,
+.md-search-result__meta,
+.md-tooltip,
+.md-typeset table:not([class]) {
+  border-radius: 2px;
+}
+
+.md-typeset .admonition,
+.md-typeset details {
+  border: 1px solid var(--md-default-fg-color--lightest);
+  box-shadow: none;
+}
+
+.md-header {
+  box-shadow: none;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.md-header[data-md-state="shadow"] {
+  box-shadow: none;
+  border-bottom: 1px solid var(--md-accent-fg-color);
+}
+
+.md-tabs {
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.md-footer {
+  box-shadow: none;
+}
+
+.md-typeset table:not([class]) {
+  border: 1px solid var(--md-default-fg-color--lightest);
+}
+.md-typeset table:not([class]) th {
+  background: var(--md-code-bg-color);
+  text-transform: uppercase;
+  font-size: 0.6rem;
+  letter-spacing: 0.03em;
+}
+
+/* ---- Repo en el header: dejamos el link (icono + nombre del repo),
+   pero se saca la lista de estrellas/forks que trae Material por
+   default — mucho ruido visual para lo que aporta acá. ---- */
+.md-source__facts {
+  display: none;
+}
+
+/* ---- Footer: texto de copyright/servicios más chico y discreto,
+   sin el ícono aislado de GitHub que traía la config anterior. ---- */
+.md-footer-meta__inner {
+  font-size: 0.6rem;
+}
