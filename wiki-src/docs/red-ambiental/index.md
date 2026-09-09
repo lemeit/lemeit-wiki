@@ -1,12 +1,12 @@
-# ![EMA](../assets/logos/ema.svg){: width="32" style="vertical-align:middle" } ![AQ](../assets/logos/aq.svg){: width="32" style="vertical-align:middle" } ![WQ](../assets/logos/wq.svg){: width="32" style="vertical-align:middle;margin-right:8px" } Red Ambiental Saladillo
+# Red Ambiental Saladillo
 
 Documentación técnica y bitácora de desarrollo de la red de monitoreo ambiental de Saladillo, Buenos Aires: tres portales hermanos que comparten la misma infraestructura de Cloudflare (Pages + Workers + D1) y el mismo sistema de diseño ([design.lemeit.ar](https://design.lemeit.ar)).
 
 | Portal | Dominio | Qué mide | Repo |
 |---|---|---|---|
-| 🌬️ Aire Saladillo | [aq.lemeit.ar](https://aq.lemeit.ar) | Calidad del aire (PM1.0/PM2.5/PM10, VOC, CO2, NOx) — sensores PurpleAir y AirGradient en escuelas y jardines | [purpleair-saladillo](https://github.com/lemeit/purpleair-saladillo) |
-| 🌡️ EMA Saladillo | [emas.lemeit.ar](https://emas.lemeit.ar) | Meteorología — temperatura, humedad, presión, viento, lluvia de 4 estaciones automáticas | [ema-saladillo](https://github.com/lemeit/ema-saladillo) |
-| 💧 Calidad del Agua | [wq.lemeit.ar](https://wq.lemeit.ar) | Arsénico, nitratos, fluoruro, metales pesados y bacteriología de la red municipal | [agua-saladillo](https://github.com/lemeit/agua-saladillo) |
+| ![AQ](../assets/logos/aq.svg){: width="22" style="vertical-align:middle;margin-right:6px" } Aire Saladillo | [aq.lemeit.ar](https://aq.lemeit.ar) | Calidad del aire (PM1.0/PM2.5/PM10, VOC, CO2, NOx) — sensores PurpleAir y AirGradient en escuelas y jardines | [purpleair-saladillo](https://github.com/lemeit/purpleair-saladillo) |
+| ![EMA](../assets/logos/ema.svg){: width="22" style="vertical-align:middle;margin-right:6px" } EMA Saladillo | [emas.lemeit.ar](https://emas.lemeit.ar) | Meteorología — temperatura, humedad, presión, viento, lluvia de 4 estaciones automáticas | [ema-saladillo](https://github.com/lemeit/ema-saladillo) |
+| ![WQ](../assets/logos/wq.svg){: width="22" style="vertical-align:middle;margin-right:6px" } Calidad del Agua | [wq.lemeit.ar](https://wq.lemeit.ar) | Arsénico, nitratos, fluoruro, metales pesados y bacteriología de la red municipal | [agua-saladillo](https://github.com/lemeit/agua-saladillo) |
 
 ## Origen del proyecto
 
