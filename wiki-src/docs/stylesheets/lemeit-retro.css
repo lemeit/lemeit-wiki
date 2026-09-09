@@ -180,8 +180,27 @@
   display: none;
 }
 
-/* ---- Footer: texto de copyright/servicios más chico y discreto,
-   sin el ícono aislado de GitHub que traía la config anterior. ---- */
+/* ---- Footer: copyright corto, estilo "© autor · Powered by X & Y"
+   (mismo patrón que ya usa el footer de profe.lemeit.ar con Hugo/
+   PaperMod) en vez de listar cada servicio en texto plano — el link
+   al repo queda como un ícono chico de GitHub en vez de texto. ---- */
 .md-footer-meta__inner {
   font-size: 0.6rem;
+}
+
+.lemeit-footer-gh {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: -2px;
+  margin-left: 2px;
+  color: inherit;
+  opacity: 0.85;
+}
+
+.lemeit-footer-gh:hover {
+  opacity: 1;
+}
+
+.lemeit-footer-gh svg {
+  display: block;
 }
