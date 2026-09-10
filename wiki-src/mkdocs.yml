@@ -61,6 +61,7 @@ nav:
       - Resumen: eureka-tutor/index.md
   - Profe Lamaita:
       - Resumen: profe-lemeit/index.md
+      - Sistema de PDFs: profe-lemeit/02-sistema-pdf.md
 
 markdown_extensions:
   - abbr

@@ -5,6 +5,7 @@ Sitio personal del **Prof. Ing. Luciano Lamaita**, docente de Física en Saladil
 - **Sitio principal:** [profe.lemeit.ar](https://profe.lemeit.ar)
 - **Mapa de conceptos:** [profe.lemeit.ar/conceptos](https://profe.lemeit.ar/conceptos) — grafo de notas estilo Obsidian
 - **Repositorio:** [github.com/lemeit/aboutme](https://github.com/lemeit/aboutme)
+- **Generación de PDFs:** ver [Sistema de generación de PDFs](02-sistema-pdf.md)
 
 ## Arquitectura — dos generadores en un solo repo
 
