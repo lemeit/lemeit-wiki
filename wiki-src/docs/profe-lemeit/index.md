@@ -5,7 +5,6 @@ Sitio personal del **Prof. Ing. Luciano Lamaita**, docente de Física en Saladil
 - **Sitio principal:** [profe.lemeit.ar](https://profe.lemeit.ar)
 - **Mapa de conceptos:** [profe.lemeit.ar/conceptos](https://profe.lemeit.ar/conceptos) — grafo de notas estilo Obsidian
 - **Repositorio:** [github.com/lemeit/aboutme](https://github.com/lemeit/aboutme)
-- **Generación de PDFs:** ver [Sistema de generación de PDFs](02-sistema-pdf.md)
 
 ## Arquitectura — dos generadores en un solo repo
 
@@ -52,6 +51,92 @@ Deploy: cada push a `main` dispara un build automático en Cloudflare Pages (~1-
 | 06 · Fuerzas 2D | ⬜ pendiente |
 
 Traducción, adaptación pedagógica e integración con actividades de campo por Luciano Lamaita, con autorización del autor original (licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)).
+
+## Guías en PDF (formato paper)
+
+Cualquier nota del portal puede convertirse en un PDF con formato de paper académico (dos columnas, tipografía Georgia, estilo APA), con las fórmulas KaTeX ya renderizadas. Los PDF viven en `static/files/pdf/` y se linkean desde la propia nota.
+
+Piezas del mecanismo:
+
+- **`assets/css/extended/print-paper.css`**: CSS que solo se activa en `@media print`. Define página A4 con márgenes 20mm×14mm, Georgia 9,8pt, dos columnas de texto, tablas en formato APA (3 líneas horizontales, sin grilla vertical), encabezados h2/h3 con filetes finos y pie de página con número de página. No afecta la vista en pantalla — de eso se ocupa `custom.css`.
+- **`scripts/generate-pdf.mjs`**: script Node.js con Playwright (Chromium headless). Busca los `.md` con `pdf = true` en el frontmatter, levanta un servidor HTTP local sobre `./public/` (Hugo genera rutas absolutas de CSS/JS que no resuelven por `file://`) y, para cada nota, abre la página, activa `@media print`, espera a que KaTeX termine de renderizar, inyecta el byline (`Luciano Lamaita · profe.lemeit.ar · fecha`), expande a `column-span: all` las tablas que desbordan el ancho de columna, y llama a `page.pdf()` (A4, con número/total de página) guardando el resultado en `static/files/pdf/<slug>.pdf`.
+- **`layouts/partials/extend_head.html`**: carga KaTeX desde CDN solo si la nota tiene `math = true`. Es el mismo KaTeX que se ve en pantalla el que Playwright renderiza antes de imprimir, así que las fórmulas del PDF salen idénticas a las de la web.
+- **`resource-box`** en el `.md`: bloque HTML con clase `no-print` (no aparece en el PDF) con el link de descarga:
+
+```html
+<div class="resource-box no-print">
+
+Recursos
+
+📄 <a href="/files/pdf/nombre-nota.pdf">Descargar en PDF (formato paper)</a>
+
+</div>
+```
+
+### Agregar el PDF a una nota nueva
+
+**1. Frontmatter**
+
+```toml
++++
+title = 'Título de la nota'
+math = true
+pdf = true
++++
+```
+
+**2. `resource-box` al inicio del contenido**
+
+```html
+<div class="resource-box no-print">
+
+Recursos
+
+📄 <a href="https://profe.lemeit.ar/files/pdf/nombre-nota.pdf" target="_blank" rel="noopener">Descargar en PDF (formato paper)</a>
+
+</div>
+```
+
+El slug del PDF es el path de la nota relativo a `content/`, sin `.md`. Por ejemplo, `content/notes/notas-fisica/cap03-cinematica-1d/mruv.md` genera `static/files/pdf/notes/notas-fisica/cap03-cinematica-1d/mruv.pdf`.
+
+**3. Generar el PDF**
+
+```powershell
+cd C:\GitHub\aboutme
+hugo                          # genera ./public/
+node scripts/generate-pdf.mjs # genera los PDFs en static/files/pdf/
+```
+
+Requiere Node.js y Playwright instalados:
+
+```powershell
+npm install playwright
+npx playwright install chromium
+```
+
+**4. Commitear todo junto**
+
+```powershell
+git add content/notes/ruta/nota.md
+git add static/files/pdf/ruta/nota.pdf
+git commit -m "nota: agrega PDF de <título>"
+git push
+```
+
+### Fórmulas que no entran en una columna
+
+Si una fórmula es más ancha que la columna de impresión (~83mm), no se achica automáticamente — hay que partirla en el `.md` usando `\begin{aligned}...\end{aligned}`:
+
+```latex
+$$
+\begin{aligned}
+  w_{real} &= \frac{w_{ideal}}{\eta} \\
+            &= \frac{0{,}100}{0{,}72} = 0{,}139\ \tfrac{\text{kJ}}{\text{kg}}
+\end{aligned}
+$$
+```
+
+Las tablas anchas sí se expanden automáticamente a las dos columnas — el script detecta overflow y aplica `column-span: all`.
 
 ## El mapa de conceptos (`/conceptos`)
 
