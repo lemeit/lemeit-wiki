@@ -35,30 +35,30 @@ Los tres primeros aceptan `&formato=csv` para descargar CSV en vez de JSON.
 
 ## Guía de uso de la API
 
-Base URL: `https://aq.lemeit.ar`. Todos los ejemplos funcionan pegados directo en la barra del navegador o con `curl`.
+Base URL: `https://purpleair-saladillo-api.fisicai-eureka-01.workers.dev` (el Worker de la API — `aq.lemeit.ar` sirve el dashboard estático, no la API; el propio `index.html` y `api.html` del repo usan esta misma base). Todos los ejemplos funcionan pegados directo en la barra del navegador o con `curl`.
 
 **Metadata de los sensores activos:**
 
 ```bash
-curl "https://aq.lemeit.ar/api/sensores"
+curl "https://purpleair-saladillo-api.fisicai-eureka-01.workers.dev/api/sensores"
 ```
 
 **Última lectura de cada sensor, en CSV:**
 
 ```bash
-curl "https://aq.lemeit.ar/api/ultimas?formato=csv" -o ultimas.csv
+curl "https://purpleair-saladillo-api.fisicai-eureka-01.workers.dev/api/ultimas?formato=csv" -o ultimas.csv
 ```
 
 **Histórico de un sensor puntual, últimos 7 días:**
 
 ```bash
-curl "https://aq.lemeit.ar/api/historico/12345?range=7d"
+curl "https://purpleair-saladillo-api.fisicai-eureka-01.workers.dev/api/historico/12345?range=7d"
 ```
 
 **Mismo sensor, rango de fechas absoluto (UTC) y en CSV:**
 
 ```bash
-curl "https://aq.lemeit.ar/api/historico/12345?desde=2026-08-01&hasta=2026-08-31&formato=csv" -o agosto.csv
+curl "https://purpleair-saladillo-api.fisicai-eureka-01.workers.dev/api/historico/12345?desde=2026-08-01&hasta=2026-08-31&formato=csv" -o agosto.csv
 ```
 
 `desde`/`hasta` aceptan `YYYY-MM-DD` (toma desde el inicio/fin de ese día en UTC) o `YYYY-MM-DD HH:MM:SS` para precisión horaria. Cuando están presentes, reemplazan a `range`.
@@ -66,7 +66,7 @@ curl "https://aq.lemeit.ar/api/historico/12345?desde=2026-08-01&hasta=2026-08-31
 **Desde JavaScript (por ejemplo, para un dashboard propio):**
 
 ```javascript
-const resp = await fetch("https://aq.lemeit.ar/api/ultimas");
+const resp = await fetch("https://purpleair-saladillo-api.fisicai-eureka-01.workers.dev/api/ultimas");
 const sensores = await resp.json();
 ```
 
@@ -74,7 +74,7 @@ const sensores = await resp.json();
 
 ```python
 import pandas as pd
-df = pd.read_csv("https://aq.lemeit.ar/api/historico/12345?range=30d&formato=csv")
+df = pd.read_csv("https://purpleair-saladillo-api.fisicai-eureka-01.workers.dev/api/historico/12345?range=30d&formato=csv")
 ```
 
 El `sensor_index` de cada sensor sale de `GET /api/sensores` — no hay que adivinarlo.
