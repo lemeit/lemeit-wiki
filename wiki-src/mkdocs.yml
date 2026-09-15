@@ -53,7 +53,7 @@ nav:
   - Inicio: index.md
   - Red Ambiental:
       - Resumen: red-ambiental/index.md
-      - Aire Saladillo (aq.lemeit.ar): red-ambiental/01-aire-saladillo.md
+      - Monitoreo Ambiental Escolar (aq.lemeit.ar): red-ambiental/01-aire-saladillo.md
       - EMA Saladillo (emas.lemeit.ar): red-ambiental/02-ema-saladillo.md
       - Calidad del Agua (wq.lemeit.ar): red-ambiental/03-agua-saladillo.md
       - Bitácora: red-ambiental/99-bitacora.md
