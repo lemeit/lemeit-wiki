@@ -1,6 +1,6 @@
-# ![AQ](../assets/logos/aq.svg){: width="36" style="vertical-align:middle;margin-right:8px" } Aire Saladillo — aq.lemeit.ar
+# ![AQ](../assets/logos/aq.svg){: width="36" style="vertical-align:middle;margin-right:8px" } Monitoreo Ambiental Escolar — aq.lemeit.ar
 
-Red de sensores de calidad del aire (PM1.0/PM2.5/PM10, VOC, CO2, NOx, temperatura, humedad, presión) instalada en escuelas, jardines de infantes y domicilios de Saladillo. Combina sensores **PurpleAir** y **AirGradient** en una misma base y un mismo dashboard.
+Red de sensores de calidad del aire (PM1.0/PM2.5/PM10, VOC, CO2, NOx, temperatura, humedad, presión) instalada en instituciones educativas y domicilios de la Provincia de Buenos Aires — proyecto piloto en expansión, con 5 sensores PurpleAir ya en funcionamiento en Saladillo y nuevos sensores AirGradient sumándose en instituciones de Saladillo y del partido de 25 de Mayo. Combina sensores **PurpleAir** y **AirGradient** en una misma base y un mismo dashboard.
 
 Repositorio: [github.com/lemeit/purpleair-saladillo](https://github.com/lemeit/purpleair-saladillo)
 
@@ -80,6 +80,8 @@ df = pd.read_csv("https://aq.lemeit.ar/api/historico/12345?range=30d&formato=csv
 El `sensor_index` de cada sensor sale de `GET /api/sensores` — no hay que adivinarlo.
 
 ## Roadmap
+
+**Estado del hardware (septiembre 2026)**: los 5 sensores **PurpleAir** ya están en poder del proyecto e instalados en instituciones de Saladillo; el del Colegio Secundario Madre Teresa está pendiente de reubicación/reinstalación. Los 2 sensores **AirGradient** también están en mano y activos, hoy conectados en un domicilio particular a modo de prueba, a la espera de definir en qué instituciones se instalan.
 
 Se planean 4 sensores nuevos (en evaluación, agosto 2026): 2 en Saladillo y 2 en el partido de **25 de Mayo** — en cada partido, una escuela de zona urbana y una de zona rural, ampliando la red más allá del partido de Saladillo por primera vez. Ver también el roadmap de [EMA Saladillo](02-ema-saladillo.md#roadmap), que suma una estación en 25 de Mayo por el mismo motivo. Esta expansión abre la puerta a un futuro apartado de reportes combinados (aire + meteorología) con análisis espacial entre sensores — hoy no es inmediato porque las estaciones EMA y los sensores de aire no comparten ubicación física.
 
