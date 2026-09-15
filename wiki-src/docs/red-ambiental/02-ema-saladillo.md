@@ -4,7 +4,7 @@ Red meteorológica de estaciones automáticas en Saladillo y 25 de Mayo: tempera
 
 Repositorio: [github.com/lemeit/ema-saladillo](https://github.com/lemeit/ema-saladillo)
 
-## Las 4 estaciones
+## Las estaciones
 
 | Código | Nombre | Organismo / titular | Equipo | Método de acceso |
 |---|---|---|---|---|
@@ -12,11 +12,12 @@ Repositorio: [github.com/lemeit/ema-saladillo](https://github.com/lemeit/ema-sal
 | EMA-CFR | Centro de Formación Rural | CFR Saladillo | Davis Instruments | Scraping HTML (BeautifulSoup) |
 | EMA-DC | Defensa Civil — Aeródromo | Municipio Saladillo | Davis / Meteobridge | OCR sobre imagen de cámara (Tesseract + Pillow) — no expone ningún endpoint de datos |
 | EMA-CS | Clima Saladillo — B° Falucho | Particular | Davis / Meteotemplate | Endpoint AJAX público (JSON limpio) |
+| EMA-25C | 25Clima — 25 de Mayo | N-TecLab / SS Desarrollos (terceros) | Ecowitt-compatible (WU: `IDEMAY14`) | API pública de Weather Underground (PWS) |
 
 ## Arquitectura
 
 ```
-4 scrapers Python (GitHub Actions, cron horario)
+5 scrapers Python (GitHub Actions, cron horario)
         ↓ (API HTTP de Cloudflare)
 Cloudflare D1 — tabla unificada "mediciones" (columna "estacion")
         ↓
@@ -33,9 +34,9 @@ Sin autenticación, CORS abierto. Documentación interactiva con ejemplos: [emas
 
 | Endpoint | Descripción |
 |---|---|
-| `GET /rest/v1/mediciones_ema` \| `mediciones_cfr` \| `mediciones_dc` \| `mediciones_cs` | Mediciones crudas de una estación — `select`, `order`, `limit`, `codigo=eq.X`, `parametro=eq.X`, `horas=N` (ventana relativa), o `desde`/`hasta` (rango de fechas absoluto en UTC) |
-| `GET /rest/v1/v_temperatura_comparativa` | Temperatura promedio por hora de las 4 estaciones en columnas paralelas |
-| `GET /rest/v1/v_ema_armonizada` | Un mismo parámetro normalizado entre las 4 estaciones (temperatura, humedad, presión, viento, lluvia, etc.) |
+| `GET /rest/v1/mediciones_ema` \| `mediciones_cfr` \| `mediciones_dc` \| `mediciones_cs` \| `mediciones_25c` | Mediciones crudas de una estación — `select`, `order`, `limit`, `codigo=eq.X`, `parametro=eq.X`, `horas=N` (ventana relativa), o `desde`/`hasta` (rango de fechas absoluto en UTC) |
+| `GET /rest/v1/v_temperatura_comparativa` | Temperatura promedio por hora de las 5 estaciones en columnas paralelas |
+| `GET /rest/v1/v_ema_armonizada` | Un mismo parámetro normalizado entre las 5 estaciones (temperatura, humedad, presión, viento, lluvia, etc.) |
 | `GET /tiles/:style/:z/:x/:y{@2x}.png` | Proxy de tiles del mapa hacia CARTO Basemaps |
 
 Las tres primeras aceptan `&formato=csv`.
@@ -62,13 +63,13 @@ curl "https://emas.lemeit.ar/rest/v1/mediciones_ema?parametro=eq.Temperatura&ord
 curl "https://emas.lemeit.ar/rest/v1/mediciones_cfr?parametro=eq.Lluvia&desde=2026-08-01&hasta=2026-08-31&formato=csv" -o lluvia_agosto.csv
 ```
 
-**Comparar temperatura de las 4 estaciones en paralelo, últimas 48 horas:**
+**Comparar temperatura de las 5 estaciones en paralelo, últimas 48 horas:**
 
 ```bash
 curl "https://emas.lemeit.ar/rest/v1/v_temperatura_comparativa?horas=48"
 ```
 
-**Un parámetro cualquiera armonizado entre las 4 estaciones:**
+**Un parámetro cualquiera armonizado entre las 5 estaciones:**
 
 ```bash
 curl "https://emas.lemeit.ar/rest/v1/v_ema_armonizada?parametro=eq.Humedad&horas=24"
@@ -83,9 +84,11 @@ df = pd.read_csv("https://emas.lemeit.ar/rest/v1/v_temperatura_comparativa?horas
 
 Si una consulta devuelve un CSV vacío, probablemente no es un error: puede que esa estación no tenga datos en la ventana pedida (por ejemplo, un corte de transmisión). Conviene probar primero sin `formato=csv` o con una ventana más amplia (`horas=720`) para confirmar si hay datos antes de asumir un problema.
 
-## Roadmap
+## EMA-25C — la quinta estación, en 25 de Mayo
 
-Se planea sumar una quinta estación en 25 de Mayo (en evaluación, agosto 2026), en línea con la expansión de [Monitoreo Ambiental Escolar](01-aire-saladillo.md#roadmap) a ese partido — todavía no está resuelto qué estación usar ni con qué método de acceso. Con eso, "EMA Saladillo" deja de ser un nombre literal: hoy la "S" es Saladillo, y con una estación en 25 de Mayo el proyecto pasa a ser regional, aunque el nombre y el dominio (`emas.lemeit.ar`) se mantengan por ahora — a definir más adelante si conviene rebautizarlo o si "EMAS" simplemente queda leído como el plural de "EMA". Igual que en Monitoreo Ambiental Escolar, la meta de fondo es habilitar reportes combinados (EMA + AQ) con análisis espacial — hoy limitado porque las estaciones EMA y los sensores de aire no están co-ubicados.
+En agosto/septiembre de 2026 se sumó una quinta estación, en el partido de 25 de Mayo — la primera de la red fuera de Saladillo, en línea con la expansión de [Monitoreo Ambiental Escolar](01-aire-saladillo.md#roadmap) a ese mismo partido. A diferencia de las otras 4, **EMA-25C no es una estación propia del proyecto**: es la estación pública 25Clima (`25clima.ar`), operada por un tercero (N-TecLab / SS Desarrollos) y registrada en la red de Weather Underground como `IDEMAY14`. Se consulta vía la API pública de Weather Underground — no hace falta acceso directo del operador, cualquiera con su propia API key de WU puede leer estaciones públicas ajenas (ver [`scrapers/wu_25demayo.py`](https://github.com/lemeit/ema-saladillo/blob/main/scrapers/wu_25demayo.py) en el repo). Por ser una estación de terceros, está en incorporación: pendiente contactar al operador para confirmar su carácter permanente en el dashboard público. Por su distancia al resto de la red (~80 km), tampoco participa de la interpolación espacial (mapa de calor) del dashboard.
+
+Con esta expansión regional, el proyecto dejó de llamarse "EMA Saladillo" y pasó a **EMAS**, manteniendo el dominio `emas.lemeit.ar`. La meta de fondo, igual que en Monitoreo Ambiental Escolar, es habilitar reportes combinados (EMA + AQ) con análisis espacial — hoy limitado porque las estaciones EMA y los sensores de aire no están co-ubicados.
 
 ## Hitos técnicos
 
@@ -94,5 +97,6 @@ Se planea sumar una quinta estación en 25 de Mayo (en evaluación, agosto 2026)
 - **Migración a GitHub Actions (marzo 2026)**: el sistema original dependía del Programador de Tareas de Windows en una PC física — si se apagaba, se perdían datos. Ver la bitácora para el detalle de la migración y de por qué las tareas de Windows fallaban en ese contexto (`PATH` sin la instalación de Python del usuario).
 - **Migración a Cloudflare D1 (agosto 2026)**: como parte de la armonización de los tres portales sobre una misma infraestructura. De 30.213 filas exportadas de Supabase, 9 se descartaron por un timestamp corrupto (error de OCR histórico).
 - **API pública (agosto 2026)**: mismo criterio que en Monitoreo Ambiental Escolar — las rutas existentes se documentaron y se les agregó rango de fechas absoluto y export CSV.
+- **Quinta estación vía Weather Underground (septiembre 2026)**: para sumar EMA-25C hizo falta una API key propia de Weather Underground, que solo se genera si la cuenta tiene al menos un dispositivo "activo" (con datos reales recientes) — sin tener una estación física propia, se resolvió activando un dispositivo placeholder con datos reales de un sensor PurpleAir ya existente en la red de Monitoreo Ambiental Escolar (ver [`tools/subir_a_wu.py`](https://github.com/lemeit/ema-saladillo/blob/main/tools/subir_a_wu.py)). Ver la bitácora para el detalle completo.
 
 Ver la [Bitácora del proyecto](99-bitacora.md) para el historial completo, incluyendo el análisis microclimático (efecto isla de calor urbano en EMA-CS) hecho con los primeros datos de las 4 estaciones.
