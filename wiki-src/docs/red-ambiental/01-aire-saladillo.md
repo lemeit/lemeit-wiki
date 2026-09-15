@@ -1,6 +1,6 @@
 # ![AQ](../assets/logos/aq.svg){: width="36" style="vertical-align:middle;margin-right:8px" } Monitoreo Ambiental Escolar — aq.lemeit.ar
 
-Red de sensores de calidad del aire (PM1.0/PM2.5/PM10, VOC, CO2, NOx, temperatura, humedad, presión) instalada en instituciones educativas y domicilios de la Provincia de Buenos Aires — proyecto piloto en expansión, con 5 sensores PurpleAir ya en funcionamiento en Saladillo y nuevos sensores AirGradient sumándose en instituciones de Saladillo y del partido de 25 de Mayo. Combina sensores **PurpleAir** y **AirGradient** en una misma base y un mismo dashboard.
+Red de sensores de calidad del aire (PM1.0/PM2.5/PM10, VOC, CO2, NOx, temperatura, humedad, presión) instalada en instituciones educativas y domicilios de la Provincia de Buenos Aires — proyecto piloto en los partidos de Saladillo y 25 de Mayo. Combina sensores **PurpleAir** y **AirGradient** en una misma base y un mismo dashboard.
 
 Repositorio: [github.com/lemeit/purpleair-saladillo](https://github.com/lemeit/purpleair-saladillo)
 
@@ -81,7 +81,7 @@ El `sensor_index` de cada sensor sale de `GET /api/sensores` — no hay que adiv
 
 ## Roadmap
 
-**Estado del hardware (septiembre 2026)**: los 5 sensores **PurpleAir** ya están en poder del proyecto e instalados en instituciones de Saladillo; el del Colegio Secundario Madre Teresa está pendiente de reubicación/reinstalación. Los 2 sensores **AirGradient** también están en mano y activos, hoy conectados en un domicilio particular a modo de prueba, a la espera de definir en qué instituciones se instalan.
+**Estado del hardware (septiembre 2026)**: los 5 sensores **PurpleAir** ya están en poder del proyecto, pero hoy solo 1 está en funcionamiento — el del Colegio Secundario Madre Teresa, pendiente de reubicación/reinstalación. Los otros 4 se están instalando ahora en el resto de las instituciones de Saladillo y en las de 25 de Mayo. Los 2 sensores **AirGradient** también están en mano y activos, hoy conectados en un domicilio particular a modo de prueba, a la espera de definir en qué instituciones se instalan.
 
 Se planean 4 sensores nuevos (en evaluación, agosto 2026): 2 en Saladillo y 2 en el partido de **25 de Mayo** — en cada partido, una escuela de zona urbana y una de zona rural, ampliando la red más allá del partido de Saladillo por primera vez. Ver también el roadmap de [EMA Saladillo](02-ema-saladillo.md#roadmap), que suma una estación en 25 de Mayo por el mismo motivo. Esta expansión abre la puerta a un futuro apartado de reportes combinados (aire + meteorología) con análisis espacial entre sensores — hoy no es inmediato porque las estaciones EMA y los sensores de aire no comparten ubicación física.
 
