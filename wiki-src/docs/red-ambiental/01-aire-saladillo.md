@@ -79,6 +79,30 @@ df = pd.read_csv("https://aq.lemeit.ar/api/historico/12345?range=30d&formato=csv
 
 El `sensor_index` de cada sensor sale de `GET /api/sensores` — no hay que adivinarlo.
 
+## Scripts de administración
+
+Dos scripts de PowerShell en `scripts/` del repo, para consultas rápidas por consola sin abrir el navegador (los endpoints que usan van por header, no se pueden pegar directo en la barra de direcciones).
+
+**Ver visitas al sitio** (`scripts/ver-visitas.ps1`) — consulta los endpoints admin del propio Worker (`/api/admin/visitas`, `/api/admin/resumen`), protegidos por el secret `ADMIN_KEY`:
+
+```powershell
+cd scripts
+.\ver-visitas.ps1                    # resumen: 24h, 7d, top rutas, top países
+.\ver-visitas.ps1 -Modo visitas      # últimas 200 visitas, una por una
+.\ver-visitas.ps1 -Modo visitas -Limit 50
+```
+
+Pide la `ADMIN_KEY` por consola (oculta al tipear), o se puede dejar puesta para toda la sesión de PowerShell con `$env:PA_ADMIN_KEY = "tu_clave"` así no se vuelve a pedir.
+
+**Ver uso de la API de PurpleAir** (`scripts/ver-uso-purpleair.ps1`) — consulta directo contra `api.purpleair.com` (no pasa por nuestro Worker) cuántos puntos quedan y a qué ritmo se consumen:
+
+```powershell
+cd scripts
+.\ver-uso-purpleair.ps1
+```
+
+Pide la `PURPLEAIR_API_KEY` (la misma que se cargó con `wrangler secret put`), o se puede fijar con `$env:PA_API_KEY = "tu_clave"` para no re-tipearla. Esta consulta **no gasta puntos de la cuota** — PurpleAir la marca explícitamente como "a free API call, so query it as you need" (confirmado por su staff en el foro oficial de la API, abril 2026), así que se puede correr las veces que haga falta.
+
 ## Roadmap
 
 **Estado del hardware (septiembre 2026)**: los 5 sensores **PurpleAir** ya están en poder del proyecto, pero hoy solo 1 está en funcionamiento — el del Colegio Secundario Madre Teresa, pendiente de reubicación/reinstalación. Los otros 4 se están instalando ahora en el resto de las instituciones de Saladillo y en las de 25 de Mayo. Los 2 sensores **AirGradient** también están en mano y activos, hoy conectados en un domicilio particular a modo de prueba, a la espera de definir en qué instituciones se instalan.
