@@ -2,7 +2,7 @@
 
 Red meteorológica de estaciones automáticas en Saladillo y 25 de Mayo: temperatura, humedad, presión, viento, lluvia y otros parámetros, comparables entre sí sobre una referencia temporal común.
 
-Repositorio: [github.com/lemeit/ema-saladillo](https://github.com/lemeit/ema-saladillo)
+Repositorio: [github.com/lemeit/emas](https://github.com/lemeit/emas)
 
 ## Las estaciones
 
@@ -86,7 +86,7 @@ Si una consulta devuelve un CSV vacío, probablemente no es un error: puede que 
 
 ## EMA-25C — la quinta estación, en 25 de Mayo
 
-En agosto/septiembre de 2026 se sumó una quinta estación, en el partido de 25 de Mayo — la primera de la red fuera de Saladillo, en línea con la expansión de [Monitoreo Ambiental Escolar](01-aire-saladillo.md#roadmap) a ese mismo partido. A diferencia de las otras 4, **EMA-25C no es una estación propia del proyecto**: es la estación pública 25Clima (`25clima.ar`), operada por un tercero (N-TecLab / SS Desarrollos) y registrada en la red de Weather Underground como `IDEMAY14`. Se consulta vía la API pública de Weather Underground — no hace falta acceso directo del operador, cualquiera con su propia API key de WU puede leer estaciones públicas ajenas (ver [`scrapers/wu_25demayo.py`](https://github.com/lemeit/ema-saladillo/blob/main/scrapers/wu_25demayo.py) en el repo). Por ser una estación de terceros, está en incorporación: pendiente contactar al operador para confirmar su carácter permanente en el dashboard público. Por su distancia al resto de la red (~80 km), tampoco participa de la interpolación espacial (mapa de calor) del dashboard.
+En agosto/septiembre de 2026 se sumó una quinta estación, en el partido de 25 de Mayo — la primera de la red fuera de Saladillo, en línea con la expansión de [Monitoreo Ambiental Escolar](01-aire-saladillo.md#roadmap) a ese mismo partido. A diferencia de las otras 4, **EMA-25C no es una estación propia del proyecto**: es la estación pública 25Clima (`25clima.ar`), operada por un tercero (N-TecLab / SS Desarrollos) y registrada en la red de Weather Underground como `IDEMAY14`. Se consulta vía la API pública de Weather Underground — no hace falta acceso directo del operador, cualquiera con su propia API key de WU puede leer estaciones públicas ajenas (ver [`scrapers/wu_25demayo.py`](https://github.com/lemeit/emas/blob/main/scrapers/wu_25demayo.py) en el repo). Por ser una estación de terceros, está en incorporación: pendiente contactar al operador para confirmar su carácter permanente en el dashboard público. Por su distancia al resto de la red (~80 km), tampoco participa de la interpolación espacial (mapa de calor) del dashboard.
 
 Con esta expansión regional, el proyecto dejó de llamarse "EMA Saladillo" y pasó a **EMAS**, manteniendo el dominio `emas.lemeit.ar`. La meta de fondo, igual que en Monitoreo Ambiental Escolar, es habilitar reportes combinados (EMA + AQ) con análisis espacial — hoy limitado porque las estaciones EMA y los sensores de aire no están co-ubicados.
 
@@ -97,6 +97,6 @@ Con esta expansión regional, el proyecto dejó de llamarse "EMA Saladillo" y pa
 - **Migración a GitHub Actions (marzo 2026)**: el sistema original dependía del Programador de Tareas de Windows en una PC física — si se apagaba, se perdían datos. Ver la bitácora para el detalle de la migración y de por qué las tareas de Windows fallaban en ese contexto (`PATH` sin la instalación de Python del usuario).
 - **Migración a Cloudflare D1 (agosto 2026)**: como parte de la armonización de los tres portales sobre una misma infraestructura. De 30.213 filas exportadas de Supabase, 9 se descartaron por un timestamp corrupto (error de OCR histórico).
 - **API pública (agosto 2026)**: mismo criterio que en Monitoreo Ambiental Escolar — las rutas existentes se documentaron y se les agregó rango de fechas absoluto y export CSV.
-- **Quinta estación vía Weather Underground (septiembre 2026)**: para sumar EMA-25C hizo falta una API key propia de Weather Underground, que solo se genera si la cuenta tiene al menos un dispositivo "activo" (con datos reales recientes) — sin tener una estación física propia, se resolvió activando un dispositivo placeholder con datos reales de un sensor PurpleAir ya existente en la red de Monitoreo Ambiental Escolar (ver [`tools/subir_a_wu.py`](https://github.com/lemeit/ema-saladillo/blob/main/tools/subir_a_wu.py)). Ver la bitácora para el detalle completo.
+- **Quinta estación vía Weather Underground (septiembre 2026)**: para sumar EMA-25C hizo falta una API key propia de Weather Underground, que solo se genera si la cuenta tiene al menos un dispositivo "activo" (con datos reales recientes) — sin tener una estación física propia, se resolvió activando un dispositivo placeholder con datos reales de un sensor PurpleAir ya existente en la red de Monitoreo Ambiental Escolar (ver [`tools/subir_a_wu.py`](https://github.com/lemeit/emas/blob/main/tools/subir_a_wu.py)). Ver la bitácora para el detalle completo.
 
 Ver la [Bitácora del proyecto](99-bitacora.md) para el historial completo, incluyendo el análisis microclimático (efecto isla de calor urbano en EMA-CS) hecho con los primeros datos de las 4 estaciones.

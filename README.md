@@ -11,7 +11,7 @@ Wiki madre de documentación técnica y bitácora de los proyectos de **lemeit.a
 | Sección | Proyecto | Sitio | Repo |
 |---|---|---|---|
 | Red Ambiental | 🌬️ Monitoreo Ambiental Escolar | [aq.lemeit.ar](https://aq.lemeit.ar) | [purpleair-saladillo](https://github.com/lemeit/purpleair-saladillo) |
-| Red Ambiental | 🌡️ EMA Saladillo | [emas.lemeit.ar](https://emas.lemeit.ar) | [ema-saladillo](https://github.com/lemeit/ema-saladillo) |
+| Red Ambiental | 🌡️ EMAS | [emas.lemeit.ar](https://emas.lemeit.ar) | [emas](https://github.com/lemeit/emas) |
 | Red Ambiental | 💧 Calidad del Agua | [wq.lemeit.ar](https://wq.lemeit.ar) | [agua-saladillo](https://github.com/lemeit/agua-saladillo) |
 | — | 🎓 Eureka AI | [tutor.lemeit.ar](https://tutor.lemeit.ar) | `lemeit/eureka` (privado) |
 | — | 👨‍🏫 Profe Lamaita | [profe.lemeit.ar](https://profe.lemeit.ar) | [aboutme](https://github.com/lemeit/aboutme) |
