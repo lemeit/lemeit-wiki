@@ -15,7 +15,7 @@ aboutme/ (repo único)
 └── Cloudflare Pages       → un solo deploy, ambos sirven bajo profe.lemeit.ar
 ```
 
-El portal principal usa **Hugo** con el tema **PaperMod**; el mapa de conceptos (`/conceptos`) es un sitio **Quartz v5** aparte que vive en el subdirectorio `quartz/` del mismo repo, pensado para notas estilo Obsidian con grafo de enlaces. Ambos comparten paleta de colores (sincronizada a mano en el CSS de cada uno) para que la transición entre `/notes` y `/conceptos` se sienta como un solo sitio y no dos productos pegados con cinta.
+El portal principal usa **Hugo** con el tema **PaperMod**; el mapa de conceptos (`/conceptos`) es un sitio **Quartz v5** aparte que vive en el subdirectorio `quartz/` del mismo repo, pensado para notas estilo Obsidian con grafo de enlaces. Ambos comparten paleta de colores (sincronizada manualmente en el CSS de cada uno) para que la transición entre `/notes` y `/conceptos` se sienta como un solo sitio y no dos productos pegados con cinta.
 
 Deploy: cada push a `main` dispara un build automático en Cloudflare Pages (~1-2 min) — sin pasos manuales, a diferencia de `lemeit-emas` (que necesita `wrangler pages deploy`).
 
@@ -165,6 +165,6 @@ En dark mode, el selector crítico es `:root[data-theme="dark"]` (no `.dark`) pa
 
 ## Notas de implementación
 
-- **Dos generadores, un repo**: mantener sincronizada la paleta a mano entre `assets/css/extended/custom.css` (Hugo) y `quartz/quartz.config.yaml` (Quartz) es la principal fuente de trabajo manual de este proyecto — no hay un design system compartido como `design.lemeit.ar` en la Red Ambiental, porque Hugo y Quartz no comparten runtime.
+- **Dos generadores, un repo**: mantener sincronizada la paleta manualmente entre `assets/css/extended/custom.css` (Hugo) y `quartz/quartz.config.yaml` (Quartz) es la principal fuente de trabajo manual de este proyecto — no hay un design system compartido como `design.lemeit.ar` en la Red Ambiental, porque Hugo y Quartz no comparten runtime.
 - **Orden determinístico de secciones**: cada `_index.md` de `notes/` tiene un `weight` único (1–6); sin eso, Hugo ordena las secciones de forma indeterminada.
 - **`public/` no se commitea**: la carpeta de salida de Hugo está en `.gitignore` — la genera Cloudflare Pages en cada deploy, igual que `site/` en esta wiki.

@@ -12,7 +12,7 @@ A diferencia de Aire y EMA, **todavía no tiene una API pública de datos**: las
 
 ## Origen de los datos
 
-Los valores salen de los protocolos de ensayo que la Municipalidad de Saladillo publica como PDF sueltos en [saladillo.gob.ar/servicios_sanitarios](https://www.saladillo.gob.ar/servicios_sanitarios) — sin tabla, índice ni nombres de archivo consistentes. La carga inicial (87 muestras) fue manual, protocolo por protocolo. Desde agosto de 2026 hay un GitHub Action (`protocolos-ingest.yml`, disparado a mano) que descarga los PDF nuevos y usa la API de Gemini para extraer JSON estructurado de cada uno — el resultado se vuelca a un CSV de staging (`extraidos_pendientes.csv`) para revisión humana antes de mergear al dashboard, nunca directo.
+Los valores salen de los protocolos de ensayo que la Municipalidad de Saladillo publica como PDF sueltos en [saladillo.gob.ar/servicios_sanitarios](https://www.saladillo.gob.ar/servicios_sanitarios) — sin tabla, índice ni nombres de archivo consistentes. La carga inicial (87 muestras) fue manual, protocolo por protocolo. Desde agosto de 2026 hay un GitHub Action (`protocolos-ingest.yml`, disparado manualmente) que descarga los PDF nuevos y usa la API de Gemini para extraer JSON estructurado de cada uno — el resultado se vuelca a un CSV de staging (`extraidos_pendientes.csv`) para revisión humana antes de mergear al dashboard, nunca directo.
 
 ## API existente (parcial)
 

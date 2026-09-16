@@ -18,7 +18,7 @@ Worker "purpleair-saladillo-api" — API REST propia (JSON/CSV)
 index.html (Cloudflare Pages) — dashboard estático
 ```
 
-Hasta agosto 2026 corrían en paralelo tres disparadores de ingesta (Cron Trigger de Cloudflare, GitHub Actions y cron-job.org) como redundancia deliberada ante el bug de Cloudflare que hace que el Cron Trigger quede registrado pero nunca dispare. El `INSERT OR IGNORE` + `UNIQUE(sensor_index, timestamp)` en `lecturas` evita filas duplicadas, pero no evita que cada camino activo gaste su propia llamada a la API de PurpleAir — con 4 sensores nuevos por sumarse, en septiembre 2026 se pausó GitHub Actions (queda `workflow_dispatch` para correrlo a mano) y **cron-job.org pasó a ser el único disparador activo**, para no pagar doble en puntos de la API. Detalle completo en el [README del repo](https://github.com/lemeit/lemeit-aq#readme).
+Hasta agosto 2026 corrían en paralelo tres disparadores de ingesta (Cron Trigger de Cloudflare, GitHub Actions y cron-job.org) como redundancia deliberada ante el bug de Cloudflare que hace que el Cron Trigger quede registrado pero nunca dispare. El `INSERT OR IGNORE` + `UNIQUE(sensor_index, timestamp)` en `lecturas` evita filas duplicadas, pero no evita que cada camino activo gaste su propia llamada a la API de PurpleAir — con 4 sensores nuevos por sumarse, en septiembre 2026 se pausó GitHub Actions (queda `workflow_dispatch` para ejecutarlo manualmente) y **cron-job.org pasó a ser el único disparador activo**, para no pagar doble en puntos de la API. Detalle completo en el [README del repo](https://github.com/lemeit/lemeit-aq#readme).
 
 ## API pública
 

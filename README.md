@@ -25,7 +25,7 @@ Sigue el mismo patrón que ya usa la wiki de [DVBA](https://github.com/lemeit/DV
 ```
 wiki-src/docs/**/*.md   →  mkdocs build  →  site/  →  GitHub Pages (wiki.lemeit.ar)
       (fuente,               (GitHub Action,     (contenido
-    se edita a mano)        wiki-build.yml)     generado, no editar a mano)
+   se edita manualmente)     wiki-build.yml)   generado, no editar manualmente)
 ```
 
 - El contenido fuente vive en `wiki-src/docs/`, en Markdown, **una carpeta por proyecto**.
@@ -72,7 +72,7 @@ lemeit-wiki/
 │       │   └── 99-bitacora.md                # Bitácora cronológica de los 3 proyectos
 │       └── eureka-tutor/
 │           └── index.md
-├── site/                                     # Generado automáticamente — no editar a mano
+├── site/                                     # Generado automáticamente — no editar manualmente
 └── .github/workflows/wiki-build.yml
 ```
 
