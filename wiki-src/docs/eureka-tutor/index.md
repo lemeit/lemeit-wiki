@@ -31,7 +31,7 @@ tutor.lemeit.ar (portal, repo privado)
    ├── Firebase Auth (Google)
    ├── Firestore: users, queries, messages, sessions, feedback,
    │              cached_responses, compound_images, config/admins
-   └── Cloudflare Worker (eureka-proxy → api.lemeit.ar)
+   └── Cloudflare Worker (eureka-proxy → api-eureka.lemeit.ar)
         ├── POST /  routing inteligente:
         │      ├── compound_image → PubChem (primario) / RSC ChemSpider (fallback)
         │      ├── multimodal (archivos) → Gemini 2.5 Flash
