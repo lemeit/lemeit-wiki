@@ -2,7 +2,7 @@
 
 Red de sensores de calidad del aire (PM1.0/PM2.5/PM10, VOC, CO2, NOx, temperatura, humedad, presión) instalada en instituciones educativas y domicilios de la Provincia de Buenos Aires — proyecto piloto en los partidos de Saladillo y 25 de Mayo. Combina sensores **PurpleAir** y **AirGradient** en una misma base y un mismo dashboard.
 
-Repositorio: [github.com/lemeit/purpleair-saladillo](https://github.com/lemeit/purpleair-saladillo)
+Repositorio: [github.com/lemeit/lemeit-aq](https://github.com/lemeit/lemeit-aq)
 
 ## Arquitectura
 
@@ -18,7 +18,7 @@ Worker "purpleair-saladillo-api" — API REST propia (JSON/CSV)
 index.html (Cloudflare Pages) — dashboard estático
 ```
 
-Hasta agosto 2026 corrían en paralelo tres disparadores de ingesta (Cron Trigger de Cloudflare, GitHub Actions y cron-job.org) como redundancia deliberada ante el bug de Cloudflare que hace que el Cron Trigger quede registrado pero nunca dispare. El `INSERT OR IGNORE` + `UNIQUE(sensor_index, timestamp)` en `lecturas` evita filas duplicadas, pero no evita que cada camino activo gaste su propia llamada a la API de PurpleAir — con 4 sensores nuevos por sumarse, en septiembre 2026 se pausó GitHub Actions (queda `workflow_dispatch` para correrlo a mano) y **cron-job.org pasó a ser el único disparador activo**, para no pagar doble en puntos de la API. Detalle completo en el [README del repo](https://github.com/lemeit/purpleair-saladillo#readme).
+Hasta agosto 2026 corrían en paralelo tres disparadores de ingesta (Cron Trigger de Cloudflare, GitHub Actions y cron-job.org) como redundancia deliberada ante el bug de Cloudflare que hace que el Cron Trigger quede registrado pero nunca dispare. El `INSERT OR IGNORE` + `UNIQUE(sensor_index, timestamp)` en `lecturas` evita filas duplicadas, pero no evita que cada camino activo gaste su propia llamada a la API de PurpleAir — con 4 sensores nuevos por sumarse, en septiembre 2026 se pausó GitHub Actions (queda `workflow_dispatch` para correrlo a mano) y **cron-job.org pasó a ser el único disparador activo**, para no pagar doble en puntos de la API. Detalle completo en el [README del repo](https://github.com/lemeit/lemeit-aq#readme).
 
 ## API pública
 
@@ -107,7 +107,7 @@ Pide la `PURPLEAIR_API_KEY` (la misma que se cargó con `wrangler secret put`), 
 
 **Estado del hardware (septiembre 2026)**: los 5 sensores **PurpleAir** ya están en poder del proyecto, pero hoy solo 1 está en funcionamiento — el del Colegio Secundario Madre Teresa, pendiente de reubicación/reinstalación. Los otros 4 se están instalando ahora en el resto de las instituciones de Saladillo y en las de 25 de Mayo. Esas 4 unidades pendientes de instalación fueron una donación de [PurpleAir Collective](https://community.purpleair.com/t/purpleair-collective-june-july-2024/8771) (convocatoria de mitad de 2024, en base a una propuesta de necesidad presentada por el autor — el proyecto quedó en 2° puesto de esa ronda). Los 2 sensores **AirGradient** también están en mano y activos, hoy conectados en un domicilio particular a modo de prueba, a la espera de definir en qué instituciones se instalan.
 
-**Fase 2 — expansión confirmada (reunión institucional del 16/9/2026, convocada por la Jefatura Regional de Educación)**: 5 escuelas — 3 en Saladillo y 2 en el partido de **25 de Mayo** — una de zona urbana y una de zona rural en cada partido, ampliando la red más allá del partido de Saladillo por primera vez. 4 confirmadas; la quinta (Colegio Secundario Madre Teresa) está en proceso de reubicación. Documentación de la reunión: plan de despliegue y hoja de especificaciones/requerimientos en [`docs/` del repo](https://github.com/lemeit/purpleair-saladillo/tree/main/docs). Ver también el roadmap de [EMA Saladillo](02-ema-saladillo.md#roadmap), que suma una estación en 25 de Mayo por el mismo motivo. Esta expansión abre la puerta a un futuro apartado de reportes combinados (aire + meteorología) con análisis espacial entre sensores — hoy no es inmediato porque las estaciones EMA y los sensores de aire no comparten ubicación física.
+**Fase 2 — expansión confirmada (reunión institucional del 16/9/2026, convocada por la Jefatura Regional de Educación)**: 5 escuelas — 3 en Saladillo y 2 en el partido de **25 de Mayo** — una de zona urbana y una de zona rural en cada partido, ampliando la red más allá del partido de Saladillo por primera vez. 4 confirmadas; la quinta (Colegio Secundario Madre Teresa) está en proceso de reubicación. Documentación de la reunión: plan de despliegue y hoja de especificaciones/requerimientos en [`docs/` del repo](https://github.com/lemeit/lemeit-aq/tree/main/docs). Ver también el roadmap de [EMA Saladillo](02-ema-saladillo.md#roadmap), que suma una estación en 25 de Mayo por el mismo motivo. Esta expansión abre la puerta a un futuro apartado de reportes combinados (aire + meteorología) con análisis espacial entre sensores — hoy no es inmediato porque las estaciones EMA y los sensores de aire no comparten ubicación física.
 
 ## Hitos técnicos
 

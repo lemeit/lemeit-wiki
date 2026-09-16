@@ -36,6 +36,6 @@ Es el único parámetro con una discrepancia real entre normativas: el Código A
 
 ## Roadmap pendiente
 
-- Backend propio para `RAW`/`LIM` (Cloudflare D1 + Worker), siguiendo el mismo patrón que ya usan `ema-saladillo` y `purpleair-saladillo` — el paso que habilitaría una API pública de datos igual que en los otros dos portales, y que la ingesta automática escriba directo a la base en vez de a un CSV de staging.
+- Backend propio para `RAW`/`LIM` (Cloudflare D1 + Worker), siguiendo el mismo patrón que ya usan `lemeit-emas` y `lemeit-aq` — el paso que habilitaría una API pública de datos igual que en los otros dos portales, y que la ingesta automática escriba directo a la base en vez de a un CSV de staging.
 
 Ver la [Bitácora del proyecto](99-bitacora.md) para más contexto sobre la armonización de los tres portales.
