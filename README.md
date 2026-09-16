@@ -12,7 +12,7 @@ Wiki madre de documentación técnica y bitácora de los proyectos de **lemeit.a
 |---|---|---|---|
 | Red Ambiental | 🌬️ Monitoreo Ambiental Escolar | [aq.lemeit.ar](https://aq.lemeit.ar) | [lemeit-aq](https://github.com/lemeit/lemeit-aq) |
 | Red Ambiental | 🌡️ EMA Saladillo | [emas.lemeit.ar](https://emas.lemeit.ar) | [lemeit-emas](https://github.com/lemeit/lemeit-emas) |
-| Red Ambiental | 💧 Calidad del Agua | [wq.lemeit.ar](https://wq.lemeit.ar) | [agua-saladillo](https://github.com/lemeit/agua-saladillo) |
+| Red Ambiental | 💧 Calidad del Agua | [wq.lemeit.ar](https://wq.lemeit.ar) | [lemeit-wq](https://github.com/lemeit/lemeit-wq) |
 | — | 🎓 Eureka AI | [tutor.lemeit.ar](https://tutor.lemeit.ar) | `lemeit/eureka` (privado) |
 | — | 👨‍🏫 Profe Lamaita | [profe.lemeit.ar](https://profe.lemeit.ar) | [aboutme](https://github.com/lemeit/aboutme) |
 

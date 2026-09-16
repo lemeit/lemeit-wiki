@@ -17,7 +17,7 @@ aboutme/ (repo único)
 
 El portal principal usa **Hugo** con el tema **PaperMod**; el mapa de conceptos (`/conceptos`) es un sitio **Quartz v5** aparte que vive en el subdirectorio `quartz/` del mismo repo, pensado para notas estilo Obsidian con grafo de enlaces. Ambos comparten paleta de colores (sincronizada a mano en el CSS de cada uno) para que la transición entre `/notes` y `/conceptos` se sienta como un solo sitio y no dos productos pegados con cinta.
 
-Deploy: cada push a `main` dispara un build automático en Cloudflare Pages (~1-2 min) — sin pasos manuales, a diferencia de `ema-saladillo` (que necesita `wrangler pages deploy`).
+Deploy: cada push a `main` dispara un build automático en Cloudflare Pages (~1-2 min) — sin pasos manuales, a diferencia de `lemeit-emas` (que necesita `wrangler pages deploy`).
 
 ## Stack
 

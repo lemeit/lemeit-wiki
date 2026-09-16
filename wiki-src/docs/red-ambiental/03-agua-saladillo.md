@@ -2,7 +2,7 @@
 
 Monitoreo de calidad de agua de red en Saladillo: arsénico, nitratos, nitritos, fluoruro, metales pesados y parámetros bacteriológicos (coliformes totales, *E. coli*, *Pseudomona aeruginosa*) sobre decenas de puntos de la red municipal (bombas, escuelas, jardines, domicilios).
 
-Repositorio: [github.com/lemeit/agua-saladillo](https://github.com/lemeit/agua-saladillo)
+Repositorio: [github.com/lemeit/lemeit-wq](https://github.com/lemeit/lemeit-wq)
 
 ## Origen y estado (agosto 2026)
 

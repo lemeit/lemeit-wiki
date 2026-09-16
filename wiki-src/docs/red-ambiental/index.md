@@ -6,7 +6,7 @@ Documentación técnica y bitácora de desarrollo de la red de monitoreo ambient
 |---|---|---|---|
 | ![AQ](../assets/logos/aq.svg){: width="22" style="vertical-align:middle;margin-right:6px" } Monitoreo Ambiental Escolar | [aq.lemeit.ar](https://aq.lemeit.ar) | Calidad del aire (PM1.0/PM2.5/PM10, VOC, CO2, NOx) — sensores PurpleAir y AirGradient en instituciones educativas de la Provincia de Buenos Aires | [lemeit-aq](https://github.com/lemeit/lemeit-aq) |
 | ![EMA](../assets/logos/ema.svg){: width="22" style="vertical-align:middle;margin-right:6px" } EMAS | [emas.lemeit.ar](https://emas.lemeit.ar) | Meteorología — temperatura, humedad, presión, viento, lluvia de estaciones automáticas en Saladillo y 25 de Mayo | [lemeit-emas](https://github.com/lemeit/lemeit-emas) |
-| ![WQ](../assets/logos/wq.svg){: width="22" style="vertical-align:middle;margin-right:6px" } Calidad del Agua | [wq.lemeit.ar](https://wq.lemeit.ar) | Arsénico, nitratos, fluoruro, metales pesados y bacteriología de la red municipal | [agua-saladillo](https://github.com/lemeit/agua-saladillo) |
+| ![WQ](../assets/logos/wq.svg){: width="22" style="vertical-align:middle;margin-right:6px" } Calidad del Agua | [wq.lemeit.ar](https://wq.lemeit.ar) | Arsénico, nitratos, fluoruro, metales pesados y bacteriología de la red municipal | [lemeit-wq](https://github.com/lemeit/lemeit-wq) |
 
 ## Origen del proyecto
 
