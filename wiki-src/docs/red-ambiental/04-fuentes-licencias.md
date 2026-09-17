@@ -20,10 +20,7 @@ Los **5 sensores PurpleAir Flex** de la red fueron una donación de [PurpleAir C
 
 ### Licencia
 
-Los datos del mapa/API en tiempo real de PurpleAir se publican bajo su propia [licencia de datos](https://www.purpleair.com/license) (uso no comercial con atribución). Este proyecto es enteramente educativo y sin fines de lucro, y cita a PurpleAir como fuente en cada tarjeta de sensor y en el footer del sitio.
-
-!!! note "Nota"
-    No pudimos extraer automáticamente el texto completo y vigente de esa página de licencia (es una SPA que requiere JavaScript) — antes de reutilizar estos datos en un contexto distinto al de este proyecto, conviene revisarla directo en el sitio.
+Los datos del mapa y de la API en tiempo real de PurpleAir se publican bajo su propia [licencia de datos](https://www.purpleair.com/license) (uso no comercial, con atribución). Este proyecto es enteramente educativo y sin fines de lucro, y cita a PurpleAir como fuente en cada tarjeta de sensor y en el pie de página del sitio. Para el texto completo y vigente, la referencia es siempre la página de licencia enlazada abajo.
 
 **Links:** [Quiénes son](https://www.purpleair.com/about) · [Licencia de datos](https://www.purpleair.com/license) · [Términos de servicio](https://www.purpleair.com/policies/terms-of-service) · [Privacidad](https://www.purpleair.com/policies/privacy-policy)
 
@@ -67,8 +64,3 @@ Hoy OpenAQ es sobre todo una referencia de diseño y de filosofía de proyecto �
 
 Siguiendo la misma filosofía de PurpleAir, AirGradient y OpenAQ, los datos que Monitoreo Ambiental Escolar genera y publica (metadata de sensores, lecturas históricas) están disponibles sin autenticación ni registro a través de la [API pública](https://aq.lemeit.ar/api.html) del proyecto — de lectura, CORS abierto, pensada para que cualquiera la consuma directo. Si reutilizás estos datos públicamente, agradecemos que menciones como fuente a [app.lemeit.ar/aq](https://app.lemeit.ar/aq).
 
----
-
-## Sobre esta página
-
-Escrita en septiembre de 2026 a partir de las páginas públicas de cada proveedor, para tener un registro claro antes de contactarlos y mostrarles qué se hizo con sus equipos y sus datos. No reemplaza asesoramiento legal: si en algún momento este proyecto necesita términos formales (por ejemplo, para una integración comercial o institucional), conviene que los revise un profesional.
