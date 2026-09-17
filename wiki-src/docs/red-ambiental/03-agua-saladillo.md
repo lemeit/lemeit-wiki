@@ -1,4 +1,4 @@
-# ![WQ](../assets/logos/wq.svg){: width="36" style="vertical-align:middle;margin-right:8px" } Calidad del Agua — wq.lemeit.ar
+# ![WQ](../assets/logos/wq.svg){: width="36" style="vertical-align:middle;margin-right:8px" } Calidad del Agua — app.lemeit.ar/wq
 
 Monitoreo de calidad de agua de red en Saladillo: arsénico, nitratos, nitritos, fluoruro, metales pesados y parámetros bacteriológicos (coliformes totales, *E. coli*, *Pseudomona aeruginosa*) sobre decenas de puntos de la red municipal (bombas, escuelas, jardines, domicilios).
 
@@ -22,10 +22,12 @@ Los valores salen de los protocolos de ensayo que la Municipalidad de Saladillo 
 | `POST /api/coords` | Editar coordenadas — protegido con header `X-Admin-Key` (401 sin la clave correcta) |
 | `GET /tiles/:style/:z/:x/:y{@2x}.png` | Proxy de tiles del mapa hacia CARTO Basemaps |
 
+Base URL: `https://api.lemeit.ar/wq` (dominio público compartido con los otros proyectos de la red ambiental, vía Route de Cloudflare — mismo esquema que `api.lemeit.ar/aq` y `api.lemeit.ar/emas`; el `*.workers.dev` original — `agua-saladillo-api...workers.dev` — sigue funcionando igual como respaldo directo, sin el prefijo `/wq`). `app.lemeit.ar/wq` sirve el dashboard estático, no la API (`wq.lemeit.ar` viejo redirige solo ahí).
+
 ### Ejemplo de uso
 
 ```bash
-curl "https://wq.lemeit.ar/api/coords"
+curl "https://api.lemeit.ar/wq/api/coords"
 ```
 
 Las muestras (`RAW`) y los límites normativos (`LIM`) no tienen API todavía — hoy la única forma de consumirlos es leyendo el objeto JS embebido en el `index.html` del dashboard, no hay un endpoint separado para pedirlos.
