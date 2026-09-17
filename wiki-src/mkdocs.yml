@@ -35,9 +35,11 @@ theme:
   features:
     - navigation.instant
     - navigation.tracking
+    - navigation.tabs
     - navigation.top
     - navigation.sections
     - navigation.indexes
+    - navigation.expand
     - toc.follow
     - search.suggest
     - search.highlight
@@ -72,7 +74,7 @@ markdown_extensions:
   - tables
   - toc:
       permalink: '¶'
-      toc_depth: 3
+      toc_depth: 2
   - pymdownx.details
   - pymdownx.superfences
   - pymdownx.tabbed:
