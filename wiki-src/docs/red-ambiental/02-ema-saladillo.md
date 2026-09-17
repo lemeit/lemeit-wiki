@@ -1,4 +1,4 @@
-# ![EMA](../assets/logos/ema.svg){: width="36" style="vertical-align:middle;margin-right:8px" } EMAS — emas.lemeit.ar
+# ![EMA](../assets/logos/ema.svg){: width="36" style="vertical-align:middle;margin-right:8px" } EMAS — app.lemeit.ar/emas
 
 Red meteorológica de estaciones automáticas en Saladillo y 25 de Mayo: temperatura, humedad, presión, viento, lluvia y otros parámetros, comparables entre sí sobre una referencia temporal común.
 
@@ -30,7 +30,7 @@ Hasta agosto de 2026 la base era Supabase (PostgreSQL), con 4 tablas separadas. 
 
 ## API pública
 
-Sin autenticación, CORS abierto. Documentación interactiva con ejemplos: [emas.lemeit.ar/api.html](https://emas.lemeit.ar/api.html).
+Sin autenticación, CORS abierto. Documentación interactiva con ejemplos: [app.lemeit.ar/emas/api.html](https://app.lemeit.ar/emas/api.html).
 
 | Endpoint | Descripción |
 |---|---|
@@ -43,43 +43,43 @@ Las tres primeras aceptan `&formato=csv`.
 
 ## Guía de uso de la API
 
-Base URL: `https://emas.lemeit.ar`. Las rutas siguen el estilo PostgREST heredado de Supabase: filtros como `columna=eq.valor`, orden con `order=columna.desc`, límite con `limit=N`.
+Base URL: `https://api.lemeit.ar/emas` (dominio público compartido con los otros proyectos de la red ambiental, vía Route de Cloudflare — mismo esquema que `api.lemeit.ar/aq`; el `*.workers.dev` original — `ema-saladillo-api...workers.dev` — sigue funcionando igual como respaldo directo, sin el prefijo `/emas`). `app.lemeit.ar/emas` sirve el dashboard estático, no la API (`emas.lemeit.ar` viejo redirige solo ahí) — el propio `index.html` y `api.html` del repo usan esta misma base de API. Las rutas siguen el estilo PostgREST heredado de Supabase: filtros como `columna=eq.valor`, orden con `order=columna.desc`, límite con `limit=N`.
 
 **Últimas 100 mediciones de temperatura de una estación:**
 
 ```bash
-curl "https://emas.lemeit.ar/rest/v1/mediciones_ema?parametro=eq.Temperatura&order=timestamp.desc&limit=100"
+curl "https://api.lemeit.ar/emas/rest/v1/mediciones_ema?parametro=eq.Temperatura&order=timestamp.desc&limit=100"
 ```
 
 **Misma consulta pero en CSV, para abrir directo en una planilla:**
 
 ```bash
-curl "https://emas.lemeit.ar/rest/v1/mediciones_ema?parametro=eq.Temperatura&order=timestamp.desc&limit=100&formato=csv" -o temp_eet.csv
+curl "https://api.lemeit.ar/emas/rest/v1/mediciones_ema?parametro=eq.Temperatura&order=timestamp.desc&limit=100&formato=csv" -o temp_eet.csv
 ```
 
 **Rango de fechas absoluto (UTC) en vez de `horas`:**
 
 ```bash
-curl "https://emas.lemeit.ar/rest/v1/mediciones_cfr?parametro=eq.Lluvia&desde=2026-08-01&hasta=2026-08-31&formato=csv" -o lluvia_agosto.csv
+curl "https://api.lemeit.ar/emas/rest/v1/mediciones_cfr?parametro=eq.Lluvia&desde=2026-08-01&hasta=2026-08-31&formato=csv" -o lluvia_agosto.csv
 ```
 
 **Comparar temperatura de las 5 estaciones en paralelo, últimas 48 horas:**
 
 ```bash
-curl "https://emas.lemeit.ar/rest/v1/v_temperatura_comparativa?horas=48"
+curl "https://api.lemeit.ar/emas/rest/v1/v_temperatura_comparativa?horas=48"
 ```
 
 **Un parámetro cualquiera armonizado entre las 5 estaciones:**
 
 ```bash
-curl "https://emas.lemeit.ar/rest/v1/v_ema_armonizada?parametro=eq.Humedad&horas=24"
+curl "https://api.lemeit.ar/emas/rest/v1/v_ema_armonizada?parametro=eq.Humedad&horas=24"
 ```
 
 **Desde Python + pandas:**
 
 ```python
 import pandas as pd
-df = pd.read_csv("https://emas.lemeit.ar/rest/v1/v_temperatura_comparativa?horas=720&formato=csv")
+df = pd.read_csv("https://api.lemeit.ar/emas/rest/v1/v_temperatura_comparativa?horas=720&formato=csv")
 ```
 
 Si una consulta devuelve un CSV vacío, probablemente no es un error: puede que esa estación no tenga datos en la ventana pedida (por ejemplo, un corte de transmisión). Conviene probar primero sin `formato=csv` o con una ventana más amplia (`horas=720`) para confirmar si hay datos antes de asumir un problema.
@@ -88,7 +88,7 @@ Si una consulta devuelve un CSV vacío, probablemente no es un error: puede que 
 
 En agosto/septiembre de 2026 se sumó una quinta estación, en el partido de 25 de Mayo — la primera de la red fuera de Saladillo, en línea con la expansión de [Monitoreo Ambiental Escolar](01-aire-saladillo.md#roadmap) a ese mismo partido. A diferencia de las otras 4, **EMA-25C no es una estación propia del proyecto**: es la estación pública 25Clima (`25clima.ar`), operada por un tercero (N-TecLab / SS Desarrollos) y registrada en la red de Weather Underground como `IDEMAY14`. Se consulta vía la API pública de Weather Underground — no hace falta acceso directo del operador, cualquiera con su propia API key de WU puede leer estaciones públicas ajenas (ver [`scrapers/wu_25demayo.py`](https://github.com/lemeit/lemeit-emas/blob/main/scrapers/wu_25demayo.py) en el repo). Por ser una estación de terceros, está en incorporación: pendiente contactar al operador para confirmar su carácter permanente en el dashboard público. Por su distancia al resto de la red (~80 km), tampoco participa de la interpolación espacial (mapa de calor) del dashboard.
 
-Con esta expansión regional, el proyecto dejó de llamarse "EMA Saladillo" y pasó a **EMAS**, manteniendo el dominio `emas.lemeit.ar`. La meta de fondo, igual que en Monitoreo Ambiental Escolar, es habilitar reportes combinados (EMA + AQ) con análisis espacial — hoy limitado porque las estaciones EMA y los sensores de aire no están co-ubicados.
+Con esta expansión regional, el proyecto dejó de llamarse "EMA Saladillo" y pasó a **EMAS**. La meta de fondo, igual que en Monitoreo Ambiental Escolar, es habilitar reportes combinados (EMA + AQ) con análisis espacial — hoy limitado porque las estaciones EMA y los sensores de aire no están co-ubicados.
 
 ## Hitos técnicos
 
@@ -98,5 +98,7 @@ Con esta expansión regional, el proyecto dejó de llamarse "EMA Saladillo" y pa
 - **Migración a Cloudflare D1 (agosto 2026)**: como parte de la armonización de los tres portales sobre una misma infraestructura. De 30.213 filas exportadas de Supabase, 9 se descartaron por un timestamp corrupto (error de OCR histórico).
 - **API pública (agosto 2026)**: mismo criterio que en Monitoreo Ambiental Escolar — las rutas existentes se documentaron y se les agregó rango de fechas absoluto y export CSV.
 - **Quinta estación vía Weather Underground (septiembre 2026)**: para sumar EMA-25C hizo falta una API key propia de Weather Underground, que solo se genera si la cuenta tiene al menos un dispositivo "activo" (con datos reales recientes) — sin tener una estación física propia, se resolvió activando un dispositivo placeholder con datos reales de un sensor PurpleAir ya existente en la red de Monitoreo Ambiental Escolar (ver [`tools/subir_a_wu.py`](https://github.com/lemeit/lemeit-emas/blob/main/tools/subir_a_wu.py)). Ver la bitácora para el detalle completo.
+- **Color de marca propio y dominio único `app.lemeit.ar` (septiembre 2026)**: el favicon de EMAS pasa de un azul suelto a un celeste de la misma familia tonal que el verde de Monitoreo Ambiental Escolar (`#0097A7`). Junto con esto, los tres portales de la red pasan a convivir bajo un solo dominio (`app.lemeit.ar/aq`, `/emas`, `/wq` — ver [arquitectura de la Red](index.md)); `emas.lemeit.ar` sigue funcionando, redirige solo. El selector de estaciones del header, que en pantallas chicas tapaba el resto de los controles (estado de conexión, switcher de portales, tema), pasa a su propia fila con scroll horizontal.
+- **API bajo `api.lemeit.ar/emas` (septiembre 2026)**: `emas.lemeit.ar/rest/v1/*` nunca sirvió datos en los hechos — el dominio apuntaba al Pages estático, que no puede tocar la base D1; la API real siempre vivió solo en el `*.workers.dev` (así la llama el propio `index.html`, vía `SUPA_URL`). Se suma una Route de Cloudflare al mismo Worker (`api.lemeit.ar/emas/*`) para que tenga una URL pública propia y prolija, igual que ya tiene Monitoreo Ambiental Escolar en `api.lemeit.ar/aq`. El `*.workers.dev` original sigue andando igual de respaldo.
 
 Ver la [Bitácora del proyecto](99-bitacora.md) para el historial completo, incluyendo el análisis microclimático (efecto isla de calor urbano en EMA-CS) hecho con los primeros datos de las 4 estaciones.

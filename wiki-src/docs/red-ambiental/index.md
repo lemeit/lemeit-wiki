@@ -2,11 +2,13 @@
 
 Documentación técnica y bitácora de desarrollo de la red de monitoreo ambiental de Saladillo, Buenos Aires: tres portales hermanos que comparten la misma infraestructura de Cloudflare (Pages + Workers + D1) y el mismo sistema de diseño ([design.lemeit.ar](https://design.lemeit.ar)).
 
+Desde setiembre 2026 los tres viven bajo un solo dominio, **`app.lemeit.ar`**, con un prefijo de ruta por portal — un Worker gateway (repo [`gateway`](https://github.com/lemeit/gateway)) reverse-proxea cada uno hacia el Cloudflare Pages que lo sigue publicando sin cambios. Los dominios viejos (`aq`/`emas`/`wq.lemeit.ar`) siguen funcionando, redirigen solos al dominio nuevo.
+
 | Portal | Dominio | Qué mide | Repo |
 |---|---|---|---|
-| ![AQ](../assets/logos/aq.svg){: width="22" style="vertical-align:middle;margin-right:6px" } Monitoreo Ambiental Escolar | [aq.lemeit.ar](https://aq.lemeit.ar) | Calidad del aire (PM1.0/PM2.5/PM10, VOC, CO2, NOx) — sensores PurpleAir y AirGradient en instituciones educativas de la Provincia de Buenos Aires | [lemeit-aq](https://github.com/lemeit/lemeit-aq) |
-| ![EMA](../assets/logos/ema.svg){: width="22" style="vertical-align:middle;margin-right:6px" } EMAS | [emas.lemeit.ar](https://emas.lemeit.ar) | Meteorología — temperatura, humedad, presión, viento, lluvia de estaciones automáticas en Saladillo y 25 de Mayo | [lemeit-emas](https://github.com/lemeit/lemeit-emas) |
-| ![WQ](../assets/logos/wq.svg){: width="22" style="vertical-align:middle;margin-right:6px" } Calidad del Agua | [wq.lemeit.ar](https://wq.lemeit.ar) | Arsénico, nitratos, fluoruro, metales pesados y bacteriología de la red municipal | [lemeit-wq](https://github.com/lemeit/lemeit-wq) |
+| ![AQ](../assets/logos/aq.svg){: width="22" style="vertical-align:middle;margin-right:6px" } Monitoreo Ambiental Escolar | [app.lemeit.ar/aq](https://app.lemeit.ar/aq/) | Calidad del aire (PM1.0/PM2.5/PM10, VOC, CO2, NOx) — sensores PurpleAir y AirGradient en instituciones educativas de la Provincia de Buenos Aires | [lemeit-aq](https://github.com/lemeit/lemeit-aq) |
+| ![EMA](../assets/logos/ema.svg){: width="22" style="vertical-align:middle;margin-right:6px" } EMAS | [app.lemeit.ar/emas](https://app.lemeit.ar/emas/) | Meteorología — temperatura, humedad, presión, viento, lluvia de estaciones automáticas en Saladillo y 25 de Mayo | [lemeit-emas](https://github.com/lemeit/lemeit-emas) |
+| ![WQ](../assets/logos/wq.svg){: width="22" style="vertical-align:middle;margin-right:6px" } Calidad del Agua | [app.lemeit.ar/wq](https://app.lemeit.ar/wq/) | Arsénico, nitratos, fluoruro, metales pesados y bacteriología de la red municipal | [lemeit-wq](https://github.com/lemeit/lemeit-wq) |
 
 ## Origen del proyecto
 

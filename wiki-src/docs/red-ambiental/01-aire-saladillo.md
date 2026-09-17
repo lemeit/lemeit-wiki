@@ -1,4 +1,4 @@
-# ![AQ](../assets/logos/aq.svg){: width="36" style="vertical-align:middle;margin-right:8px" } Monitoreo Ambiental Escolar — aq.lemeit.ar
+# ![AQ](../assets/logos/aq.svg){: width="36" style="vertical-align:middle;margin-right:8px" } Monitoreo Ambiental Escolar — app.lemeit.ar/aq
 
 Red de sensores de calidad del aire (PM1.0/PM2.5/PM10, VOC, CO2, NOx, temperatura, humedad, presión) instalada en instituciones educativas y domicilios de la Provincia de Buenos Aires — proyecto piloto en los partidos de Saladillo y 25 de Mayo. Combina sensores **PurpleAir** y **AirGradient** en una misma base y un mismo dashboard.
 
@@ -22,7 +22,7 @@ Hasta agosto 2026 corrían en paralelo tres disparadores de ingesta (Cron Trigge
 
 ## API pública
 
-Sin autenticación, CORS abierto, pensada para que cualquiera la consuma directo — no solo el propio dashboard. También hay documentación interactiva con ejemplos en [aq.lemeit.ar/api.html](https://aq.lemeit.ar/api.html).
+Sin autenticación, CORS abierto, pensada para que cualquiera la consuma directo — no solo el propio dashboard. También hay documentación interactiva con ejemplos en [app.lemeit.ar/aq/api.html](https://app.lemeit.ar/aq/api.html).
 
 | Endpoint | Descripción |
 |---|---|
@@ -35,7 +35,7 @@ Los tres primeros aceptan `&formato=csv` para descargar CSV en vez de JSON.
 
 ## Guía de uso de la API
 
-Base URL: `https://api.lemeit.ar/aq` (dominio público compartido con los otros proyectos de la red ambiental, vía Route de Cloudflare — ver "Arquitectura" arriba; el `*.workers.dev` original sigue funcionando igual como respaldo directo, sin el prefijo `/aq`). `aq.lemeit.ar` sirve el dashboard estático, no la API; el propio `index.html` y `api.html` del repo usan esta misma base. Todos los ejemplos funcionan pegados directo en la barra del navegador o con `curl`.
+Base URL: `https://api.lemeit.ar/aq` (dominio público compartido con los otros proyectos de la red ambiental, vía Route de Cloudflare — ver "Arquitectura" arriba; el `*.workers.dev` original sigue funcionando igual como respaldo directo, sin el prefijo `/aq`). `app.lemeit.ar/aq` sirve el dashboard estático, no la API (`aq.lemeit.ar` viejo redirige solo ahí); el propio `index.html` y `api.html` del repo usan esta misma base de API. Todos los ejemplos funcionan pegados directo en la barra del navegador o con `curl`.
 
 **Metadata de los sensores activos:**
 
@@ -89,7 +89,7 @@ curl "https://api.lemeit.ar/aq/api/historico/12345?desde=2026-02-01&hasta=2026-0
 # ...
 ```
 
-El mismo botón "Descargar CSV" de la pestaña Historial del dashboard tiene esta misma limitación (te descarga lo que ves filtrado en pantalla, con el mismo tope). Si necesitás el historial completo de un sensor de una sola vez — por ejemplo para un análisis o como respaldo propio — [escribile a Luciano](https://profe.lemeit.ar) y te pasa un export directo de la base.
+El mismo botón "Descargar CSV" de la pestaña Historial del dashboard tiene esta misma limitación (te descarga lo que ves filtrado en pantalla, con el mismo tope). Si necesitás el historial completo de un sensor de una sola vez — por ejemplo para un análisis o como respaldo propio — escribí a [info@lemeit.ar](mailto:info@lemeit.ar) y te pasan un export directo de la base.
 
 ## Scripts de administración
 
@@ -136,5 +136,6 @@ Pide la `PURPLEAIR_API_KEY` (la misma que se cargó con `wrangler secret put`), 
 - **Gráfico — zoom por selección (septiembre 2026)**: se sumó `chartjs-plugin-zoom` (+ `hammerjs` para gestos táctiles) al Gráfico, en ambos modos (histórico de un sitio y "Comparar sitios"): arrastre del mouse para zoom por selección ("box zoom"), rueda para acercar/alejar, pellizco táctil en celular, y un botón "Reset zoom" que aparece solo cuando hay zoom aplicado. Mismo patrón de doble CDN con respaldo (jsDelivr primero, cdnjs si falla) ya usado para jsPDF.
     - **Fix**: en el primer despliegue, arrastrar para seleccionar terminaba haciendo zoom hacia el lado contrario de donde se arrastraba, y peor cuantos más zooms anidados (zoom sobre un zoom ya aplicado). Causa: el paneo (mover la vista arrastrando) y el zoom por selección estaban atados al mismo gesto — arrastre simple, sin modificador — y competían entre sí; el paneo corría el eje mientras se armaba el rectángulo de selección. Se resolvió exigiendo Ctrl+arrastre para panear, dejando el arrastre simple exclusivamente para la selección de zoom. De paso se cambió el eje X de una escala de categorías (labels de texto) a una escala numérica (`linear`, con los horarios mostrados vía un callback de ticks), porque `chartjs-plugin-zoom` no soporta bien los zooms anidados sobre un eje de categorías.
 - **Enlaces a la wiki**: el footer compartido (`lemeit-common.js`, usado por los tres portales) y la sección "Acerca de" de cada uno pasan a enlazar a [wiki.lemeit.ar](https://wiki.lemeit.ar) — hasta ahora la wiki no se mencionaba desde ningún portal.
+- **Logo AQ → AE y dominio único `app.lemeit.ar` (septiembre 2026)**: la sigla del logo pasa de "AQ" (Air Quality, inconsistente con el resto del sitio en español) a **AE** (Aire Escolar), en un verde-azulado propio (`#009688`) en vez del naranja general del sitio. Junto con esto, los tres portales de la red pasan a convivir bajo un solo dominio (`app.lemeit.ar/aq`, `/emas`, `/wq` — ver [arquitectura de la Red](index.md)); `aq.lemeit.ar` sigue funcionando, redirige solo. El `manifest.json` amplía su `scope` de `/aq/` a todo el dominio nuevo, para que cambiar de portal desde la app instalada no salga al navegador.
 
 Ver la [Bitácora del proyecto](99-bitacora.md) para el detalle sesión por sesión.
