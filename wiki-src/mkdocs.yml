@@ -58,6 +58,7 @@ nav:
       - Monitoreo Ambiental Escolar (aq.lemeit.ar): red-ambiental/01-aire-saladillo.md
       - EMAS (emas.lemeit.ar): red-ambiental/02-ema-saladillo.md
       - Calidad del Agua (wq.lemeit.ar): red-ambiental/03-agua-saladillo.md
+      - Fuentes y licencias: red-ambiental/04-fuentes-licencias.md
       - Bitácora: red-ambiental/99-bitacora.md
   - Eureka AI:
       - Resumen: eureka-tutor/index.md
