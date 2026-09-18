@@ -189,6 +189,8 @@
    al repo queda como un ícono chico de GitHub en vez de texto. ---- */
 .md-footer-meta__inner {
   font-size: 0.6rem;
+  justify-content: center;
+  text-align: center;
 }
 
 .lemeit-footer-gh {
