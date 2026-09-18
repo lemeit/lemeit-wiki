@@ -20,6 +20,8 @@ The network's **5 PurpleAir Flex sensors** were a donation from the [PurpleAir C
 
 Since PurpleAir started charging for API access, that access is no longer free by default — today it's paid for out of the author's own credits. A no-cost arrangement for this specific project is being worked out with PurpleAir, given it's an educational use and the sensors were received as a donation.
 
+The 5 sensors can also be checked directly on PurpleAir's public map: [map.purpleair.com](https://map.purpleair.com) — no need to go through this portal.
+
 ### License
 
 PurpleAir's map data and real-time API data are published under its own [data license](https://www.purpleair.com/license) (non-commercial use, with attribution). This project is entirely educational and non-profit, and credits PurpleAir as a source on every sensor card and in the site's footer. For the full, current text, the reference is always the license page linked above.
@@ -59,6 +61,8 @@ AirGradient's hardware and firmware are **CC BY-SA 4.0** (free use and modificat
 ### How it's used here
 
 Today OpenAQ is mostly a design and project-philosophy reference — there's no active data integration between School Air Quality Monitoring and OpenAQ yet. AirGradient offers the option to publish its monitors' data to OpenAQ (it's the operator's choice); it's something worth evaluating in the future for the network's 2 AirGradient sensors. The PurpleAir sensors, on the other hand, don't reach OpenAQ today: since PurpleAir started monetizing its API access, OpenAQ stopped picking up its monitors.
+
+To explore air quality data worldwide (from this network and thousands of others), OpenAQ offers its own public viewer: [explore.openaq.org](https://explore.openaq.org).
 
 **Links:** [Privacy](https://openaq.org/privacy/) · [Terms](https://openaq.org/terms/)
 
