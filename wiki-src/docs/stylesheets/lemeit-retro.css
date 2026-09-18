@@ -1,12 +1,14 @@
 /* ============================================================
-   Piel "retro / PC de los 80" para la wiki de lemeit.ar
+   Piel "retro" para la wiki de lemeit.ar
    ------------------------------------------------------------
-   Reusa la misma paleta y tipografía (JetBrains Mono, naranja
-   #D9691F, fondos cálidos oscuros/claros) que ya usan los tres
-   dashboards (aq / emas / wq . lemeit.ar), para que la wiki se
-   sienta parte de la misma familia en vez de una página Material
-   genérica. Minimalista a propósito: sin degradés, sin sombras
-   grandes, esquinas rectas, un solo acento de color.
+   Reusa la misma paleta (naranja #D9691F, fondos cálidos
+   oscuros/claros) que ya usan los tres dashboards
+   (aq / emas / wq . lemeit.ar), para que la wiki se sienta
+   parte de la misma familia en vez de una página Material
+   genérica. Tipografía: Inter para el cuerpo (más legible en
+   lectura larga), JetBrains Mono solo para código.
+   Minimalista a propósito: sin degradés, sin sombras grandes,
+   esquinas rectas, un solo acento de color.
    ============================================================ */
 
 /* ---- Modo claro (scheme "default") ---- */
@@ -72,16 +74,14 @@
   --md-hue: 25;
 }
 
-/* ---- Tipografía: monoespaciada en todos lados (texto y código),
-   como los tres dashboards — look "terminal", no solo los bloques
-   de código — y más chica que el tamaño por defecto de Material. ---- */
-.md-typeset,
-.md-header,
-.md-tabs,
-.md-nav,
-.md-footer,
-.md-search__input,
-.md-dialog {
+/* ---- Tipografía: Inter para prosa (más legible en lectura larga),
+   JetBrains Mono solo para bloques de código — hereda el font-family
+   que MkDocs/Material inyecta cuando se configura font.text: Inter.
+   Se sobreescribe aquí solo code/pre para garantizar la mono retro
+   independientemente del fallback de Material. ---- */
+.md-typeset code,
+.md-typeset pre,
+.md-typeset .highlight {
   font-family: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
 }
 

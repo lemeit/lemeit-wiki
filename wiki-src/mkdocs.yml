@@ -30,7 +30,7 @@ theme:
         icon: material/weather-night
         name: Modo claro
   font:
-    text: JetBrains Mono
+    text: Inter
     code: JetBrains Mono
   features:
     # navigation.instant sacado: no es compatible con el selector de
@@ -42,10 +42,14 @@ theme:
     - navigation.sections
     - navigation.indexes
     - navigation.expand
+    - navigation.footer
+    - navigation.path
     - toc.follow
+    - toc.integrate
     - search.suggest
     - search.highlight
     - content.code.copy
+    - content.tooltips
 
 extra_css:
   - stylesheets/lemeit-retro.css
