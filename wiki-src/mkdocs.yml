@@ -33,8 +33,10 @@ theme:
     text: JetBrains Mono
     code: JetBrains Mono
   features:
-    - navigation.instant
-    - navigation.tracking
+    # navigation.instant sacado: no es compatible con el selector de
+    # idioma contextual del plugin de i18n (mkdocs-static-i18n) - ver
+    # advertencia en el build. navigation.tracking dependia de instant,
+    # se saca junto.
     - navigation.tabs
     - navigation.top
     - navigation.sections
@@ -50,6 +52,28 @@ extra_css:
 
 plugins:
   - search
+  - i18n:
+      docs_structure: suffix
+      languages:
+        - locale: es
+          name: Español
+          default: true
+          build: true
+        - locale: en
+          name: English
+          build: true
+          site_name: Lemeit Projects Documentation
+          nav_translations:
+            Inicio: Home
+            Red de Monitoreo Ambiental: Environmental Monitoring Network
+            Resumen: Overview
+            Monitoreo Ambiental Escolar (aq.lemeit.ar): School Air Quality Monitoring (aq.lemeit.ar)
+            EMAS (emas.lemeit.ar): EMAS (emas.lemeit.ar)
+            Calidad del Agua (wq.lemeit.ar): Water Quality (wq.lemeit.ar)
+            Fuentes y licencias: Sources and licenses
+            Bitácora: Log (Spanish only)
+            Eureka AI: Eureka AI
+            Profe Lamaita: Profe Lamaita
 
 nav:
   - Inicio: index.md
