@@ -28,6 +28,41 @@ index.html (Cloudflare Pages) — dashboard estático
 
 Hasta agosto de 2026 la base era Supabase (PostgreSQL), con 4 tablas separadas. Se migró todo el historial (~30.200 filas) a una tabla D1 unificada; el Worker de compatibilidad expone las mismas rutas y forma de consulta (`select=`, `order=`, `limit=`, `columna=eq.valor`) para no tener que reescribir el dashboard.
 
+## Cómo funcionan los scrapers
+
+Cinco scripts de Python en [`scrapers/`](https://github.com/lemeit/lemeit-emas/tree/main/scrapers), uno por estación — `snih_saladillo_v3.py` (EET), `cfr_saladillo.py`, `dc_saladillo.py`, `cs_saladillo.py` y `wu_25demayo.py` (25C) — cada uno con su propio método de acceso (ver la tabla de arriba) y, por lo tanto, su propio tipo de fragilidad: EMA-DC depende de que el OCR lea bien una imagen; EMA-CFR y EMA-CS dependen de que el HTML/JSON de un sitio de terceros no cambie de formato sin aviso; EMA-25C depende de la disponibilidad de la API de Weather Underground.
+
+Los 5 comparten la misma estructura interna: una función `ciclo()` hace todo el trabajo de una corrida (obtener los datos de la fuente, guardarlos en D1, mostrar un resumen por consola) y devuelve `True`/`False` según si salió bien. Banderas de línea de comandos, comunes a los 5:
+
+- **Sin banderas** — el modo que usa el cron de GitHub Actions: corre `ciclo()` una sola vez y termina con código de salida `1` si algo salió mal (ver "Automatización" más abajo — necesario para que la falla quede registrada).
+- **`--loop N`** — modo continuo, corre cada N segundos sin cortar. Pensado para uso manual/supervisado (probar en vivo desde la propia terminal); nunca se usa en GitHub Actions, y a propósito no corta ante una falla puntual (sería raro que un chequeo manual continuo se cierre solo).
+- **`--nod1`** — no escribe en D1, para probar el scraping de la fuente sin tocar la base.
+- **`--csv`** — además exporta un CSV local.
+
+## Cómo se almacena la información
+
+Todo va a una única tabla `mediciones` en Cloudflare D1 (SQLite), con una columna `estacion` para distinguir la fuente (`EMA-EET` | `EMA-CFR` | `EMA-DC` | `EMA-CS` | `EMA-25C`). Esquema completo en [`d1/schema.sql`](https://github.com/lemeit/lemeit-emas/blob/main/d1/schema.sql): además de las columnas de la medición en sí (`codigo`, `parametro`, `unidad`, `valor`, `valor_texto`, `fecha_hora_utc`), un índice único sobre `(estacion, parametro, fecha_hora_utc)` hace que `INSERT OR IGNORE` descarte solo automáticamente cualquier fila duplicada — útil porque el cron y una corrida manual pueden superponerse, o un scraper puede reintentar.
+
+Los 5 scrapers escriben a través de un helper común, [`scrapers/d1_writer.py`](https://github.com/lemeit/lemeit-emas/blob/main/scrapers/d1_writer.py) — nadie inserta en D1 de forma directa. Dos detalles de ese helper valen la pena conocer, porque los dos salieron de problemas reales:
+
+- **Conversión de hora local a UTC**: acepta tanto años de 4 como de 2 dígitos en la fecha de origen (`DD/MM/YYYY` y `DD/MM/YY`). Esto no es cosmético — la fuente de EMA-CFR cambió de formato de fecha sin aviso en algún momento de septiembre de 2026, y durante casi un mes **todas** sus filas se descartaron en silencio por no matchear el formato esperado (ver bitácora, sesión del 18/09).
+- **Red de seguridad ante "cero filas guardadas"**: si hay filas con un valor válido para guardar pero **ninguna** termina insertada (por ejemplo, porque el formato de fecha cambia otra vez y ya no lo reconoce ninguno de los patrones esperados), `guardar_en_d1()` corta con un error en vez de devolver `0` en silencio. Eso es justo lo que le pasó a EMA-CFR: el scraper corría "bien" (sin ninguna excepción) hora tras hora, pero cada fila se descartaba una por una dentro del helper — invisible tanto para el código de salida del scraper como para GitHub Actions. Con esta red, el mismo problema (o uno parecido) ya sale como una falla real y auditable.
+
+## Automatización — GitHub Actions
+
+Workflow: [`.github/workflows/scrapers.yml`](https://github.com/lemeit/lemeit-emas/blob/main/.github/workflows/scrapers.yml).
+
+- **Cron horario** (`5 * * * *`): corre los 5 scrapers, uno por paso, en un único job.
+- **`workflow_dispatch`**: permite correr el workflow a mano desde la pestaña Actions de GitHub ("Run workflow"), sin esperar al cron — útil para probar un fix sin tener que esperar hasta la próxima hora en punto.
+- **Cron diario** (`5 11 * * *`, 08:05 AR): job aparte, heredado de la época de Supabase — hacía un ping a la base para que el plan gratuito no la pausara por inactividad. Desde la migración a Cloudflare D1 (agosto 2026) esto ya no hace falta (D1 no se pausa por inactividad); el job sigue en el workflow, corriendo todos los días, sin cumplir ninguna función activa — candidato a sacar en una limpieza futura.
+
+**Un detalle importante para saber leer los resultados**: cada paso de scraper tiene `continue-on-error: true` en el workflow — a propósito, para que si una estación falla las otras 4 igual se intenten (sin eso, una falla cortaría el job entero en su primer paso fallido). La consecuencia es que, aunque un scraper individual termine con código de error, **la corrida completa se sigue viendo en verde en la lista general de Actions** — GitHub solo marca ese paso puntual con un triángulo de advertencia si se entra a ver el detalle de esa corrida en particular. Es decir: el código de salida hace que el problema quede *registrado* y sea *auditable*, pero no alcanza para notarlo de un vistazo en la lista de corridas.
+
+Por eso, para saber si las 5 estaciones están sanas de verdad conviene un chequeo activo, no solo mirar si Actions está en verde:
+
+- [`tools/audit_timestamps.py`](https://github.com/lemeit/lemeit-emas/blob/main/tools/audit_timestamps.py): script de auditoría de solo lectura (no toca nada del repo ni escribe en D1, consulta la API pública) que compara, por estación, la hora del día en que da el mínimo y el máximo de temperatura contra lo esperado (madrugada / tarde) — si no coincide, es señal de un problema de huso horario o de que la hora que se está guardando no es la real — y hace cuánto no llega un dato nuevo (estación "muda"). Se corre a mano: `python tools/audit_timestamps.py` (o `--dias 14` para una ventana más corta que los 30 días por defecto).
+- Abrir manualmente la corrida de Actions que corresponda y expandir cada paso, si se sospecha algo puntual de una estación.
+
 ## API pública
 
 Sin autenticación, CORS abierto. Documentación interactiva con ejemplos: [app.lemeit.ar/emas/api.html](https://app.lemeit.ar/emas/api.html).
@@ -40,6 +75,8 @@ Sin autenticación, CORS abierto. Documentación interactiva con ejemplos: [app.
 | `GET /tiles/:style/:z/:x/:y{@2x}.png` | Proxy de tiles del mapa hacia CARTO Basemaps |
 
 Las tres primeras aceptan `&formato=csv`.
+
+`order` solo mira el sufijo `.asc`/`.desc` — el Worker siempre ordena por `fecha_hora_utc` sin importar qué nombre de columna se ponga antes del punto (heredado de cómo estaba armado para Supabase/PostgREST). En la práctica `order=timestamp.desc` y `order=fecha_hora_utc.desc` hacen exactamente lo mismo; no hay forma de ordenar por otra columna.
 
 ## Guía de uso de la API
 
@@ -100,5 +137,6 @@ Con esta expansión regional, el proyecto dejó de llamarse "EMA Saladillo" y pa
 - **Quinta estación vía Weather Underground (septiembre 2026)**: para sumar EMA-25C hizo falta una API key propia de Weather Underground, que solo se genera si la cuenta tiene al menos un dispositivo "activo" (con datos reales recientes) — sin tener una estación física propia, se resolvió activando un dispositivo placeholder con datos reales de un sensor PurpleAir ya existente en la red de Monitoreo Ambiental Escolar (ver [`tools/subir_a_wu.py`](https://github.com/lemeit/lemeit-emas/blob/main/tools/subir_a_wu.py)). Ver la bitácora para el detalle completo.
 - **Color de marca propio y dominio único `app.lemeit.ar` (septiembre 2026)**: el favicon de EMAS pasa de un azul suelto a un celeste de la misma familia tonal que el verde de Monitoreo Ambiental Escolar (`#0097A7`). Junto con esto, los tres portales de la red pasan a convivir bajo un solo dominio (`app.lemeit.ar/aq`, `/emas`, `/wq` — ver [arquitectura de la Red](index.md)); `emas.lemeit.ar` sigue funcionando, redirige solo. El selector de estaciones del header, que en pantallas chicas tapaba el resto de los controles (estado de conexión, switcher de portales, tema), pasa a su propia fila con scroll horizontal.
 - **API bajo `api.lemeit.ar/emas` (septiembre 2026)**: `emas.lemeit.ar/rest/v1/*` nunca sirvió datos en los hechos — el dominio apuntaba al Pages estático, que no puede tocar la base D1; la API real siempre vivió solo en el `*.workers.dev` (así la llama el propio `index.html`, vía `SUPA_URL`). Se suma una Route de Cloudflare al mismo Worker (`api.lemeit.ar/emas/*`) para que tenga una URL pública propia y prolija, igual que ya tiene Monitoreo Ambiental Escolar en `api.lemeit.ar/aq`. El `*.workers.dev` original sigue andando igual de respaldo.
+- **Auditoría de salud de las 5 estaciones y fin de la pérdida silenciosa de datos de EMA-CFR (septiembre 2026)**: se detectó que los 5 scrapers podían fallar (excepción real, o guardar 0 filas en D1) sin que ninguna corrida de GitHub Actions se viera en rojo — `continue-on-error: true` más un código de salida que siempre era 0 dejaba el problema completamente invisible. Se corrigió en dos capas: cada scraper ahora termina con código de salida distinto de 0 si su ciclo falla, y `scrapers/d1_writer.py` corta con error si hay filas para guardar pero ninguna se llega a insertar (antes devolvía `0` en silencio). Esta segunda capa fue la que encontró el problema real: EMA-CFR venía perdiendo el 100% de sus datos desde hacía casi un mes porque la fuente cambió el formato de fecha (de año de 4 a 2 dígitos) sin aviso, y cada fila se descartaba una por una dentro del helper. Se sumó además [`tools/audit_timestamps.py`](https://github.com/lemeit/lemeit-emas/blob/main/tools/audit_timestamps.py) como chequeo activo de las 5 estaciones (ciclo diurno + frescura de los datos), porque ni siquiera con los exit codes corregidos una corrida de Actions se ve en rojo a simple vista (ver "Automatización" más arriba). Ver la bitácora para el detalle completo, incluyendo la investigación del bug de renderizado de "Rosa de vientos" que salió de la misma sesión.
 
 Ver la [Bitácora del proyecto](99-bitacora.md) para el historial completo, incluyendo el análisis microclimático (efecto isla de calor urbano en EMA-CS) hecho con los primeros datos de las 4 estaciones.
