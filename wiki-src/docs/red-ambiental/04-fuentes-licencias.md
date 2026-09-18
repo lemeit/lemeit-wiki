@@ -18,6 +18,8 @@ De ahí salió un sensor de bajo costo pensado para que cualquiera pudiera respo
 
 Los **5 sensores PurpleAir Flex** de la red fueron una donación de [PurpleAir Collective](https://community.purpleair.com/t/purpleair-collective-june-july-2024/8771) (convocatoria de mitad de 2024), a partir de una propuesta de necesidad presentada por el autor — el proyecto quedó en 2° puesto de esa ronda. Los datos se consultan cada 15 minutos vía la API oficial de PurpleAir (`api.purpleair.com`) y se guardan en una base propia (Cloudflare D1) para poder ofrecer historial e informes — PurpleAir solo retiene ventanas cortas en su propia plataforma.
 
+Desde que PurpleAir empezó a cobrar por el acceso a su API, ese acceso ya no es gratuito por defecto — hoy se costea con créditos propios del autor. Se está gestionando con PurpleAir un acceso sin cargo para este proyecto puntual, por tratarse de un uso educativo y por haber recibido los sensores como donación.
+
 ### Licencia
 
 Los datos del mapa y de la API en tiempo real de PurpleAir se publican bajo su propia [licencia de datos](https://www.purpleair.com/license) (uso no comercial, con atribución). Este proyecto es enteramente educativo y sin fines de lucro, y cita a PurpleAir como fuente en cada tarjeta de sensor y en el pie de página del sitio. Para el texto completo y vigente, la referencia es siempre la página de licencia enlazada abajo.
@@ -38,7 +40,9 @@ Su CEO, Achim Haug, lo plantea incluso en términos éticos: restringir la propi
 
 ### Cómo se usan acá
 
-Los **2 sensores AirGradient Open Air** de la red están activos, hoy conectados en un domicilio particular a modo de prueba mientras se define en qué instituciones se instalan. Los datos se consultan por la API propia de AirGradient y se guardan en la misma base D1 que PurpleAir, con el campo `proveedor` distinguiendo el origen.
+Los **2 sensores AirGradient Open Air** de la red están activos, hoy conectados en un domicilio particular a modo de prueba mientras se define en qué instituciones se instalan. Uno llegó como donación del programa OpenAQ Community Ambassadors y el otro se compró directo a AirGradient; ambos se gestionan igual, dentro del ecosistema propio de AirGradient. Los datos se consultan por la API propia de AirGradient y se guardan en la misma base D1 que PurpleAir, con el campo `proveedor` distinguiendo el origen.
+
+Al estar dados de alta en el ecosistema de AirGradient, los dos sensores ya son visibles también en su [mapa público](https://map.airgradient.com) — sin necesidad de ningún paso extra de nuestra parte.
 
 ### Licencia
 
@@ -54,7 +58,7 @@ El hardware y firmware de AirGradient son **CC BY-SA 4.0** (uso y modificación 
 
 ### Cómo se usan acá
 
-Hoy OpenAQ es sobre todo una referencia de diseño y de filosofía de proyecto — no hay integración activa de datos entre Monitoreo Ambiental Escolar y OpenAQ todavía. AirGradient ofrece la opción de publicar los datos de sus monitores en OpenAQ (queda a elección del operador); es algo a evaluar a futuro para los 2 sensores AirGradient de la red.
+Hoy OpenAQ es sobre todo una referencia de diseño y de filosofía de proyecto — no hay integración activa de datos entre Monitoreo Ambiental Escolar y OpenAQ todavía. AirGradient ofrece la opción de publicar los datos de sus monitores en OpenAQ (queda a elección del operador); es algo a evaluar a futuro para los 2 sensores AirGradient de la red. Los sensores PurpleAir, en cambio, hoy no llegan a OpenAQ: desde que PurpleAir empezó a monetizar el acceso a su API, OpenAQ dejó de levantar sus monitores.
 
 **Links:** [Privacidad](https://openaq.org/privacy/) · [Términos](https://openaq.org/terms/)
 

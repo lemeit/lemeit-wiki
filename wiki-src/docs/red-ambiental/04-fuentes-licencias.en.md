@@ -18,6 +18,8 @@ That's how a low-cost sensor came about, meant for anyone to answer that same qu
 
 The network's **5 PurpleAir Flex sensors** were a donation from the [PurpleAir Collective](https://community.purpleair.com/t/purpleair-collective-june-july-2024/8771) (mid-2024 call), based on a statement of need the author submitted — the project placed 2nd in that round. Data is polled every 15 minutes via PurpleAir's official API (`api.purpleair.com`) and stored in a dedicated database (Cloudflare D1) so history and reports can be offered — PurpleAir only retains short windows on its own platform.
 
+Since PurpleAir started charging for API access, that access is no longer free by default — today it's paid for out of the author's own credits. A no-cost arrangement for this specific project is being worked out with PurpleAir, given it's an educational use and the sensors were received as a donation.
+
 ### License
 
 PurpleAir's map data and real-time API data are published under its own [data license](https://www.purpleair.com/license) (non-commercial use, with attribution). This project is entirely educational and non-profit, and credits PurpleAir as a source on every sensor card and in the site's footer. For the full, current text, the reference is always the license page linked above.
@@ -38,7 +40,9 @@ Their CEO, Achim Haug, even frames it in ethical terms: restricting data ownersh
 
 ### How they're used here
 
-The network's **2 AirGradient Open Air sensors** are active, currently connected at a private home as a trial while it's decided which institutions they'll be installed at. Data is polled through AirGradient's own API and stored in the same D1 database as PurpleAir, with a `proveedor` field distinguishing the source.
+The network's **2 AirGradient Open Air sensors** are active, currently connected at a private home as a trial while it's decided which institutions they'll be installed at. One arrived as a donation through the OpenAQ Community Ambassadors program and the other was bought directly from AirGradient; both are managed the same way, inside AirGradient's own ecosystem. Data is polled through AirGradient's own API and stored in the same D1 database as PurpleAir, with a `proveedor` field distinguishing the source.
+
+Since both are registered in AirGradient's ecosystem, they're already visible on AirGradient's [public map](https://map.airgradient.com) too — with no extra step needed on our end.
 
 ### License
 
@@ -54,7 +58,7 @@ AirGradient's hardware and firmware are **CC BY-SA 4.0** (free use and modificat
 
 ### How it's used here
 
-Today OpenAQ is mostly a design and project-philosophy reference — there's no active data integration between School Air Quality Monitoring and OpenAQ yet. AirGradient offers the option to publish its monitors' data to OpenAQ (it's the operator's choice); it's something worth evaluating in the future for the network's 2 AirGradient sensors.
+Today OpenAQ is mostly a design and project-philosophy reference — there's no active data integration between School Air Quality Monitoring and OpenAQ yet. AirGradient offers the option to publish its monitors' data to OpenAQ (it's the operator's choice); it's something worth evaluating in the future for the network's 2 AirGradient sensors. The PurpleAir sensors, on the other hand, don't reach OpenAQ today: since PurpleAir started monetizing its API access, OpenAQ stopped picking up its monitors.
 
 **Links:** [Privacy](https://openaq.org/privacy/) · [Terms](https://openaq.org/terms/)
 
