@@ -12,7 +12,9 @@ Desde setiembre 2026 los tres viven bajo un solo dominio, **`app.lemeit.ar`**, c
 
 ## Origen del proyecto
 
-Nace en marzo de 2026 como proyecto educativo del espacio curricular Laboratorio de Industrias, 7° Año Técnico Químico, EEST N°1 "Gral. Savio" (Saladillo, Buenos Aires), a cargo del Ing. Luciano Lamaita. El punto de partida fue acceder programáticamente a los datos de la Estación Meteorológica Automática (EMA) del propio establecimiento — de ahí surgió EMA Saladillo, que luego se amplió a una red de 4 estaciones. En agosto de 2026 los tres proyectos (EMA, aire, agua) se armonizaron sobre una misma arquitectura de Cloudflare para poder integrarse entre sí a futuro. Ver la [Bitácora del proyecto](99-bitacora.md) para el historial completo.
+Todo empieza en 2023, cuando Luciano Lamaita fue seleccionado Embajador Comunitario del programa OpenAQ Community Ambassadors. De ahí salieron los primeros sensores de bajo costo instalados en Saladillo (AirGradient, Clarity Node-S, Atmotube) y el proyecto de ciencia ciudadana "Escuelas de Saladillo en Acción por un Aire Limpio", presentado en ferias de ciencia y exposiciones tecnológicas escolares.
+
+La integración de ese trabajo en un portal propio nace en marzo de 2026, como proyecto educativo del espacio curricular Laboratorio de Industrias, 7° Año Técnico Químico, EEST N°1 "Gral. Savio" (Saladillo, Buenos Aires), a cargo del Ing. Luciano Lamaita. El punto de partida fue acceder programáticamente a los datos de la Estación Meteorológica Automática (EMA) del propio establecimiento — de ahí surgió EMA Saladillo, que luego se amplió a una red de 4 estaciones. En agosto de 2026 los tres proyectos (EMA, aire, agua) se armonizaron sobre una misma arquitectura de Cloudflare para poder integrarse entre sí a futuro. Ver la [Bitácora del proyecto](99-bitacora.md) para el historial completo.
 
 ## Arquitectura compartida
 

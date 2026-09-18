@@ -12,7 +12,9 @@ Since September 2026 all three live under a single domain, **`app.lemeit.ar`**, 
 
 ## Project origin
 
-Born in March 2026 as an educational project of the Industrial Laboratory course, 7th-year Chemical Technician track, EEST N°1 "Gral. Savio" (Saladillo, Buenos Aires), led by Eng. Luciano Lamaita. The starting point was getting programmatic access to the school's own Automatic Weather Station (EMA) data — that's how EMA Saladillo came about, later expanded into a network of 4 stations. In August 2026 the three projects (weather, air, water) were harmonized onto the same Cloudflare architecture so they could eventually integrate with each other. See the [project log](99-bitacora.md) (Spanish only) for the full history.
+It all starts in 2023, when Luciano Lamaita was selected as a Community Ambassador for the OpenAQ Community Ambassadors program. That's where the first low-cost sensors installed in Saladillo came from (AirGradient, Clarity Node-S, Atmotube), along with the citizen-science project "Saladillo Schools in Action for Clean Air," presented at school science fairs and technology expos.
+
+Integrating that work into a dedicated portal came later, in March 2026, as an educational project of the Industrial Laboratory course, 7th-year Chemical Technician track, EEST N°1 "Gral. Savio" (Saladillo, Buenos Aires), led by Eng. Luciano Lamaita. The starting point was getting programmatic access to the school's own Automatic Weather Station (EMA) data — that's how EMA Saladillo came about, later expanded into a network of 4 stations. In August 2026 the three projects (weather, air, water) were harmonized onto the same Cloudflare architecture so they could eventually integrate with each other. See the [project log](99-bitacora.md) (Spanish only) for the full history.
 
 ## Shared architecture
 
