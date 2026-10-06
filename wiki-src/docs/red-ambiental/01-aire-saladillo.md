@@ -22,7 +22,7 @@ Hasta agosto 2026 corrían en paralelo tres disparadores de ingesta (Cron Trigge
 
 ## API pública
 
-Sin autenticación, CORS abierto, pensada para que cualquiera la consuma directo — no solo el propio dashboard. También hay documentación interactiva con ejemplos en [app.lemeit.ar/aq/api.html](https://app.lemeit.ar/aq/api.html).
+Sin autenticación, CORS abierto, pensada para que cualquiera la consuma directo — no solo el propio dashboard. También hay documentación interactiva con ejemplos en [app.lemeit.ar/aq/?tab=api](https://app.lemeit.ar/aq/?tab=api).
 
 | Endpoint | Descripción |
 |---|---|
@@ -35,7 +35,7 @@ Los tres primeros aceptan `&formato=csv` para descargar CSV en vez de JSON.
 
 ## Guía de uso de la API
 
-Base URL: `https://api.lemeit.ar/aq` (dominio público compartido con los otros proyectos de la red ambiental, vía Route de Cloudflare — ver "Arquitectura" arriba; el `*.workers.dev` original sigue funcionando igual como respaldo directo, sin el prefijo `/aq`). `app.lemeit.ar/aq` sirve el dashboard estático, no la API (`aq.lemeit.ar` viejo redirige solo ahí); el propio `index.html` y `api.html` del repo usan esta misma base de API. Todos los ejemplos funcionan pegados directo en la barra del navegador o con `curl`.
+Base URL: `https://api.lemeit.ar/aq` (dominio público compartido con los otros proyectos de la red ambiental, vía Route de Cloudflare — ver "Arquitectura" arriba; el `*.workers.dev` original sigue funcionando igual como respaldo directo, sin el prefijo `/aq`). `app.lemeit.ar/aq` sirve el dashboard estático, no la API (`aq.lemeit.ar` viejo redirige solo ahí); el propio dashboard (`index.html`, que incluye la documentación de la API) usa esta misma base de API. Todos los ejemplos funcionan pegados directo en la barra del navegador o con `curl`.
 
 **Metadata de los sensores activos:**
 
@@ -115,9 +115,40 @@ cd scripts
 
 Pide la `PURPLEAIR_API_KEY` (la misma que se cargó con `wrangler secret put`), o se puede fijar con `$env:PA_API_KEY = "tu_clave"` para no re-tipearla. Esta consulta **no gasta puntos de la cuota** — PurpleAir la marca explícitamente como "a free API call, so query it as you need" (confirmado por su staff en el foro oficial de la API, abril 2026), así que se puede correr las veces que haga falta.
 
+## Sensores y códigos AE
+
+Cada sensor PurpleAir de la red tiene un **código propio del proyecto** (`AE-NN`), independiente del `sensor_index` que asigna PurpleAir.
+
+| Código | `sensor_index` | Institución | Distrito / ámbito | Dirección | CUE | Alta |
+|---|---|---|---|---|---|---|
+| AE-00 | 198617 | Colegio Secundario Madre Teresa | Saladillo / rural | Calle Jauretche e Yrigoyen | — | previa al proyecto (en reubicación) |
+| AE-01 | 298687 | Esc. de Educación Artística N°1 "Lola Mora" | 25 de Mayo / urbano | Calle 7 entre 23 y 24 | 061617500 | 2026-10-06 |
+| AE-02 | 298701 | Esc. de Educación Secundaria N°2 "Manuel Pardal" | Saladillo / urbano | Av. Pereyra 3046 | 060342300 | 2026-10-06 |
+
+AE-01 y AE-02 son PurpleAir PA-II-FLEX. Los códigos AE-03 y AE-04 están reservados para los dos sensores restantes. La convención se definió para los PurpleAir; los AirGradient (ID sintético 900000+) todavía no tienen código asignado.
+
+### Convención de códigos
+
+- `AE-00` es el primer sensor de la red, anterior al proyecto; `AE-01` en adelante se asignan por orden de instalación.
+- El código es **estable**: si un sensor cambia de escuela, el código no cambia, solo la institución.
+- En la base D1 (tabla `sensores`) se guarda en la columna `codigo` (única) y la fecha de alta en `fecha_instalacion`. La API los devuelve en `/api/sensores` y `/api/ultimas`.
+- En el portal, la tarjeta muestra la institución como título y el nombre del sensor (`AE-NN`) debajo.
+- El Worker **no pisa** `nombre`, `institucion`, `codigo` ni `fecha_instalacion` en las ingestas; solo actualiza latitud y longitud desde PurpleAir.
+
+### Cómo dar de alta un sensor
+
+1. Registrarlo en PurpleAir con el nombre `AE-NN`, coordenadas de la escuela, ubicación exterior y visibilidad pública.
+2. Anotar el `sensor_index` que le asigna PurpleAir (no es el Device ID).
+3. Actualizar el secret `SENSOR_INDEXES` del Worker. **El secret se reemplaza entero** (en Cloudflare: *Rotate* y luego *Deploy*): hay que pegar la lista completa, con los sensores ya activos más el nuevo, separada por comas y sin espacios.
+4. Esperar al próximo disparo de la ingesta (o ejecutarla a mano): se crea la fila en `sensores`.
+5. Cargar `codigo`, `fecha_instalacion`, `institucion` y `notas` (CUE y clave provincial) con un `UPDATE` desde la consola de D1.
+6. Verificar con un `SELECT` que la fila quedó completa.
+
+Un `UPDATE` sobre un `sensor_index` que todavía no existe en la tabla no da error y no cambia nada.
+
 ## Roadmap
 
-**Estado del hardware (septiembre 2026)**: los 5 sensores **PurpleAir** ya están en poder del proyecto, pero hoy solo 1 está en funcionamiento — el del Colegio Secundario Madre Teresa, pendiente de reubicación/reinstalación. Los otros 4 se están instalando ahora en el resto de las instituciones de Saladillo y en las de 25 de Mayo. Esas 4 unidades pendientes de instalación fueron una donación de [PurpleAir Collective](https://community.purpleair.com/t/purpleair-collective-june-july-2024/8771) (convocatoria de mitad de 2024, en base a una propuesta de necesidad presentada por el autor — el proyecto quedó en 2° puesto de esa ronda). Los 2 sensores **AirGradient** también están en mano y activos, hoy conectados en un domicilio particular a modo de prueba, a la espera de definir en qué instituciones se instalan.
+**Estado del hardware (octubre 2026)**: los 5 sensores **PurpleAir** están en poder del proyecto. El único que venía funcionando era AE-00, en el Colegio Secundario Madre Teresa, hoy pendiente de reubicación. AE-01 (25 de Mayo) y AE-02 (Saladillo) ya están registrados en PurpleAir y en el portal, y su instalación está prevista para el 6 de octubre; AE-03 y AE-04 todavía no tienen destino asignado. Las 4 unidades nuevas fueron una donación de [PurpleAir Collective](https://community.purpleair.com/t/purpleair-collective-june-july-2024/8771) (convocatoria de mitad de 2024, en base a una propuesta de necesidad presentada por el autor — el proyecto quedó en 2° puesto de esa ronda). Los 2 sensores **AirGradient** también están en mano y activos, hoy conectados en un domicilio particular a modo de prueba, a la espera de definir en qué instituciones se instalan.
 
 **Fase 2 — expansión confirmada (reunión institucional del 16/9/2026, convocada por la Jefatura Regional de Educación)**: 5 escuelas — 3 en Saladillo y 2 en el partido de **25 de Mayo** — una de zona urbana y una de zona rural en cada partido, ampliando la red más allá del partido de Saladillo por primera vez. 4 confirmadas; la quinta (Colegio Secundario Madre Teresa) está en proceso de reubicación. Documentación de la reunión: plan de despliegue y hoja de especificaciones/requerimientos en [`docs/` del repo](https://github.com/lemeit/lemeit-aq/tree/main/docs). Ver también el roadmap de [EMA Saladillo](02-ema-saladillo.md), que suma una estación en 25 de Mayo por el mismo motivo. Esta expansión abre la puerta a un futuro apartado de reportes combinados (aire + meteorología) con análisis espacial entre sensores — hoy no es inmediato porque las estaciones EMA y los sensores de aire no comparten ubicación física.
 
@@ -137,5 +168,7 @@ Pide la `PURPLEAIR_API_KEY` (la misma que se cargó con `wrangler secret put`), 
     - **Fix**: en el primer despliegue, arrastrar para seleccionar terminaba haciendo zoom hacia el lado contrario de donde se arrastraba, y peor cuantos más zooms anidados (zoom sobre un zoom ya aplicado). Causa: el paneo (mover la vista arrastrando) y el zoom por selección estaban atados al mismo gesto — arrastre simple, sin modificador — y competían entre sí; el paneo corría el eje mientras se armaba el rectángulo de selección. Se resolvió exigiendo Ctrl+arrastre para panear, dejando el arrastre simple exclusivamente para la selección de zoom. De paso se cambió el eje X de una escala de categorías (labels de texto) a una escala numérica (`linear`, con los horarios mostrados vía un callback de ticks), porque `chartjs-plugin-zoom` no soporta bien los zooms anidados sobre un eje de categorías.
 - **Enlaces a la wiki**: el footer compartido (`lemeit-common.js`, usado por los tres portales) y la sección "Acerca de" de cada uno pasan a enlazar a [wiki.lemeit.ar](https://wiki.lemeit.ar) — hasta ahora la wiki no se mencionaba desde ningún portal.
 - **Logo AQ → AE y dominio único `app.lemeit.ar` (septiembre 2026)**: la sigla del logo pasa de "AQ" (Air Quality, inconsistente con el resto del sitio en español) a **AE** (Aire Escolar), en un verde-azulado propio (`#009688`) en vez del naranja general del sitio. Junto con esto, los tres portales de la red pasan a convivir bajo un solo dominio (`app.lemeit.ar/aq`, `/emas`, `/wq` — ver [arquitectura de la Red](index.md)); `aq.lemeit.ar` sigue funcionando, redirige solo. El `manifest.json` amplía su `scope` de `/aq/` a todo el dominio nuevo, para que cambiar de portal desde la app instalada no salga al navegador.
+- **Documentación de la API y créditos dentro del portal**: `api.html` y `creditos.html` pasaron de páginas sueltas a pestañas de `index.html` (`?tab=api`, `?tab=creditos`). Los archivos originales quedan solo como redirección para no romper links externos, entre ellos los de esta wiki.
+- **Código propio por sensor (octubre 2026)**: columna `codigo` en `sensores` (migración 008) con la convención `AE-NN`, independiente del `sensor_index` de PurpleAir y estable si un sensor cambia de escuela. La fecha de alta usa la columna `fecha_instalacion`, que ya existía en el esquema. Ver "Sensores y códigos AE" más arriba, con el procedimiento de alta de un sensor.
 
 Ver la [Bitácora del proyecto](99-bitacora.md) para el detalle sesión por sesión.

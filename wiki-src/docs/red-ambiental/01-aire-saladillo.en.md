@@ -22,7 +22,7 @@ Until August 2026 three ingestion triggers ran in parallel (Cloudflare Cron Trig
 
 ## Public API
 
-No authentication, open CORS, meant for anyone to consume directly — not just the dashboard itself. There's also interactive documentation with examples at [app.lemeit.ar/aq/api.html](https://app.lemeit.ar/aq/api.html).
+No authentication, open CORS, meant for anyone to consume directly — not just the dashboard itself. There's also interactive documentation with examples at [app.lemeit.ar/aq/?tab=api](https://app.lemeit.ar/aq/?tab=api).
 
 | Endpoint | Description |
 |---|---|
@@ -35,7 +35,7 @@ The first three accept `&formato=csv` to download CSV instead of JSON.
 
 ## API usage guide
 
-Base URL: `https://api.lemeit.ar/aq` (public domain shared with the other environmental network projects, via a Cloudflare Route — see "Architecture" above; the original `*.workers.dev` still works the same as a direct fallback, without the `/aq` prefix). `app.lemeit.ar/aq` serves the static dashboard, not the API (the old `aq.lemeit.ar` only redirects there); the repo's own `index.html` and `api.html` use this same API base. Every example below works pasted straight into a browser's address bar or with `curl`.
+Base URL: `https://api.lemeit.ar/aq` (public domain shared with the other environmental network projects, via a Cloudflare Route — see "Architecture" above; the original `*.workers.dev` still works the same as a direct fallback, without the `/aq` prefix). `app.lemeit.ar/aq` serves the static dashboard, not the API (the old `aq.lemeit.ar` only redirects there); the dashboard itself (`index.html`, which includes the API documentation) uses this same API base. Every example below works pasted straight into a browser's address bar or with `curl`.
 
 **Metadata for the active sensors:**
 
@@ -115,9 +115,40 @@ cd scripts
 
 Prompts for `PURPLEAIR_API_KEY` (the same one set with `wrangler secret put`), or it can be set with `$env:PA_API_KEY = "your_key"` to avoid re-typing it. This particular query **doesn't spend quota points** — PurpleAir explicitly marks it as "a free API call, so query it as you need" (confirmed by their staff on the official API forum, April 2026), so it can be run as many times as needed.
 
+## Sensors and AE codes
+
+Each PurpleAir sensor in the network has its own **project code** (`AE-NN`), independent of the `sensor_index` assigned by PurpleAir.
+
+| Code | `sensor_index` | Institution | District / setting | Address | CUE | Installed |
+|---|---|---|---|---|---|---|
+| AE-00 | 198617 | Colegio Secundario Madre Teresa | Saladillo / rural | Calle Jauretche e Yrigoyen | — | before the project (being relocated) |
+| AE-01 | 298687 | Esc. de Educación Artística N°1 "Lola Mora" | 25 de Mayo / urban | Calle 7 between 23 and 24 | 061617500 | 2026-10-06 |
+| AE-02 | 298701 | Esc. de Educación Secundaria N°2 "Manuel Pardal" | Saladillo / urban | Av. Pereyra 3046 | 060342300 | 2026-10-06 |
+
+AE-01 and AE-02 are PurpleAir PA-II-FLEX units. Codes AE-03 and AE-04 are reserved for the two remaining sensors. The convention was defined for the PurpleAir sensors; the AirGradient ones (synthetic ID 900000+) don't have a code assigned yet.
+
+### Code convention
+
+- `AE-00` is the network's first sensor, from before the project; `AE-01` onwards are assigned in installation order.
+- The code is **stable**: if a sensor moves to another school, the code stays and only the institution changes.
+- In the D1 database (`sensores` table) it is stored in the `codigo` column (unique), and the installation date in `fecha_instalacion`. The API returns both in `/api/sensores` and `/api/ultimas`.
+- On the portal, each card shows the institution as its title and the sensor name (`AE-NN`) below it.
+- The Worker **does not overwrite** `nombre`, `institucion`, `codigo` or `fecha_instalacion` during ingestion; it only updates latitude and longitude from PurpleAir.
+
+### How to add a sensor
+
+1. Register it on PurpleAir with the name `AE-NN`, the school's coordinates, outdoor location and public visibility.
+2. Note the `sensor_index` PurpleAir assigns (this is not the Device ID).
+3. Update the Worker's `SENSOR_INDEXES` secret. **The secret is replaced entirely** (in Cloudflare: *Rotate*, then *Deploy*): paste the full list, with the sensors already active plus the new one, comma-separated with no spaces.
+4. Wait for the next ingestion run (or trigger it manually): the row is created in `sensores`.
+5. Fill in `codigo`, `fecha_instalacion`, `institucion` and `notas` (CUE and provincial code) with an `UPDATE` from the D1 console.
+6. Check with a `SELECT` that the row is complete.
+
+An `UPDATE` on a `sensor_index` that doesn't exist yet raises no error and changes nothing.
+
 ## Roadmap
 
-**Hardware status (September 2026)**: all 5 **PurpleAir** sensors are already in the project's hands, but only 1 is running today — the one at Colegio Secundario Madre Teresa, pending relocation/reinstallation. The other 4 are being installed now across the rest of Saladillo's institutions and those in 25 de Mayo. Those 4 units pending installation were a donation from [PurpleAir Collective](https://community.purpleair.com/t/purpleair-collective-june-july-2024/8771) (mid-2024 call, based on a needs proposal submitted by the author — the project placed 2nd in that round). The 2 **AirGradient** sensors are also in hand and active, currently connected at a private home for testing, pending a decision on which institutions they'll be installed in.
+**Hardware status (October 2026)**: all 5 **PurpleAir** sensors are in the project's hands. The only one running until now was AE-00, at Colegio Secundario Madre Teresa, currently pending relocation. AE-01 (25 de Mayo) and AE-02 (Saladillo) are already registered on PurpleAir and on the portal, and their installation is planned for October 6; AE-03 and AE-04 don't have an assigned destination yet. The 4 new units were a donation from [PurpleAir Collective](https://community.purpleair.com/t/purpleair-collective-june-july-2024/8771) (mid-2024 call, based on a needs proposal submitted by the author — the project placed 2nd in that round). The 2 **AirGradient** sensors are also in hand and active, currently connected at a private home for testing, pending a decision on which institutions they'll be installed in.
 
 **Phase 2 — confirmed expansion (institutional meeting on 9/16/2026, convened by the Regional Education Office)**: 5 schools — 3 in Saladillo and 2 in the **25 de Mayo** district — one urban and one rural site in each district, expanding the network beyond Saladillo for the first time. 4 confirmed; the fifth (Colegio Secundario Madre Teresa) is being relocated. Meeting documentation: deployment plan and specification/requirements sheet in the [repo's `docs/`](https://github.com/lemeit/lemeit-aq/tree/main/docs). See also the [EMA Saladillo roadmap](02-ema-saladillo.md) (Spanish only), which adds a station in 25 de Mayo for the same reason. This expansion opens the door to a future combined report (air + weather) with spatial analysis between sensors — not immediate today, since the EMA stations and the air sensors don't share a physical location yet.
 
@@ -137,5 +168,7 @@ Prompts for `PURPLEAIR_API_KEY` (the same one set with `wrangler secret put`), o
     - **Fix**: on the first deploy, dragging to select ended up zooming in the opposite direction from the drag, worse the more nested zooms were applied (zooming into an already-zoomed view). Cause: panning (moving the view by dragging) and zoom-by-selection were bound to the same gesture — a plain drag, no modifier key — and fought each other; panning shifted the axis while the selection rectangle was still being drawn. Fixed by requiring Ctrl+drag to pan, leaving a plain drag exclusively for zoom selection. Along the way, the X axis was switched from a category scale (text labels) to a numeric (`linear`) scale, with times shown via a tick callback, because `chartjs-plugin-zoom` doesn't handle nested zooms well on a category axis.
 - **Wiki links**: the shared footer (`lemeit-common.js`, used by all three portals) and each portal's "About" section now link to [wiki.lemeit.ar](https://wiki.lemeit.ar) — until now the wiki wasn't mentioned from any portal.
 - **AQ → AE logo and single `app.lemeit.ar` domain (September 2026)**: the logo initials changed from "AQ" (Air Quality, inconsistent with the rest of the Spanish-language site) to **AE** (Aire Escolar, "School Air"), in its own teal color (`#009688`) instead of the site's general orange. Alongside this, the network's three portals moved to live under a single domain (`app.lemeit.ar/aq`, `/emas`, `/wq` — see the [Network architecture](index.md)); `aq.lemeit.ar` still works, it just redirects. `manifest.json` widened its `scope` from `/aq/` to the whole new domain, so switching portals from the installed app doesn't kick out to the browser.
+- **API documentation and credits inside the portal**: `api.html` and `creditos.html` went from standalone pages to tabs of `index.html` (`?tab=api`, `?tab=creditos`). The original files remain only as redirects so external links don't break, including the ones from this wiki.
+- **Own code per sensor (October 2026)**: new `codigo` column in `sensores` (migration 008) with the `AE-NN` convention, independent of PurpleAir's `sensor_index` and stable if a sensor moves to another school. The installation date uses the `fecha_instalacion` column, which already existed in the schema. See "Sensors and AE codes" above for the procedure to add a sensor.
 
 See the [project log](99-bitacora.md) (Spanish only) for the full session-by-session detail.
