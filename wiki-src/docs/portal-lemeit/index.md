@@ -36,3 +36,9 @@ Editar las fuentes, trabajar en una rama y revisar mediante PR. La fusión a `ma
 ## Alcance sobre los otros proyectos
 
 Aire Escolar sigue en [app.lemeit.ar/aq/](https://app.lemeit.ar/aq/), meteorología en [app.lemeit.ar/emas/](https://app.lemeit.ar/emas/) y agua en [app.lemeit.ar/wq/](https://app.lemeit.ar/wq/). Se agregaron accesos desde Lemeit; no se modificaron sensores, bases de datos, APIs ni aplicaciones ambientales. Los materiales y el mapa de Física siguen en sus rutas de Profe Lamaita.
+
+## Recorrido de portada al desplazarse
+
+La portada usa «Ciencias · Educación · Ambiente» y elimina el menú superior. El dibujo inicial es un índice visual: sensor → Aire Escolar, lámpara → Eureka, cuaderno → materiales. Cada símbolo lleva por scroll a su capítulo, con dibujo ampliado, descripción breve y enlace al sitio correspondiente. Los capítulos aparecen en ese orden, uno por pantalla como mínimo; las ilustraciones se revelan junto al texto al bajar. Se conserva el desplazamiento nativo y se oculta solo la barra visual.
+
+La implementación está en `landing/index.html` y `landing/lemeit-scroll.js` de Eureka. IntersectionObserver activa las apariciones, y las anclas `#aire-escolar`, `#eureka` y `#materiales` permiten accesos directos. Con reducción de movimiento o sin JavaScript el contenido permanece legible. Para sumar proyectos, agregar el capítulo, su dibujo y el acceso en el índice visual, manteniendo IDs estables.
