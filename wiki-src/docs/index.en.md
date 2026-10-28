@@ -26,3 +26,8 @@ New projects get added as new sections as they're documented — this table and 
 2. Add the section to the `nav:` block in `wiki-src/mkdocs.yml`.
 3. Add the corresponding row to the table above.
 4. Commit and push to `main` — the build and deploy to `wiki.lemeit.ar` happen automatically.
+
+
+## Lemeit project portal
+
+[lemeit.ar](https://lemeit.ar/) is the common entry to the projects. [Portal, Eureka introduction and identity documentation](portal-lemeit/index.md) describes sources, deployment, simulations and favicon variants.
