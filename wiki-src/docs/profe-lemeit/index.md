@@ -168,3 +168,8 @@ En dark mode, el selector crítico es `:root[data-theme="dark"]` (no `.dark`) pa
 - **Dos generadores, un repo**: mantener sincronizada la paleta manualmente entre `assets/css/extended/custom.css` (Hugo) y `quartz/quartz.config.yaml` (Quartz) es la principal fuente de trabajo manual de este proyecto — no hay un design system compartido como `design.lemeit.ar` en la Red Ambiental, porque Hugo y Quartz no comparten runtime.
 - **Orden determinístico de secciones**: cada `_index.md` de `notes/` tiene un `weight` único (1–6); sin eso, Hugo ordena las secciones de forma indeterminada.
 - **`public/` no se commitea**: la carpeta de salida de Hugo está en `.gitignore` — la genera Cloudflare Pages en cada deploy, igual que `site/` en esta wiki.
+
+
+## Relación con Lemeit
+
+La [portada Lemeit](https://lemeit.ar/) enlaza a los materiales y conceptos de este sitio, pero se mantiene en el repositorio Eureka. Su favicon Encuentro es distinto de la L caligráfica personal de Luciano. Esta actualización no altera Hugo, Quartz ni sus rutas de contenido. [Registro de identidad y portadas](../portal-lemeit/index.md).

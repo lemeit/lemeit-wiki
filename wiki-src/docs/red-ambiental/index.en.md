@@ -27,3 +27,8 @@ All three portals follow the same pattern:
 - **Maps**: CARTO Basemaps tiles served through the Worker's own proxy, so the API key is never exposed in the public HTML.
 
 See the [project log](99-bitacora.md) (Spanish only) for the session-by-session history, including the microclimate analysis (urban heat island effect at EMA-CS) done with the first 4 stations' data.
+
+
+## Access from Lemeit
+
+[Lemeit](https://lemeit.ar/) now links directly to Aire Escolar, weather and water-quality portals. This is a navigation update; sensors, ingestion, databases and APIs were not changed. [Portal and identity record](../portal-lemeit/index.md).

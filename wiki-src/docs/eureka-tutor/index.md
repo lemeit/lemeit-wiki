@@ -3,7 +3,8 @@
 Tutor digital de ciencias asistido por IA para alumnos de secundario y curso de ingreso universitario. Cubre **Física, Química, Fisicoquímica, Química del Carbono, Biofísica y Matemática** con estilo socrático: concepto inicial breve → guía paso a paso → visualizaciones automáticas (gráficos, diagramas, estructuras químicas) → pregunta de cierre.
 
 - **Sitio principal:** [tutor.lemeit.ar](https://tutor.lemeit.ar) — portal con login Google (Firebase)
-- **Landing institucional:** [lemeit.ar](https://lemeit.ar) — página de entrada con CTA al tutor
+- **Portal de proyectos:** [lemeit.ar](https://lemeit.ar)
+- **Presentación:** [tutor.lemeit.ar/presentacion/](https://tutor.lemeit.ar/presentacion/) — cuatro modelos físicos y acceso al tutor
 - **Repositorio:** `lemeit/eureka` (privado — Cloudflare Pages puede leer repos privados gratis; GitHub Pages solo en plan Pro)
 - **Versión actual:** Beta 2.0 — junio 2026
 
@@ -23,8 +24,8 @@ Hoy se presenta en el sitio como **Eureka AI**, pero el nombre completo es un ac
 ## Arquitectura
 
 ```
-lemeit.ar (landing)             Cloudflare Pages ── repo lemeit/eureka/landing/
-        │  CTA "Entrar al Tutor EUREKA"
+lemeit.ar (portal de proyectos)             Cloudflare Pages ── repo lemeit/eureka/landing/
+        │  Eureka → /presentacion/ → tutor
         ▼
 tutor.lemeit.ar (portal, repo privado)
   Browser
@@ -129,3 +130,8 @@ El versionado usa `tools/bump_version.py` (`show` / `patch` / `minor` / `major`)
 - **Autoría**: Luciano Lamaita
 - **Desarrollo**: Luciano Lamaita con asistencia de Claude (Anthropic)
 - **Licencia**: uso educativo, todos los derechos reservados
+
+
+## Presentación e identidad — octubre de 2026
+
+La [presentación de Eureka](https://tutor.lemeit.ar/presentacion/) muestra cuatro áreas fijas con teseracto, Lorenz, masa-resorte y péndulo ideal, ecuaciones, puntos y estelas. El centro conserva EUREKA con AI en superíndice, «ancora imparo — aún aprendo» y acceso al tutor. Se puede pausar y se respeta reducción de movimiento. La raíz del tutor mantiene su acceso directo. [Registro completo de portadas e identidad](../portal-lemeit/index.md).

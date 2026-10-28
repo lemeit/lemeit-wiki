@@ -10,9 +10,9 @@ Wiki madre de documentación técnica y bitácora de los proyectos de **lemeit.a
 
 | Sección | Proyecto | Sitio | Repo |
 |---|---|---|---|
-| Red Ambiental | 🌬️ Monitoreo Ambiental Escolar | [aq.lemeit.ar](https://aq.lemeit.ar) | [lemeit-aq](https://github.com/lemeit/lemeit-aq) |
-| Red Ambiental | 🌡️ EMA Saladillo | [emas.lemeit.ar](https://emas.lemeit.ar) | [lemeit-emas](https://github.com/lemeit/lemeit-emas) |
-| Red Ambiental | 💧 Calidad del Agua | [wq.lemeit.ar](https://wq.lemeit.ar) | [lemeit-wq](https://github.com/lemeit/lemeit-wq) |
+| Red Ambiental | 🌬️ Monitoreo Ambiental Escolar | [app.lemeit.ar/aq/](https://app.lemeit.ar/aq/) | [lemeit-aq](https://github.com/lemeit/lemeit-aq) |
+| Red Ambiental | 🌡️ EMA Saladillo | [app.lemeit.ar/emas/](https://app.lemeit.ar/emas/) | [lemeit-emas](https://github.com/lemeit/lemeit-emas) |
+| Red Ambiental | 💧 Calidad del Agua | [app.lemeit.ar/wq/](https://app.lemeit.ar/wq/) | [lemeit-wq](https://github.com/lemeit/lemeit-wq) |
 | — | 🎓 Eureka AI | [tutor.lemeit.ar](https://tutor.lemeit.ar) | `lemeit/eureka` (privado) |
 | — | 👨‍🏫 Profe Lamaita | [profe.lemeit.ar](https://profe.lemeit.ar) | [aboutme](https://github.com/lemeit/aboutme) |
 
@@ -23,14 +23,15 @@ Más proyectos se suman como secciones nuevas a medida que se documentan (ver "C
 Sigue el mismo patrón que ya usa la wiki de [DVBA](https://github.com/lemeit/DVBA) (`wiki-src/`):
 
 ```
-wiki-src/docs/**/*.md   →  mkdocs build  →  site/  →  GitHub Pages (wiki.lemeit.ar)
-      (fuente,               (GitHub Action,     (contenido
+wiki-src/docs/**/*.md   →  mkdocs build  →  site/  →  Cloudflare Pages (wiki.lemeit.ar)
+      (fuente,               (build MkDocs,     (contenido
    se edita manualmente)     wiki-build.yml)   generado, no editar manualmente)
 ```
 
 - El contenido fuente vive en `wiki-src/docs/`, en Markdown, **una carpeta por proyecto**.
-- Cada push a `wiki-src/**` dispara `.github/workflows/wiki-build.yml`, que corre `mkdocs build --site-dir ../site` y commitea el resultado en `site/` (con `[skip ci]` para no generar un loop).
-- GitHub Pages sirve la carpeta `site/` de la rama `main`, con dominio propio `wiki.lemeit.ar` (archivo `wiki-src/docs/CNAME`, que `mkdocs` copia sin tocar a `site/CNAME` en cada build).
+- `.github/workflows/wiki-build.yml` valida MkDocs en modo estricto, sin commitear salida generada.
+- Cloudflare Pages, proyecto `lemeit-wiki`, compila con `pip install -r wiki-src/requirements.txt && cd wiki-src && mkdocs build --site-dir ../site` y publica `site/` desde la rama `main`.
+- El dominio `wiki.lemeit.ar` está asociado al proyecto Pages. `site/` es salida de compilación; no editarla ni commitearla.
 
 ## Editar una página existente
 
@@ -79,3 +80,7 @@ lemeit-wiki/
 ## Origen
 
 Nace en agosto de 2026, primero como wiki exclusiva de la Red Ambiental (repo `ambiental-wiki`, hoy renombrado a `lemeit-wiki`) para unificar la documentación que hasta entonces solo existía, parcialmente, como 4 documentos Word sueltos dentro de `ema-saladillo/docs/`. Se reorganizó como wiki madre de todos los proyectos de lemeit.ar poco después, sumando Eureka AI como segunda sección.
+
+## Portadas e identidad — 28/10/2026
+
+Se incorporó la sección [Portal Lemeit](wiki-src/docs/portal-lemeit/index.md), con versión en inglés, rutas de las portadas, configuración de publicación, cuatro modelos de Eureka y favicon Encuentro. Interacción se conserva como alternativa en Eureka; la L personal no se usa para la marca Lemeit. Se actualizaron los resúmenes de Eureka, Profe y Red Ambiental para explicar su relación con la nueva entrada común.
