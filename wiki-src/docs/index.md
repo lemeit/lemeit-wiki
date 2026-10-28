@@ -25,3 +25,8 @@ Nuevos proyectos se van sumando como secciones nuevas a medida que se documentan
 2. Sumar la sección al `nav:` de `wiki-src/mkdocs.yml`.
 3. Agregar la fila correspondiente a la tabla de arriba.
 4. Commitear y pushear a `main` — el build y el deploy a `wiki.lemeit.ar` son automáticos.
+
+
+## Portal de proyectos Lemeit
+
+[lemeit.ar](https://lemeit.ar/) es la entrada común a los proyectos. La [documentación de portadas, presentación de Eureka e identidad](portal-lemeit/index.md) registra fuentes, despliegue, simulaciones y variantes del favicon.
