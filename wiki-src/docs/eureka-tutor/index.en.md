@@ -129,3 +129,8 @@ Versioning uses `tools/bump_version.py` (`show` / `patch` / `minor` / `major`), 
 - **Authorship**: Luciano Lamaita
 - **Development**: Luciano Lamaita with assistance from Claude (Anthropic)
 - **License**: educational use, all rights reserved
+
+
+## Presentation and identity — October 2026
+
+The separate [Eureka introduction](https://tutor.lemeit.ar/presentacion/) shows four fixed simulation areas around EUREKA with superscript AI, the motto “ancora imparo — aún aprendo” and direct tutor access. Tesseract, Lorenz, mass–spring and ideal pendulum animate together, with pause and reduced-motion support. The tutor at the root URL remains directly accessible. [Full portal and identity record](../portal-lemeit/index.md).
