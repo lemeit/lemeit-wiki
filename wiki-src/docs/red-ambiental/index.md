@@ -27,3 +27,8 @@ Los tres portales siguen el mismo patrón:
 - **Mapas**: tiles de CARTO Basemaps servidos vía proxy del propio Worker, para no exponer la API key en el HTML público.
 
 Ver la [Bitácora del proyecto](99-bitacora.md) para el historial sesión por sesión, incluyendo el análisis microclimático (efecto isla de calor urbano en EMA-CS) hecho con los primeros datos de las 4 estaciones.
+
+
+## Acceso desde Lemeit
+
+La nueva [portada Lemeit](https://lemeit.ar/) ofrece accesos a Aire Escolar, meteorología y calidad del agua. Es un cambio de navegación; no se modificaron sensores, ingesta, bases ni APIs. [Registro de portadas e identidad](../portal-lemeit/index.md).
