@@ -31,3 +31,9 @@ Both Lemeit and Eureka use Git-connected Pages projects. Merging main triggers t
 JavaScript syntax, SVG parsing and links were checked, along with desktop scenes and icon previews at 16, 32 and 64 pixels. Exhaustive mobile visual review remains pending. Local 127.0.0.1 previews require a running local server; published Cloudflare sites do not.
 
 Earlier floating and relocating panel experiments are not the final published layout.
+
+## Scroll-based project tour
+
+The portal reads “Ciencias · Educación · Ambiente” and has no top navigation menu. The connected illustration acts as a visual index: sensor → Aire Escolar, light bulb → Eureka, notebook → teaching materials. Selecting a symbol scrolls to its chapter; the external site link appears in that chapter's short description.
+
+Each chapter occupies at least one screen, revealing its enlarged drawing and description as the visitor scrolls. Scrolling remains native; only the scrollbar is visually hidden. IntersectionObserver drives the reveal in landing/lemeit-scroll.js, with readable content when JavaScript is unavailable or reduced motion is requested. Stable anchors are #aire-escolar, #eureka and #materiales. New chapters can extend this pattern.
