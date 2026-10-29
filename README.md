@@ -1,5 +1,8 @@
 # lemeit-wiki
 
+[![sitio: wiki.lemeit.ar](https://img.shields.io/badge/sitio-wiki.lemeit.ar-009688?style=flat-square&labelColor=555555)](https://wiki.lemeit.ar/)
+[![build: MkDocs](https://img.shields.io/github/actions/workflow/status/lemeit/lemeit-wiki/wiki-build.yml?branch=main&style=flat-square&label=build&labelColor=555555)](https://github.com/lemeit/lemeit-wiki/actions/workflows/wiki-build.yml)
+
 Wiki madre de documentación técnica y bitácora de los proyectos de **lemeit.ar**. Organizada por proyecto, todo público — sin nada que ocultar en la parte de desarrollo.
 
 ## Wiki publicada
