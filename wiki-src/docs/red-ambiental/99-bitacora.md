@@ -182,3 +182,8 @@ AE-00: se reconstruye el historial por el Device ID `c8:c9:a3:f:93:af`. Primera 
 
 - El detalle línea por línea de cada sesión (comandos exactos, mensajes de error completos, capturas) queda en el historial de commits de cada repositorio (`git log`) y, para EMA hasta agosto 2026, en los `.docx` originales dentro de `ema-saladillo/docs/`.
 - Esta página se actualiza manualmente después de cada sesión de trabajo relevante — no hay automatización todavía que la genere desde los commits.
+### AE-00: nuevo nombre en PurpleAir (29/10/2026)
+
+**29/10/2026, 12:27 según el correo aportado:** nueva confirmación de registro con nombre `AE-00 | app.lemeit.ar`, mismo sensor index **198617** y Device ID `c8:c9:a3:f:93:af`. Coordenadas declaradas: **-35.6663, -59.80716**, numéricamente iguales a las del registro escolar de 2024; elevación declarada **42.3987 m**. Exterior, público, intervalo de envío por defecto (~90 s). El correo declara transmisión al momento de envío. Es un cambio de nombre/actualización de registro, no una nueva alta inicial ni una fecha de instalación física. El enlace del nombre apunta a `app.lemeit.ar` (portal general); la dirección específica de Aire Escolar es `https://app.lemeit.ar/aq/`.
+
+No se incorporan claves ni datos de contacto. Esta actualización solo documenta la acción que el titular realizó en PurpleAir; no escribe D1 ni cambia el código del proyecto.
