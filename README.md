@@ -84,3 +84,7 @@ Nace en agosto de 2026, primero como wiki exclusiva de la Red Ambiental (repo `a
 ## Portadas e identidad — 28/10/2026
 
 Se incorporó la sección [Portal Lemeit](wiki-src/docs/portal-lemeit/index.md), con versión en inglés, rutas de las portadas, configuración de publicación, cuatro modelos de Eureka y favicon Encuentro. Interacción se conserva como alternativa en Eureka; la L personal no se usa para la marca Lemeit. Se actualizaron los resúmenes de Eureka, Profe y Red Ambiental para explicar su relación con la nueva entrada común.
+
+## Logos de la wiki — 28/10/2026
+
+El logo general y favicon usan **Encuentro** en `wiki-src/docs/assets/logos/lemeit.svg`. El portal **Profe Lamaita** se representa mediante la **L caligráfica personal de Luciano**, tomada del SVG canónico de `lemeit/aboutme`, en `assets/logos/profe-lamaita.svg`; `profe.svg` conserva la misma figura para compatibilidad. Inicio y ficha de Profe, en español e inglés, usan el nombre nuevo para renovar la imagen en caché. No usar la L personal para representar a la marca Lemeit ni la antigua L tipográfica para Profe.
