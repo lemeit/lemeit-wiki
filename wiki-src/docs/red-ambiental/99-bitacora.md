@@ -168,6 +168,16 @@ Sesión de alcance ampliado: unificar los tres proyectos sobre la misma infraest
 - **Alta segura**: respaldar privadamente la lista completa autorizada antes de reemplazar el secreto; D1 ayuda a contrastarla, pero no permite reconstruir por sí sola la lista activa. Comprobar versión efectiva, ingesta y D1; API y dashboard generan visitas y requieren autorización bajo una restricción estricta de solo lectura. Nunca revelar secretos. El comportamiento depende de la herramienta: algunas operaciones de secretos despliegan inmediatamente; otras solo crean versión.
 - **Alcance**: no se rotaron secretos, ejecutaron ingestas ni desplegó el Worker en esta intervención. La única escritura productiva autorizada fue completar el código de AE-03. No se acredita cobertura automática AirGradient (AQ-05), migración 009 ni despliegue del HEAD. El dashboard actual muestra `nombre`; mostrar `codigo` directamente sigue pendiente.
 
+## 29 de octubre de 2026 - Fechas de registro PurpleAir y mini guías
+
+Se documentan los correos aportados por el titular: AE-01 (298687) y AE-02 (298701), alta PurpleAir el **05/10/2026**; AE-03 (298691), **28/10/2026**. Se incorporan Device ID y coordenadas declaradas al registrar, sin claves de lectura ni correos completos. Las coordenadas no acreditan ubicación definitiva; la transmisión declarada en los correos corresponde solo al momento de envío.
+
+Se separan explícitamente **alta en PurpleAir** e **instalación física en el lugar seleccionado**. La primera va en Observaciones de las mini guías, junto con identidad y coordenadas; la segunda conserva un campo independiente. Se corrige la fecha 06/10 que figuraba como alta de AE-01/AE-02 sin convertirla en fecha de instalación. Versiones imprimibles con pie oscuro, códigos de cabecera y portal editables y Observaciones de dos líneas.
+
+Fuente mantenida en el [registro de altas del repositorio AQ](https://github.com/lemeit/lemeit-aq/blob/main/docs/instalacion/REGISTRO_PURPLEAIR.md), enlazado desde inventario y README. Esta intervención es documental: no modifica D1, secretos, ingestas ni estado productivo. Publicación sujeta a revisión y merge de los PR; el commit documental omite Pages con `[CF-Pages-Skip]`.
+
+AE-00: se reconstruye el historial por el Device ID `c8:c9:a3:f:93:af`. Primera alta como `saladillo_home` el 28/11/2023; registro escolar como `Madre Teresa High School` el 03/12/2024, sensor index 198617, después de la etapa en el domicilio del titular. Se conserva únicamente la coordenada escolar declarada en 2024 (-35.66630, -59.80716). El primer correo no informa sensor index. No se deduce fecha exacta de instalación física ni conexión continua; futura reubicación pendiente. Se omiten coordenadas del domicilio, contactos personales y credenciales.
+
 ## Notas sobre las fuentes de esta bitácora
 
 - El detalle línea por línea de cada sesión (comandos exactos, mensajes de error completos, capturas) queda en el historial de commits de cada repositorio (`git log`) y, para EMA hasta agosto 2026, en los `.docx` originales dentro de `ema-saladillo/docs/`.

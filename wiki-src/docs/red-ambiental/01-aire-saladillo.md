@@ -119,23 +119,37 @@ Pide la `PURPLEAIR_API_KEY` (la misma que se cargó con `wrangler secret put`), 
 
 Cada sensor PurpleAir de la red tiene un **código propio del proyecto** (`AE-NN`), independiente del `sensor_index` que asigna PurpleAir.
 
-| Código | `sensor_index` | Institución | Distrito / ámbito | Dirección | CUE | Alta |
+| Código | `sensor_index` | Institución | Distrito / ámbito | Dirección | CUE | Registro en PurpleAir |
 |---|---|---|---|---|---|---|
-| AE-00 | 198617 | Colegio Secundario Madre Teresa | Saladillo / rural | Calle Jauretche e Yrigoyen | — | previa al proyecto (en reubicación) |
-| AE-01 | 298687 | Esc. de Educación Artística N°1 "Lola Mora" | 25 de Mayo / urbano | Calle 7 entre 23 y 24 | 061617500 | 2026-10-06 |
-| AE-02 | 298701 | Esc. de Educación Secundaria N°2 "Manuel Pardal" | Saladillo / urbano | Av. Pereyra 3046 | 060342300 | 2026-10-06 |
-| AE-03 | 298691 | Instituto Niño Jesús | — | — | — | Confirmado 2026-10-28 |
+| AE-00 | 198617 | Colegio Secundario Madre Teresa | Saladillo / rural | Calle Jauretche e Yrigoyen | — | 2023-11-28 (inicial); 2024-12-03 (registro escolar) |
+| AE-01 | 298687 | Esc. de Educación Artística N°1 "Lola Mora" | 25 de Mayo / urbano | Calle 7 entre 23 y 24 | 061617500 | 2026-10-05 |
+| AE-02 | 298701 | Esc. de Educación Secundaria N°2 "Manuel Pardal" | Saladillo / urbano | Av. Pereyra 3046 | 060342300 | 2026-10-05 |
+| AE-03 | 298691 | Instituto Niño Jesús | — | — | — | 2026-10-28 |
 | AE-04 | — | Del Valle (reservado) | — | — | — | Pendiente |
 
 AE-01, AE-02 y AE-03 son PurpleAir PA-II-FLEX. AE-03 corresponde al Instituto Niño Jesús (298691); AE-04 queda reservado para Del Valle, sin sensor_index asignado. La convención se definió para los PurpleAir; los AirGradient (ID sintético 900000+) todavía no tienen código asignado.
 
 Estado al 28/10/2026: AE-01 sigue pendiente de instalación física según última información; AE-02 está operativo. AE-03 está online y visible según el titular, con lectura reciente verificada en D1 y `codigo = 'AE-03'` confirmado tras una actualización autorizada. Los AirGradient 900002 y 900003 conservan lecturas antiguas; no se acredita conexión actual. Ver [bitácora](99-bitacora.md) y [procedimiento seguro y reversión](https://github.com/lemeit/lemeit-aq/blob/main/docs/OPERACION_PURPLEAIR.md).
 
+### Registro PurpleAir y montaje físico: fechas distintas
+
+Correos de confirmación aportados por el titular el 29/10/2026: **AE-01 y AE-02 se registraron el 05/10/2026; AE-03 el 28/10/2026**. Se corrige el 06/10 que figuraba como alta de AE-01/AE-02; no se interpreta ese antecedente como fecha de montaje. Las fechas de instalación física se completan por separado en la escuela.
+
+| Código | Device ID | Latitud declarada al registrar | Longitud declarada al registrar |
+| --- | --- | --- | --- |
+| AE-01 | `ec:64:c9:cb:9f:3` | -35.43677574362913 | -60.168800362812966 |
+| AE-02 | `f0:24:f9:c2:cf:2d` | -35.63495676824009 | -59.7735131464144 |
+| AE-03 | `fc:f5:c4:ae:ca:d6` | -35.640825 | -59.778565 |
+
+Los correos registran ubicación exterior, visibilidad pública e intervalo de envío por defecto (~90 s), distinto de la ingesta de LEMEIT. La conexión que confirman corresponde al momento del correo; no prueba conexión actual ni instalación definitiva. En las mini guías el alta y estas coordenadas van en **Observaciones**; «Fecha de instalación» queda para el montaje físico. No se publican claves de lectura ni correos completos. Fuente y criterios: [registro versionado](https://github.com/lemeit/lemeit-aq/blob/main/docs/instalacion/REGISTRO_PURPLEAIR.md).
+
+AE-00 es el mismo equipo con Device ID `c8:c9:a3:f:93:af`: primera configuración como `saladillo_home` el **28/11/2023**; tras más de un año en el domicilio del titular, registro como `Madre Teresa High School` el **03/12/2024**, con sensor index **198617** y coordenadas escolares declaradas **-35.66630, -59.80716**. El correo inicial no muestra sensor index; la continuidad se establece por el Device ID. Estas fechas no se usan como fecha exacta de montaje ni de futura reubicación. Se omiten coordenadas del domicilio, contactos y claves. El modelo específico no se confirma con estos correos.
+
 ### Convención de códigos
 
 - `AE-00` es el primer sensor de la red, anterior al proyecto; `AE-01` en adelante se asignan por orden de instalación.
 - El código es **estable**: si un sensor cambia de escuela, el código no cambia, solo la institución.
-- En la base D1 (tabla `sensores`) se guarda en la columna `codigo` (única) y la fecha de alta en `fecha_instalacion`. La API los devuelve en `/api/sensores` y `/api/ultimas`.
+- En la base D1 (tabla `sensores`) se guarda en la columna `codigo` (única) y la fecha de instalación física en `fecha_instalacion`. La API los devuelve en `/api/sensores` y `/api/ultimas`.
 - En el portal, la tarjeta muestra la institución como título y el nombre del sensor (`AE-NN`) debajo.
 - El Worker **no pisa** `nombre`, `institucion`, `codigo` ni `fecha_instalacion` en las ingestas; solo actualiza latitud y longitud desde PurpleAir.
 
@@ -173,6 +187,6 @@ Un `UPDATE` sobre un `sensor_index` que todavía no existe en la tabla no da err
 - **Enlaces a la wiki**: el footer compartido (`lemeit-common.js`, usado por los tres portales) y la sección "Acerca de" de cada uno pasan a enlazar a [wiki.lemeit.ar](https://wiki.lemeit.ar) — hasta ahora la wiki no se mencionaba desde ningún portal.
 - **Logo AQ → AE y dominio único `app.lemeit.ar` (septiembre 2026)**: la sigla del logo pasa de "AQ" (Air Quality, inconsistente con el resto del sitio en español) a **AE** (Aire Escolar), en un verde-azulado propio (`#009688`) en vez del naranja general del sitio. Junto con esto, los tres portales de la red pasan a convivir bajo un solo dominio (`app.lemeit.ar/aq`, `/emas`, `/wq` — ver [arquitectura de la Red](index.md)); `aq.lemeit.ar` sigue funcionando, redirige solo. El `manifest.json` amplía su `scope` de `/aq/` a todo el dominio nuevo, para que cambiar de portal desde la app instalada no salga al navegador.
 - **Documentación de la API y créditos dentro del portal**: `api.html` y `creditos.html` pasaron de páginas sueltas a pestañas de `index.html` (`?tab=api`, `?tab=creditos`). Los archivos originales quedan solo como redirección para no romper links externos, entre ellos los de esta wiki.
-- **Código propio por sensor (octubre 2026)**: columna `codigo` en `sensores` (migración 008) con la convención `AE-NN`, independiente del `sensor_index` de PurpleAir y estable si un sensor cambia de escuela. La fecha de alta usa la columna `fecha_instalacion`, que ya existía en el esquema. Ver "Sensores y códigos AE" más arriba, con el procedimiento de alta de un sensor.
+- **Código propio por sensor (octubre 2026)**: columna `codigo` en `sensores` (migración 008) con la convención `AE-NN`, independiente del `sensor_index` de PurpleAir y estable si un sensor cambia de escuela. La fecha de instalación física usa la columna `fecha_instalacion`, que ya existía en el esquema. Ver "Sensores y códigos AE" más arriba, con el procedimiento de alta de un sensor.
 
 Ver la [Bitácora del proyecto](99-bitacora.md) para el detalle sesión por sesión.
