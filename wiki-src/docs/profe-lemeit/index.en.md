@@ -1,4 +1,4 @@
-# ![Profe](../assets/logos/profe.svg){: width="36" style="vertical-align:middle;margin-right:8px" } Profe Lamaita — profe.lemeit.ar
+# ![Profe](../assets/logos/profe-lamaita.svg){: width="36" style="vertical-align:middle;margin-right:8px" } Profe Lamaita — profe.lemeit.ar
 
 Personal site of **Prof. Eng. Luciano Lamaita**, physics teacher in Saladillo, Buenos Aires. Brings together the Spanish translation and adaptation of Jeff Bigler's notes, class notes from the 4 institutions where he teaches, and the technical projects (EMA, Eureka AI, DVBA GIS).
 
