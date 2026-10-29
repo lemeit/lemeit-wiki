@@ -124,8 +124,10 @@ Each PurpleAir sensor in the network has its own **project code** (`AE-NN`), ind
 | AE-00 | 198617 | Colegio Secundario Madre Teresa | Saladillo / rural | Calle Jauretche e Yrigoyen | — | before the project (being relocated) |
 | AE-01 | 298687 | Esc. de Educación Artística N°1 "Lola Mora" | 25 de Mayo / urban | Calle 7 between 23 and 24 | 061617500 | 2026-10-06 |
 | AE-02 | 298701 | Esc. de Educación Secundaria N°2 "Manuel Pardal" | Saladillo / urban | Av. Pereyra 3046 | 060342300 | 2026-10-06 |
+| AE-03 | 298691 | Instituto Niño Jesús | — | — | — | Confirmado 2026-10-28 |
+| AE-04 | — | Del Valle (reservado) | — | — | — | Pendiente |
 
-AE-01 and AE-02 are PurpleAir PA-II-FLEX units. Codes AE-03 and AE-04 are reserved for the two remaining sensors. The convention was defined for the PurpleAir sensors; the AirGradient ones (synthetic ID 900000+) don't have a code assigned yet.
+AE-01, AE-02 and AE-03 are PurpleAir PA-II-FLEX units. AE-03 is assigned to Instituto Niño Jesús (298691); AE-04 is reserved for Del Valle, with no sensor_index assigned. The convention was defined for the PurpleAir sensors; the AirGradient ones (synthetic ID 900000+) don't have a code assigned yet.
 
 ### Code convention
 
@@ -147,6 +149,9 @@ AE-01 and AE-02 are PurpleAir PA-II-FLEX units. Codes AE-03 and AE-04 are reserv
 An `UPDATE` on a `sensor_index` that doesn't exist yet raises no error and changes nothing.
 
 ## Roadmap
+
+> Update, 28 October 2026: AE-01 is still awaiting physical installation according to the latest owner report; AE-02 is operational. AE-03 is online and visible according to the owner, with a recent D1 reading verified independently. Its project code `AE-03` was added with explicit authorization and checked by SELECT. AirGradient 900002 and 900003 have old readings; current connectivity is unverified. Rotate created a Worker version that still required deployment in this incident. See the [Spanish log](99-bitacora.md) and [safe procedure and rollback](https://github.com/lemeit/lemeit-aq/blob/main/docs/OPERACION_PURPLEAIR.md). The hardware description below records an earlier state.
+
 
 **Hardware status (October 2026)**: all 5 **PurpleAir** sensors are in the project's hands. The only one running until now was AE-00, at Colegio Secundario Madre Teresa, currently pending relocation. AE-01 (25 de Mayo) and AE-02 (Saladillo) are already registered on PurpleAir and on the portal, and their installation is planned for October 6; AE-03 and AE-04 don't have an assigned destination yet. The 4 new units were a donation from [PurpleAir Collective](https://community.purpleair.com/t/purpleair-collective-june-july-2024/8771) (mid-2024 call, based on a needs proposal submitted by the author — the project placed 2nd in that round). The 2 **AirGradient** sensors are also in hand and active, currently connected at a private home for testing, pending a decision on which institutions they'll be installed in.
 
