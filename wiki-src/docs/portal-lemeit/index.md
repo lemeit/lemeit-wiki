@@ -25,6 +25,43 @@ Son modelos ilustrativos, no datos experimentales: proyección de un hipercubo 4
 
 Editar las fuentes, trabajar en una rama y revisar mediante PR. La fusión a `main` dispara los despliegues Git de ambos proyectos Pages. No publicar carpetas de prueba, variantes históricas HTML ni etiquetas locales. Se validaron sintaxis JavaScript, SVG y enlaces, y se revisaron las escenas en escritorio y los favicons ampliados y a 16/32/64 px. La revisión visual exhaustiva en móvil sigue pendiente. Las pruebas locales en `127.0.0.1` requieren un servidor activo; los sitios publicados en Cloudflare no dependen de esa computadora.
 
+## Encuentro: el símbolo de Lemeit
+
+<figure style="text-align:center;margin:2rem auto">
+  <img src="../assets/logos/lemeit.svg" alt="Encuentro: dos segmentos naranja óxido con flechas confluyen en un vértice del que parte una línea ondulada verde azulado, sobre fondo crema" width="240" height="240">
+  <figcaption><strong>Encuentro</strong> · símbolo elegido para Lemeit y su favicon.</figcaption>
+</figure>
+
+El logo toma su lenguaje visual de los **diagramas de Feynman**: líneas, flechas y un vértice de interacción. En física, estos diagramas representan contribuciones a un cálculo de interacción; no son fotografías ni trayectorias literales de partículas. Por ejemplo, las líneas rectas con flechas se usan para fermiones y las onduladas para fotones y ciertos otros bosones. [Referencia didáctica: ATLAS/CERN, Feynman Diagrams](<https://cds.cern.ch/record/2759490/files/Feynman%20Diagrams%20-%20ATLAS%20Cheat%20Sheet.pdf>).
+
+En **Lemeit**, esa estructura se usa como una **metáfora de encuentro entre ideas**. No se le asigna una reacción ni un proceso físico específico: el símbolo reúne ciencias, educación y ambiente sin convertir el logo en una afirmación experimental.
+
+| Elemento del diseño | Lectura de marca |
+|---|---|
+| Segmentos rectos con flechas | Recorridos que llegan al encuentro y continúan desde él |
+| Vértice naranja | Punto común entre preguntas, personas y proyectos |
+| Línea ondulada verde | Una conexión que abre otra posibilidad |
+| Trazo fino y forma simple | Legibilidad como favicon y coherencia con los dibujos de la portada |
+
+### Colores y construcción
+
+- **Crema cálido `#FAF7F2`**: fondo.
+- **Naranja óxido `#9B3D00`**: segmentos, flechas y vértice.
+- **Verde azulado `#009688`**: línea ondulada.
+
+Es un SVG propio, con geometría vectorial y sin dependencia de fuentes tipográficas. Las puntas de flecha se alinean automáticamente con sus segmentos y tienen un tamaño mayor que el ancho del trazo. [Abrir o descargar Encuentro en SVG](../assets/logos/lemeit.svg).
+
+### Interacción: alternativa conservada
+
+<figure style="text-align:center;margin:1.5rem auto">
+  <img src="../assets/logos/lemeit-interaccion.svg" alt="Interacción: dos vértices naranja óxido unidos por una línea ondulada verde, con segmentos rectos y flechas a ambos lados" width="160" height="160">
+  <figcaption><strong>Interacción</strong> · alternativa reservada para futuros usos.</figcaption>
+</figure>
+
+Esta variante conserva dos vértices unidos por una onda. Sus flechas también fueron corregidas y ampliadas. Queda respaldada, pero **no reemplaza a Encuentro** como favicon elegido. [Abrir o descargar Interacción en SVG](../assets/logos/lemeit-interaccion.svg).
+
+La **L caligráfica** identifica personalmente a **Luciano Lamaita** y representa al portal **Profe Lamaita**; no es el logo de Lemeit. [Ver la ficha del portal docente](../profe-lemeit/index.md).
+
 ## Registro de decisiones
 
 - Lemeit deja de ser una portada exclusiva del tutor y reúne los proyectos mediante ilustraciones originales de trazo manual.
