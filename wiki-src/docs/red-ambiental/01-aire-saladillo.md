@@ -124,8 +124,12 @@ Cada sensor PurpleAir de la red tiene un **código propio del proyecto** (`AE-NN
 | AE-00 | 198617 | Colegio Secundario Madre Teresa | Saladillo / rural | Calle Jauretche e Yrigoyen | — | previa al proyecto (en reubicación) |
 | AE-01 | 298687 | Esc. de Educación Artística N°1 "Lola Mora" | 25 de Mayo / urbano | Calle 7 entre 23 y 24 | 061617500 | 2026-10-06 |
 | AE-02 | 298701 | Esc. de Educación Secundaria N°2 "Manuel Pardal" | Saladillo / urbano | Av. Pereyra 3046 | 060342300 | 2026-10-06 |
+| AE-03 | 298691 | Instituto Niño Jesús | — | — | — | Confirmado 2026-10-28 |
+| AE-04 | — | Del Valle (reservado) | — | — | — | Pendiente |
 
-AE-01 y AE-02 son PurpleAir PA-II-FLEX. Los códigos AE-03 y AE-04 están reservados para los dos sensores restantes. La convención se definió para los PurpleAir; los AirGradient (ID sintético 900000+) todavía no tienen código asignado.
+AE-01, AE-02 y AE-03 son PurpleAir PA-II-FLEX. AE-03 corresponde al Instituto Niño Jesús (298691); AE-04 queda reservado para Del Valle, sin sensor_index asignado. La convención se definió para los PurpleAir; los AirGradient (ID sintético 900000+) todavía no tienen código asignado.
+
+Estado al 28/10/2026: AE-01 sigue pendiente de instalación física según última información; AE-02 está operativo. AE-03 está online y visible según el titular, con lectura reciente verificada en D1 y `codigo = 'AE-03'` confirmado tras una actualización autorizada. Los AirGradient 900002 y 900003 conservan lecturas antiguas; no se acredita conexión actual. Ver [bitácora](99-bitacora.md) y [procedimiento seguro y reversión](https://github.com/lemeit/lemeit-aq/blob/main/docs/OPERACION_PURPLEAIR.md).
 
 ### Convención de códigos
 
@@ -139,16 +143,16 @@ AE-01 y AE-02 son PurpleAir PA-II-FLEX. Los códigos AE-03 y AE-04 están reserv
 
 1. Registrarlo en PurpleAir con el nombre `AE-NN`, coordenadas de la escuela, ubicación exterior y visibilidad pública.
 2. Anotar el `sensor_index` que le asigna PurpleAir (no es el Device ID).
-3. Actualizar el secret `SENSOR_INDEXES` del Worker. **El secret se reemplaza entero** (en Cloudflare: *Rotate* y luego *Deploy*): hay que pegar la lista completa, con los sensores ya activos más el nuevo, separada por comas y sin espacios.
-4. Esperar al próximo disparo de la ingesta (o ejecutarla a mano): se crea la fila en `sensores`.
-5. Cargar `codigo`, `fecha_instalacion`, `institucion` y `notas` (CUE y clave provincial) con un `UPDATE` desde la consola de D1.
+3. Respaldar privadamente la lista completa autorizada; D1 por sí sola no garantiza conocer la lista activa. Con autorización explícita, actualizar el secret `SENSOR_INDEXES` del Worker. **El secret se reemplaza entero** (en Cloudflare: *Rotate* y luego *Deploy*): hay que pegar la lista completa, con los sensores ya activos más el nuevo, separada por comas y sin espacios.
+4. Comprobar que la versión nueva está efectivamente desplegada; Rotate/Save version por sí solo puede dejarla sin activar. Esperar al próximo disparo de la ingesta (ejecutarla a mano requiere autorización explícita): se crea la fila en `sensores`.
+5. Con autorización explícita para escribir D1, cargar `codigo`, `fecha_instalacion`, `institucion` y `notas` (CUE y clave provincial) con un `UPDATE` desde la consola de D1.
 6. Verificar con un `SELECT` que la fila quedó completa.
 
 Un `UPDATE` sobre un `sensor_index` que todavía no existe en la tabla no da error y no cambia nada.
 
 ## Roadmap
 
-**Estado del hardware (octubre 2026)**: los 5 sensores **PurpleAir** están en poder del proyecto. El único que venía funcionando era AE-00, en el Colegio Secundario Madre Teresa, hoy pendiente de reubicación. AE-01 (25 de Mayo) y AE-02 (Saladillo) ya están registrados en PurpleAir y en el portal, y su instalación está prevista para el 6 de octubre; AE-03 y AE-04 todavía no tienen destino asignado. Las 4 unidades nuevas fueron una donación de [PurpleAir Collective](https://community.purpleair.com/t/purpleair-collective-june-july-2024/8771) (convocatoria de mitad de 2024, en base a una propuesta de necesidad presentada por el autor — el proyecto quedó en 2° puesto de esa ronda). Los 2 sensores **AirGradient** también están en mano y activos, hoy conectados en un domicilio particular a modo de prueba, a la espera de definir en qué instituciones se instalan.
+**Estado del hardware (octubre 2026)**: los 5 sensores **PurpleAir** están en poder del proyecto. El único que venía funcionando era AE-00, en el Colegio Secundario Madre Teresa, hoy pendiente de reubicación. AE-01 (25 de Mayo) permanece pendiente de instalación física según última información; AE-02 (Saladillo) está operativo; AE-03 está asignado al Instituto Niño Jesús, online y visible según el titular; AE-04 queda reservado para Del Valle, sin índice asignado. Las 4 unidades nuevas fueron una donación de [PurpleAir Collective](https://community.purpleair.com/t/purpleair-collective-june-july-2024/8771) (convocatoria de mitad de 2024, en base a una propuesta de necesidad presentada por el autor — el proyecto quedó en 2° puesto de esa ronda). Los 2 sensores **AirGradient** registrados (900002 y 900003) tienen lecturas antiguas en el corte D1 del 28/10; no se acredita conexión actual ni instalación definitiva del kit.
 
 **Fase 2 — expansión confirmada (reunión institucional del 16/9/2026, convocada por la Jefatura Regional de Educación)**: 5 escuelas — 3 en Saladillo y 2 en el partido de **25 de Mayo** — una de zona urbana y una de zona rural en cada partido, ampliando la red más allá del partido de Saladillo por primera vez. 4 confirmadas; la quinta (Colegio Secundario Madre Teresa) está en proceso de reubicación. Documentación de la reunión: plan de despliegue y hoja de especificaciones/requerimientos en [`docs/` del repo](https://github.com/lemeit/lemeit-aq/tree/main/docs). Ver también el roadmap de [EMA Saladillo](02-ema-saladillo.md), que suma una estación en 25 de Mayo por el mismo motivo. Esta expansión abre la puerta a un futuro apartado de reportes combinados (aire + meteorología) con análisis espacial entre sensores — hoy no es inmediato porque las estaciones EMA y los sensores de aire no comparten ubicación física.
 
