@@ -1,4 +1,4 @@
-# ![Profe](../assets/logos/profe.svg){: width="36" style="vertical-align:middle;margin-right:8px" } Profe Lamaita — profe.lemeit.ar
+# ![Profe](../assets/logos/profe-lamaita.svg){: width="36" style="vertical-align:middle;margin-right:8px" } Profe Lamaita — profe.lemeit.ar
 
 Sitio personal del **Prof. Ing. Luciano Lamaita**, docente de Física en Saladillo, Buenos Aires. Reúne la traducción y adaptación al español de las notas de Jeff Bigler, apuntes de clase de las 4 instituciones donde dicta materias, y los proyectos técnicos (EMA, Eureka AI, DVBA GIS).
 
