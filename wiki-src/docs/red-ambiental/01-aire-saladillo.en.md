@@ -119,15 +119,29 @@ Prompts for `PURPLEAIR_API_KEY` (the same one set with `wrangler secret put`), o
 
 Each PurpleAir sensor in the network has its own **project code** (`AE-NN`), independent of the `sensor_index` assigned by PurpleAir.
 
-| Code | `sensor_index` | Institution | District / setting | Address | CUE | Installed |
+| Code | `sensor_index` | Institution | District / setting | Address | CUE | PurpleAir registration |
 |---|---|---|---|---|---|---|
-| AE-00 | 198617 | Colegio Secundario Madre Teresa | Saladillo / rural | Calle Jauretche e Yrigoyen | — | before the project (being relocated) |
-| AE-01 | 298687 | Esc. de Educación Artística N°1 "Lola Mora" | 25 de Mayo / urban | Calle 7 between 23 and 24 | 061617500 | 2026-10-06 |
-| AE-02 | 298701 | Esc. de Educación Secundaria N°2 "Manuel Pardal" | Saladillo / urban | Av. Pereyra 3046 | 060342300 | 2026-10-06 |
-| AE-03 | 298691 | Instituto Niño Jesús | — | — | — | Confirmado 2026-10-28 |
+| AE-00 | 198617 | Colegio Secundario Madre Teresa | Saladillo / rural | Calle Jauretche e Yrigoyen | — | 2023-11-28 (initial); 2024-12-03 (school registration) |
+| AE-01 | 298687 | Esc. de Educación Artística N°1 "Lola Mora" | 25 de Mayo / urban | Calle 7 between 23 and 24 | 061617500 | 2026-10-05 |
+| AE-02 | 298701 | Esc. de Educación Secundaria N°2 "Manuel Pardal" | Saladillo / urban | Av. Pereyra 3046 | 060342300 | 2026-10-05 |
+| AE-03 | 298691 | Instituto Niño Jesús | — | — | — | 2026-10-28 |
 | AE-04 | — | Del Valle (reservado) | — | — | — | Pendiente |
 
 AE-01, AE-02 and AE-03 are PurpleAir PA-II-FLEX units. AE-03 is assigned to Instituto Niño Jesús (298691); AE-04 is reserved for Del Valle, with no sensor_index assigned. The convention was defined for the PurpleAir sensors; the AirGradient ones (synthetic ID 900000+) don't have a code assigned yet.
+
+### PurpleAir registration and physical installation are different dates
+
+Registration confirmations supplied by the owner on 2026-10-29 establish **AE-01 and AE-02: 2026-10-05; AE-03: 2026-10-28**. The previous 2026-10-06 registration date for AE-01/AE-02 is corrected; it is not reinterpreted as an installation date. Physical installation is recorded separately.
+
+| Code | Device ID | Latitude declared at registration | Longitude declared at registration |
+| --- | --- | --- | --- |
+| AE-01 | `ec:64:c9:cb:9f:3` | -35.43677574362913 | -60.168800362812966 |
+| AE-02 | `f0:24:f9:c2:cf:2d` | -35.63495676824009 | -59.7735131464144 |
+| AE-03 | `fc:f5:c4:ae:ca:d6` | -35.640825 | -59.778565 |
+
+The emails record outdoor location, public visibility and the default sending interval (~90 s), separate from LEMEIT ingestion. Online status refers only to when the email was sent, not current connectivity or permanent installation. Mini guides put registration date and coordinates under **Observations**; the installation date is left for the actual mounting event. Read keys and complete emails are excluded. See the [versioned registration record](https://github.com/lemeit/lemeit-aq/blob/main/docs/instalacion/REGISTRO_PURPLEAIR.md).
+
+AE-00 is the same device, ID `c8:c9:a3:f:93:af`: initially configured as `saladillo_home` on **2023-11-28**, then registered as `Madre Teresa High School` on **2024-12-03** after more than a year at the owner's home, according to the owner. The school confirmation gives sensor index **198617** and declared coordinates **-35.66630, -59.80716**. The initial email does not provide a sensor index; hardware identity connects the records. Neither registration date establishes the exact mounting date or a future relocation date. Home coordinates, contact details and read keys are excluded. The emails do not establish the model; the owner's later PurpleAir map screenshot identifies it as PA-II-FLEX.
 
 ### Code convention
 
@@ -177,3 +191,6 @@ An `UPDATE` on a `sensor_index` that doesn't exist yet raises no error and chang
 - **Own code per sensor (October 2026)**: new `codigo` column in `sensores` (migration 008) with the `AE-NN` convention, independent of PurpleAir's `sensor_index` and stable if a sensor moves to another school. The installation date uses the `fecha_instalacion` column, which already existed in the schema. See "Sensors and AE codes" above for the procedure to add a sensor.
 
 See the [project log](99-bitacora.md) (Spanish only) for the full session-by-session detail.
+AE-00 registration update confirmed by the owner's email: **2026-10-29, 12:27 as displayed**, name **`AE-00 | app.lemeit.ar`**, same sensor index 198617 and Device ID `c8:c9:a3:f:93:af`. Declared coordinates -35.6663, -59.80716 and elevation 42.3987 m; outdoor, public and sending data at email time. This name change preserves the initial 2023 registration and the 2024 school registration; it does not establish a new physical installation. `app.lemeit.ar` is the general portal; School Air is at [app.lemeit.ar/aq/](https://app.lemeit.ar/aq/).
+
+**Owner confirmation, 2026-10-29:** today's change is retained as a new school registration event in PurpleAir. AE-00 **is still at the owner's home**; physical relocation/installation at Madre Teresa is pending. Declared school map coordinates do not describe its current physical location. No home address or coordinates are published.

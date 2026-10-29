@@ -168,7 +168,24 @@ Sesión de alcance ampliado: unificar los tres proyectos sobre la misma infraest
 - **Alta segura**: respaldar privadamente la lista completa autorizada antes de reemplazar el secreto; D1 ayuda a contrastarla, pero no permite reconstruir por sí sola la lista activa. Comprobar versión efectiva, ingesta y D1; API y dashboard generan visitas y requieren autorización bajo una restricción estricta de solo lectura. Nunca revelar secretos. El comportamiento depende de la herramienta: algunas operaciones de secretos despliegan inmediatamente; otras solo crean versión.
 - **Alcance**: no se rotaron secretos, ejecutaron ingestas ni desplegó el Worker en esta intervención. La única escritura productiva autorizada fue completar el código de AE-03. No se acredita cobertura automática AirGradient (AQ-05), migración 009 ni despliegue del HEAD. El dashboard actual muestra `nombre`; mostrar `codigo` directamente sigue pendiente.
 
+## 29 de octubre de 2026 - Fechas de registro PurpleAir y mini guías
+
+Se documentan los correos aportados por el titular: AE-01 (298687) y AE-02 (298701), alta PurpleAir el **05/10/2026**; AE-03 (298691), **28/10/2026**. Se incorporan Device ID y coordenadas declaradas al registrar, sin claves de lectura ni correos completos. Las coordenadas no acreditan ubicación definitiva; la transmisión declarada en los correos corresponde solo al momento de envío.
+
+Se separan explícitamente **alta en PurpleAir** e **instalación física en el lugar seleccionado**. La primera va en Observaciones de las mini guías, junto con identidad y coordenadas; la segunda conserva un campo independiente. Se corrige la fecha 06/10 que figuraba como alta de AE-01/AE-02 sin convertirla en fecha de instalación. Versiones imprimibles con pie oscuro, códigos de cabecera y portal editables y Observaciones de dos líneas.
+
+Fuente mantenida en el [registro de altas del repositorio AQ](https://github.com/lemeit/lemeit-aq/blob/main/docs/instalacion/REGISTRO_PURPLEAIR.md), enlazado desde inventario y README. Esta intervención es documental: no modifica D1, secretos, ingestas ni estado productivo. Publicación sujeta a revisión y merge de los PR; el commit documental omite Pages con `[CF-Pages-Skip]`.
+
+AE-00: se reconstruye el historial por el Device ID `c8:c9:a3:f:93:af`. Primera alta como `saladillo_home` el 28/11/2023; registro escolar como `Madre Teresa High School` el 03/12/2024, sensor index 198617, después de la etapa en el domicilio del titular. Se conserva únicamente la coordenada escolar declarada en 2024 (-35.66630, -59.80716). El primer correo no informa sensor index. No se deduce fecha exacta de instalación física ni conexión continua; futura reubicación pendiente. Se omiten coordenadas del domicilio, contactos personales y credenciales.
+
 ## Notas sobre las fuentes de esta bitácora
 
 - El detalle línea por línea de cada sesión (comandos exactos, mensajes de error completos, capturas) queda en el historial de commits de cada repositorio (`git log`) y, para EMA hasta agosto 2026, en los `.docx` originales dentro de `ema-saladillo/docs/`.
 - Esta página se actualiza manualmente después de cada sesión de trabajo relevante — no hay automatización todavía que la genere desde los commits.
+### AE-00: nuevo nombre en PurpleAir (29/10/2026)
+
+**29/10/2026, 12:27 según el correo aportado:** nueva confirmación de registro con nombre `AE-00 | app.lemeit.ar`, mismo sensor index **198617** y Device ID `c8:c9:a3:f:93:af`. Coordenadas declaradas: **-35.6663, -59.80716**, numéricamente iguales a las del registro escolar de 2024; elevación declarada **42.3987 m**. Exterior, público, intervalo de envío por defecto (~90 s). El correo declara transmisión al momento de envío. Es un cambio de nombre/actualización de registro, no una nueva alta inicial ni una fecha de instalación física. El enlace del nombre apunta a `app.lemeit.ar` (portal general); la dirección específica de Aire Escolar es `https://app.lemeit.ar/aq/`.
+
+No se incorporan claves ni datos de contacto. Esta actualización solo documenta la acción que el titular realizó en PurpleAir; no escribe D1 ni cambia el código del proyecto.
+
+Seguimiento confirmado por el titular el 29/10/2026: se registra el evento de hoy como **registro escolar**, aunque AE-00 sigue físicamente en su domicilio. Traslado/instalación en el lugar escolar seleccionado pendiente; no asignar fecha física por el correo de registro. Por solicitud del titular, se mantienen solo dos mini guías por equipo (color e impresión), actualizadas con nombres fijos y sin copias de versiones anteriores en la carpeta vigente.
