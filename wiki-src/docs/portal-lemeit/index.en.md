@@ -10,6 +10,39 @@ Updated 28 October 2026.
 
 Lemeit links to Eureka, Aire Escolar and teaching materials, with secondary links to the Physics concept map, weather and water quality. Its original hand-drawn SVG sensor, light bulb and notebook use cream #FAF7F2, oxide orange #9B3D00 and teal #009688. The personal calligraphic L belongs to Luciano Lamaita, not the Lemeit umbrella brand.
 
+## Encuentro: the Lemeit symbol
+
+<figure style="text-align:center;margin:2rem auto">
+  <img src="../assets/logos/lemeit.svg" alt="Encuentro: orange straight segments with arrows meet at a vertex connected to a teal wave, on a cream background" width="240" height="240">
+  <figcaption><strong>Encuentro</strong> · the selected Lemeit symbol and favicon.</figcaption>
+</figure>
+
+The visual language comes from **Feynman diagrams**: lines, arrows and an interaction vertex. In physics these diagrams represent contributions to interaction calculations, not photographs or literal particle trajectories. Straight lines with arrows are used for fermions; wavy lines can denote photons and certain other bosons. [Educational reference: ATLAS/CERN, Feynman Diagrams](<https://cds.cern.ch/record/2759490/files/Feynman%20Diagrams%20-%20ATLAS%20Cheat%20Sheet.pdf>).
+
+For **Lemeit**, this structure is a **metaphor for ideas meeting**. It is not assigned a particular reaction or physical process. The vertex connects science, education and the environment as a brand image, rather than an experimental claim.
+
+| Design element | Brand interpretation |
+|---|---|
+| Straight segments and arrows | Paths arriving at and continuing from an encounter |
+| Orange vertex | A meeting point for questions, people and projects |
+| Teal wave | A connection opening a new possibility |
+| Thin, simple geometry | Favicon legibility and consistency with the portal drawings |
+
+### Palette and construction
+
+Cream **#FAF7F2** is the background; oxide orange **#9B3D00** marks the segments, arrows and vertex; teal **#009688** marks the wave. This original SVG uses vector geometry, without font dependencies. Automatically oriented arrowheads are enlarged relative to the line width. [Open or download Encuentro SVG](../assets/logos/lemeit.svg).
+
+### Interacción: retained alternative
+
+<figure style="text-align:center;margin:1.5rem auto">
+  <img src="../assets/logos/lemeit-interaccion.svg" alt="Interacción: two orange vertices joined by a teal wave, with straight segments and arrows on both sides" width="160" height="160">
+  <figcaption><strong>Interacción</strong> · an alternative retained for future uses.</figcaption>
+</figure>
+
+Its two vertices are connected by a wave, and its arrows were also corrected and enlarged. It remains backed up and **does not replace Encuentro** as the selected favicon. [Open or download Interacción SVG](../assets/logos/lemeit-interaccion.svg).
+
+The **calligraphic L** identifies **Luciano Lamaita personally** and represents **Profe Lamaita**, not the Lemeit brand. [Teaching portal documentation](../profe-lemeit/index.md).
+
 ## Eureka: final composition
 
 The introduction retains EUREKA with AI in superscript and “ancora imparo — aún aprendo”. Four fixed areas surround the central explanation and tutor button: tesseract and mass–spring at left, Lorenz and pendulum at right. Each model moves within its own area; panels do not drift or rotate. Small screens show the introduction first, then a two-column model grid.
