@@ -11,6 +11,8 @@ docs_dir: docs  # los .md editables viven directamente acá
 
 theme:
   name: material
+  logo: assets/logos/lemeit.svg
+  favicon: assets/logos/lemeit.svg
   language: es
   # Los colores reales de las dos paletas (fondo, texto, acento naranja)
   # se pisan en stylesheets/lemeit-retro.css con los mismos hex que usan

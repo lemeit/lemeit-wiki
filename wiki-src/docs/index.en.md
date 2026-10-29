@@ -8,7 +8,7 @@ Parent wiki for the **lemeit.ar** projects: technical documentation, usage guide
 |---|---|---|---|---|
 | ![EMA](assets/logos/ema.svg){: width="28" } ![AQ](assets/logos/aq.svg){: width="28" } ![WQ](assets/logos/wq.svg){: width="28" } | Environmental Monitoring Network | Three sibling environmental monitoring portals (air, weather, water) on Cloudflare, unified under a single domain (`app.lemeit.ar`) since September 2026 | [aq](https://app.lemeit.ar/aq/) · [emas](https://app.lemeit.ar/emas/) · [wq](https://app.lemeit.ar/wq/) | [See section](red-ambiental/index.md) |
 | ![Eureka AI](assets/logos/eureka.svg){: width="28" } | Eureka AI | AI-assisted Socratic science tutor, for high school and university entrance-level courses | [tutor.lemeit.ar](https://tutor.lemeit.ar) | [See section](eureka-tutor/index.md) |
-| ![Profe](assets/logos/profe.svg){: width="28" } | Profe Lamaita | Personal teaching site: Physics notes (Bigler translation), course materials, and a Quartz/Obsidian concept map | [profe.lemeit.ar](https://profe.lemeit.ar) | [See section](profe-lemeit/index.md) |
+| ![Profe](assets/logos/profe-lamaita.svg){: width="28" } | Profe Lamaita | Personal teaching site: Physics notes (Bigler translation), course materials, and a Quartz/Obsidian concept map | [profe.lemeit.ar](https://profe.lemeit.ar) | [See section](profe-lemeit/index.md) |
 
 New projects get added as new sections as they're documented — this table and the side menu are updated each time.
 
