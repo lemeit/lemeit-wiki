@@ -192,3 +192,5 @@ An `UPDATE` on a `sensor_index` that doesn't exist yet raises no error and chang
 
 See the [project log](99-bitacora.md) (Spanish only) for the full session-by-session detail.
 AE-00 registration update confirmed by the owner's email: **2026-10-29, 12:27 as displayed**, name **`AE-00 | app.lemeit.ar`**, same sensor index 198617 and Device ID `c8:c9:a3:f:93:af`. Declared coordinates -35.6663, -59.80716 and elevation 42.3987 m; outdoor, public and sending data at email time. This name change preserves the initial 2023 registration and the 2024 school registration; it does not establish a new physical installation. `app.lemeit.ar` is the general portal; School Air is at [app.lemeit.ar/aq/](https://app.lemeit.ar/aq/).
+
+**Owner confirmation, 2026-10-29:** today's change is retained as a new school registration event in PurpleAir. AE-00 **is still at the owner's home**; physical relocation/installation at Madre Teresa is pending. Declared school map coordinates do not describe its current physical location. No home address or coordinates are published.

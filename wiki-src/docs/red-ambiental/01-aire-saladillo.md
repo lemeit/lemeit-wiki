@@ -191,3 +191,5 @@ Un `UPDATE` sobre un `sensor_index` que todavía no existe en la tabla no da err
 
 Ver la [Bitácora del proyecto](99-bitacora.md) para el detalle sesión por sesión.
 Actualización de registro AE-00 confirmada por correo aportado: **29/10/2026, 12:27**, nombre **`AE-00 | app.lemeit.ar`**, mismo sensor index 198617 y Device ID `c8:c9:a3:f:93:af`. Coordenadas declaradas -35.6663, -59.80716 y elevación 42.3987 m; el correo indica exterior, público y transmitiendo al momento del envío. Este cambio de nombre conserva el alta inicial de 2023 y el registro escolar de 2024; no es una nueva instalación física. `app.lemeit.ar` es el portal general, mientras que Aire Escolar se encuentra en [app.lemeit.ar/aq/](https://app.lemeit.ar/aq/).
+
+**Confirmación del titular al 29/10/2026:** el cambio de hoy se conserva como nuevo evento de registro escolar en PurpleAir. AE-00 **todavía está en su domicilio**; el traslado/instalación física en Madre Teresa queda pendiente. Las coordenadas escolares declaradas en el mapa no representan la ubicación física actual. No se publican dirección ni coordenadas domiciliarias.
