@@ -1,15 +1,25 @@
 # ![AQ](../assets/logos/aq.svg){: width="36" style="vertical-align:middle;margin-right:8px" } Monitoreo Ambiental Escolar — app.lemeit.ar/aq
 
-Red de sensores de calidad del aire (PM1.0/PM2.5/PM10, VOC, CO2, NOx, temperatura, humedad, presión) instalada en instituciones educativas y domicilios de la Provincia de Buenos Aires — proyecto piloto en los partidos de Saladillo y 25 de Mayo. Combina sensores **PurpleAir** y **AirGradient** en una misma base y un mismo dashboard.
+Red de sensores de calidad del aire (PM1.0/PM2.5/PM10, VOC, CO2, NOx, temperatura, humedad, presión) destinada a instituciones educativas y otras ubicaciones, con equipos instalados y otros pendientes de despliegue de la Provincia de Buenos Aires — proyecto piloto en los partidos de Saladillo y 25 de Mayo. Combina sensores **PurpleAir** y **AirGradient** en una misma base y un mismo dashboard.
 
 Repositorio: [github.com/lemeit/lemeit-aq](https://github.com/lemeit/lemeit-aq)
+
+## Estado operativo — 1 de noviembre de 2026
+
+**PurpleAir:** según confirmación del titular, **AE-00 (198617), AE-01 (298687), AE-02 (298701) y AE-03 (298691)** están dados de alta en el portal PurpleAir e incluidos en la configuración de ingesta de LEMEIT. **AE-04 todavía no fue registrado en PurpleAir** y no tiene `sensor_index`. Esta confirmación no equivale a revelar ni verificar el valor del Secret cifrado `SENSOR_INDEXES`.
+
+El titular informó que **AE-00, AE-01 y AE-03 están apagados** mientras se prepara su instalación o reubicación. AE-02 constaba como operativo en el último inventario; su conectividad actual no se verificó de nuevo. El historial D1 se conserva: apagado, registrado en PurpleAir, instalado físicamente y «activo» en la base no son sinónimos. Ver [inventario versionado](https://github.com/lemeit/lemeit-aq/blob/main/docs/INVENTARIO_ESTACIONES.md) y [guía de operación segura](https://github.com/lemeit/lemeit-aq/blob/main/docs/OPERACION_PURPLEAIR.md).
+
+**Ahorro de puntos desde el 29/10/2026:** se pasó a ingesta PurpleAir **cada 30 minutos**, con cron-job.org observado a **:27 y :57**; el titular decidió conservar esa frecuencia. GitHub Actions mantiene el schedule comentado; el panel de Cloudflare mostraba **cero Cron Triggers activos**, aunque el archivo versionado `worker/wrangler.toml` todavía declara un cron: hay que reconciliarlo **antes de desplegar** para evitar reactivaciones involuntarias. Cada ejecución normal de `POST /api/ingest-ahora` hace una petición a PurpleAir para la lista configurada, aun si algún sensor está apagado. Un `200 OK` del cron no prueba que se hayan insertado filas nuevas.
+
+PurpleAir confirmó una **donación adicional de 20 millones de puntos** para sostener Aire Escolar; el saldo comunicado el 01/11 era **19.992.888 puntos** (corte histórico, no lectura en vivo). Las **11.228 llamadas / 967.088 puntos** del 02/10–01/11 abarcan mayormente días previos al cambio del 29/10 y no permiten calcular directamente el ahorro nuevo. [Evidencia y limitaciones en el PR documental #29](https://github.com/lemeit/lemeit-aq/pull/29) (borrador pendiente de integrar al momento de esta revisión). Ver también la [bitácora](99-bitacora.md).
 
 ## Arquitectura
 
 ```
 PurpleAir API + AirGradient API
-        ↓ (ingesta cada 15 min)
-cron-job.org (externo, único camino activo) — GitHub Actions y Cron Trigger de Cloudflare quedan en reserva
+        ↓ (PurpleAir: ingesta observada cada 30 min desde el 29/10/2026)
+cron-job.org (externo) → POST /api/ingest-ahora; GitHub Actions sin schedule; Cloudflare sin Cron Trigger activo según panel
         ↓
 Cloudflare D1 — tablas "sensores" (metadata) y "lecturas" (serie temporal)
         ↓
@@ -18,7 +28,7 @@ Worker "purpleair-saladillo-api" — API REST propia (JSON/CSV)
 index.html (Cloudflare Pages) — dashboard estático
 ```
 
-Hasta agosto 2026 corrían en paralelo tres disparadores de ingesta (Cron Trigger de Cloudflare, GitHub Actions y cron-job.org) como redundancia deliberada ante el bug de Cloudflare que hace que el Cron Trigger quede registrado pero nunca dispare. El `INSERT OR IGNORE` + `UNIQUE(sensor_index, timestamp)` en `lecturas` evita filas duplicadas, pero no evita que cada camino activo gaste su propia llamada a la API de PurpleAir — con 4 sensores nuevos por sumarse, en septiembre 2026 se pausó GitHub Actions (queda `workflow_dispatch` para ejecutarlo manualmente) y **cron-job.org pasó a ser el único disparador activo**, para no pagar doble en puntos de la API. Detalle completo en el [README del repo](https://github.com/lemeit/lemeit-aq#readme).
+Como antecedente histórico, hasta agosto 2026 se evaluaron tres disparadores de ingesta (Cron Trigger de Cloudflare, GitHub Actions y cron-job.org) como redundancia deliberada ante el bug de Cloudflare que hace que el Cron Trigger quede registrado pero nunca dispare. El `INSERT OR IGNORE` + `UNIQUE(sensor_index, timestamp)` en `lecturas` evita filas duplicadas, pero no evita que cada camino activo gaste su propia llamada a la API de PurpleAir — ante el incremento previsto de sensores, en septiembre 2026 se pausó GitHub Actions (queda `workflow_dispatch` para ejecutarlo manualmente) y **cron-job.org pasó entonces a ser el disparador principal**, para no pagar doble en puntos de la API. Detalle completo en el [README del repo](https://github.com/lemeit/lemeit-aq#readme).
 
 ## API pública
 
@@ -35,7 +45,7 @@ Los tres primeros aceptan `&formato=csv` para descargar CSV en vez de JSON.
 
 ## Guía de uso de la API
 
-Base URL: `https://api.lemeit.ar/aq` (dominio público compartido con los otros proyectos de la red ambiental, vía Route de Cloudflare — ver "Arquitectura" arriba; el `*.workers.dev` original sigue funcionando igual como respaldo directo, sin el prefijo `/aq`). `app.lemeit.ar/aq` sirve el dashboard estático, no la API (`aq.lemeit.ar` viejo redirige solo ahí); el propio dashboard (`index.html`, que incluye la documentación de la API) usa esta misma base de API. Todos los ejemplos funcionan pegados directo en la barra del navegador o con `curl`.
+Base URL: `https://api.lemeit.ar/aq` (dominio público compartido con los otros proyectos de la red ambiental, vía Route de Cloudflare — ver "Arquitectura" arriba; el `*.workers.dev` original sigue funcionando igual como respaldo directo, sin el prefijo `/aq`). `app.lemeit.ar/aq` sirve el dashboard estático, no la API (`aq.lemeit.ar` viejo redirige solo ahí); el propio dashboard (`index.html`, que incluye la documentación de la API) usa esta misma base de API. Los ejemplos pueden ejecutarse desde el navegador o con `curl`, pero **los GET públicos de lectura registran visitas en D1**; no ejecutarlos como prueba si se exige una revisión estrictamente sin escrituras.
 
 **Metadata de los sensores activos:**
 
@@ -129,7 +139,7 @@ Cada sensor PurpleAir de la red tiene un **código propio del proyecto** (`AE-NN
 
 AE-01, AE-02 y AE-03 son PurpleAir PA-II-FLEX. AE-03 corresponde al Instituto Niño Jesús (298691); AE-04 queda reservado para Del Valle, sin sensor_index asignado. La convención se definió para los PurpleAir; los AirGradient (ID sintético 900000+) todavía no tienen código asignado.
 
-Estado al 28/10/2026: AE-01 sigue pendiente de instalación física según última información; AE-02 está operativo. AE-03 está online y visible según el titular, con lectura reciente verificada en D1 y `codigo = 'AE-03'` confirmado tras una actualización autorizada. Los AirGradient 900002 y 900003 conservan lecturas antiguas; no se acredita conexión actual. Ver [bitácora](99-bitacora.md) y [procedimiento seguro y reversión](https://github.com/lemeit/lemeit-aq/blob/main/docs/OPERACION_PURPLEAIR.md).
+**Actualización 01/11/2026:** AE-00/01/02/03 están registrados en PurpleAir y configurados para ingesta, según el titular; AE-04 **no está registrado**. AE-00/01/03 están apagados; AE-02 figuraba operativo en el último inventario, sin revalidación de conectividad. El registro de AE-03 y su código en D1 fueron confirmados anteriormente; esa prueba histórica no indica que siga encendido. Los AirGradient 900002 y 900003 conservan lecturas antiguas en el último corte, sin acreditación de conexión actual. Ver [bitácora](99-bitacora.md) y [procedimiento seguro y reversión](https://github.com/lemeit/lemeit-aq/blob/main/docs/OPERACION_PURPLEAIR.md).
 
 ### Convención de códigos
 
@@ -152,7 +162,7 @@ Un `UPDATE` sobre un `sensor_index` que todavía no existe en la tabla no da err
 
 ## Roadmap
 
-**Estado del hardware (octubre 2026)**: los 5 sensores **PurpleAir** están en poder del proyecto. El único que venía funcionando era AE-00, en el Colegio Secundario Madre Teresa, hoy pendiente de reubicación. AE-01 (25 de Mayo) permanece pendiente de instalación física según última información; AE-02 (Saladillo) está operativo; AE-03 está asignado al Instituto Niño Jesús, online y visible según el titular; AE-04 queda reservado para Del Valle, sin índice asignado. Las 4 unidades nuevas fueron una donación de [PurpleAir Collective](https://community.purpleair.com/t/purpleair-collective-june-july-2024/8771) (convocatoria de mitad de 2024, en base a una propuesta de necesidad presentada por el autor — el proyecto quedó en 2° puesto de esa ronda). Los 2 sensores **AirGradient** registrados (900002 y 900003) tienen lecturas antiguas en el corte D1 del 28/10; no se acredita conexión actual ni instalación definitiva del kit.
+**Antecedente de hardware (octubre 2026; sustituido por el estado 01/11 indicado arriba):** los 5 sensores **PurpleAir** están en poder del proyecto. El único que venía funcionando era AE-00, en el Colegio Secundario Madre Teresa, hoy pendiente de reubicación. AE-01 (25 de Mayo) permanece pendiente de instalación física según última información; AE-02 (Saladillo) está operativo; AE-03 está asignado al Instituto Niño Jesús, online y visible según el titular; AE-04 queda reservado para Del Valle, sin índice asignado. Las 4 unidades nuevas fueron una donación de [PurpleAir Collective](https://community.purpleair.com/t/purpleair-collective-june-july-2024/8771) (convocatoria de mitad de 2024, en base a una propuesta de necesidad presentada por el autor — el proyecto quedó en 2° puesto de esa ronda). Los 2 sensores **AirGradient** registrados (900002 y 900003) tienen lecturas antiguas en el corte D1 del 28/10; no se acredita conexión actual ni instalación definitiva del kit.
 
 **Fase 2 — expansión confirmada (reunión institucional del 16/9/2026, convocada por la Jefatura Regional de Educación)**: 5 escuelas — 3 en Saladillo y 2 en el partido de **25 de Mayo** — una de zona urbana y una de zona rural en cada partido, ampliando la red más allá del partido de Saladillo por primera vez. 4 confirmadas; la quinta (Colegio Secundario Madre Teresa) está en proceso de reubicación. Documentación de la reunión: plan de despliegue y hoja de especificaciones/requerimientos en [`docs/` del repo](https://github.com/lemeit/lemeit-aq/tree/main/docs). Ver también el roadmap de [EMA Saladillo](02-ema-saladillo.md), que suma una estación en 25 de Mayo por el mismo motivo. Esta expansión abre la puerta a un futuro apartado de reportes combinados (aire + meteorología) con análisis espacial entre sensores — hoy no es inmediato porque las estaciones EMA y los sensores de aire no comparten ubicación física.
 
