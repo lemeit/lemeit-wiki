@@ -1,6 +1,6 @@
 # ![AQ](../assets/logos/aq.svg){: width="36" style="vertical-align:middle;margin-right:8px" } Monitoreo Ambiental Escolar — app.lemeit.ar/aq
 
-Red de sensores de calidad del aire (PM1.0/PM2.5/PM10, VOC, CO2, NOx, temperatura, humedad, presión) instalada en instituciones educativas y domicilios de la Provincia de Buenos Aires — proyecto piloto en los partidos de Saladillo y 25 de Mayo. Combina sensores **PurpleAir** y **AirGradient** en una misma base y un mismo dashboard.
+Red de sensores de calidad del aire (PM1.0/PM2.5/PM10, VOC, CO2, NOx, temperatura, humedad, presión) destinada a instituciones educativas y otras ubicaciones, con equipos instalados y otros pendientes de despliegue de la Provincia de Buenos Aires — proyecto piloto en los partidos de Saladillo y 25 de Mayo. Combina sensores **PurpleAir** y **AirGradient** en una misma base y un mismo dashboard.
 
 Repositorio: [github.com/lemeit/lemeit-aq](https://github.com/lemeit/lemeit-aq)
 
@@ -12,7 +12,7 @@ El titular informó que **AE-00, AE-01 y AE-03 están apagados** mientras se pre
 
 **Ahorro de puntos desde el 29/10/2026:** se pasó a ingesta PurpleAir **cada 30 minutos**, con cron-job.org observado a **:27 y :57**; el titular decidió conservar esa frecuencia. GitHub Actions mantiene el schedule comentado; el panel de Cloudflare mostraba **cero Cron Triggers activos**, aunque el archivo versionado `worker/wrangler.toml` todavía declara un cron: hay que reconciliarlo **antes de desplegar** para evitar reactivaciones involuntarias. Cada ejecución normal de `POST /api/ingest-ahora` hace una petición a PurpleAir para la lista configurada, aun si algún sensor está apagado. Un `200 OK` del cron no prueba que se hayan insertado filas nuevas.
 
-PurpleAir confirmó una **donación adicional de 20 millones de puntos** para sostener Aire Escolar; el saldo comunicado el 01/11 era **19.992.888 puntos** (corte histórico, no lectura en vivo). Las **11.228 llamadas / 967.088 puntos** del 02/10–01/11 abarcan mayormente días previos al cambio del 29/10 y no permiten calcular directamente el ahorro nuevo. [Evidencia y limitaciones](https://github.com/lemeit/lemeit-aq/blob/main/docs/VERIFICACION_CONSUMO_PURPLEAIR_20261101.md) (documento disponible en rama de revisión/PR hasta su integración). Ver también la [bitácora](99-bitacora.md).
+PurpleAir confirmó una **donación adicional de 20 millones de puntos** para sostener Aire Escolar; el saldo comunicado el 01/11 era **19.992.888 puntos** (corte histórico, no lectura en vivo). Las **11.228 llamadas / 967.088 puntos** del 02/10–01/11 abarcan mayormente días previos al cambio del 29/10 y no permiten calcular directamente el ahorro nuevo. [Evidencia y limitaciones en el PR documental #29](https://github.com/lemeit/lemeit-aq/pull/29) (borrador pendiente de integrar al momento de esta revisión). Ver también la [bitácora](99-bitacora.md).
 
 ## Arquitectura
 
@@ -45,7 +45,7 @@ Los tres primeros aceptan `&formato=csv` para descargar CSV en vez de JSON.
 
 ## Guía de uso de la API
 
-Base URL: `https://api.lemeit.ar/aq` (dominio público compartido con los otros proyectos de la red ambiental, vía Route de Cloudflare — ver "Arquitectura" arriba; el `*.workers.dev` original sigue funcionando igual como respaldo directo, sin el prefijo `/aq`). `app.lemeit.ar/aq` sirve el dashboard estático, no la API (`aq.lemeit.ar` viejo redirige solo ahí); el propio dashboard (`index.html`, que incluye la documentación de la API) usa esta misma base de API. Todos los ejemplos funcionan pegados directo en la barra del navegador o con `curl`.
+Base URL: `https://api.lemeit.ar/aq` (dominio público compartido con los otros proyectos de la red ambiental, vía Route de Cloudflare — ver "Arquitectura" arriba; el `*.workers.dev` original sigue funcionando igual como respaldo directo, sin el prefijo `/aq`). `app.lemeit.ar/aq` sirve el dashboard estático, no la API (`aq.lemeit.ar` viejo redirige solo ahí); el propio dashboard (`index.html`, que incluye la documentación de la API) usa esta misma base de API. Los ejemplos pueden ejecutarse desde el navegador o con `curl`, pero **los GET públicos de lectura registran visitas en D1**; no ejecutarlos como prueba si se exige una revisión estrictamente sin escrituras.
 
 **Metadata de los sensores activos:**
 
