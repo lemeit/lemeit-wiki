@@ -4,12 +4,22 @@ Air quality sensor network (PM1.0/PM2.5/PM10, VOC, CO2, NOx, temperature, humidi
 
 Repository: [github.com/lemeit/lemeit-aq](https://github.com/lemeit/lemeit-aq)
 
+## Operating status — 1 November 2026
+
+**PurpleAir:** the project owner confirmed that **AE-00 (198617), AE-01 (298687), AE-02 (298701) and AE-03 (298691)** are registered with PurpleAir and configured for LEMEIT ingestion. **AE-04 is not yet registered** with PurpleAir and has no `sensor_index`. This is owner-reported configuration, not a disclosure or direct verification of the encrypted Cloudflare `SENSOR_INDEXES` secret.
+
+**AE-00, AE-01 and AE-03 are powered off** while awaiting installation or relocation, according to the owner. AE-02 was reported operational in the previous inventory, but current connectivity has not been rechecked. Historical readings remain stored even while a unit is off. Registration, physical installation, freshness and administrative status are distinct.
+
+**PurpleAir ingestion was reduced to every 30 minutes on 29 October 2026**. cron-job.org runs were observed at minutes **:27 and :57**; the owner chose to retain this schedule. GitHub Actions' schedule is commented out; the Cloudflare production dashboard showed **no active Cron Triggers**, though `worker/wrangler.toml` still declares one. This discrepancy must be reconciled before any Worker deployment. Each normal ingestion invocation makes one PurpleAir measurement request for the configured sensor list; powered-off units may still be included.
+
+PurpleAir confirmed a donation of **20 million additional API points** to support Aire Escolar. The balance reported on 1 November was **19,992,888 points** (snapshot, not real time). The 2 October–1 November totals (11,228 calls and 967,088 points) mostly predate the change and **must not be treated as a measurement of the new 30-minute schedule's daily usage**. See the [documentation review PR](https://github.com/lemeit/lemeit-aq/pull/29), [station inventory](https://github.com/lemeit/lemeit-aq/blob/main/docs/INVENTARIO_ESTACIONES.md) and [Spanish project log](99-bitacora.md).
+
 ## Architecture
 
 ```
 PurpleAir API + AirGradient API
-        ↓ (ingestion every 15 min)
-cron-job.org (external, only active path) — GitHub Actions and Cloudflare Cron Trigger stay on standby
+        ↓ (PurpleAir: ingestion observed every 30 min since 29 October)
+cron-job.org (external) → POST /api/ingest-ahora; GitHub Actions schedule paused; no active Cloudflare Cron Trigger reported
         ↓
 Cloudflare D1 — "sensores" (metadata) and "lecturas" (time series) tables
         ↓
@@ -18,7 +28,7 @@ Worker "purpleair-saladillo-api" — own REST API (JSON/CSV)
 index.html (Cloudflare Pages) — static dashboard
 ```
 
-Until August 2026 three ingestion triggers ran in parallel (Cloudflare Cron Trigger, GitHub Actions and cron-job.org) as deliberate redundancy against a Cloudflare bug that leaves the Cron Trigger registered but never firing. The `INSERT OR IGNORE` + `UNIQUE(sensor_index, timestamp)` on `lecturas` prevents duplicate rows, but doesn't prevent each active path from spending its own call to the PurpleAir API — with 4 new sensors about to be added, in September 2026 GitHub Actions was paused (`workflow_dispatch` stays available to run it manually) and **cron-job.org became the only active trigger**, to avoid paying double in API quota points. Full detail in the [repo README](https://github.com/lemeit/lemeit-aq#readme).
+Historically, up to August 2026, three ingestion triggers were evaluated (Cloudflare Cron Trigger, GitHub Actions and cron-job.org) as deliberate redundancy against a Cloudflare bug that leaves the Cron Trigger registered but never firing. The `INSERT OR IGNORE` + `UNIQUE(sensor_index, timestamp)` on `lecturas` prevents duplicate rows, but doesn't prevent each active path from spending its own call to the PurpleAir API — before expanding the sensor network, in September 2026 GitHub Actions was paused (`workflow_dispatch` stays available to run it manually) and **cron-job.org became the primary scheduled trigger at that time**, to avoid paying double in API quota points. Full detail in the [repo README](https://github.com/lemeit/lemeit-aq#readme).
 
 ## Public API
 
@@ -143,11 +153,15 @@ The emails record outdoor location, public visibility and the default sending in
 
 AE-00 is the same device, ID `c8:c9:a3:f:93:af`: initially configured as `saladillo_home` on **2023-11-28**, then registered as `Madre Teresa High School` on **2024-12-03** after more than a year at the owner's home, according to the owner. The school confirmation gives sensor index **198617** and declared coordinates **-35.66630, -59.80716**. The initial email does not provide a sensor index; hardware identity connects the records. Neither registration date establishes the exact mounting date or a future relocation date. Home coordinates, contact details and read keys are excluded. The emails do not establish the model; the owner's later PurpleAir map screenshot identifies it as PA-II-FLEX.
 
+**Later AE-00 update — 29 October 2026.** AE-00 registration update confirmed by the owner's email: **2026-10-29, 12:27 as displayed**, name **`AE-00 | app.lemeit.ar`**, same sensor index 198617 and Device ID `c8:c9:a3:f:93:af`. Declared coordinates -35.6663, -59.80716 and elevation 42.3987 m; outdoor, public and sending data at email time. This name change preserves the initial 2023 registration and the 2024 school registration; it does not establish a new physical installation. `app.lemeit.ar` is the general portal; School Air is at [app.lemeit.ar/aq/](https://app.lemeit.ar/aq/).
+
+**Owner confirmation, 2026-10-29:** today's change is retained as a new school registration event in PurpleAir. AE-00 **is still at the owner's home**; physical relocation/installation at Madre Teresa is pending. Declared school map coordinates do not describe its current physical location. No home address or coordinates are published.
+
 ### Code convention
 
 - `AE-00` is the network's first sensor, from before the project; `AE-01` onwards are assigned in installation order.
 - The code is **stable**: if a sensor moves to another school, the code stays and only the institution changes.
-- In the D1 database (`sensores` table) it is stored in the `codigo` column (unique), and the installation date in `fecha_instalacion`. The API returns both in `/api/sensores` and `/api/ultimas`.
+- In the D1 database (`sensores` table) it is stored in the `codigo` column (unique), and the physical installation date in `fecha_instalacion`. The API returns both in `/api/sensores` and `/api/ultimas`.
 - On the portal, each card shows the institution as its title and the sensor name (`AE-NN`) below it.
 - The Worker **does not overwrite** `nombre`, `institucion`, `codigo` or `fecha_instalacion` during ingestion; it only updates latitude and longitude from PurpleAir.
 
@@ -155,19 +169,19 @@ AE-00 is the same device, ID `c8:c9:a3:f:93:af`: initially configured as `saladi
 
 1. Register it on PurpleAir with the name `AE-NN`, the school's coordinates, outdoor location and public visibility.
 2. Note the `sensor_index` PurpleAir assigns (this is not the Device ID).
-3. Update the Worker's `SENSOR_INDEXES` secret. **The secret is replaced entirely** (in Cloudflare: *Rotate*, then *Deploy*): paste the full list, with the sensors already active plus the new one, comma-separated with no spaces.
-4. Wait for the next ingestion run (or trigger it manually): the row is created in `sensores`.
-5. Fill in `codigo`, `fecha_instalacion`, `institucion` and `notas` (CUE and provincial code) with an `UPDATE` from the D1 console.
+3. With explicit authorization, back up the full approved list privately before replacing the Worker's `SENSOR_INDEXES` secret. **The secret is replaced entirely** (in Cloudflare: *Rotate*, then *Deploy*): paste the full list, with the sensors already active plus the new one, comma-separated with no spaces.
+4. Confirm that the newly created Worker version was actually deployed; then await the next regular ingestion. A manual ingestion needs separate authorization. The row can then be created in `sensores`.
+5. Only with explicit authorization, fill in `codigo`, `fecha_instalacion`, `institucion` and `notas` (CUE and provincial code) with an `UPDATE` from the D1 console.
 6. Check with a `SELECT` that the row is complete.
 
 An `UPDATE` on a `sensor_index` that doesn't exist yet raises no error and changes nothing.
 
 ## Roadmap
 
-> Update, 28 October 2026: AE-01 is still awaiting physical installation according to the latest owner report; AE-02 is operational. AE-03 is online and visible according to the owner, with a recent D1 reading verified independently. Its project code `AE-03` was added with explicit authorization and checked by SELECT. AirGradient 900002 and 900003 have old readings; current connectivity is unverified. Rotate created a Worker version that still required deployment in this incident. See the [Spanish log](99-bitacora.md) and [safe procedure and rollback](https://github.com/lemeit/lemeit-aq/blob/main/docs/OPERACION_PURPLEAIR.md). The hardware description below records an earlier state.
+> Historical snapshot, 28 October 2026 (superseded by the 1 November status above): AE-01 is still awaiting physical installation according to the latest owner report; AE-02 is operational. AE-03 is online and visible according to the owner, with a recent D1 reading verified independently. Its project code `AE-03` was added with explicit authorization and checked by SELECT. AirGradient 900002 and 900003 have old readings; current connectivity is unverified. Rotate created a Worker version that still required deployment in this incident. See the [Spanish log](99-bitacora.md) and [safe procedure and rollback](https://github.com/lemeit/lemeit-aq/blob/main/docs/OPERACION_PURPLEAIR.md). The hardware description below records an earlier state.
 
 
-**Hardware status (October 2026)**: all 5 **PurpleAir** sensors are in the project's hands. The only one running until now was AE-00, at Colegio Secundario Madre Teresa, currently pending relocation. AE-01 (25 de Mayo) and AE-02 (Saladillo) are already registered on PurpleAir and on the portal, and their installation is planned for October 6; AE-03 and AE-04 don't have an assigned destination yet. The 4 new units were a donation from [PurpleAir Collective](https://community.purpleair.com/t/purpleair-collective-june-july-2024/8771) (mid-2024 call, based on a needs proposal submitted by the author — the project placed 2nd in that round). The 2 **AirGradient** sensors are also in hand and active, currently connected at a private home for testing, pending a decision on which institutions they'll be installed in.
+**Historical hardware notes (October 2026; superseded by the 1 November status above)**: all 5 **PurpleAir** sensors are in the project's hands. The only one running until now was AE-00, at Colegio Secundario Madre Teresa, currently pending relocation. AE-01 (25 de Mayo) and AE-02 (Saladillo) are already registered on PurpleAir and on the portal, and their installation is planned for October 6; AE-03 and AE-04 don't have an assigned destination yet. The 4 new units were a donation from [PurpleAir Collective](https://community.purpleair.com/t/purpleair-collective-june-july-2024/8771) (mid-2024 call, based on a needs proposal submitted by the author — the project placed 2nd in that round). The 2 **AirGradient** sensors are also in hand and active, currently connected at a private home for testing, pending a decision on which institutions they'll be installed in.
 
 **Phase 2 — confirmed expansion (institutional meeting on 9/16/2026, convened by the Regional Education Office)**: 5 schools — 3 in Saladillo and 2 in the **25 de Mayo** district — one urban and one rural site in each district, expanding the network beyond Saladillo for the first time. 4 confirmed; the fifth (Colegio Secundario Madre Teresa) is being relocated. Meeting documentation: deployment plan and specification/requirements sheet in the [repo's `docs/`](https://github.com/lemeit/lemeit-aq/tree/main/docs). See also the [EMA Saladillo roadmap](02-ema-saladillo.md) (Spanish only), which adds a station in 25 de Mayo for the same reason. This expansion opens the door to a future combined report (air + weather) with spatial analysis between sensors — not immediate today, since the EMA stations and the air sensors don't share a physical location yet.
 
@@ -191,6 +205,3 @@ An `UPDATE` on a `sensor_index` that doesn't exist yet raises no error and chang
 - **Own code per sensor (October 2026)**: new `codigo` column in `sensores` (migration 008) with the `AE-NN` convention, independent of PurpleAir's `sensor_index` and stable if a sensor moves to another school. The installation date uses the `fecha_instalacion` column, which already existed in the schema. See "Sensors and AE codes" above for the procedure to add a sensor.
 
 See the [project log](99-bitacora.md) (Spanish only) for the full session-by-session detail.
-AE-00 registration update confirmed by the owner's email: **2026-10-29, 12:27 as displayed**, name **`AE-00 | app.lemeit.ar`**, same sensor index 198617 and Device ID `c8:c9:a3:f:93:af`. Declared coordinates -35.6663, -59.80716 and elevation 42.3987 m; outdoor, public and sending data at email time. This name change preserves the initial 2023 registration and the 2024 school registration; it does not establish a new physical installation. `app.lemeit.ar` is the general portal; School Air is at [app.lemeit.ar/aq/](https://app.lemeit.ar/aq/).
-
-**Owner confirmation, 2026-10-29:** today's change is retained as a new school registration event in PurpleAir. AE-00 **is still at the owner's home**; physical relocation/installation at Madre Teresa is pending. Declared school map coordinates do not describe its current physical location. No home address or coordinates are published.
