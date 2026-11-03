@@ -17,7 +17,7 @@ Son modelos ilustrativos, no datos experimentales: proyección de un hipercubo 4
 
 ### Favicon y respaldo
 
-**Encuentro** es el favicon elegido en `landing/favicon.svg`: dos segmentos naranja óxido, vértice central y línea ondulada verde azulado. Las flechas son marcadores SVG orientados con `orient="auto"`, ampliados para distinguirse del trazo. La URL incluye una versión para renovar la caché. Colores: crema `#FAF7F2`, naranja `#9B3D00`, verde `#009688`.
+**Encuentro ilustrado** es el favicon elegido en `landing/favicon.svg`: contornos oscuros, vértice naranja y onda verde sobre manchas suaves de color. Las flechas son marcadores SVG orientados con `orient="auto"`, ampliados para distinguirse del trazo. La URL incluye una versión para renovar la caché. Colores: crema `#FAF7F2`, naranja `#9B3D00`, verde `#009688`.
 
 **Interacción** queda reservado en `docs/identidad-lemeit/favicon-interaccion.svg` del repositorio privado Eureka, con las cuatro flechas corregidas y del mismo tamaño. Son símbolos propios inspirados en el lenguaje de Feynman, sin asignarles un proceso físico concreto. No se reemplazan los favicons particulares del tutor ni de los portales ambientales.
 
@@ -25,42 +25,51 @@ Son modelos ilustrativos, no datos experimentales: proyección de un hipercubo 4
 
 Editar las fuentes, trabajar en una rama y revisar mediante PR. La fusión a `main` dispara los despliegues Git de ambos proyectos Pages. No publicar carpetas de prueba, variantes históricas HTML ni etiquetas locales. Se validaron sintaxis JavaScript, SVG y enlaces, y se revisaron las escenas en escritorio y los favicons ampliados y a 16/32/64 px. La revisión visual exhaustiva en móvil sigue pendiente. Las pruebas locales en `127.0.0.1` requieren un servidor activo; los sitios publicados en Cloudflare no dependen de esa computadora.
 
-## Encuentro: el símbolo de Lemeit
+## Encuentro: el símbolo ilustrado de Lemeit
+
+Versión vigente desde el **02/11/2026**. Reemplaza al dibujo geométrico anterior con el mismo lenguaje de las ilustraciones de los proyectos: contornos oscuros ligeramente irregulares, vértice naranja y manchas suaves de color.
 
 <figure style="text-align:center;margin:2rem auto">
-  <img src="../assets/logos/lemeit.svg" alt="Encuentro: dos segmentos naranja óxido con flechas confluyen en un vértice del que parte una línea ondulada verde azulado, sobre fondo crema" width="240" height="240">
-  <figcaption><strong>Encuentro</strong> · símbolo elegido para Lemeit y su favicon.</figcaption>
+  <img src="../assets/logos/lemeit-encuentro-ilustrado.svg" alt="Encuentro ilustrado: dos líneas oscuras con flechas se reúnen en un vértice naranja y una onda verde, sobre manchas cálidas y verdes suaves" width="240" height="240" style="background:#FAF7F2;border-radius:12px">
+  <figcaption><strong>Encuentro ilustrado</strong> · logo vigente de Lemeit.</figcaption>
 </figure>
 
-El logo toma su lenguaje visual de los **diagramas de Feynman**: líneas, flechas y un vértice de interacción. En física, estos diagramas representan contribuciones a un cálculo de interacción; no son fotografías ni trayectorias literales de partículas. Por ejemplo, las líneas rectas con flechas se usan para fermiones y las onduladas para fotones y ciertos otros bosones. [Referencia didáctica: ATLAS/CERN, Feynman Diagrams](<https://cds.cern.ch/record/2759490/files/Feynman%20Diagrams%20-%20ATLAS%20Cheat%20Sheet.pdf>).
+El logo toma su lenguaje visual de los **diagramas de Feynman**: líneas, flechas y un vértice de interacción. En física, representan contribuciones a un cálculo de interacción, no fotografías ni trayectorias literales. Las líneas con flechas y las onduladas se usan para distinguir tipos de partículas. [Referencia didáctica: ATLAS/CERN, Feynman Diagrams](<https://cds.cern.ch/record/2759490/files/Feynman%20Diagrams%20-%20ATLAS%20Cheat%20Sheet.pdf>).
 
-En **Lemeit**, esa estructura se usa como una **metáfora de encuentro entre ideas**. No se le asigna una reacción ni un proceso físico específico: el símbolo reúne ciencias, educación y ambiente sin convertir el logo en una afirmación experimental.
+En Lemeit, el encuentro de líneas es una metáfora de ideas, personas y proyectos que se conectan. **No se le asigna un proceso físico concreto.**
 
-| Elemento del diseño | Lectura de marca |
-|---|---|
-| Segmentos rectos con flechas | Recorridos que llegan al encuentro y continúan desde él |
-| Vértice naranja | Punto común entre preguntas, personas y proyectos |
-| Línea ondulada verde | Una conexión que abre otra posibilidad |
-| Trazo fino y forma simple | Legibilidad como favicon y coherencia con los dibujos de la portada |
+### Logo y favicon: dos escalas
 
-### Colores y construcción
-
-- **Crema cálido `#FAF7F2`**: fondo.
-- **Naranja óxido `#9B3D00`**: segmentos, flechas y vértice.
-- **Verde azulado `#009688`**: línea ondulada.
-
-Es un SVG propio, con geometría vectorial y sin dependencia de fuentes tipográficas. Las puntas de flecha se alinean automáticamente con sus segmentos y tienen un tamaño mayor que el ancho del trazo. [Abrir o descargar Encuentro en SVG](../assets/logos/lemeit.svg).
-
-### Interacción: alternativa conservada
+| Uso | Tratamiento | Recurso |
+|---|---|---|
+| Logo | Fondo transparente, contornos finos y manchas suaves | [Descargar SVG del logo](../assets/logos/lemeit-encuentro-ilustrado.svg) |
+| Favicon | Fondo crema y contornos algo reforzados | [Descargar SVG del favicon](../assets/logos/lemeit-favicon-ilustrado.svg) |
 
 <figure style="text-align:center;margin:1.5rem auto">
-  <img src="../assets/logos/lemeit-interaccion.svg" alt="Interacción: dos vértices naranja óxido unidos por una línea ondulada verde, con segmentos rectos y flechas a ambos lados" width="160" height="160">
-  <figcaption><strong>Interacción</strong> · alternativa reservada para futuros usos.</figcaption>
+  <img src="../assets/logos/lemeit-favicon-ilustrado.svg" alt="Favicon Encuentro a 16 píxeles" width="16" height="16">
+  <img src="../assets/logos/lemeit-favicon-ilustrado.svg" alt="Favicon Encuentro a 32 píxeles" width="32" height="32">
+  <img src="../assets/logos/lemeit-favicon-ilustrado.svg" alt="Favicon Encuentro a 64 píxeles" width="64" height="64">
+  <figcaption>El mismo dibujo a 16, 32 y 64 píxeles.</figcaption>
 </figure>
 
-Esta variante conserva dos vértices unidos por una onda. Sus flechas también fueron corregidas y ampliadas. Queda respaldada, pero **no reemplaza a Encuentro** como favicon elegido. [Abrir o descargar Interacción en SVG](../assets/logos/lemeit-interaccion.svg).
+Las puntas se orientan sobre cada segmento. El trazo del logo es de 1,5 unidades y su onda de 1,7; el favicon usa 2 y 2,1. Son SVG propios, sin fuentes externas. La portada renueva la caché con `/favicon.svg?v=ilustrado-20261102`; la wiki usa archivos nuevos para su logo y favicon.
 
-La **L caligráfica** identifica personalmente a **Luciano Lamaita** y representa al portal **Profe Lamaita**; no es el logo de Lemeit. [Ver la ficha del portal docente](../profe-lemeit/index.md).
+### Colores del dibujo
+
+La base de Lemeit sigue siendo crema `#FAF7F2`, naranja óxido `#9B3D00` y la familia verde azulado `#009688`. La ilustración usa tinta `#382D24`, vértice `#A95727`, onda `#00877B` y manchas `#DEC5A6` / `#9BBFB0` con baja opacidad. Estos matices adaptan el dibujo al estilo de la portada; no cambian la paleta global.
+
+### Interacción ilustrado: alternativa reservada
+
+<figure style="text-align:center;margin:1.5rem auto">
+  <img src="../assets/logos/lemeit-interaccion-ilustrado.svg" alt="Interacción ilustrado: dos vértices naranja unidos por una onda verde, con contornos oscuros y manchas de color" width="180" height="180" style="background:#FAF7F2;border-radius:12px">
+  <figcaption><strong>Interacción ilustrado</strong> · alternativa para futuros usos.</figcaption>
+</figure>
+
+Se conserva con sus dos vértices y cuatro flechas, pero no reemplaza a Encuentro como símbolo elegido. [Descargar Interacción ilustrado](../assets/logos/lemeit-interaccion-ilustrado.svg).
+
+Las versiones geométricas anteriores permanecen como respaldo: [Encuentro geométrico](../assets/logos/archivo/lemeit-geometrico.svg) e [Interacción geométrico](../assets/logos/archivo/lemeit-interaccion-geometrico.svg). No son los archivos activos de marca.
+
+La **L caligráfica de Luciano Lamaita** representa al [portal Profe](../profe-lemeit/index.md). Esta actualización no modifica esa identidad personal.
 
 ## Registro de decisiones
 

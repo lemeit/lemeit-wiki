@@ -10,38 +10,49 @@ Updated 28 October 2026.
 
 Lemeit links to Eureka, Aire Escolar and teaching materials, with secondary links to the Physics concept map, weather and water quality. Its original hand-drawn SVG sensor, light bulb and notebook use cream #FAF7F2, oxide orange #9B3D00 and teal #009688. The personal calligraphic L belongs to Luciano Lamaita, not the Lemeit umbrella brand.
 
-## Encuentro: the Lemeit symbol
+## Encuentro: the illustrated Lemeit symbol
+
+Current version selected on **2 November 2026**. It replaces the earlier geometric drawing with the visual language of the project's illustrations: slightly irregular dark outlines, an orange vertex and soft colour washes.
 
 <figure style="text-align:center;margin:2rem auto">
-  <img src="../assets/logos/lemeit.svg" alt="Encuentro: orange straight segments with arrows meet at a vertex connected to a teal wave, on a cream background" width="240" height="240">
-  <figcaption><strong>Encuentro</strong> · the selected Lemeit symbol and favicon.</figcaption>
+  <img src="../assets/logos/lemeit-encuentro-ilustrado.svg" alt="Illustrated Encuentro: dark arrowed lines meet at an orange vertex connected to a green wave, over soft warm and green washes" width="240" height="240" style="background:#FAF7F2;border-radius:12px">
+  <figcaption><strong>Illustrated Encuentro</strong> · the current Lemeit logo.</figcaption>
 </figure>
 
-The visual language comes from **Feynman diagrams**: lines, arrows and an interaction vertex. In physics these diagrams represent contributions to interaction calculations, not photographs or literal particle trajectories. Straight lines with arrows are used for fermions; wavy lines can denote photons and certain other bosons. [Educational reference: ATLAS/CERN, Feynman Diagrams](<https://cds.cern.ch/record/2759490/files/Feynman%20Diagrams%20-%20ATLAS%20Cheat%20Sheet.pdf>).
+The symbol borrows lines, arrows and a vertex from **Feynman diagram notation**. In physics those diagrams contribute to interaction calculations; they are not photographs or literal particle trajectories. [Educational reference: ATLAS/CERN](<https://cds.cern.ch/record/2759490/files/Feynman%20Diagrams%20-%20ATLAS%20Cheat%20Sheet.pdf>). In the brand, the encounter is a metaphor for connected ideas, people and projects. No particular physical process is assigned to it.
 
-For **Lemeit**, this structure is a **metaphor for ideas meeting**. It is not assigned a particular reaction or physical process. The vertex connects science, education and the environment as a brand image, rather than an experimental claim.
+### Two scales
 
-| Design element | Brand interpretation |
-|---|---|
-| Straight segments and arrows | Paths arriving at and continuing from an encounter |
-| Orange vertex | A meeting point for questions, people and projects |
-| Teal wave | A connection opening a new possibility |
-| Thin, simple geometry | Favicon legibility and consistency with the portal drawings |
-
-### Palette and construction
-
-Cream **#FAF7F2** is the background; oxide orange **#9B3D00** marks the segments, arrows and vertex; teal **#009688** marks the wave. This original SVG uses vector geometry, without font dependencies. Automatically oriented arrowheads are enlarged relative to the line width. [Open or download Encuentro SVG](../assets/logos/lemeit.svg).
-
-### Interacción: retained alternative
+| Use | Treatment | Resource |
+|---|---|---|
+| Logo | Transparent background, thin outlines, soft washes | [Logo SVG](../assets/logos/lemeit-encuentro-ilustrado.svg) |
+| Favicon | Cream tile and slightly stronger outlines | [Favicon SVG](../assets/logos/lemeit-favicon-ilustrado.svg) |
 
 <figure style="text-align:center;margin:1.5rem auto">
-  <img src="../assets/logos/lemeit-interaccion.svg" alt="Interacción: two orange vertices joined by a teal wave, with straight segments and arrows on both sides" width="160" height="160">
-  <figcaption><strong>Interacción</strong> · an alternative retained for future uses.</figcaption>
+  <img src="../assets/logos/lemeit-favicon-ilustrado.svg" alt="Encuentro favicon at 16 pixels" width="16" height="16">
+  <img src="../assets/logos/lemeit-favicon-ilustrado.svg" alt="Encuentro favicon at 32 pixels" width="32" height="32">
+  <img src="../assets/logos/lemeit-favicon-ilustrado.svg" alt="Encuentro favicon at 64 pixels" width="64" height="64">
+  <figcaption>The same drawing at 16, 32 and 64 pixels.</figcaption>
 </figure>
 
-Its two vertices are connected by a wave, and its arrows were also corrected and enlarged. It remains backed up and **does not replace Encuentro** as the selected favicon. [Open or download Interacción SVG](../assets/logos/lemeit-interaccion.svg).
+Arrowheads orient automatically along their segments. Logo outlines/wave use 1.5/1.7 units, compared with 2/2.1 for the favicon. The original SVGs do not depend on external fonts. The landing uses a versioned favicon URL; the wiki uses new filenames to refresh caches.
 
-The **calligraphic L** identifies **Luciano Lamaita personally** and represents **Profe Lamaita**, not the Lemeit brand. [Teaching portal documentation](../profe-lemeit/index.md).
+### Palette
+
+Lemeit's cream #FAF7F2, oxide orange #9B3D00 and teal family #009688 remain the base palette. The drawing uses ink #382D24, vertex #A95727, wave #00877B and low-opacity washes #DEC5A6 / #9BBFB0. These are illustrative shades, not a global theme change.
+
+### Interacción: retained illustrated alternative
+
+<figure style="text-align:center;margin:1.5rem auto">
+  <img src="../assets/logos/lemeit-interaccion-ilustrado.svg" alt="Illustrated Interacción: two orange vertices joined by a green wave, with dark outlines and soft colour washes" width="180" height="180" style="background:#FAF7F2;border-radius:12px">
+  <figcaption><strong>Illustrated Interacción</strong> · an alternative for future uses.</figcaption>
+</figure>
+
+It retains two vertices and four arrows without replacing Encuentro. [Download illustrated Interacción](../assets/logos/lemeit-interaccion-ilustrado.svg).
+
+The earlier [geometric Encuentro](../assets/logos/archivo/lemeit-geometrico.svg) and [geometric Interacción](../assets/logos/archivo/lemeit-interaccion-geometrico.svg) remain archived, not active brand assets.
+
+Luciano Lamaita's **calligraphic L** still represents the [Profe teaching portal](../profe-lemeit/index.md), and is not changed by this update.
 
 ## Eureka: final composition
 
