@@ -91,3 +91,7 @@ Se incorporó la sección [Portal Lemeit](wiki-src/docs/portal-lemeit/index.md),
 ## Logos de la wiki — 28/10/2026
 
 El logo general y favicon usan **Encuentro** en `wiki-src/docs/assets/logos/lemeit.svg`. El portal **Profe Lamaita** se representa mediante la **L caligráfica personal de Luciano**, tomada del SVG canónico de `lemeit/aboutme`, en `assets/logos/profe-lamaita.svg`; `profe.svg` conserva la misma figura para compatibilidad. Inicio y ficha de Profe, en español e inglés, usan el nombre nuevo para renovar la imagen en caché. No usar la L personal para representar a la marca Lemeit ni la antigua L tipográfica para Profe.
+
+## Encuentro ilustrado — 02/11/2026
+
+La identidad vigente adopta el estilo a mano alzada de las ilustraciones de la portada. Logo: `assets/logos/lemeit-encuentro-ilustrado.svg`; favicon reforzado con fondo crema: `assets/logos/lemeit-favicon-ilustrado.svg`. La configuración de MkDocs usa ambos archivos; `lemeit.svg` mantiene la versión actual por compatibilidad. La ficha Portal Lemeit muestra y explica el diseño actual en español e inglés. Los SVG geométricos anteriores se archivan en `assets/logos/archivo/`; Interacción ilustrado sigue reservado. La L personal de Profe no se reemplaza.
