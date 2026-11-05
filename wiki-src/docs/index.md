@@ -9,12 +9,13 @@ Wiki madre de los proyectos de **lemeit.ar**: documentación técnica, guías de
 | ![EMA](assets/logos/ema.svg){: width="28" } ![AQ](assets/logos/aq.svg){: width="28" } ![WQ](assets/logos/wq.svg){: width="28" } | Red de Monitoreo Ambiental | Tres portales hermanos de monitoreo ambiental (aire, meteorología, agua) sobre Cloudflare, unificados bajo un solo dominio (`app.lemeit.ar`) desde setiembre 2026 | [aq](https://app.lemeit.ar/aq/) · [emas](https://app.lemeit.ar/emas/) · [wq](https://app.lemeit.ar/wq/) | [Ver sección](red-ambiental/index.md) |
 | ![Eureka AI](assets/logos/eureka.svg){: width="28" } | Eureka AI | Tutor socrático de ciencias asistido por IA, para secundario y curso de ingreso universitario | [tutor.lemeit.ar](https://tutor.lemeit.ar) | [Ver sección](eureka-tutor/index.md) |
 | ![Profe](assets/logos/profe-lamaita.svg){: width="28" } | Profe Lamaita | Sitio personal docente: notas de Física (traducción de Bigler), apuntes de cátedra y mapa de conceptos Quartz/Obsidian | [profe.lemeit.ar](https://profe.lemeit.ar) | [Ver sección](profe-lemeit/index.md) |
+| ![TeX](assets/logos/tex.svg){: width="28" } | TeX | Editor de LaTeX en el navegador, con vista previa de PDF, plantillas y proyectos locales | [tex.lemeit.ar](https://tex.lemeit.ar/) | [Ver sección](tex/index.md) |
 
 Nuevos proyectos se van sumando como secciones nuevas a medida que se documentan — esta tabla y el menú lateral se actualizan cada vez.
 
 ## Sobre esta wiki
 
-- Generada con [MkDocs](https://www.mkdocs.org/) + [Material](https://squidfunk.github.io/mkdocs-material/), el mismo stack que usa la wiki de [DVBA](https://github.com/lemeit/DVBA) (`wiki-src/` → build automático vía GitHub Actions → `site/` → GitHub Pages).
+- Generada con [MkDocs](https://www.mkdocs.org/) + [Material](https://squidfunk.github.io/mkdocs-material/), el mismo stack que usa la wiki de [DVBA](https://github.com/lemeit/DVBA) (`wiki-src/` → build automático vía GitHub Actions → `site/` → Cloudflare Pages).
 - El código fuente de cada página vive en `wiki-src/docs/` del repo [`lemeit/lemeit-wiki`](https://github.com/lemeit/lemeit-wiki), organizado en una carpeta por proyecto.
 - Todo el contenido es público: no hay nada que ocultar en la parte técnica ni de desarrollo. La idea es que cualquiera —un colega, un alumno, alguien de la Municipalidad, un futuro yo mismo dentro de un año— pueda entender qué hace cada proyecto, con qué tecnología está armado y cómo se usa, sin tener que pedir explicaciones por privado.
 - Se actualiza manualmente después de cada sesión de trabajo relevante en cualquiera de los proyectos — no hay automatización todavía que la genere sola desde los commits.

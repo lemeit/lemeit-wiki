@@ -9,12 +9,13 @@ Parent wiki for the **lemeit.ar** projects: technical documentation, usage guide
 | ![EMA](assets/logos/ema.svg){: width="28" } ![AQ](assets/logos/aq.svg){: width="28" } ![WQ](assets/logos/wq.svg){: width="28" } | Environmental Monitoring Network | Three sibling environmental monitoring portals (air, weather, water) on Cloudflare, unified under a single domain (`app.lemeit.ar`) since September 2026 | [aq](https://app.lemeit.ar/aq/) · [emas](https://app.lemeit.ar/emas/) · [wq](https://app.lemeit.ar/wq/) | [See section](red-ambiental/index.md) |
 | ![Eureka AI](assets/logos/eureka.svg){: width="28" } | Eureka AI | AI-assisted Socratic science tutor, for high school and university entrance-level courses | [tutor.lemeit.ar](https://tutor.lemeit.ar) | [See section](eureka-tutor/index.md) |
 | ![Profe](assets/logos/profe-lamaita.svg){: width="28" } | Profe Lamaita | Personal teaching site: Physics notes (Bigler translation), course materials, and a Quartz/Obsidian concept map | [profe.lemeit.ar](https://profe.lemeit.ar) | [See section](profe-lemeit/index.md) |
+| ![TeX](assets/logos/tex.svg){: width="28" } | TeX | Browser-based LaTeX editor with PDF preview, templates and local projects | [tex.lemeit.ar](https://tex.lemeit.ar/) | [See section](tex/index.md) |
 
 New projects get added as new sections as they're documented — this table and the side menu are updated each time.
 
 ## About this wiki
 
-- Built with [MkDocs](https://www.mkdocs.org/) + [Material](https://squidfunk.github.io/mkdocs-material/), the same stack used by the [DVBA](https://github.com/lemeit/DVBA) wiki (`wiki-src/` → automatic build via GitHub Actions → `site/` → GitHub Pages).
+- Built with [MkDocs](https://www.mkdocs.org/) + [Material](https://squidfunk.github.io/mkdocs-material/), the same stack used by the [DVBA](https://github.com/lemeit/DVBA) wiki (`wiki-src/` → automatic build via GitHub Actions → `site/` → Cloudflare Pages).
 - Each page's source lives under `wiki-src/docs/` in the [`lemeit/lemeit-wiki`](https://github.com/lemeit/lemeit-wiki) repo, organized in one folder per project.
 - All the content is public: there's nothing to hide on the technical or development side. The idea is that anyone — a colleague, a student, someone from the local government, or my own future self a year from now — can understand what each project does, what it's built with, and how to use it, without having to ask for an explanation privately.
 - Updated by hand after each relevant work session on any of the projects — there's no automation yet that generates it from the commits on its own.

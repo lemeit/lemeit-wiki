@@ -18,6 +18,7 @@ Wiki madre de documentación técnica y bitácora de los proyectos de **lemeit.a
 | Red Ambiental | 💧 Calidad del Agua | [app.lemeit.ar/wq/](https://app.lemeit.ar/wq/) | [lemeit-wq](https://github.com/lemeit/lemeit-wq) |
 | — | 🎓 Eureka AI | [tutor.lemeit.ar](https://tutor.lemeit.ar) | `lemeit/eureka` (privado) |
 | — | 👨‍🏫 Profe Lamaita | [profe.lemeit.ar](https://profe.lemeit.ar) | [aboutme](https://github.com/lemeit/aboutme) |
+| — | TeX | [tex.lemeit.ar](https://tex.lemeit.ar/) | [lemeit-tex](https://github.com/lemeit/lemeit-tex) (acceso restringido) |
 
 Más proyectos se suman como secciones nuevas a medida que se documentan (ver "Cómo agregar un proyecto" más abajo).
 
