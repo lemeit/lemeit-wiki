@@ -95,6 +95,8 @@ nav:
       - Bitácora: red-ambiental/99-bitacora.md
   - Eureka AI:
       - Resumen: eureka-tutor/index.md
+  - TeX:
+      - Resumen: tex/index.md
   - Profe Lamaita:
       - Resumen: profe-lemeit/index.md
 
