@@ -81,6 +81,8 @@ plugins:
             Bitácora: Log (Spanish only)
             Eureka AI: Eureka AI
             Profe Lamaita: Profe Lamaita
+            Uso, plantillas y encabezados: Usage, templates and headers
+            Mantenimiento y publicación: Maintenance and deployment
 
 nav:
   - Inicio: index.md
@@ -97,6 +99,8 @@ nav:
       - Resumen: eureka-tutor/index.md
   - TeX:
       - Resumen: tex/index.md
+      - Uso, plantillas y encabezados: tex/uso-y-plantillas.md
+      - Mantenimiento y publicación: tex/mantenimiento.md
   - Profe Lamaita:
       - Resumen: profe-lemeit/index.md
 

@@ -1,6 +1,6 @@
 # TeX · LaTeX documents
 
-TeX is Lemeit's browser-based LaTeX editor, combining an editor, PDF preview, starter templates and locally stored projects. Its interface is in Spanish and the project is **under development**. Updated 5 November 2026.
+TeX is Lemeit's browser-based LaTeX editor, combining an editor, PDF preview, starter templates and locally stored projects. Its interface is in Spanish and the project is **under development**. Updated 6 November 2026.
 
 ## Links
 
@@ -8,6 +8,20 @@ TeX is Lemeit's browser-based LaTeX editor, combining an editor, PDF preview, st
 - [Spanish PDF guide](https://tex.lemeit.ar/guia-tex.pdf) and [editable guide ZIP](https://tex.lemeit.ar/guia-tex.zip).
 - [Project presentation](https://profe.lemeit.ar/en/projects/tex/).
 - [Independent lemeit-tex repository (restricted access)](https://github.com/lemeit/lemeit-tex).
+
+## Current features
+
+- Code, split and PDF-only views, with adjustable panel sizes.
+- Local syntax highlighting, command suggestions with Tab, bracket completion and indentation.
+- File, Edit, Insert, Format, View and Help menus (labels currently in Spanish).
+- Find/replace, go to line, comment selection and jump to LaTeX errors.
+- SyncTeX: select PDF text or Ctrl/Command + click to locate the source; Alt + F9 goes back to the PDF.
+- Percentage zoom, fit width and fit page; separate appearance schemes for code, console and PDF.
+- Floating or docked, resizable help and activity panels.
+
+The application, templates and guide remain in Spanish. An English application version is planned, not available yet. This wiki provides English documentation.
+
+See [usage, templates and headers](uso-y-plantillas.md) and [maintenance and deployment](mantenimiento.md).
 
 ## Workflow
 
@@ -17,7 +31,7 @@ Choose a template, start blank or import a compatible ZIP. Edit and compile manu
 
 Projects and resources are stored in the browser's IndexedDB. They do not sync between devices. Clearing browser data may delete documents, so keep exported backups.
 
-The first visit requires internet access. Offline preparation caches the application and resources used by the prepared project. The cache check compiles without contacting the package mirror. Packages not yet downloaded still require a connection, and browsers may clear stored resources.
+Offline controls are under Edición → Preferencias → Uso sin conexión. The first visit requires internet access. Offline preparation caches the application and resources used by the prepared project. The cache check compiles without contacting the package mirror. Packages not yet downloaded still require a connection, and browsers may clear stored resources.
 
 ## Architecture and limits
 
@@ -33,6 +47,8 @@ The geometric TeX mark uses orange `#9B3D00` and teal `#009688`. It identifies a
 
 ## Code, checks and deployment
 
-The application lives in `lemeit/lemeit-tex`, independently of `aboutme`. GitHub stores code and runs validation and packaging checks through Actions. Cloudflare serves `site/` using the existing `lemeit-tex` resource. The browser compiles LaTeX with SwiftLaTeX/pdfTeX via WebAssembly; PDF.js displays the result.
+The application lives in `lemeit/lemeit-tex`, independently of `aboutme`. GitHub stores code and runs validation and packaging checks through Actions. Cloudflare serves `site/` using the existing `lemeit-tex` resource. The browser compiles with WasmTex/pdfTeX 2025 by default (SyncTeX), or SwiftLaTeX in compatibility mode. PDF.js displays the result. A restricted Worker serves public files from a fixed TeX Live mirror; it does not receive documents for compilation.
 
-GitHub checks **do not deploy**. Automatic deployment from GitHub to Cloudflare is not connected: publishing remains an explicit action. Use `npm run validate`, then `npm run deploy:check` for a non-publishing packaging check, and, with authorization, `npm run deploy` to update the live site.
+GitHub Actions validates without deploying itself. **Cloudflare Workers Builds is connected to this repository and its `main` branch**: merging or updating that branch triggers deployment using `npm run deploy`, which validates again. Publishing requires the owner's authorization. See [the deployment workflow](mantenimiento.md).
+
+As of 6 November 2026, PRs #1 through #4 integrate the view modes, assisted editing, appearance, zoom and search fixes into `main`. Validation passed 71 tests and packaging checks; interface cache: `lemeit-tex-shell-v64-busqueda`.

@@ -96,3 +96,18 @@ El logo general y favicon usan **Encuentro** en `wiki-src/docs/assets/logos/leme
 ## Encuentro ilustrado — 02/11/2026
 
 La identidad vigente adopta el estilo a mano alzada de las ilustraciones de la portada. Logo: `assets/logos/lemeit-encuentro-ilustrado.svg`; favicon reforzado con fondo crema: `assets/logos/lemeit-favicon-ilustrado.svg`. La configuración de MkDocs usa ambos archivos; `lemeit.svg` mantiene la versión actual por compatibilidad. La ficha Portal Lemeit muestra y explica el diseño actual en español e inglés. Los SVG geométricos anteriores se archivan en `assets/logos/archivo/`; Interacción ilustrado sigue reservado. La L personal de Profe no se reemplaza.
+
+## TeX · actualización del 6/11/2026
+
+La [sección de TeX](wiki-src/docs/tex/index.md) incluye el estado publicado,
+[uso, plantillas y encabezados](wiki-src/docs/tex/uso-y-plantillas.md) y
+[mantenimiento y publicación](wiki-src/docs/tex/mantenimiento.md), con equivalentes
+en inglés para la wiki. Registra las tres vistas, edición asistida, SyncTeX,
+esquemas de apariencia, zoom y la corrección de búsqueda. Los modelos originales
+y los documentos guardados se distinguen explícitamente.
+
+La aplicación se mantiene en el repositorio independiente privado
+`lemeit/lemeit-tex`. Cloudflare Workers Builds publica desde su `main` con
+`npm run deploy`; GitHub Actions valida. Esta wiki usa su propio repositorio,
+MkDocs y Cloudflare Pages. La documentación en inglés no implica que la aplicación,
+sus plantillas o la guía PDF ya estén traducidas.
