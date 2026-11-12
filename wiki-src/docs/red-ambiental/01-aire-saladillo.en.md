@@ -4,13 +4,13 @@ Air quality sensor network (PM1.0/PM2.5/PM10, VOC, CO2, NOx, temperature, humidi
 
 Repository: [github.com/lemeit/lemeit-aq](https://github.com/lemeit/lemeit-aq)
 
-## Operating status — 1 November 2026
+## Operating status — 12 November 2026
 
-**Historical status as of 1 November 2026 (superseded by the 12 November update below):** **PurpleAir:** the project owner confirmed that **AE-00 (198617), AE-01 (298687), AE-02 (298701) and AE-03 (298691)** are registered with PurpleAir and configured for LEMEIT ingestion. **AE-04 is not yet registered** with PurpleAir and has no `sensor_index`. This is owner-reported configuration, not a disclosure or direct verification of the encrypted Cloudflare `SENSOR_INDEXES` secret.
+**PurpleAir:** all five devices, AE-00 through AE-04, are registered and configured for ingestion. AE-04 is PA-II-FLEX 298873, assigned to Esc. Agraria C.M. Casares (EAS Del Valle), still undergoing testing.
 
-**AE-00, AE-01 and AE-03 are powered off** while awaiting installation or relocation, according to the owner. AE-02 was reported operational in the previous inventory, but current connectivity has not been rechecked. Historical readings remain stored even while a unit is off. Registration, physical installation, freshness and administrative status are distinct.
+**AE-00, AE-01 and AE-03 are powered off** while awaiting installation or relocation, according to the owner. The owner confirms AE-02 is installed at its school; a new reading was verified on 12 November. Historical readings remain stored even while a unit is off. Registration, physical installation, freshness and administrative status are distinct.
 
-**PurpleAir ingestion was reduced to every 30 minutes on 29 October 2026**. cron-job.org runs were observed at minutes **:27 and :57**; the owner chose to retain this schedule. GitHub Actions' schedule is commented out; the Cloudflare production dashboard showed **no active Cron Triggers**, though `worker/wrangler.toml` still declares one. This discrepancy must be reconciled before any Worker deployment. Each normal ingestion invocation makes one PurpleAir measurement request for the configured sensor list; powered-off units may still be included.
+**PurpleAir ingestion was reduced to every 30 minutes on 29 October 2026**. cron-job.org runs were observed at minutes **:27 and :57**; the owner chose to retain this schedule. GitHub Actions' schedule is commented out; the Cloudflare production dashboard showed **no active Cron Triggers**, and `worker/wrangler.toml` now also specifies `crons = []` after PR #31. Do not reactivate duplicate triggers. Each normal ingestion invocation makes one PurpleAir measurement request for the configured sensor list; powered-off units may still be included.
 
 PurpleAir confirmed a donation of **20 million additional API points** to support Aire Escolar. The balance reported on 1 November was **19,992,888 points** (snapshot, not real time). The 2 October–1 November totals (11,228 calls and 967,088 points) mostly predate the change and **must not be treated as a measurement of the new 30-minute schedule's daily usage**. See the [documentation review PR](https://github.com/lemeit/lemeit-aq/pull/29), [station inventory](https://github.com/lemeit/lemeit-aq/blob/main/docs/INVENTARIO_ESTACIONES.md) and [Spanish project log](99-bitacora.md).
 
@@ -213,3 +213,5 @@ All five PurpleAir devices, AE-00 through AE-04, are registered and configured f
 Authorized configuration update retained the four previous PurpleAir devices and unchanged Worker code. D1 and the live map/cards confirm new readings: AE-02 **08:55:11 ART**, AE-04 **08:55:40 ART** (PM2.5 15.6 µg/m³). Seven identities remain, without duplicates. Previous snapshots in this page are historical.
 
 PurpleAir ingestion stays at **:27/:57 every 30 minutes**. Worker schedules are empty in production and in main after PR #31; GitHub Actions scheduling remains paused. A **40-minute inclusive freshness limit** is prepared to replace the incompatible 25-minute limit; frontend publication is pending. No manual ingestion or increased polling. Reading freshness does not establish physical power status. Current AirGradient connectivity and automatic ingestion are not established by historical data. [Change record and rollback](https://github.com/lemeit/lemeit-aq/pull/32).
+
+**Short display name:** at the owner's request, the public AE-04 card shows **EA C.M. Casares (Del Valle)**; the deployment plan's full institution name is retained in documentation.
