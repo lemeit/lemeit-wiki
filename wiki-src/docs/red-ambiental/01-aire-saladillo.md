@@ -4,15 +4,15 @@ Red de sensores de calidad del aire (PM1.0/PM2.5/PM10, VOC, CO2, NOx, temperatur
 
 Repositorio: [github.com/lemeit/lemeit-aq](https://github.com/lemeit/lemeit-aq)
 
-## Estado operativo — 1 de noviembre de 2026
+## Estado operativo — 12 de noviembre de 2026
 
-**PurpleAir:** según confirmación del titular, **AE-00 (198617), AE-01 (298687), AE-02 (298701) y AE-03 (298691)** están dados de alta en el portal PurpleAir e incluidos en la configuración de ingesta de LEMEIT. **AE-04 todavía no fue registrado en PurpleAir** y no tiene `sensor_index`. Esta confirmación no equivale a revelar ni verificar el valor del Secret cifrado `SENSOR_INDEXES`.
+**PurpleAir — corte 12/11/2026:** AE-00 a AE-04 están registrados y configurados en la ingesta. AE-04 es el PA-II-FLEX **298873**, Device ID `f0:24:f9:c2:ee:ac`, asignado a **Esc. Agraria C.M. Casares (EAS Del Valle)**. AE-02 está instalado en su escuela; AE-04 sigue en pruebas y no está instalado en Del Valle, según confirmación del titular.
 
-El titular informó que **AE-00, AE-01 y AE-03 están apagados** mientras se prepara su instalación o reubicación. AE-02 constaba como operativo en el último inventario; su conectividad actual no se verificó de nuevo. El historial D1 se conserva: apagado, registrado en PurpleAir, instalado físicamente y «activo» en la base no son sinónimos. Ver [inventario versionado](https://github.com/lemeit/lemeit-aq/blob/main/docs/INVENTARIO_ESTACIONES.md) y [guía de operación segura](https://github.com/lemeit/lemeit-aq/blob/main/docs/OPERACION_PURPLEAIR.md).
+El titular informó que **AE-00, AE-01 y AE-03 están apagados** mientras se prepara su instalación o reubicación. AE-02 está instalado según el titular; su nueva lectura fue verificada el 12/11/2026. El historial D1 se conserva: apagado, registrado en PurpleAir, instalado físicamente y «activo» en la base no son sinónimos. Ver [inventario versionado](https://github.com/lemeit/lemeit-aq/blob/main/docs/INVENTARIO_ESTACIONES.md) y [guía de operación segura](https://github.com/lemeit/lemeit-aq/blob/main/docs/OPERACION_PURPLEAIR.md).
 
-**Ahorro de puntos desde el 29/10/2026:** se pasó a ingesta PurpleAir **cada 30 minutos**, con cron-job.org observado a **:27 y :57**; el titular decidió conservar esa frecuencia. GitHub Actions mantiene el schedule comentado; el panel de Cloudflare mostraba **cero Cron Triggers activos**, aunque el archivo versionado `worker/wrangler.toml` todavía declara un cron: hay que reconciliarlo **antes de desplegar** para evitar reactivaciones involuntarias. Cada ejecución normal de `POST /api/ingest-ahora` hace una petición a PurpleAir para la lista configurada, aun si algún sensor está apagado. Un `200 OK` del cron no prueba que se hayan insertado filas nuevas.
+**Ahorro de puntos desde el 29/10/2026:** se pasó a ingesta PurpleAir **cada 30 minutos**, con cron-job.org observado a **:27 y :57**; el titular decidió conservar esa frecuencia. GitHub Actions mantiene el schedule comentado; el panel de Cloudflare mostraba **cero Cron Triggers activos**, y `worker/wrangler.toml` también declara `crons = []` desde el PR #31. No reactivar disparadores. Cada ejecución normal de `POST /api/ingest-ahora` hace una petición a PurpleAir para la lista configurada, aun si algún sensor está apagado. Un `200 OK` del cron no prueba que se hayan insertado filas nuevas.
 
-PurpleAir confirmó una **donación adicional de 20 millones de puntos** para sostener Aire Escolar; el saldo comunicado el 01/11 era **19.992.888 puntos** (corte histórico, no lectura en vivo). Las **11.228 llamadas / 967.088 puntos** del 02/10–01/11 abarcan mayormente días previos al cambio del 29/10 y no permiten calcular directamente el ahorro nuevo. [Evidencia y limitaciones en el PR documental #29](https://github.com/lemeit/lemeit-aq/pull/29) (borrador pendiente de integrar al momento de esta revisión). Ver también la [bitácora](99-bitacora.md).
+PurpleAir confirmó una **donación adicional de 20 millones de puntos** para sostener Aire Escolar; el saldo comunicado el 01/11 era **19.992.888 puntos** (corte histórico, no lectura en vivo). Las **11.228 llamadas / 967.088 puntos** del 02/10–01/11 abarcan mayormente días previos al cambio del 29/10 y no permiten calcular directamente el ahorro nuevo. [Evidencia y limitaciones en el PR documental #29](https://github.com/lemeit/lemeit-aq/pull/29) (referencia histórica; integrado posteriormente). Ver también la [bitácora](99-bitacora.md).
 
 ## Arquitectura
 
@@ -135,11 +135,11 @@ Cada sensor PurpleAir de la red tiene un **código propio del proyecto** (`AE-NN
 | AE-01 | 298687 | Esc. de Educación Artística N°1 "Lola Mora" | 25 de Mayo / urbano | Calle 7 entre 23 y 24 | 061617500 | 2026-10-05 |
 | AE-02 | 298701 | Esc. de Educación Secundaria N°2 "Manuel Pardal" | Saladillo / urbano | Av. Pereyra 3046 | 060342300 | 2026-10-05 |
 | AE-03 | 298691 | Instituto Niño Jesús | — | — | — | 2026-10-28 |
-| AE-04 | — | Del Valle (reservado) | — | — | — | Pendiente |
+| AE-04 | 298873 | Esc. Agraria C.M. Casares (EAS Del Valle) | 25 de Mayo / rural | Zona rural, Del Valle | — | 12/11/2026 |
 
-AE-01, AE-02 y AE-03 son PurpleAir PA-II-FLEX. AE-03 corresponde al Instituto Niño Jesús (298691); AE-04 queda reservado para Del Valle, sin sensor_index asignado. La convención se definió para los PurpleAir; los AirGradient (ID sintético 900000+) todavía no tienen código asignado.
+AE-01 a AE-04 son PurpleAir PA-II-FLEX. AE-03 corresponde al Instituto Niño Jesús (298691); AE-04 (298873) está registrado y en pruebas, con destino a Del Valle. La convención se definió para los PurpleAir; los AirGradient (ID sintético 900000+) todavía no tienen código asignado.
 
-**Actualización 01/11/2026:** AE-00/01/02/03 están registrados en PurpleAir y configurados para ingesta, según el titular; AE-04 **no está registrado**. AE-00/01/03 están apagados; AE-02 figuraba operativo en el último inventario, sin revalidación de conectividad. El registro de AE-03 y su código en D1 fueron confirmados anteriormente; esa prueba histórica no indica que siga encendido. Los AirGradient 900002 y 900003 conservan lecturas antiguas en el último corte, sin acreditación de conexión actual. Ver [bitácora](99-bitacora.md) y [procedimiento seguro y reversión](https://github.com/lemeit/lemeit-aq/blob/main/docs/OPERACION_PURPLEAIR.md).
+**Corte histórico 01/11/2026, sustituido por la actualización del 12/11:** AE-00/01/02/03 están registrados en PurpleAir y configurados para ingesta, según el titular; AE-04 **no está registrado**. AE-00/01/03 están apagados; AE-02 figuraba operativo en el último inventario, sin revalidación de conectividad. El registro de AE-03 y su código en D1 fueron confirmados anteriormente; esa prueba histórica no indica que siga encendido. Los AirGradient 900002 y 900003 conservan lecturas antiguas en el último corte, sin acreditación de conexión actual. Ver [bitácora](99-bitacora.md) y [procedimiento seguro y reversión](https://github.com/lemeit/lemeit-aq/blob/main/docs/OPERACION_PURPLEAIR.md).
 
 ### Registro PurpleAir y montaje físico: fechas distintas
 
@@ -150,6 +150,7 @@ Correos de confirmación aportados por el titular el 29/10/2026: **AE-01 y AE-02
 | AE-01 | `ec:64:c9:cb:9f:3` | -35.43677574362913 | -60.168800362812966 |
 | AE-02 | `f0:24:f9:c2:cf:2d` | -35.63495676824009 | -59.7735131464144 |
 | AE-03 | `fc:f5:c4:ae:ca:d6` | -35.640825 | -59.778565 |
+| AE-04 | `f0:24:f9:c2:ee:ac` | -35.86807451954287 | -60.73151263154378 |
 
 Los correos registran ubicación exterior, visibilidad pública e intervalo de envío por defecto (~90 s), distinto de la ingesta de LEMEIT. La conexión que confirman corresponde al momento del correo; no prueba conexión actual ni instalación definitiva. En las mini guías el alta y estas coordenadas van en **Observaciones**; «Fecha de instalación» queda para el montaje físico. No se publican claves de lectura ni correos completos. Fuente y criterios: [registro versionado](https://github.com/lemeit/lemeit-aq/blob/main/docs/instalacion/REGISTRO_PURPLEAIR.md).
 
@@ -204,3 +205,12 @@ Un `UPDATE` sobre un `sensor_index` que todavía no existe en la tabla no da err
 - **Código propio por sensor (octubre 2026)**: columna `codigo` en `sensores` (migración 008) con la convención `AE-NN`, independiente del `sensor_index` de PurpleAir y estable si un sensor cambia de escuela. La fecha de instalación física usa la columna `fecha_instalacion`, que ya existía en el esquema. Ver "Sensores y códigos AE" más arriba, con el procedimiento de alta de un sensor.
 
 Ver la [Bitácora del proyecto](99-bitacora.md) para el detalle sesión por sesión.
+## Alta AE-04 y frescura al 12 de noviembre de 2026
+
+Con autorización explícita se agregó AE-04 a la configuración activa del Worker, conservando los cuatro PurpleAir previos. Se verificaron siete identidades D1 sin duplicados y el código del Worker sin cambios. Primera lectura AE-04: **12/11/2026 08:55:40 ART**, PM2.5 15,6 µg/m³; AE-02: 08:55:11 ART. El dashboard muestra ambos con datos recientes. Esto no acredita conexión futura ni instalación física de AE-04.
+
+La etiqueta de AE-04 indicará **Alta en PurpleAir: 12/11/2026**; la instalación escolar sigue pendiente. Coordenadas del proveedor, no constatadas en campo. Se excluyen claves de lectura y enlaces privados.
+
+Se adopta un límite de frescura de **40 minutos inclusive**, en lugar de 25, para cubrir la ingesta cada **30 minutos (:27/:57)** más margen de envío y refresco del navegador. El titular autorizó su publicación en el frontend; no se aumenta frecuencia ni se lanza ingesta manual. «Sin datos recientes» no equivale a equipo apagado. Los AirGradient mantienen sus últimas lecturas históricas; no se acredita conexión actual ni ingesta automática. [Registro y reversión](https://github.com/lemeit/lemeit-aq/pull/32).
+
+**Nombre abreviado en el sitio:** por pedido del titular, la ficha de AE-04 muestra **EA C.M. Casares (Del Valle)**. La denominación completa del plan se conserva en la documentación.
