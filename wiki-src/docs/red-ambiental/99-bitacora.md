@@ -201,3 +201,13 @@ Seguimiento confirmado por el titular el 29/10/2026: se registra el evento de ho
 
 - El detalle línea por línea de cada sesión (comandos exactos, mensajes de error completos, capturas) queda en el historial de commits de cada repositorio (`git log`) y, para EMA hasta agosto 2026, en los `.docx` originales dentro de `ema-saladillo/docs/`.
 - Esta página se actualiza manualmente después de cada sesión de trabajo relevante — no hay automatización todavía que la genere desde los commits.
+
+## 12/11/2026 — AE-04, frescura y documentación coordinada
+
+El titular registró el PA-II-FLEX AE-04 (298873, Device ID f0:24:f9:c2:ee:ac) en PurpleAir y confirmó que sigue en pruebas, sin instalar en la escuela. Alta: 12/11/2026; montaje pendiente. Institución del plan: Esc. Agraria C.M. Casares (EAS Del Valle); nombre abreviado autorizado para el sitio: **EA C.M. Casares (Del Valle)**. AE-02 ya está instalado en su escuela según el titular.
+
+Con autorización explícita se actualizó SENSOR_INDEXES conservando AE-00 a AE-03, se activó la versión 51cdc879-961a-4444-be28-40b1e00ba64e al 100 % y se creó la ficha única AE-04. Código del Worker sin cambios, siete identidades D1 preservadas. El cron existente guardó AE-04 a las 11:57:13 UTC con lectura 11:55:40 UTC (08:55:40 ART), PM2.5 15,6 µg/m³; AE-02 avanzó a 08:55:11 ART. Metadata, historial y dashboard verificados; ambos aparecen con datos recientes. No se ejecutó ingesta manual ni se cambió la frecuencia :27/:57.
+
+Se reprodujo el falso aviso de datos antiguos de AE-02 a los 27,7 minutos, causado por límite de 25 frente a ingesta cada 30. El titular pidió conservar la frecuencia para ahorrar puntos; se prepara **40 minutos inclusive**, con pruebas, Acerca de/créditos, README e inventario coherentes. El frontend todavía no se publicó: producción conserva el límite anterior hasta autorizar y fusionar. La frescura de lectura no es diagnóstico de encendido.
+
+Fuentes y evidencia en [AQ PR #32](https://github.com/lemeit/lemeit-aq/pull/32), [wiki PR #12](https://github.com/lemeit/lemeit-wiki/pull/12) y [Profe LEMEIT PR #78](https://github.com/lemeit/aboutme/pull/78). La portada general lemeit.ar se revisó sin encontrar datos específicos del alta que requieran cambio. No se incluyen claves ni enlaces administrativos. Los PR documentan y preparan cambios; sin merge ni publicación de frontend/wiki/Profe.
