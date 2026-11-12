@@ -85,6 +85,8 @@ Aire Escolar sigue en [app.lemeit.ar/aq/](https://app.lemeit.ar/aq/), meteorolog
 
 ## Recorrido de portada al desplazarse
 
-La portada usa «Ciencias · Educación · Ambiente» y elimina el menú superior. El dibujo inicial es un índice visual: sensor → Aire Escolar, lámpara → Eureka, cuaderno → materiales. Cada símbolo lleva por scroll a su capítulo, con dibujo ampliado, descripción breve y enlace al sitio correspondiente. Los capítulos aparecen en ese orden, uno por pantalla como mínimo; las ilustraciones se revelan junto al texto al bajar. Se conserva el desplazamiento nativo y se oculta solo la barra visual.
+Actualizado el 12/11/2026. La portada utiliza «Ciencias · Educación · Ambiente» y un índice visual de cinco proyectos: Aire Escolar, Eureka, materiales de clase, TeX y ΣIM. Los dibujos se distribuyen sobre un recorrido exterior, con el centro libre y nombres separados de las ilustraciones. En móvil se conservan los nombres y se ocultan las bajadas pequeñas.
 
-La implementación está en `landing/index.html` y `landing/lemeit-scroll.js` de Eureka. IntersectionObserver activa las apariciones, y las anclas `#aire-escolar`, `#eureka` y `#materiales` permiten accesos directos. Con reducción de movimiento o sin JavaScript el contenido permanece legible. Para sumar proyectos, agregar el capítulo, su dibujo y el acceso en el índice visual, manteniendo IDs estables.
+Cada símbolo lleva a su capítulo: `#aire-escolar`, `#eureka`, `#materiales`, `#tex` y `#sim`. Allí aparecen la ilustración ampliada, la descripción y el enlace de entrada. ΣIM ofrece también ejemplos y documentación. Su croquis de equipos y corrientes se inspira en la referencia de DWSIM; no representa una simulación calculada.
+
+Las fuentes son `landing/index.html`, `landing/lemeit-scroll.js` y `landing/sim-croquis.svg` en `lemeit/eureka`. IntersectionObserver activa las apariciones. El desplazamiento es nativo y se respeta el movimiento reducido; sin JavaScript el contenido permanece legible. Mantener los IDs y actualizar dibujo, capítulo y lista de destinos al sumar proyectos.

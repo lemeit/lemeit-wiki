@@ -10,6 +10,7 @@ Parent wiki for the **lemeit.ar** projects: technical documentation, usage guide
 | ![Eureka AI](assets/logos/eureka.svg){: width="28" } | Eureka AI | AI-assisted Socratic science tutor, for high school and university entrance-level courses | [tutor.lemeit.ar](https://tutor.lemeit.ar) | [See section](eureka-tutor/index.md) |
 | ![Profe](assets/logos/profe-lamaita.svg){: width="28" } | Profe Lamaita | Personal teaching site: Physics notes (Bigler translation), course materials, and a Quartz/Obsidian concept map | [profe.lemeit.ar](https://profe.lemeit.ar) | [See section](profe-lemeit/index.md) |
 | ![TeX](assets/logos/tex.svg){: width="28" } | TeX | Browser-based LaTeX editor with PDF preview, templates and local projects | [tex.lemeit.ar](https://tex.lemeit.ar/) | [See section](tex/index.md) |
+| ![ΣIM](assets/logos/sim.svg){: width="58" } | ΣIM · Process simulation | Educational web interface with an external DWSIM engine | [sim.lemeit.ar](https://sim.lemeit.ar/) | [See section](sim/index.md) |
 
 New projects get added as new sections as they're documented — this table and the side menu are updated each time.
 

@@ -19,6 +19,7 @@ Wiki madre de documentación técnica y bitácora de los proyectos de **lemeit.a
 | — | 🎓 Eureka AI | [tutor.lemeit.ar](https://tutor.lemeit.ar) | `lemeit/eureka` (privado) |
 | — | 👨‍🏫 Profe Lamaita | [profe.lemeit.ar](https://profe.lemeit.ar) | [aboutme](https://github.com/lemeit/aboutme) |
 | — | TeX | [tex.lemeit.ar](https://tex.lemeit.ar/) | [lemeit-tex](https://github.com/lemeit/lemeit-tex) (acceso restringido) |
+| — | ΣIM · Simulación de procesos | [sim.lemeit.ar](https://sim.lemeit.ar/) | [lemeit-sim](https://github.com/lemeit/lemeit-sim) |
 
 Más proyectos se suman como secciones nuevas a medida que se documentan (ver "Cómo agregar un proyecto" más abajo).
 

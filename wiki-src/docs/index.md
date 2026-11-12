@@ -10,6 +10,7 @@ Wiki madre de los proyectos de **lemeit.ar**: documentación técnica, guías de
 | ![Eureka AI](assets/logos/eureka.svg){: width="28" } | Eureka AI | Tutor socrático de ciencias asistido por IA, para secundario y curso de ingreso universitario | [tutor.lemeit.ar](https://tutor.lemeit.ar) | [Ver sección](eureka-tutor/index.md) |
 | ![Profe](assets/logos/profe-lamaita.svg){: width="28" } | Profe Lamaita | Sitio personal docente: notas de Física (traducción de Bigler), apuntes de cátedra y mapa de conceptos Quartz/Obsidian | [profe.lemeit.ar](https://profe.lemeit.ar) | [Ver sección](profe-lemeit/index.md) |
 | ![TeX](assets/logos/tex.svg){: width="28" } | TeX | Editor de LaTeX en el navegador, con vista previa de PDF, plantillas y proyectos locales | [tex.lemeit.ar](https://tex.lemeit.ar/) | [Ver sección](tex/index.md) |
+| ![ΣIM](assets/logos/sim.svg){: width="58" } | ΣIM · Simulación de procesos | Simulador educativo con interfaz web y motor DWSIM externo | [sim.lemeit.ar](https://sim.lemeit.ar/) | [Ver sección](sim/index.md) |
 
 Nuevos proyectos se van sumando como secciones nuevas a medida que se documentan — esta tabla y el menú lateral se actualizan cada vez.
 
