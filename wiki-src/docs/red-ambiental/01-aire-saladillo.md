@@ -4,15 +4,15 @@ Red de sensores de calidad del aire (PM1.0/PM2.5/PM10, VOC, CO2, NOx, temperatur
 
 Repositorio: [github.com/lemeit/lemeit-aq](https://github.com/lemeit/lemeit-aq)
 
-## Estado operativo — 1 de noviembre de 2026
+## Estado operativo — 12 de noviembre de 2026
 
 **PurpleAir — corte 12/11/2026:** AE-00 a AE-04 están registrados y configurados en la ingesta. AE-04 es el PA-II-FLEX **298873**, Device ID `f0:24:f9:c2:ee:ac`, asignado a **Esc. Agraria C.M. Casares (EAS Del Valle)**. AE-02 está instalado en su escuela; AE-04 sigue en pruebas y no está instalado en Del Valle, según confirmación del titular.
 
-El titular informó que **AE-00, AE-01 y AE-03 están apagados** mientras se prepara su instalación o reubicación. AE-02 constaba como operativo en el último inventario; su conectividad actual no se verificó de nuevo. El historial D1 se conserva: apagado, registrado en PurpleAir, instalado físicamente y «activo» en la base no son sinónimos. Ver [inventario versionado](https://github.com/lemeit/lemeit-aq/blob/main/docs/INVENTARIO_ESTACIONES.md) y [guía de operación segura](https://github.com/lemeit/lemeit-aq/blob/main/docs/OPERACION_PURPLEAIR.md).
+El titular informó que **AE-00, AE-01 y AE-03 están apagados** mientras se prepara su instalación o reubicación. AE-02 está instalado según el titular; su nueva lectura fue verificada el 12/11/2026. El historial D1 se conserva: apagado, registrado en PurpleAir, instalado físicamente y «activo» en la base no son sinónimos. Ver [inventario versionado](https://github.com/lemeit/lemeit-aq/blob/main/docs/INVENTARIO_ESTACIONES.md) y [guía de operación segura](https://github.com/lemeit/lemeit-aq/blob/main/docs/OPERACION_PURPLEAIR.md).
 
 **Ahorro de puntos desde el 29/10/2026:** se pasó a ingesta PurpleAir **cada 30 minutos**, con cron-job.org observado a **:27 y :57**; el titular decidió conservar esa frecuencia. GitHub Actions mantiene el schedule comentado; el panel de Cloudflare mostraba **cero Cron Triggers activos**, y `worker/wrangler.toml` también declara `crons = []` desde el PR #31. No reactivar disparadores. Cada ejecución normal de `POST /api/ingest-ahora` hace una petición a PurpleAir para la lista configurada, aun si algún sensor está apagado. Un `200 OK` del cron no prueba que se hayan insertado filas nuevas.
 
-PurpleAir confirmó una **donación adicional de 20 millones de puntos** para sostener Aire Escolar; el saldo comunicado el 01/11 era **19.992.888 puntos** (corte histórico, no lectura en vivo). Las **11.228 llamadas / 967.088 puntos** del 02/10–01/11 abarcan mayormente días previos al cambio del 29/10 y no permiten calcular directamente el ahorro nuevo. [Evidencia y limitaciones en el PR documental #29](https://github.com/lemeit/lemeit-aq/pull/29) (borrador pendiente de integrar al momento de esta revisión). Ver también la [bitácora](99-bitacora.md).
+PurpleAir confirmó una **donación adicional de 20 millones de puntos** para sostener Aire Escolar; el saldo comunicado el 01/11 era **19.992.888 puntos** (corte histórico, no lectura en vivo). Las **11.228 llamadas / 967.088 puntos** del 02/10–01/11 abarcan mayormente días previos al cambio del 29/10 y no permiten calcular directamente el ahorro nuevo. [Evidencia y limitaciones en el PR documental #29](https://github.com/lemeit/lemeit-aq/pull/29) (referencia histórica; integrado posteriormente). Ver también la [bitácora](99-bitacora.md).
 
 ## Arquitectura
 
@@ -212,3 +212,5 @@ Con autorización explícita se agregó AE-04 a la configuración activa del Wor
 La etiqueta de AE-04 indicará **Alta en PurpleAir: 12/11/2026**; la instalación escolar sigue pendiente. Coordenadas del proveedor, no constatadas en campo. Se excluyen claves de lectura y enlaces privados.
 
 Se prepara un límite de frescura de **40 minutos inclusive**, en lugar de 25, para cubrir la ingesta cada **30 minutos (:27/:57)** más margen de envío y refresco del navegador. Su publicación del frontend sigue pendiente; no se aumenta frecuencia ni se lanza ingesta manual. «Sin datos recientes» no equivale a equipo apagado. Los AirGradient mantienen sus últimas lecturas históricas; no se acredita conexión actual ni ingesta automática. [Registro y reversión](https://github.com/lemeit/lemeit-aq/pull/32).
+
+**Nombre abreviado en el sitio:** por pedido del titular, la ficha de AE-04 muestra **EA C.M. Casares (Del Valle)**. La denominación completa del plan se conserva en la documentación.
