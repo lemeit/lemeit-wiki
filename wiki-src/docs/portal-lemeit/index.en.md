@@ -78,6 +78,8 @@ Earlier floating and relocating panel experiments are not the final published la
 
 ## Scroll-based project tour
 
-The portal reads “Ciencias · Educación · Ambiente” and has no top navigation menu. The connected illustration acts as a visual index: sensor → Aire Escolar, light bulb → Eureka, notebook → teaching materials. Selecting a symbol scrolls to its chapter; the external site link appears in that chapter's short description.
+Updated 12 November 2026. The landing page presents five projects: Aire Escolar, Eureka, teaching materials, TeX and ΣIM. Illustrations follow an outer circuit with an open centre and separate labels. On mobile, project names remain visible and small captions are hidden.
 
-Each chapter occupies at least one screen, revealing its enlarged drawing and description as the visitor scrolls. Scrolling remains native; only the scrollbar is visually hidden. IntersectionObserver drives the reveal in landing/lemeit-scroll.js, with readable content when JavaScript is unavailable or reduced motion is requested. Stable anchors are #aire-escolar, #eureka and #materiales. New chapters can extend this pattern.
+The stable chapter anchors are `#aire-escolar`, `#eureka`, `#materiales`, `#tex` and `#sim`. Each chapter provides a larger drawing, description and entry link; ΣIM also links to examples and documentation. Its hand-drawn process illustration is not a calculated flowsheet.
+
+Sources are `landing/index.html`, `landing/lemeit-scroll.js` and `landing/sim-croquis.svg` in `lemeit/eureka`. Scrolling is native; IntersectionObserver reveals chapters, reduced motion is respected and content stays readable without JavaScript. Keep IDs stable when adding projects.

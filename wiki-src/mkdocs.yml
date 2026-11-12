@@ -97,6 +97,8 @@ nav:
       - Bitácora: red-ambiental/99-bitacora.md
   - Eureka AI:
       - Resumen: eureka-tutor/index.md
+  - ΣIM:
+      - Resumen: sim/index.md
   - TeX:
       - Resumen: tex/index.md
       - Uso, plantillas y encabezados: tex/uso-y-plantillas.md
