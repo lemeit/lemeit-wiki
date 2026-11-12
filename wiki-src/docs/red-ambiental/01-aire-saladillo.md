@@ -211,6 +211,6 @@ Con autorización explícita se agregó AE-04 a la configuración activa del Wor
 
 La etiqueta de AE-04 indicará **Alta en PurpleAir: 12/11/2026**; la instalación escolar sigue pendiente. Coordenadas del proveedor, no constatadas en campo. Se excluyen claves de lectura y enlaces privados.
 
-Se prepara un límite de frescura de **40 minutos inclusive**, en lugar de 25, para cubrir la ingesta cada **30 minutos (:27/:57)** más margen de envío y refresco del navegador. Su publicación del frontend sigue pendiente; no se aumenta frecuencia ni se lanza ingesta manual. «Sin datos recientes» no equivale a equipo apagado. Los AirGradient mantienen sus últimas lecturas históricas; no se acredita conexión actual ni ingesta automática. [Registro y reversión](https://github.com/lemeit/lemeit-aq/pull/32).
+Se adopta un límite de frescura de **40 minutos inclusive**, en lugar de 25, para cubrir la ingesta cada **30 minutos (:27/:57)** más margen de envío y refresco del navegador. El titular autorizó su publicación en el frontend; no se aumenta frecuencia ni se lanza ingesta manual. «Sin datos recientes» no equivale a equipo apagado. Los AirGradient mantienen sus últimas lecturas históricas; no se acredita conexión actual ni ingesta automática. [Registro y reversión](https://github.com/lemeit/lemeit-aq/pull/32).
 
 **Nombre abreviado en el sitio:** por pedido del titular, la ficha de AE-04 muestra **EA C.M. Casares (Del Valle)**. La denominación completa del plan se conserva en la documentación.
