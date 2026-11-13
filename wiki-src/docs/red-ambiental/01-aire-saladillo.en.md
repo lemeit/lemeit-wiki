@@ -4,11 +4,13 @@ Air quality sensor network (PM1.0/PM2.5/PM10, VOC, CO2, NOx, temperature, humidi
 
 Repository: [github.com/lemeit/lemeit-aq](https://github.com/lemeit/lemeit-aq)
 
-## Operating status — 12 November 2026
+## Documented status — 13 November 2026
 
-**PurpleAir:** all five devices, AE-00 through AE-04, are registered and configured for ingestion. AE-04 is PA-II-FLEX 298873, assigned to Esc. Agraria C.M. Casares (EAS Del Valle), still undergoing testing.
+The owner reports two monitor installations on **13 November 2026**: **Escuela de Educación Agropecuaria de Carlos Casares**, in **Del Valle (25 de Mayo district)**, and **Escuela de Educación Artística Lola Mora**, in **25 de Mayo**. Both are connected to **school Wi-Fi** and transmitting to the **public portal**, according to the owner. The existing inventory associates them with **AE-04 (298873)** and **AE-01 (298687)** respectively; hardware and IDs were not independently rechecked.
 
-**AE-00, AE-01 and AE-03 are powered off** while awaiting installation or relocation, according to the owner. The owner confirms AE-02 is installed at its school; a new reading was verified on 12 November. Historical readings remain stored even while a unit is off. Registration, physical installation, freshness and administrative status are distinct.
+**Current technical verification is pending:** public GET endpoints were not requested because the Worker writes visit records to D1. Readings verified on 12 November predate the reported installation and do not prove school transmission on 13 November. [Evidence and pending checks](https://github.com/lemeit/lemeit-aq/blob/docs/instalaciones-25-mayo-20261113/docs/INSTALACIONES_20261113.md).
+
+AE-01 and AE-04 are no longer listed as awaiting physical installation, based on the owner's report. AE-02 retains its previously reported school installation. AE-00 and AE-03 retain their last documented installation/relocation tasks, without asserting their current physical status. The last documented inventory contains five PurpleAir and two AirGradient identities; these are not seven devices verified online, and these installations do not add two new registrations. Historical readings remain preserved.
 
 **PurpleAir ingestion was reduced to every 30 minutes on 29 October 2026**. cron-job.org runs were observed at minutes **:27 and :57**; the owner chose to retain this schedule. GitHub Actions' schedule is commented out; the Cloudflare production dashboard showed **no active Cron Triggers**, and `worker/wrangler.toml` now also specifies `crons = []` after PR #31. Do not reactivate duplicate triggers. Each normal ingestion invocation makes one PurpleAir measurement request for the configured sensor list; powered-off units may still be included.
 
@@ -137,7 +139,7 @@ Each PurpleAir sensor in the network has its own **project code** (`AE-NN`), ind
 | AE-03 | 298691 | Instituto Niño Jesús | — | — | — | 2026-10-28 |
 | AE-04 | 298873 | Esc. Agraria C.M. Casares (EAS Del Valle) | 25 de Mayo / rural | Rural area, Del Valle | — | 2026-11-12 |
 
-AE-01 through AE-04 are PurpleAir PA-II-FLEX units. AE-03 is assigned to Instituto Niño Jesús (298691); AE-04 (298873) is registered and undergoing testing for Del Valle. The convention was defined for the PurpleAir sensors; the AirGradient ones (synthetic ID 900000+) don't have a code assigned yet.
+AE-01 through AE-04 are PurpleAir PA-II-FLEX units. AE-03 is assigned to Instituto Niño Jesús (298691); AE-04 (298873) is documented for Del Valle; its 13 November installation was reported by the owner, without current technical verification. The convention was defined for the PurpleAir sensors; the AirGradient ones (synthetic ID 900000+) don't have a code assigned yet.
 
 ### PurpleAir registration and physical installation are different dates
 
@@ -179,6 +181,8 @@ An `UPDATE` on a `sensor_index` that doesn't exist yet raises no error and chang
 
 ## Roadmap
 
+**Current follow-up — 13 November 2026:** Lola Mora and Del Valle are no longer awaiting installation based on the owner's report: installed on 13 November, on school Wi-Fi and transmitting to the portal. No identities are added to the inventory and connectivity/ingestion verification tasks remain open. AE-00 and AE-03 retain their last documented pending tasks. The following paragraphs are historical context. [Record](https://github.com/lemeit/lemeit-aq/blob/docs/instalaciones-25-mayo-20261113/docs/INSTALACIONES_20261113.md).
+
 > Historical snapshot, 28 October 2026 (superseded by the 1 November status above): AE-01 is still awaiting physical installation according to the latest owner report; AE-02 is operational. AE-03 is online and visible according to the owner, with a recent D1 reading verified independently. Its project code `AE-03` was added with explicit authorization and checked by SELECT. AirGradient 900002 and 900003 have old readings; current connectivity is unverified. Rotate created a Worker version that still required deployment in this incident. See the [Spanish log](99-bitacora.md) and [safe procedure and rollback](https://github.com/lemeit/lemeit-aq/blob/main/docs/OPERACION_PURPLEAIR.md). The hardware description below records an earlier state.
 
 
@@ -207,6 +211,8 @@ An `UPDATE` on a `sensor_index` that doesn't exist yet raises no error and chang
 
 See the [project log](99-bitacora.md) (Spanish only) for the full session-by-session detail.
 ## Update on 12 November 2026
+
+> Historical snapshot before the reported 13 November installation. References below to AE-04 awaiting installation describe 12 November; see the current status above.
 
 All five PurpleAir devices, AE-00 through AE-04, are registered and configured for LEMEIT ingestion. AE-04 is PA-II-FLEX **298873**, assigned to **Esc. Agraria C.M. Casares (EAS Del Valle)**. The owner confirms AE-02 is installed at its school; AE-04 is still undergoing testing elsewhere and is not installed at the school. Its PurpleAir registration date is **2026-11-12**; its physical installation date remains pending. Coordinates are provider-declared, not field-verified.
 

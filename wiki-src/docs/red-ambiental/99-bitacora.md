@@ -211,3 +211,14 @@ Con autorización explícita se actualizó SENSOR_INDEXES conservando AE-00 a AE
 Se reprodujo el falso aviso de datos antiguos de AE-02 a los 27,7 minutos, causado por límite de 25 frente a ingesta cada 30. El titular pidió conservar la frecuencia para ahorrar puntos; se prepara **40 minutos inclusive**, con pruebas, Acerca de/créditos, README e inventario coherentes. El frontend todavía no se publicó: producción conserva el límite anterior hasta autorizar y fusionar. La frescura de lectura no es diagnóstico de encendido.
 
 Fuentes y evidencia en [AQ PR #32](https://github.com/lemeit/lemeit-aq/pull/32), [wiki PR #12](https://github.com/lemeit/lemeit-wiki/pull/12) y [Profe LEMEIT PR #78](https://github.com/lemeit/aboutme/pull/78). La portada general lemeit.ar se revisó sin encontrar datos específicos del alta que requieran cambio. No se incluyen claves ni enlaces administrativos. Los PR documentan y preparan cambios; sin merge ni publicación de frontend/wiki/Profe.
+
+
+## 13/11/2026 — Instalaciones escolares en 25 de Mayo (reporte del titular)
+
+El titular informa instalados el **13/11/2026** los monitores de la **Escuela de Educación Agropecuaria de Carlos Casares**, en **Del Valle (partido de 25 de Mayo)**, y de la **Escuela de Educación Artística Lola Mora**, en **25 de Mayo**. Ambos quedaron conectados al **Wi-Fi escolar** y transmiten al **portal público**, según su reporte. Las identidades documentales previas son AE-04 (298873) y AE-01 (298687); no se infieren modelos ni IDs nuevos.
+
+Se retiran esos dos pendientes físicos de los resúmenes y roadmap vigentes, conservando eventos anteriores, fechas de alta y conteos históricos. No hay altas nuevas. El último corte de siete identidades (cinco PurpleAir y dos AirGradient) no es un conteo actual de equipos online. AE-02 conserva su instalación informada previamente; AE-00 y AE-03 mantienen sus últimos pendientes documentados, sin revalidar su estado actual.
+
+**Verificación técnica actual pendiente:** el Worker registra visitas D1 para GET públicos; no se consultaron API/dashboard bajo la restricción de cero escrituras. La evidencia técnica del 12/11 precede a estas instalaciones. [Registro, comparación con auditoría y aceptación](https://github.com/lemeit/lemeit-aq/blob/docs/instalaciones-25-mayo-20261113/docs/INSTALACIONES_20261113.md).
+
+Fuentes revisadas: AQ main `797ce96a2ba8ddace89d2db62dafeaad2413d2be` (50 commits adelante y 0 detrás del auditado c03d7d0), wiki main `28b8aeac059b5fa64fdb88302c99b1487e16b73a`. Cambios solo documentales, página AQ ES/EN, roadmap y esta bitácora; sin D1, secretos, ingestas, migraciones ni despliegues. Los PDF/DOCX de referencia y documentos de otros repositorios no se actualizan en esta intervención. PR sin merge y commit con `[CF-Pages-Skip]`.
