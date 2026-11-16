@@ -103,6 +103,7 @@ nav:
       - Fundamentos de simulación:
           - Corrientes, estado y balances: sim/fundamentos-corrientes-balances.md
           - Grados de libertad y especificaciones: sim/grados-libertad-especificaciones.md
+          - Selección de modelos termodinámicos: sim/modelos-termodinamicos.md
       - Acceso y clases: sim/acceso.md
   - TeX:
       - Resumen: tex/index.md

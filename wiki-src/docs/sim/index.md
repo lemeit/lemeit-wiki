@@ -3,7 +3,7 @@
 [![sitio: sim.lemeit.ar](https://img.shields.io/badge/sitio-sim.lemeit.ar-009688?style=flat-square&labelColor=555555)](https://sim.lemeit.ar/)
 [![código: lemeit-sim](https://img.shields.io/badge/c%C3%B3digo-lemeit--sim-009688?style=flat-square&labelColor=555555)](https://github.com/lemeit/lemeit-sim)
 
-Simulador educativo de procesos con interfaz web en español y motor DWSIM 10.2.15. Portal documentado: **0.17.2**, revisión del **16 de noviembre de 2026**. La aplicación está publicada y continúa en desarrollo; no reproduce todo el editor de escritorio de DWSIM.
+Simulador educativo de procesos con interfaz web en español y motor DWSIM 10.2.15. Portal documentado: **0.17.5**, revisión del **16 de noviembre de 2026**. La aplicación está publicada y continúa en desarrollo; no reproduce todo el editor de escritorio de DWSIM.
 
 ## Accesos y documentación
 
@@ -23,7 +23,7 @@ Los nuevos códigos de clases activas se pueden volver a copiar desde el panel, 
 
 ## Fundamentos para aprender simulación
 
-Comenzamos una serie de guías propias en español basada en conceptos de ingeniería química y vinculada a prácticas reproducibles del simulador. La serie comienza con [**Corrientes, estado termodinámico y balances**](fundamentos-corrientes-balances.md), y continúa con [**Grados de libertad y especificaciones**](grados-libertad-especificaciones.md), para distinguir datos independientes de resultados, elegir pares flash y reconocer errores de subespecificación y sobreespecificación. Cada capítulo contiene ejercicios en ΣIM y referencias a los tutoriales oficiales de DWSIM. No se presenta como traducción oficial.
+Comenzamos una serie de guías propias en español basada en conceptos de ingeniería química y vinculada a prácticas reproducibles del simulador. La serie comienza con [**Corrientes, estado termodinámico y balances**](fundamentos-corrientes-balances.md), y continúa con [**Grados de libertad y especificaciones**](grados-libertad-especificaciones.md), para distinguir datos independientes de resultados, elegir pares flash y reconocer errores de subespecificación y sobreespecificación. El [**capítulo 3: selección de modelos termodinámicos**](modelos-termodinamicos.md) compara IAPWS-IF97, NRTL, UNIQUAC, UNIFAC, Peng–Robinson y SRK con criterios de validez y prácticas. Cada capítulo contiene ejercicios en ΣIM y referencias a los tutoriales oficiales de DWSIM. No se presenta como traducción oficial.
 
 ## Qué permite estudiar
 
