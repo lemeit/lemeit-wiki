@@ -21,6 +21,10 @@ Los nuevos códigos de clases activas se pueden volver a copiar desde el panel, 
 
 **Estado de motores** es una consulta de disponibilidad para usuarios autenticados; **Administración de clases** requiere administrador. No hay botones remotos para encender o reiniciar equipos. Ver [guía de acceso](acceso.md).
 
+## Fundamentos para aprender simulación
+
+Comenzamos una serie de guías propias en español basada en conceptos de ingeniería química y vinculada a prácticas reproducibles del simulador. La primera es [**Corrientes, estado termodinámico y balances**](fundamentos-corrientes-balances.md), con ecuaciones, datos de entrada, el Ejemplo 01 y referencias a los tutoriales oficiales de DWSIM. No se presenta como traducción oficial.
+
 ## Qué permite estudiar
 
 Corrientes de materia y energía; mezcladores, divisores, calentadores y enfriadores; separador flash vapor–líquido; bomba y válvula; intercambiador de dos corrientes; reactores de conversión y equilibrio dentro del alcance documentado. El selector termodinámico y la composición se configuran por proyecto.
