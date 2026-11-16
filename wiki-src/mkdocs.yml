@@ -112,6 +112,12 @@ nav:
           - Unidades y bases de composición: sim/unidades-bases-conversiones.md
           - Diagnóstico y validación: sim/diagnostico-validacion.md
           - Prácticas integradoras: sim/practicas-integradoras.md
+      - Nivel intermedio:
+          - Recirculaciones y convergencia: sim/recirculaciones-convergencia.md
+          - Destilación y etapas de equilibrio: sim/destilacion-etapas-equilibrio.md
+          - Cinética y dimensionamiento: sim/cinetica-dimensionamiento-reactores.md
+          - Sensibilidad y escenarios: sim/sensibilidad-escenarios.md
+          - Reproducibilidad e informes: sim/reproducibilidad-informes.md
       - Acceso y clases: sim/acceso.md
   - TeX:
       - Resumen: tex/index.md
