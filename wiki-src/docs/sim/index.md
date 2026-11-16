@@ -41,6 +41,20 @@ Comenzamos una serie de guías propias en español basada en conceptos de ingeni
 | [10](diagnostico-validacion.md) | Diagnóstico y validación | Auditoría del flash |
 | [11](practicas-integradoras.md) | Taller integrador y rúbrica | Biblioteca de ejemplos |
 
+## Nivel intermedio: profundización de ingeniería
+
+La serie continúa con cinco capítulos **conceptuales y didácticos**. Varios temas requieren DWSIM de escritorio y aún no están implementados en el editor ΣIM: no se confunde la explicación teórica con una función disponible.
+
+| Capítulo | Contenido | Modalidad |
+|---|---|---|
+| [12](recirculaciones-convergencia.md) | Recirculaciones, corriente de corte y convergencia | Balance e iteración resueltos; fuera de ΣIM |
+| [13](destilacion-etapas-equilibrio.md) | Destilación y balances de columna | Balance binario resuelto; columna fuera de ΣIM |
+| [14](cinetica-dimensionamiento-reactores.md) | Cinética, CSTR y PFR | Dimensionamiento analítico; fuera de ΣIM |
+| [15](sensibilidad-escenarios.md) | Derivadas, escenarios y comparación de modelos | Variaciones manuales de ejemplos disponibles |
+| [16](reproducibilidad-informes.md) | Trazabilidad, evidencia y rúbrica de informes | Aplicable a los 13 ejemplos |
+
+**Recorrido sugerido:** estudiar los capítulos 01–11, resolver los ejercicios de 12–14 de forma analítica y usar 15–16 para documentar prácticas reproducibles. Ningún ejemplo didáctico nuevo de esta ampliación se presenta como ejecución nueva del motor.
+
 Los once capítulos forman una **primera serie introductoria completa**, no un manual exhaustivo del DWSIM de escritorio. Los ejercicios distinguen cálculos analíticos nuevos de resultados DWSIM documentados previamente.
 
 ## Qué permite estudiar
