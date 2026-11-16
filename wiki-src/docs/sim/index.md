@@ -25,6 +25,24 @@ Los nuevos códigos de clases activas se pueden volver a copiar desde el panel, 
 
 Comenzamos una serie de guías propias en español basada en conceptos de ingeniería química y vinculada a prácticas reproducibles del simulador. La serie comienza con [**Corrientes, estado termodinámico y balances**](fundamentos-corrientes-balances.md), y continúa con [**Grados de libertad y especificaciones**](grados-libertad-especificaciones.md), para distinguir datos independientes de resultados, elegir pares flash y reconocer errores de subespecificación y sobreespecificación. El [**capítulo 3: selección de modelos termodinámicos**](modelos-termodinamicos.md) compara IAPWS-IF97, NRTL, UNIQUAC, UNIFAC, Peng–Robinson y SRK con criterios de validez y prácticas. Cada capítulo contiene ejercicios en ΣIM y referencias a los tutoriales oficiales de DWSIM. No se presenta como traducción oficial.
 
+## Itinerario completo de fundamentos
+
+| Capítulo | Tema | Práctica relacionada |
+|---|---|---|
+| [01](fundamentos-corrientes-balances.md) | Corrientes, estado y balances | Mezclador |
+| [02](grados-libertad-especificaciones.md) | Grados de libertad y especificaciones | Divisor y calentador |
+| [03](modelos-termodinamicos.md) | Selección termodinámica | Agua y agua–etanol |
+| [04](equilibrio-fases-flash.md) | Equilibrio de fases y flash | Ejemplo 11 |
+| [05](energia-operaciones-termicas.md) | Energía y operaciones térmicas | Ejemplos 01–03, 13 |
+| [06](bombas-valvulas-presion.md) | Bombas, válvulas y presión | Ejemplo 12 |
+| [07](reactores-estequiometria.md) | Reactores y estequiometría | Ejemplos 07–08 |
+| [08](diagramas-conexiones.md) | Diagramas y conexiones | Mezclador y divisor |
+| [09](unidades-bases-conversiones.md) | Unidades y composición | Agua–etanol |
+| [10](diagnostico-validacion.md) | Diagnóstico y validación | Auditoría del flash |
+| [11](practicas-integradoras.md) | Taller integrador y rúbrica | Biblioteca de ejemplos |
+
+Los once capítulos forman una **primera serie introductoria completa**, no un manual exhaustivo del DWSIM de escritorio. Los ejercicios distinguen cálculos analíticos nuevos de resultados DWSIM documentados previamente.
+
 ## Qué permite estudiar
 
 Corrientes de materia y energía; mezcladores, divisores, calentadores y enfriadores; separador flash vapor–líquido; bomba y válvula; intercambiador de dos corrientes; reactores de conversión y equilibrio dentro del alcance documentado. El selector termodinámico y la composición se configuran por proyecto.
