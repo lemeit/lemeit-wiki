@@ -100,6 +100,8 @@ nav:
       - Resumen: eureka-tutor/index.md
   - ΣIM:
       - Resumen: sim/index.md
+      - Fundamentos de simulación:
+          - Corrientes, estado y balances: sim/fundamentos-corrientes-balances.md
       - Acceso y clases: sim/acceso.md
   - TeX:
       - Resumen: tex/index.md
