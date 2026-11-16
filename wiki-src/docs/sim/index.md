@@ -23,7 +23,7 @@ Los nuevos códigos de clases activas se pueden volver a copiar desde el panel, 
 
 ## Fundamentos para aprender simulación
 
-Comenzamos una serie de guías propias en español basada en conceptos de ingeniería química y vinculada a prácticas reproducibles del simulador. La primera es [**Corrientes, estado termodinámico y balances**](fundamentos-corrientes-balances.md), con ecuaciones, datos de entrada, el Ejemplo 01 y referencias a los tutoriales oficiales de DWSIM. No se presenta como traducción oficial.
+Comenzamos una serie de guías propias en español basada en conceptos de ingeniería química y vinculada a prácticas reproducibles del simulador. La serie comienza con [**Corrientes, estado termodinámico y balances**](fundamentos-corrientes-balances.md), y continúa con [**Grados de libertad y especificaciones**](grados-libertad-especificaciones.md), para distinguir datos independientes de resultados, elegir pares flash y reconocer errores de subespecificación y sobreespecificación. Cada capítulo contiene ejercicios en ΣIM y referencias a los tutoriales oficiales de DWSIM. No se presenta como traducción oficial.
 
 ## Qué permite estudiar
 
