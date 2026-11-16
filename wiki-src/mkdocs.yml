@@ -100,6 +100,7 @@ nav:
       - Resumen: eureka-tutor/index.md
   - ΣIM:
       - Resumen: sim/index.md
+      - Manual de uso del simulador: sim/manual-de-uso.md
       - Fundamentos de simulación:
           - Corrientes, estado y balances: sim/fundamentos-corrientes-balances.md
           - Grados de libertad y especificaciones: sim/grados-libertad-especificaciones.md

@@ -3,13 +3,13 @@
 [![sitio: sim.lemeit.ar](https://img.shields.io/badge/sitio-sim.lemeit.ar-009688?style=flat-square&labelColor=555555)](https://sim.lemeit.ar/)
 [![código: lemeit-sim](https://img.shields.io/badge/c%C3%B3digo-lemeit--sim-009688?style=flat-square&labelColor=555555)](https://github.com/lemeit/lemeit-sim)
 
-Simulador educativo de procesos con interfaz web en español y motor DWSIM 10.2.15. Portal documentado: **0.17.5**, revisión del **16 de noviembre de 2026**. La aplicación está publicada y continúa en desarrollo; no reproduce todo el editor de escritorio de DWSIM.
+Simulador educativo de procesos con interfaz web en español y motor DWSIM 10.2.15. Portal documentado: **0.19.1**, revisión del **16 de noviembre de 2026**. La aplicación está publicada y continúa en desarrollo; no reproduce todo el editor de escritorio de DWSIM.
 
 ## Accesos y documentación
 
 - [Ingresar al simulador](https://sim.lemeit.ar/acceso.html).
 - [Acceso por clase y administración](acceso.md).
-- [Guía de uso](https://sim.lemeit.ar/ayuda.html), [13 ejemplos](https://sim.lemeit.ar/ejemplos.html) y [catálogo](https://sim.lemeit.ar/catalogo.html). Los recursos del portal requieren una sesión válida.
+- [Manual de uso de ΣIM](manual-de-uso.md) (esta wiki), [13 ejemplos del portal](https://sim.lemeit.ar/ejemplos.html) y [catálogo de equipos](https://sim.lemeit.ar/catalogo.html). Las páginas del portal requieren una sesión válida.
 - [Índice técnico](https://github.com/lemeit/lemeit-sim/blob/main/docs/README.md), [historial](https://github.com/lemeit/lemeit-sim/blob/main/docs/CHANGELOG.md) y [comprobaciones](https://github.com/lemeit/lemeit-sim/blob/main/CHECKS.md).
 - [Ficha docente](https://profe.lemeit.ar/projects/sim/).
 
@@ -66,6 +66,9 @@ Hay 13 ejemplos con datos, resolución, referencias y límites, además de conve
 El alcance es estacionario, sin recirculaciones. CSTR/PFR cinéticos, columnas y otras operaciones del motor requieren adaptación y validación. Los resultados de los ejemplos son modelos calculados, no mediciones experimentales ni validación física independiente.
 
 ## Recorrido de trabajo
+
+La referencia operativa para los controles de la aplicación, la organización de paneles y las exportaciones es el [manual de uso del simulador](manual-de-uso.md). Para temas científicos se utilizan los capítulos de fundamentos y el nivel intermedio.
+
 
 1. Ingresar con el código de clase y comprobar la identidad en el pie.
 2. Crear un proyecto con compuestos/modelo o abrir explícitamente un ejemplo.
