@@ -27,15 +27,11 @@ En ΣIM, para una alimentación habitual se indican temperatura, presión, cauda
 
 Para un volumen de control, la forma general es:
 
-\[
-\text{Acumulación} = \text{Entradas} - \text{Salidas} + \text{Generación} - \text{Consumo}
-\]
+**Acumulación = Entradas − Salidas + Generación − Consumo**
 
 En **régimen estacionario**, sin acumulación y sin reacción química:
 
-\[
-\sum \dot m_{\mathrm{entrada}}=\sum \dot m_{\mathrm{salida}}
-\]
+**Σ caudales másicos de entrada = Σ caudales másicos de salida**
 
 En un equipo sin reacción también puede comprobarse el balance individual de cada componente. En los **reactores**, un componente puede consumirse o generarse; por eso no corresponde declarar un error simplemente porque su caudal de salida difiera del de entrada. La conservación de la masa total y de los elementos químicos sigue siendo relevante.
 
@@ -51,9 +47,7 @@ Dos alimentaciones de agua pura ingresan a un mezclador:
 
 Si no hay pérdidas de materia ni reacciones:
 
-\[
-\dot m_{\mathrm{salida}}=1+1=2\ \mathrm{kg/s}
-\]
+**Caudal de salida = 1 kg/s + 1 kg/s = 2 kg/s**
 
 Este resultado se comprueba en el [Ejemplo 01 de ΣIM](https://sim.lemeit.ar/ejemplos.html). No requiere conocer previamente la temperatura final.
 
@@ -61,12 +55,9 @@ Este resultado se comprueba en el [Ejemplo 01 de ΣIM](https://sim.lemeit.ar/eje
 
 Para un mezclador estacionario, sin trabajo de eje, con cambios despreciables de energía cinética y potencial, y sin intercambio de calor externo:
 
-\[
-\sum \dot m_{\mathrm{entrada}} h_{\mathrm{entrada}}
-=\sum \dot m_{\mathrm{salida}} h_{\mathrm{salida}}
-\]
+**Σ (caudal másico de entrada × entalpía específica de entrada) = Σ (caudal másico de salida × entalpía específica de salida)**
 
-Aquí **\(h\)** representa la entalpía específica, expresada en unidades consistentes como kJ/kg. Como \(1\ \mathrm{kg/s}\times1\ \mathrm{kJ/kg}=1\ \mathrm{kW}\), el producto caudal–entalpía se interpreta como una tasa de transporte energético.
+Aquí ***h*** representa la entalpía específica, expresada en unidades consistentes como kJ/kg. Como 1 kg/s × 1 kJ/kg = 1 kW, el producto caudal–entalpía se interpreta como una tasa de transporte energético.
 
 Para el caso de mezcla de agua del Ejemplo 01, el resultado de referencia previamente calculado con DWSIM 10.2.15 es **aproximadamente 50,021387 °C** y **2 kg/s**. La temperatura obtenida no debe reemplazarse por la media aritmética como regla general: la igualdad fundamental del caso es la de *entalpías transportadas*.
 
