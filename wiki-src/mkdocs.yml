@@ -104,6 +104,14 @@ nav:
           - Corrientes, estado y balances: sim/fundamentos-corrientes-balances.md
           - Grados de libertad y especificaciones: sim/grados-libertad-especificaciones.md
           - Selección de modelos termodinámicos: sim/modelos-termodinamicos.md
+          - Equilibrio de fases y cálculos flash: sim/equilibrio-fases-flash.md
+          - Energía y operaciones térmicas: sim/energia-operaciones-termicas.md
+          - Bombas, válvulas y presión: sim/bombas-valvulas-presion.md
+          - Reactores y estequiometría: sim/reactores-estequiometria.md
+          - Diagramas y conexiones: sim/diagramas-conexiones.md
+          - Unidades y bases de composición: sim/unidades-bases-conversiones.md
+          - Diagnóstico y validación: sim/diagnostico-validacion.md
+          - Prácticas integradoras: sim/practicas-integradoras.md
       - Acceso y clases: sim/acceso.md
   - TeX:
       - Resumen: tex/index.md
