@@ -104,7 +104,57 @@ El ejemplo de dos corrientes de agua trabaja con **40 kW especificados**, sin me
 
 **En ΣIM:** usá la revisión de especificaciones y conexiones antes de calcular; los mensajes orientan pero no constituyen todavía un análisis numérico completo de grados de libertad. Cuando falla una simulación, distinguí errores de entrada, de conexión y de propiedades termodinámicas.
 
-## 7. Lecturas y alcance
+## 7. Conteo de grados de libertad: tres casos resueltos
+
+Para contar GL primero definimos la **frontera del sistema** y qué variables ya vienen determinadas por sus alimentaciones. Los siguientes conteos son modelos didácticos reducidos; no representan el número total de variables internas que maneja el solucionador termodinámico.
+
+### Caso 1 — Divisor sin reacción
+
+Una alimentación de agua de 1 kg/s se distribuye en dos productos. Las incógnitas son los caudales de salida \(m_1\) y \(m_2\). Solo contamos con el balance global:
+
+\[
+m_1+m_2=1\ \mathrm{kg/s}
+\]
+
+Por tanto: **2 incógnitas − 1 ecuación = 1 GL**. Necesitamos una especificación adicional. Si elegimos la fracción de reparto \(f=0{,}70\), queda \(m_1=f\cdot 1=0{,}70\ \mathrm{kg/s}\) y \(m_2=0{,}30\ \mathrm{kg/s}\), con **GL = 0**. No corresponde fijar libremente un tercer dato independiente, por ejemplo \(m_2=0{,}40\ \mathrm{kg/s}\), porque sería incompatible con los anteriores.
+
+En ΣIM la fracción es el dato del divisor; ambos caudales de producto son resultados.
+
+### Caso 2 — Mezclador adiabático de agua
+
+Consideremos dos alimentaciones conocidas de 1 kg/s a 20 °C y 80 °C, con presión y composición definidas, y una sola salida. En una aproximación monofásica de capacidad calorífica constante, las incógnitas de este subconjunto son \(m_s\) y \(T_s\). Hay dos ecuaciones independientes: balance de masa y balance de energía. Por ello **GL = 2 − 2 = 0**, sin fijar la temperatura de salida.
+
+\[
+m_s=m_a+m_b=2\ \mathrm{kg/s}
+\]
+
+\[
+m_sc_pT_s=m_ac_pT_a+m_bc_pT_b
+\]
+
+La estimación simplificada es \(T_s=50\ ^\circ\mathrm C\). En el Ejemplo 01 DWSIM calcula **50,021387 °C** con su modelo de propiedades: esa diferencia no es un error, sino una consecuencia de usar entalpías termodinámicas en lugar de \(c_p\) constante.
+
+### Caso 3 — Calentador con temperatura objetivo
+
+Con una alimentación de 1 kg/s a 20 °C y propiedades conocidas, tomemos como incógnitas la temperatura de salida \(T_s\) y la potencia térmica \(Q\). El balance de energía proporciona **una ecuación para dos incógnitas**: inicialmente **GL = 1**. En el modo implementado por ΣIM se especifica \(T_s=60\ ^\circ\mathrm C\); la potencia pasa a ser resultado y el modelo queda con **GL = 0**.
+
+En el Ejemplo 02, DWSIM obtiene aproximadamente **+167,209679 kW**. Si se especificara también ese valor como dato independiente, se impondría una restricción adicional que el modo actual del equipo no necesita.
+
+## 8. Qué valida realmente el diagnóstico de ΣIM
+
+La comprobación previa del editor **no calcula automáticamente GL**. Detecta condiciones de alimentación inválidas, parámetros faltantes o fuera de rango y conexiones materiales incompletas. El gateway `server.py` sigue siendo la autoridad: además de los valores numéricos, rechaza puertos ocupados dos veces, conexiones entre objetos incompatibles, índices incorrectos, ciclos de recirculación y otras estructuras no admitidas.
+
+| Comprobación | Diagnóstico del editor | Gateway |
+|---|---|---|
+| Alimentaciones: par flash, caudal y composición | Revisión básica | Validación obligatoria |
+| Cantidad de entradas/salidas materiales por equipo | Avisos antes del cálculo | Validación obligatoria |
+| Tipos de puertos, índices y ocupación | Se controla al conectar | Se valida nuevamente al recibir el proceso |
+| Ciclos/recirculaciones | No hay análisis algebraico completo | Rechaza ciclos |
+| Consistencia física, equilibrio y convergencia | No garantizada | Depende del cálculo real de DWSIM |
+
+**Criterio de uso:** un diagnóstico sin advertencias significa solamente que **no se detectaron errores básicos**. No demuestra GL = 0, factibilidad física ni convergencia. Si el motor rechaza el proceso, conservar el mensaje original es parte del análisis.
+
+## 9. Lecturas y alcance
 
 - [DWSIM — Degrees of Freedom](https://dwsim.org/tutorials/en/fundamentals/02-degrees-of-freedom.html), tutorial oficial (en inglés), utilizado como referencia conceptual.
 - [DWSIM — Streams](https://dwsim.org/help/main/23-streams.html), guía oficial de modos flash, composición y corrientes.
