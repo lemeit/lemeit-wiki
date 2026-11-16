@@ -21,6 +21,8 @@ Wiki madre de documentación técnica y bitácora de los proyectos de **lemeit.a
 | — | TeX | [tex.lemeit.ar](https://tex.lemeit.ar/) | [lemeit-tex](https://github.com/lemeit/lemeit-tex) (acceso restringido) |
 | — | ΣIM · Simulación de procesos | [sim.lemeit.ar](https://sim.lemeit.ar/) | [lemeit-sim](https://github.com/lemeit/lemeit-sim) |
 
+La sección [ΣIM](https://wiki.lemeit.ar/sim/) está revisada para el portal 0.17.2 (16/11/2026), con resumen y guía de acceso/clases en español e inglés. Su documentación técnica canónica permanece en `lemeit/lemeit-sim`.
+
 Más proyectos se suman como secciones nuevas a medida que se documentan (ver "Cómo agregar un proyecto" más abajo).
 
 ## Cómo funciona este repo
