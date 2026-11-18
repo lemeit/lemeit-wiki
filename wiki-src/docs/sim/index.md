@@ -73,18 +73,15 @@ La referencia operativa para los controles de la aplicación, la organización d
 1. Ingresar con el código de clase y comprobar la identidad en el pie.
 2. Crear un proyecto con compuestos/modelo o abrir explícitamente un ejemplo.
 3. Agregar equipos y corrientes, conectar puertos y completar condiciones.
-4. Seleccionar manualmente Windows o Debian, comprobar disponibilidad y calcular.
+4. Seleccionar manualmente Motor principal o Motor alternativo, comprobar disponibilidad y calcular.
 5. Revisar mensajes, corrientes y balances; guardar el JSON y exportar resultados si hace falta.
 
 No hay cambio automático de motor. Un servicio caído no impide preparar o guardar el proyecto con una sesión válida, pero no se generan resultados sin cálculo. Guardar antes de salir o volver a ingresar.
 
-## Arquitectura, validación y publicación
+## Disponibilidad del cálculo
 
-El navegador edita el diagrama; el Worker de Cloudflare valida sesión/rol y reenvía solicitudes a gateways privados de Windows o Debian. DWSIM se ejecuta fuera del navegador. Las computadoras, gateways y túneles deben estar disponibles; publicar el portal no inicia esos procesos.
+Elegí Motor principal o Motor alternativo y comprobá su disponibilidad. Si un servicio no está disponible, podés seguir preparando y guardando el proyecto. Consultá los detalles de infraestructura en la documentación técnica del repositorio.
 
-Las comprobaciones de acceso e interfaz y los recorridos locales con base en memoria no equivalen a nuevas simulaciones reales. Los informes de cálculos conservan fecha y motor; el Ejemplo 13 tiene comparación Windows–Debian documentada en 0.14.0. No se afirma prueba de carga simultánea de una clase ni validación experimental.
-
-El repositorio es `lemeit/lemeit-sim`. Workers Builds publica desde su configuración; la versión efectivamente cargada se consulta en **Ayuda → Acerca de** y se contrasta con el despliegue exitoso, no solo con una fusión en GitHub. La wiki no configura secretos ni pone en marcha motores.
 
 ## Identidad y licencias
 

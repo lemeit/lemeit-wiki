@@ -53,7 +53,7 @@ Esta tabla es una **orientación inicial**, no una validación automática de la
 2. Escoger un paquete **disponible en el catálogo del motor conectado**. El listado efectivo depende del DWSIM instalado.
 3. Definir una alimentación: caudal, base de composición, fracciones que sumen uno y un par flash activo (por ejemplo, TP).
 4. Revisar si el paquete es pertinente para las sustancias y el intervalo de presión y temperatura.
-5. Calcular con el motor Windows o Debian **elegido manualmente**; ΣIM no cambia de motor automáticamente.
+5. Calcular con el motor Motor principal o Motor alternativo **elegido manualmente**; ΣIM no cambia de motor automáticamente.
 6. Contrastar resultados: estado de fases, balances y propiedades plausibles. Si importa la precisión, comparar contra datos experimentales o una referencia independiente.
 
 **Alcance real:** ΣIM no expone en su interfaz todas las opciones de configuración de parámetros binarios ni todas las extensiones comerciales de DWSIM. El gateway valida que el modelo esté disponible y restringe IAPWS-IF97 a agua pura, pero **no verifica por sí solo la calidad de sus predicciones**.

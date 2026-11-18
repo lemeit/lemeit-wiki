@@ -29,16 +29,16 @@ The current scope is steady state without recycle loops. Kinetic CSTR/PFR models
 1. Sign in with the class code and check the footer identity.
 2. Create a project with compounds/models or explicitly open an example.
 3. Add equipment and streams, connect ports and enter conditions.
-4. Manually select Windows or Debian, check availability and calculate.
+4. Manually select the primary or alternative engine, check availability and calculate.
 5. Review messages, streams and balances; save the JSON project and export results as needed.
 
 There is no automatic failover. A valid session can prepare and save projects while an engine is unavailable, but cannot obtain new calculation results. Save before signing out or signing in again.
 
 ## Architecture and verification
 
-The browser edits the flowsheet. A Cloudflare Worker validates session/role and forwards requests to private Windows or Debian gateways; DWSIM runs outside the browser. The computers, gateways and tunnels must be available. Publishing the portal does not start them.
+The browser edits the flowsheet. A Cloudflare Worker validates session/role and forwards requests to private the primary or alternative engine gateways; DWSIM runs outside the browser. The computers, gateways and tunnels must be available. Publishing the portal does not start them.
 
-Access/interface checks and local in-memory database walkthroughs are not new engine simulations. Calculation reports retain their date and engine; Example 13 has a documented Windows–Debian comparison in 0.14.0. No simultaneous classroom load test or experimental validation is claimed.
+Access/interface checks and local in-memory database walkthroughs are not new engine simulations. Calculation reports retain their date and engine; Example 13 has a documented entre motores comparison in 0.14.0. No simultaneous classroom load test or experimental validation is claimed.
 
 Source lives in `lemeit/lemeit-sim`. Workers Builds publishes according to the project configuration. Check the actually loaded version in **Ayuda → Acerca de** and the successful deployment, rather than inferring it from a merged commit. This wiki does not configure secrets or start private engines.
 

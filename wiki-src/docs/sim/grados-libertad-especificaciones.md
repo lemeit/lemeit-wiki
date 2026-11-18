@@ -71,7 +71,7 @@ DWSIM cuenta con herramientas más amplias de verificación (*Flowsheet Check* y
 1. Abrí [Ejemplo 01](https://sim.lemeit.ar/ejemplos.html) y distinguí dos alimentaciones de una salida calculada.
 2. Verificá las dos temperaturas, presiones, caudales y composiciones de las entradas.
 3. Predecí la masa total de salida mediante el balance: 1 + 1 = **2 kg/s**.
-4. Calculá con Windows o Debian. La temperatura de referencia previamente validada es **50,021387 °C**.
+4. Calculá con Motor principal o Motor alternativo. La temperatura de referencia previamente validada es **50,021387 °C**.
 5. Explicá por qué la temperatura de salida es un **resultado**, no un nuevo dato independiente.
 
 ### Actividad B — Divisor (Ejemplo 04)

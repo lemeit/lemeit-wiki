@@ -23,7 +23,7 @@ Registrar al menos:
 2. Identificación del proyecto, diagrama y componentes.
 3. Paquete termodinámico y razón de selección.
 4. Entradas: unidades, bases, composición, condiciones y parámetros de equipos.
-5. Motor seleccionado (Windows o Debian), versión del portal y del gateway observada, fecha y hora.
+5. Motor seleccionado (Motor principal o Motor alternativo), versión del portal y del gateway observada, fecha y hora.
 6. Salidas principales, balances y residuos con tolerancias elegidas.
 7. Advertencias, limitaciones y próxima comprobación necesaria.
 
