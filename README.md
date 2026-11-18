@@ -114,3 +114,12 @@ La aplicación se mantiene en el repositorio independiente privado
 `npm run deploy`; GitHub Actions valida. Esta wiki usa su propio repositorio,
 MkDocs y Cloudflare Pages. La documentación en inglés no implica que la aplicación,
 sus plantillas o la guía PDF ya estén traducidas.
+
+## Documentación de usuario de ΣIM
+
+La guía del simulador usa «Motor principal» y «Motor alternativo» para los servicios.
+Los identificadores técnicos siguen siendo windows y debian respectivamente; no se
+modifican rutas ni credenciales. Las guías de usuario mantienen datos, procedimientos,
+resultados de referencia y límites físicos, sin historial interno de despliegue.
+La infraestructura y la evidencia de pruebas se documentan en README y docs del
+repositorio lemeit/lemeit-sim, incluidos los informes Windows/Debian.

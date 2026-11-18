@@ -49,7 +49,7 @@ Ver [Unidades y bases](unidades-bases-conversiones.md).
 
 1. Completá las condiciones de alimentación y los parámetros de cada operación.
 2. Usá **Simulación → Revisar especificaciones y conexiones**. Corregí advertencias sobre puertos, datos incompletos o límites de operaciones.
-3. En el pie, seleccioná explícitamente el motor **Windows** o **Debian** y comprobá su disponibilidad. **No hay conmutación automática** si uno falla.
+3. En el pie, seleccioná explícitamente el motor **Motor principal** o **Motor alternativo** y comprobá su disponibilidad. **No hay conmutación automática** si uno falla.
 4. Pulsá **Calcular**. La solicitud llega al gateway y luego al motor DWSIM seleccionado.
 5. Consultá la tabla de **Corrientes y balances**, el modelo, las temperaturas, presiones, caudales y los residuos de cada equipo.
 

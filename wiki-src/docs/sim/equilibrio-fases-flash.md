@@ -24,7 +24,7 @@ El recipiente separa dos fases ya determinadas por la termodinámica de la alime
 
 ## 4. Práctica con ΣIM: ejemplo 11
 
-Abrí el **Ejemplo 11 — Separador flash**, con agua–etanol y NRTL. La referencia histórica de Debian registra aproximadamente **0,638235345 kg/s de vapor** y **0,361757524 kg/s de líquido**. La pequeña diferencia respecto de 1 kg/s es un residuo numérico que debe interpretarse con la tolerancia documentada, no ocultarse. Consultá el [informe específico](https://github.com/lemeit/lemeit-sim/blob/main/docs/flash-0.10.0.md).
+Abrí el **Ejemplo 11 — Separador flash**, con agua–etanol y NRTL. Los resultados de referencia del caso son aproximadamente **0,638235345 kg/s de vapor** y **0,361757524 kg/s de líquido**. La pequeña diferencia respecto de 1 kg/s es un residuo numérico que debe interpretarse con la tolerancia documentada, no ocultarse. Consultá el [informe específico](https://github.com/lemeit/lemeit-sim/blob/main/docs/flash-0.10.0.md).
 
 **Actividad guiada:**
 

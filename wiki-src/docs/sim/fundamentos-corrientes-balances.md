@@ -68,7 +68,7 @@ En calentadores y enfriadores, el signo de la energía transferida debe leerse s
 1. Ingresar al portal con una sesión válida y abrir **Ejemplo 01 · Mezcla de agua**.
 2. Identificar ambas corrientes de entrada, el mezclador y la salida.
 3. Revisar unidades, presiones y composición de las alimentaciones.
-4. Seleccionar explícitamente el motor disponible (**Windows o Debian**); ΣIM no cambia automáticamente de motor ante fallas.
+4. Seleccionar explícitamente el motor disponible (**Motor principal o Motor alternativo**); ΣIM no cambia automáticamente de motor ante fallas.
 5. Calcular y comparar el caudal de salida con la suma de entradas.
 6. Comparar la temperatura calculada y los valores de entalpía que presenta el resultado; distinguir datos especificados de propiedades calculadas.
 7. Cambiar una temperatura de alimentación, volver a calcular y explicar qué se conserva.

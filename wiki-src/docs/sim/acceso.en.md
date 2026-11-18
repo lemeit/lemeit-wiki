@@ -25,7 +25,7 @@ Deactivating a class invalidates its sessions and asks for confirmation. Adminis
 
 The sign-in page indicates an existing session. Close it with **Salir** or **Cerrar sesión y cambiar acceso** when switching access. Selecting Administrator does not change the role without validating the password. The private panel enforces permissions on the server, even when its URL is known.
 
-**Herramientas → Estado de motores** opens the read-only Windows/Debian monitor. **Administración de clases** opens the private panel. The selected engine monitor is also available from the footer. These views do not run simulations or remotely start/restart services.
+**Herramientas → Estado de motores** opens the read-only primary/alternative engines monitor. **Administración de clases** opens the private panel. The selected engine monitor is also available from the footer. These views do not run simulations or remotely start/restart services.
 
 Dialogs close with a button, Escape or an outside click. Save the project before signing out.
 

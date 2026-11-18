@@ -28,7 +28,7 @@ En ΣIM la válvula se define por la **presión absoluta de salida**. La direcci
 2. Identificá dónde se especifican las presiones, y cuáles aparecen solo como resultados.
 3. Verificá que el caudal másico se conserve en ausencia de fugas y reacciones.
 4. Comprobá la entalpía aproximadamente constante a través de la válvula.
-5. Compará las presiones con el registro de validación **Debian**. El Ejemplo 12 tuvo siete verificaciones documentadas, pero no se publica una potencia numérica de bomba que no haya sido contrastada.
+5. Comprobá 500 kPa absolutos después de la bomba y 200 kPa después de la válvula. Consultá la potencia calculada de la bomba y contrastala con ṁ(hsalida − hentrada); en la válvula, comprobá que la entalpía se conserva.
 
 ## 5. Errores habituales
 

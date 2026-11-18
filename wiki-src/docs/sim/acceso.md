@@ -25,7 +25,7 @@ Desactivar una clase invalida sus sesiones y pide confirmación. El administrado
 
 El ingreso avisa si ya hay una sesión abierta. Para cambiar de acceso, cerrarla con **Salir** o con **Cerrar sesión y cambiar acceso**. Seleccionar Administrador no cambia el rol sin validar la contraseña. El panel privado exige permisos en servidor incluso si se conoce su dirección.
 
-**Herramientas → Estado de motores** abre una consulta de Windows/Debian; **Administración de clases** abre el panel privado. El monitor del motor elegido también se abre desde el pie. Estas vistas no ejecutan simulaciones ni permiten encender/reiniciar servicios.
+**Herramientas → Estado de motores** abre una consulta de motor principal/alternativo; **Administración de clases** abre el panel privado. El monitor del motor elegido también se abre desde el pie. Estas vistas no ejecutan simulaciones ni permiten encender/reiniciar servicios.
 
 Los diálogos se cierran por botón, Escape o clic fuera. Guardar siempre el proyecto antes de cerrar sesión.
 
