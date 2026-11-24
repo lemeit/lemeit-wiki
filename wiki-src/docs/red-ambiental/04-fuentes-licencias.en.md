@@ -1,6 +1,6 @@
 # Sources, data and licenses
 
-School Air Quality Monitoring exists thanks to the hardware and reference data of other projects — some donated equipment, others publish the data we use as context. This page spells out what's used from each one, under what license, and how we plan to use (and give back) that data. It isn't a formal legal document — it's a transparency note, written so that anyone (including the providers themselves) can see at a glance what we do with what they gave us.
+Aire Escolar exists thanks to the hardware and reference data of other projects — some donated equipment, others publish the data we use as context. This page spells out what's used from each one, under what license, and how we plan to use (and give back) that data. It isn't a formal legal document — it's a transparency note, written so that anyone (including the providers themselves) can see at a glance what we do with what they gave us.
 
 ---
 
@@ -48,7 +48,7 @@ Since both are registered in AirGradient's ecosystem, they're already visible on
 
 ### License
 
-AirGradient's hardware and firmware are **CC BY-SA 4.0** (free use and modification with attribution). The data its monitors generate stays under the control of whoever operates them — in this case, the project — which decides whether to publish it. Here it's published through School Air Quality Monitoring's own API, in the same open-data spirit AirGradient promotes.
+AirGradient's hardware and firmware are **CC BY-SA 4.0** (free use and modification with attribution). The data its monitors generate stays under the control of whoever operates them — in this case, the project — which decides whether to publish it. Here it's published through Aire Escolar's own API, in the same open-data spirit AirGradient promotes.
 
 **Links:** [Privacy](https://www.airgradient.com/privacy-policy/) · [Terms](https://www.airgradient.com/terms-conditions/) · [Data ownership quiz](https://www.airgradient.com/aq-data-ownership-quiz/)
 
@@ -60,7 +60,7 @@ AirGradient's hardware and firmware are **CC BY-SA 4.0** (free use and modificat
 
 ### How it's used here
 
-Today OpenAQ is mostly a design and project-philosophy reference — there's no active data integration between School Air Quality Monitoring and OpenAQ yet. AirGradient offers the option to publish its monitors' data to OpenAQ (it's the operator's choice); it's something worth evaluating in the future for the network's 2 AirGradient sensors. The PurpleAir sensors, on the other hand, don't reach OpenAQ today: since PurpleAir started monetizing its API access, OpenAQ stopped picking up its monitors.
+Today OpenAQ is mostly a design and project-philosophy reference — there's no active data integration between Aire Escolar and OpenAQ yet. AirGradient offers the option to publish its monitors' data to OpenAQ (it's the operator's choice); it's something worth evaluating in the future for the network's 2 AirGradient sensors. The PurpleAir sensors, on the other hand, don't reach OpenAQ today: since PurpleAir started monetizing its API access, OpenAQ stopped picking up its monitors.
 
 To explore air quality data worldwide (from this network and thousands of others), OpenAQ offers its own public viewer: [explore.openaq.org](https://explore.openaq.org).
 
@@ -70,4 +70,4 @@ To explore air quality data worldwide (from this network and thousands of others
 
 ## The data this project generates
 
-Following the same philosophy as PurpleAir, AirGradient and OpenAQ, the data School Air Quality Monitoring generates and publishes (sensor metadata, historical readings) is available with no authentication or sign-up through the project's [public API](https://aq.lemeit.ar/api.html) — read-only, open CORS, meant for anyone to consume directly. If you reuse this data publicly, we'd appreciate a credit to [app.lemeit.ar/aq](https://app.lemeit.ar/aq).
+Following the same philosophy as PurpleAir, AirGradient and OpenAQ, the data Aire Escolar generates and publishes (sensor metadata, historical readings) is available with no authentication or sign-up through the project's [public API](https://aq.lemeit.ar/api.html) — read-only, open CORS, meant for anyone to consume directly. If you reuse this data publicly, we'd appreciate a credit to [app.lemeit.ar/aq](https://app.lemeit.ar/aq).
