@@ -27,7 +27,7 @@ Registrar al menos:
 6. Salidas principales, balances y residuos con tolerancias elegidas.
 7. Advertencias, limitaciones y próxima comprobación necesaria.
 
-En ΣIM se pueden guardar archivos JSON de proyecto y exportar resultados según las funciones vigentes. No insertar claves de acceso, tokens, rutas privadas ni credenciales en informes públicos.
+En ΣIM se pueden guardar proyectos individuales por alumno en la nube, descargar copias JSON y exportar tablas CSV/Excel e informes PDF con diagrama, rótulo, actividad y balances según la selección. No insertar claves de acceso, tokens, rutas privadas ni credenciales en informes públicos.
 
 ## 3. Ejemplo de informe: mezcla de agua
 
@@ -52,6 +52,10 @@ En una operación sin reacción, un residuo global de materia puede definirse co
 Conviene informar el residuo con unidad (kg/s), y si se usa el error relativo especificar el denominador. Una diferencia no nula pequeña puede responder a redondeo o tolerancias; una grande debe investigarse.
 
 En reacciones, comprobar también la **conservación elemental**: los caudales de una especie reaccionante no necesariamente se conservan.
+
+### Balance térmico en intercambiadores
+
+Para el Ejemplo 13, distinguir la potencia transferida **entre circuitos** (aproximadamente 40 kW) del residuo de energía neta (cercano a cero). La coincidencia entre ambos lados es una comprobación numérica de cierre, no una medida experimental. La mejora de etiquetas se encuentra [en revisión para 0.47.5](https://github.com/lemeit/lemeit-sim/pull/135).
 
 ## 5. Actividad final de auditoría
 
