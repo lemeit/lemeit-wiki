@@ -1,6 +1,6 @@
 # Recirculaciones y convergencia de procesos
 
-**Nivel intermedio · Capítulo 12.** Hasta aquí estudiamos diagramas sin ciclos. En numerosos procesos reales una fracción del producto retorna a una operación anterior: recuperación de solventes, reciclado de reactivos y recirculación de corrientes de proceso. Este capítulo explica su cálculo desde los balances y la matemática, **sin afirmar que ΣIM permita construir ciclos**: el gateway actual los rechaza.
+**Nivel intermedio · Capítulo 12.** Hasta aquí estudiamos diagramas sin ciclos. En numerosos procesos reales una fracción del producto retorna a una operación anterior: recuperación de solventes, reciclado de reactivos y recirculación de corrientes de proceso. Este capítulo explica su cálculo desde los balances y la matemática, distinguiendo el balance analítico de un primer soporte de recirculación simple que existe en el gateway. La validación física de los Ejemplos 17–19 todavía está incompleta.
 
 [Itinerario de ΣIM](index.md) · [Diagramas y conexiones](diagramas-conexiones.md)
 
@@ -58,7 +58,7 @@ Es útil guardar: corriente de corte, unidades, estimación inicial, tolerancia,
 
 **Actividad analítica:** cambiar la fracción de recirculación a 0,50 y 0,90 y recalcular \(F=100/(1-r)\). Comprobar que las purgas siguen siendo 100 kg/h. Explicar por qué aumenta el caudal interno cuando \(r\) se acerca a 1.
 
-**En ΣIM:** hoy se permiten diagramas estacionarios sin recirculaciones. No dibujar un ciclo esperando que el editor lo resuelva; para explorar reciclados utilizar la funcionalidad correspondiente de DWSIM de escritorio, con modelos y tolerancias explícitos.
+**En ΣIM:** existe un modo inicial de lazo material simple con cálculo iterativo y corriente de corte; los Ejemplos 17–19 y el bloque Recycle nativo no deben presentarse como equivalentes o plenamente validados en Windows y Debian. Comprobar estado del gateway, convergencia y residuos. Para configuraciones avanzadas, utilizar DWSIM de escritorio con modelos y tolerancias explícitos.
 
 ## 6. Preguntas
 
