@@ -43,7 +43,7 @@ La revisión del proyecto identifica conexiones incompletas y parámetros básic
 
 Una recirculación devuelve parte del material desde una etapa posterior a una anterior. En simuladores que la admiten, es común elegir una *corriente de corte* (*tear stream*), proporcionar valores iniciales e iterar hasta cumplir una tolerancia de convergencia.
 
-**ΣIM todavía admite únicamente procesos sin recirculaciones**: el gateway rechaza ciclos dirigidos. No se debe recomendar cerrar un lazo en este portal ni presentar una convergencia de reciclado como función disponible. El concepto sí es importante para entender la futura evolución del simulador.
+**ΣIM incorpora un primer modo de recirculación material simple**, con validación física y cruzada aún pendientes para los ejemplos 17–19. Los lazos complejos, el cálculo nativo de Recycle y las recirculaciones con reacción requieren una validación diferente. No asumir convergencia por el simple hecho de que la conexión sea aceptada.
 
 ## 6. Práctica
 
