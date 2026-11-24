@@ -1,12 +1,12 @@
 # Acceso y clases
 
-Portal 0.17.2 · revisión 16/11/2026.
+Portal 0.47.4 · revisión 24/11/2026.
 
 ## Alumnado
 
-Abrir [el ingreso](https://sim.lemeit.ar/acceso.html), elegir **Alumno** e ingresar el código de 12 caracteres. No se necesita correo ni cuenta individual. El código es compartido por la clase y no identifica a cada persona.
+Abrir [el ingreso](https://sim.lemeit.ar/acceso.html), elegir **Alumno** e ingresar el código de 12 caracteres. No se necesita correo ni cuenta personal externa. El código es compartido por la clase; una identidad de alumno dentro de esa clase permite organizar los proyectos individuales en la nube.
 
-El pie gris muestra nombre de clase, tiempo restante y **Salir**. La sesión dura hasta cuatro horas o hasta que venza/se desactive la clase, lo que ocurra primero. Si la clase sigue vigente, volver a ingresar renueva la sesión. Guardar el archivo del proyecto antes de salir o volver a ingresar.
+El pie gris muestra nombre de clase, tiempo restante y **Salir**. La sesión dura hasta cuatro horas o hasta que venza/se desactive la clase, lo que ocurra primero. Si la clase sigue vigente, volver a ingresar renueva la sesión. Guardar el proyecto en la nube antes de salir o volver a ingresar; si se necesita un respaldo, descargar también una copia JSON.
 
 El aviso de acceso finalizado no cierra ni borra el proyecto, pero el servidor ya no permite calcular con una sesión inválida.
 
@@ -27,7 +27,7 @@ El ingreso avisa si ya hay una sesión abierta. Para cambiar de acceso, cerrarla
 
 **Herramientas → Estado de motores** abre una consulta de motor principal/alternativo; **Administración de clases** abre el panel privado. El monitor del motor elegido también se abre desde el pie. Estas vistas no ejecutan simulaciones ni permiten encender/reiniciar servicios.
 
-Los diálogos se cierran por botón, Escape o clic fuera. Guardar siempre el proyecto antes de cerrar sesión.
+Los diálogos se cierran por botón, Escape o clic fuera. Para cambiar de alumno dentro de la clase, usar la opción de cambio de identidad desde la biblioteca de proyectos en nube. Los proyectos se mantienen separados por identidad. Guardar antes de cerrar sesión.
 
 ## Documentación técnica
 
