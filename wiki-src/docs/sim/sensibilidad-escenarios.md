@@ -38,7 +38,7 @@ Para comprobar el método de diferencia central en \(f=0,5\) y \(\Delta f=0,1\):
 
 ## 4. Diseñar escenarios de forma honesta
 
-Preparar una tabla con identificador, fecha, motor elegido (Motor principal o Motor alternativo), versión del gateway, paquete termodinámico, compuesto(s), parámetro modificado, entradas, resultados y residuos. Guardar un JSON del proyecto por escenario.
+Preparar una tabla con identificador, fecha, motor elegido (Windows o Debian), versión del gateway, paquete termodinámico, compuesto(s), parámetro modificado, entradas, resultados y residuos. Guardar cada escenario como proyecto identificado en nube y, cuando corresponda, descargar copia JSON.
 
 En ΣIM, el usuario puede ejecutar y comparar escenarios de manera **manual**. La existencia de exportaciones de resultados no implica que exista optimización, barrido automático, estimación de incertidumbres ni cálculo formal de derivadas.
 
