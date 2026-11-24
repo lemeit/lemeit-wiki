@@ -1,20 +1,20 @@
 # Environmental Monitoring Network
 
-Technical documentation and development log for Saladillo's environmental monitoring network, Buenos Aires: three sibling portals that share the same Cloudflare infrastructure (Pages + Workers + D1) and the same design system ([design.lemeit.ar](https://design.lemeit.ar)).
+Technical documentation and development log for an environmental monitoring network in Buenos Aires Province, within educational projects on Comprehensive Environmental Education. The three portals share Cloudflare infrastructure and a common design system.
 
 Since September 2026 all three live under a single domain, **`app.lemeit.ar`**, with a path prefix per portal — a gateway Worker (repo [`gateway`](https://github.com/lemeit/gateway)) reverse-proxies each one to the Cloudflare Pages project that still publishes it, unchanged. The old domains (`aq`/`emas`/`wq.lemeit.ar`) keep working, they just redirect to the new domain on their own.
 
 | Portal | Domain | What it measures | Repo |
 |---|---|---|---|
-| ![AQ](../assets/logos/aq.svg){: width="22" style="vertical-align:middle;margin-right:6px" } School Air Quality Monitoring | [app.lemeit.ar/aq](https://app.lemeit.ar/aq/) | Air quality (PM1.0/PM2.5/PM10, VOC, CO2, NOx) — PurpleAir and AirGradient sensors in educational institutions across Buenos Aires Province | [lemeit-aq](https://github.com/lemeit/lemeit-aq) |
+| ![AQ](../assets/logos/aq.svg){: width="22" style="vertical-align:middle;margin-right:6px" } Aire Escolar | [app.lemeit.ar/aq](https://app.lemeit.ar/aq/) | Air quality (PM1.0/PM2.5/PM10, VOC, CO2, NOx) — PurpleAir and AirGradient sensors in educational institutions across Buenos Aires Province | [lemeit-aq](https://github.com/lemeit/lemeit-aq) |
 | ![EMA](../assets/logos/ema.svg){: width="22" style="vertical-align:middle;margin-right:6px" } EMAS | [app.lemeit.ar/emas](https://app.lemeit.ar/emas/) | Weather — temperature, humidity, pressure, wind, rain from automatic stations in Saladillo and 25 de Mayo | [lemeit-emas](https://github.com/lemeit/lemeit-emas) |
 | ![WQ](../assets/logos/wq.svg){: width="22" style="vertical-align:middle;margin-right:6px" } Water Quality | [app.lemeit.ar/wq](https://app.lemeit.ar/wq/) | Arsenic, nitrates, fluoride, heavy metals and bacteriology from the municipal water network | [lemeit-wq](https://github.com/lemeit/lemeit-wq) |
 
 ## Project origin
 
-It all starts in 2023, when Luciano Lamaita was selected as a Community Ambassador for the OpenAQ Community Ambassadors program. That's where the first low-cost sensors installed in Saladillo came from (AirGradient, Clarity Node-S, Atmotube), along with the citizen-science project "Saladillo Schools in Action for Clean Air," presented at school science fairs and technology expos.
+The initiative builds on citizen science and environmental monitoring activities begun in 2023.
 
-Integrating that work into a dedicated portal came later, in March 2026, as an educational project of the Industrial Laboratory course, 7th-year Chemical Technician track, EEST N°1 "Gral. Savio" (Saladillo, Buenos Aires), led by Eng. Luciano Lamaita. The starting point was getting programmatic access to the school's own Automatic Weather Station (EMA) data — that's how EMA Saladillo came about, later expanded into a network of 4 stations. In August 2026 the three projects (weather, air, water) were harmonized onto the same Cloudflare architecture so they could eventually integrate with each other. See the [project log](99-bitacora.md) (Spanish only) for the full history.
+In 2026, educational monitoring projects evolved into a shared technological infrastructure for weather, air and water. See the [project log](99-bitacora.md).
 
 ## Shared architecture
 
