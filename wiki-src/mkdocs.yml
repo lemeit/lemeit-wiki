@@ -74,7 +74,7 @@ plugins:
             Portal Lemeit: Lemeit Portal
             Red de Monitoreo Ambiental: Environmental Monitoring Network
             Resumen: Overview
-            Monitoreo Ambiental Escolar (aq.lemeit.ar): School Air Quality Monitoring (aq.lemeit.ar)
+            Aire Escolar (aq.lemeit.ar): Aire Escolar (aq.lemeit.ar)
             EMAS (emas.lemeit.ar): EMAS (emas.lemeit.ar)
             Calidad del Agua (wq.lemeit.ar): Water Quality (wq.lemeit.ar)
             Fuentes y licencias: Sources and licenses
@@ -91,7 +91,7 @@ nav:
       - Resumen: portal-lemeit/index.md
   - Red de Monitoreo Ambiental:
       - Resumen: red-ambiental/index.md
-      - Monitoreo Ambiental Escolar (aq.lemeit.ar): red-ambiental/01-aire-saladillo.md
+      - Aire Escolar (aq.lemeit.ar): red-ambiental/01-aire-saladillo.md
       - EMAS (emas.lemeit.ar): red-ambiental/02-ema-saladillo.md
       - Calidad del Agua (wq.lemeit.ar): red-ambiental/03-agua-saladillo.md
       - Fuentes y licencias: red-ambiental/04-fuentes-licencias.md

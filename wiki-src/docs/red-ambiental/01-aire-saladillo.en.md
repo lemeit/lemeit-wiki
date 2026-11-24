@@ -1,4 +1,4 @@
-# ![AQ](../assets/logos/aq.svg){: width="36" style="vertical-align:middle;margin-right:8px" } School Air Quality Monitoring — app.lemeit.ar/aq
+# ![AQ](../assets/logos/aq.svg){: width="36" style="vertical-align:middle;margin-right:8px" } Aire Escolar — app.lemeit.ar/aq
 
 Air quality sensor network (PM1.0/PM2.5/PM10, VOC, CO2, NOx, temperature, humidity, pressure) installed in educational institutions and private homes across Buenos Aires Province — a pilot project in the Saladillo and 25 de Mayo districts. Combines **PurpleAir** and **AirGradient** sensors on the same database and the same dashboard.
 
@@ -6,7 +6,7 @@ Repository: [github.com/lemeit/lemeit-aq](https://github.com/lemeit/lemeit-aq)
 
 ## Documented status — 13 November 2026
 
-The owner reports two monitor installations on **13 November 2026**: **Escuela de Educación Agropecuaria de Carlos Casares**, in **Del Valle (25 de Mayo district)**, and **Escuela de Educación Artística Lola Mora**, in **25 de Mayo**. Both are connected to **school Wi-Fi** and transmitting to the **public portal**, according to the owner. The existing inventory associates them with **AE-04 (298873)** and **AE-01 (298687)** respectively; hardware and IDs were not independently rechecked.
+On 13 November 2026, installation of AE-01 and AE-04 and transmission to the portal were reported; current technical verification remains pending.
 
 **Current technical verification is pending:** public GET endpoints were not requested because the Worker writes visit records to D1. Readings verified on 12 November predate the reported installation and do not prove school transmission on 13 November. [Evidence and pending checks](https://github.com/lemeit/lemeit-aq/blob/docs/instalaciones-25-mayo-20261113/docs/INSTALACIONES_20261113.md).
 
@@ -129,43 +129,22 @@ Prompts for `PURPLEAIR_API_KEY` (the same one set with `wrangler secret put`), o
 
 ## Sensors and AE codes
 
-Each PurpleAir sensor in the network has its own **project code** (`AE-NN`), independent of the `sensor_index` assigned by PurpleAir.
+Public station labels use AE codes. Institution names, addresses, institutional identifiers and device identifiers are maintained in the private inventory. Registration, physical installation and connectivity are separate events.
 
-| Code | `sensor_index` | Institution | District / setting | Address | CUE | PurpleAir registration |
-|---|---|---|---|---|---|---|
-| AE-00 | 198617 | Colegio Secundario Madre Teresa | Saladillo / rural | Calle Jauretche e Yrigoyen | — | 2023-11-28 (initial); 2024-12-03 (school registration) |
-| AE-01 | 298687 | Esc. de Educación Artística N°1 "Lola Mora" | 25 de Mayo / urban | Calle 7 between 23 and 24 | 061617500 | 2026-10-05 |
-| AE-02 | 298701 | Esc. de Educación Secundaria N°2 "Manuel Pardal" | Saladillo / urban | Av. Pereyra 3046 | 060342300 | 2026-10-05 |
-| AE-03 | 298691 | Instituto Niño Jesús | — | — | — | 2026-10-28 |
-| AE-04 | 298873 | Esc. Agraria C.M. Casares (EAS Del Valle) | 25 de Mayo / rural | Rural area, Del Valle | — | 2026-11-12 |
-
-AE-01 through AE-04 are PurpleAir PA-II-FLEX units. AE-03 is assigned to Instituto Niño Jesús (298691); AE-04 (298873) is documented for Del Valle; its 13 November installation was reported by the owner, without current technical verification. The convention was defined for the PurpleAir sensors; the AirGradient ones (synthetic ID 900000+) don't have a code assigned yet.
-
-### PurpleAir registration and physical installation are different dates
-
-Registration confirmations supplied by the owner on 2026-10-29 establish **AE-01 and AE-02: 2026-10-05; AE-03: 2026-10-28**. The previous 2026-10-06 registration date for AE-01/AE-02 is corrected; it is not reinterpreted as an installation date. Physical installation is recorded separately.
-
-| Code | Device ID | Latitude declared at registration | Longitude declared at registration |
-| --- | --- | --- | --- |
-| AE-01 | `ec:64:c9:cb:9f:3` | -35.43677574362913 | -60.168800362812966 |
-| AE-02 | `f0:24:f9:c2:cf:2d` | -35.63495676824009 | -59.7735131464144 |
-| AE-03 | `fc:f5:c4:ae:ca:d6` | -35.640825 | -59.778565 |
-| AE-04 | `f0:24:f9:c2:ee:ac` | -35.86807451954287 | -60.73151263154378 |
-
-The emails record outdoor location, public visibility and the default sending interval (~90 s), separate from LEMEIT ingestion. Online status refers only to when the email was sent, not current connectivity or permanent installation. Mini guides put registration date and coordinates under **Observations**; the installation date is left for the actual mounting event. Read keys and complete emails are excluded. See the [versioned registration record](https://github.com/lemeit/lemeit-aq/blob/main/docs/instalacion/REGISTRO_PURPLEAIR.md).
-
-AE-00 is the same device, ID `c8:c9:a3:f:93:af`: initially configured as `saladillo_home` on **2023-11-28**, then registered as `Madre Teresa High School` on **2024-12-03** after more than a year at the owner's home, according to the owner. The school confirmation gives sensor index **198617** and declared coordinates **-35.66630, -59.80716**. The initial email does not provide a sensor index; hardware identity connects the records. Neither registration date establishes the exact mounting date or a future relocation date. Home coordinates, contact details and read keys are excluded. The emails do not establish the model; the owner's later PurpleAir map screenshot identifies it as PA-II-FLEX.
-
-**Later AE-00 update — 29 October 2026.** AE-00 registration update confirmed by the owner's email: **2026-10-29, 12:27 as displayed**, name **`AE-00 | app.lemeit.ar`**, same sensor index 198617 and Device ID `c8:c9:a3:f:93:af`. Declared coordinates -35.6663, -59.80716 and elevation 42.3987 m; outdoor, public and sending data at email time. This name change preserves the initial 2023 registration and the 2024 school registration; it does not establish a new physical installation. `app.lemeit.ar` is the general portal; School Air is at [app.lemeit.ar/aq/](https://app.lemeit.ar/aq/).
-
-**Owner confirmation, 2026-10-29:** today's change is retained as a new school registration event in PurpleAir. AE-00 **is still at the owner's home**; physical relocation/installation at Madre Teresa is pending. Declared school map coordinates do not describe its current physical location. No home address or coordinates are published.
+| Code | PurpleAir registration |
+|---|---|
+| AE-00 | 2023-11-28; 2024-12-03 |
+| AE-01 | 2026-10-05 |
+| AE-02 | 2026-10-05 |
+| AE-03 | 2026-10-28 |
+| AE-04 | 2026-11-12 |
 
 ### Code convention
 
 - `AE-00` is the network's first sensor, from before the project; `AE-01` onwards are assigned in installation order.
 - The code is **stable**: if a sensor moves to another school, the code stays and only the institution changes.
 - In the D1 database (`sensores` table) it is stored in the `codigo` column (unique), and the physical installation date in `fecha_instalacion`. The API returns both in `/api/sensores` and `/api/ultimas`.
-- On the portal, each card shows the institution as its title and the sensor name (`AE-NN`) below it.
+- Public cards display the AE code.
 - The Worker **does not overwrite** `nombre`, `institucion`, `codigo` or `fecha_instalacion` during ingestion; it only updates latitude and longitude from PurpleAir.
 
 ### How to add a sensor
@@ -181,14 +160,14 @@ An `UPDATE` on a `sensor_index` that doesn't exist yet raises no error and chang
 
 ## Roadmap
 
-**Current follow-up — 13 November 2026:** Lola Mora and Del Valle are no longer awaiting installation based on the owner's report: installed on 13 November, on school Wi-Fi and transmitting to the portal. No identities are added to the inventory and connectivity/ingestion verification tasks remain open. AE-00 and AE-03 retain their last documented pending tasks. The following paragraphs are historical context. [Record](https://github.com/lemeit/lemeit-aq/blob/docs/instalaciones-25-mayo-20261113/docs/INSTALACIONES_20261113.md).
+**13 November 2026:** AE-01 and AE-04 installation reported; connectivity verification remains pending.
 
 > Historical snapshot, 28 October 2026 (superseded by the 1 November status above): AE-01 is still awaiting physical installation according to the latest owner report; AE-02 is operational. AE-03 is online and visible according to the owner, with a recent D1 reading verified independently. Its project code `AE-03` was added with explicit authorization and checked by SELECT. AirGradient 900002 and 900003 have old readings; current connectivity is unverified. Rotate created a Worker version that still required deployment in this incident. See the [Spanish log](99-bitacora.md) and [safe procedure and rollback](https://github.com/lemeit/lemeit-aq/blob/main/docs/OPERACION_PURPLEAIR.md). The hardware description below records an earlier state.
 
 
-**Historical hardware notes (October 2026; superseded by the 1 November status above)**: all 5 **PurpleAir** sensors are in the project's hands. The only one running until now was AE-00, at Colegio Secundario Madre Teresa, currently pending relocation. AE-01 (25 de Mayo) and AE-02 (Saladillo) are already registered on PurpleAir and on the portal, and their installation is planned for October 6; AE-03 and AE-04 don't have an assigned destination yet. The 4 new units were a donation from [PurpleAir Collective](https://community.purpleair.com/t/purpleair-collective-june-july-2024/8771) (mid-2024 call, based on a needs proposal submitted by the author — the project placed 2nd in that round). The 2 **AirGradient** sensors are also in hand and active, currently connected at a private home for testing, pending a decision on which institutions they'll be installed in.
+Four PurpleAir units were donated through PurpleAir Collective. Historical inventory details remain private.
 
-**Phase 2 — confirmed expansion (institutional meeting on 9/16/2026, convened by the Regional Education Office)**: 5 schools — 3 in Saladillo and 2 in the **25 de Mayo** district — one urban and one rural site in each district, expanding the network beyond Saladillo for the first time. 4 confirmed; the fifth (Colegio Secundario Madre Teresa) is being relocated. Meeting documentation: deployment plan and specification/requirements sheet in the [repo's `docs/`](https://github.com/lemeit/lemeit-aq/tree/main/docs). See also the [EMA Saladillo roadmap](02-ema-saladillo.md) (Spanish only), which adds a station in 25 de Mayo for the same reason. This expansion opens the door to a future combined report (air + weather) with spatial analysis between sensors — not immediate today, since the EMA stations and the air sensors don't share a physical location yet.
+**Expansion:** regional educational monitoring network, with future combined air and weather reports.
 
 ## Technical milestones
 
@@ -214,10 +193,10 @@ See the [project log](99-bitacora.md) (Spanish only) for the full session-by-ses
 
 > Historical snapshot before the reported 13 November installation. References below to AE-04 awaiting installation describe 12 November; see the current status above.
 
-All five PurpleAir devices, AE-00 through AE-04, are registered and configured for LEMEIT ingestion. AE-04 is PA-II-FLEX **298873**, assigned to **Esc. Agraria C.M. Casares (EAS Del Valle)**. The owner confirms AE-02 is installed at its school; AE-04 is still undergoing testing elsewhere and is not installed at the school. Its PurpleAir registration date is **2026-11-12**; its physical installation date remains pending. Coordinates are provider-declared, not field-verified.
+Five PurpleAir devices were registered at this historical cutoff. AE-04 was still undergoing testing.
 
 Authorized configuration update retained the four previous PurpleAir devices and unchanged Worker code. D1 and the live map/cards confirm new readings: AE-02 **08:55:11 ART**, AE-04 **08:55:40 ART** (PM2.5 15.6 µg/m³). Seven identities remain, without duplicates. Previous snapshots in this page are historical.
 
 PurpleAir ingestion stays at **:27/:57 every 30 minutes**. Worker schedules are empty in production and in main after PR #31; GitHub Actions scheduling remains paused. The owner authorized publication of a **40-minute inclusive freshness limit**, replacing the incompatible 25-minute limit. No manual ingestion or increased polling. Reading freshness does not establish physical power status. Current AirGradient connectivity and automatic ingestion are not established by historical data. [Change record and rollback](https://github.com/lemeit/lemeit-aq/pull/32).
 
-**Short display name:** at the owner's request, the public AE-04 card shows **EA C.M. Casares (Del Valle)**; the deployment plan's full institution name is retained in documentation.
+Public labels use AE codes.

@@ -1,6 +1,6 @@
 # Fuentes, datos y licencias
 
-Monitoreo Ambiental Escolar existe gracias al hardware y los datos de referencia de otros proyectos — algunos donaron equipos, otros publican los datos que usamos como contexto. Esta página deja explícito qué se usa de cada uno, bajo qué licencia, y cómo pensamos usar (y devolver) esos datos. No es un documento legal formal — es una nota de transparencia, escrita para que cualquiera (incluidos los propios proveedores) entienda de un vistazo qué hacemos con lo que nos dieron.
+Aire Escolar existe gracias al hardware y los datos de referencia de otros proyectos — algunos donaron equipos, otros publican los datos que usamos como contexto. Esta página deja explícito qué se usa de cada uno, bajo qué licencia, y cómo pensamos usar (y devolver) esos datos. No es un documento legal formal — es una nota de transparencia, escrita para que cualquiera (incluidos los propios proveedores) entienda de un vistazo qué hacemos con lo que nos dieron.
 
 ---
 
@@ -48,7 +48,7 @@ Al estar dados de alta en el ecosistema de AirGradient, los dos sensores ya son 
 
 ### Licencia
 
-El hardware y firmware de AirGradient son **CC BY-SA 4.0** (uso y modificación libres con atribución). Los datos que sus monitores generan quedan bajo control de quien los opera — en este caso, del proyecto — que decide si publicarlos. Acá se publican en la API propia de Monitoreo Ambiental Escolar, con la misma filosofía de datos abiertos que promueve AirGradient.
+El hardware y firmware de AirGradient son **CC BY-SA 4.0** (uso y modificación libres con atribución). Los datos que sus monitores generan quedan bajo control de quien los opera — en este caso, del proyecto — que decide si publicarlos. Acá se publican en la API propia de Aire Escolar, con la misma filosofía de datos abiertos que promueve AirGradient.
 
 **Links:** [Privacidad](https://www.airgradient.com/privacy-policy/) · [Términos](https://www.airgradient.com/terms-conditions/) · [Quiz de propiedad de datos](https://www.airgradient.com/aq-data-ownership-quiz/)
 
@@ -60,7 +60,7 @@ El hardware y firmware de AirGradient son **CC BY-SA 4.0** (uso y modificación 
 
 ### Cómo se usan acá
 
-Hoy OpenAQ es sobre todo una referencia de diseño y de filosofía de proyecto — no hay integración activa de datos entre Monitoreo Ambiental Escolar y OpenAQ todavía. AirGradient ofrece la opción de publicar los datos de sus monitores en OpenAQ (queda a elección del operador); es algo a evaluar a futuro para los 2 sensores AirGradient de la red. Los sensores PurpleAir, en cambio, hoy no llegan a OpenAQ: desde que PurpleAir empezó a monetizar el acceso a su API, OpenAQ dejó de levantar sus monitores.
+Hoy OpenAQ es sobre todo una referencia de diseño y de filosofía de proyecto — no hay integración activa de datos entre Aire Escolar y OpenAQ todavía. AirGradient ofrece la opción de publicar los datos de sus monitores en OpenAQ (queda a elección del operador); es algo a evaluar a futuro para los 2 sensores AirGradient de la red. Los sensores PurpleAir, en cambio, hoy no llegan a OpenAQ: desde que PurpleAir empezó a monetizar el acceso a su API, OpenAQ dejó de levantar sus monitores.
 
 Para explorar datos de calidad de aire a nivel global (de esta red y de miles de otras), OpenAQ ofrece su propio visor público: [explore.openaq.org](https://explore.openaq.org).
 
@@ -70,5 +70,5 @@ Para explorar datos de calidad de aire a nivel global (de esta red y de miles de
 
 ## Los datos que genera este proyecto
 
-Siguiendo la misma filosofía de PurpleAir, AirGradient y OpenAQ, los datos que Monitoreo Ambiental Escolar genera y publica (metadata de sensores, lecturas históricas) están disponibles sin autenticación ni registro a través de la [API pública](https://aq.lemeit.ar/api.html) del proyecto — de lectura, CORS abierto, pensada para que cualquiera la consuma directo. Si reutilizás estos datos públicamente, agradecemos que menciones como fuente a [app.lemeit.ar/aq](https://app.lemeit.ar/aq).
+Siguiendo la misma filosofía de PurpleAir, AirGradient y OpenAQ, los datos que Aire Escolar genera y publica (metadata de sensores, lecturas históricas) están disponibles sin autenticación ni registro a través de la [API pública](https://aq.lemeit.ar/api.html) del proyecto — de lectura, CORS abierto, pensada para que cualquiera la consuma directo. Si reutilizás estos datos públicamente, agradecemos que menciones como fuente a [app.lemeit.ar/aq](https://app.lemeit.ar/aq).
 
