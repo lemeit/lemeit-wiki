@@ -3,7 +3,7 @@
 [![sitio: sim.lemeit.ar](https://img.shields.io/badge/sitio-sim.lemeit.ar-009688?style=flat-square&labelColor=555555)](https://sim.lemeit.ar/)
 [![código: lemeit-sim](https://img.shields.io/badge/c%C3%B3digo-lemeit--sim-009688?style=flat-square&labelColor=555555)](https://github.com/lemeit/lemeit-sim)
 
-Simulador educativo de procesos con interfaz web en español y motor DWSIM 10.2.15. Portal documentado: **0.19.1**, revisión del **16 de noviembre de 2026**. La aplicación está publicada y continúa en desarrollo; no reproduce todo el editor de escritorio de DWSIM.
+Simulador educativo de procesos con interfaz web en español y motor DWSIM 10.2.15. Portal comprobado: **0.47.4**, revisión del **24 de noviembre de 2026**. La aplicación está publicada y continúa en desarrollo; no reproduce todo el editor de escritorio de DWSIM.
 
 ## Accesos y documentación
 
@@ -20,6 +20,15 @@ El alumno ingresa con un código temporal de 12 caracteres, sin correo ni cuenta
 Los nuevos códigos de clases activas se pueden volver a copiar desde el panel, incluso después de recargar. Los anteriores a 0.17.0 siguen funcionando, pero no pueden recuperarse si no se conservaron. El acceso y los permisos se validan en servidor: cambiar una opción del formulario no concede rol administrativo.
 
 **Estado de motores** es una consulta de disponibilidad para usuarios autenticados; **Administración de clases** requiere administrador. No hay botones remotos para encender o reiniciar equipos. Ver [guía de acceso](acceso.md).
+
+## Novedades de la interfaz 0.47.4
+
+- Menús y barra por categorías (Archivo, Proyecto, Diagrama, Simulación y Vista), inserción por equipos y corrientes y paleta lateral.
+- Diagramas con desplazamiento mediante Espacio + arrastre o rueda central; puertos de conexión visibles.
+- Resultados separados en vistas de balances y corrientes, con paneles acoplables, flotantes o en ventana independiente.
+- ▶ Calcular y **Explorar proceso…**: navegación didáctica de equipos y corrientes con ecuaciones, valores y balances. No vuelve a ejecutar DWSIM.
+- Ficha de proyecto, actividad y anotaciones editables en el diagrama, reportes PDF A4/A3/Oficio y guardado de proyectos en nube por alumno.
+- La aclaración entre potencia térmica intercambiada y cierre energético está [en revisión técnica](https://github.com/lemeit/lemeit-sim/pull/135) y no se considera publicada hasta fusionar y desplegar.
 
 ## Fundamentos para aprender simulación
 
@@ -47,11 +56,11 @@ La serie continúa con cinco capítulos **conceptuales y didácticos**. Varios t
 
 | Capítulo | Contenido | Modalidad |
 |---|---|---|
-| [12](recirculaciones-convergencia.md) | Recirculaciones, corriente de corte y convergencia | Balance e iteración resueltos; fuera de ΣIM |
+| [12](recirculaciones-convergencia.md) | Recirculaciones, corriente de corte y convergencia | Balance, iteración y ensayos de recirculación; validación física de los lazos aún en curso |
 | [13](destilacion-etapas-equilibrio.md) | Destilación y balances de columna | Balance binario resuelto; columna fuera de ΣIM |
 | [14](cinetica-dimensionamiento-reactores.md) | Cinética, CSTR y PFR | Dimensionamiento analítico; fuera de ΣIM |
 | [15](sensibilidad-escenarios.md) | Derivadas, escenarios y comparación de modelos | Variaciones manuales de ejemplos disponibles |
-| [16](reproducibilidad-informes.md) | Trazabilidad, evidencia y rúbrica de informes | Aplicable a los 13 ejemplos |
+| [16](reproducibilidad-informes.md) | Trazabilidad, evidencia y rúbrica de informes | Aplicable a los ejemplos disponibles |
 
 **Recorrido sugerido:** estudiar los capítulos 01–11, resolver los ejercicios de 12–14 de forma analítica y usar 15–16 para documentar prácticas reproducibles. Ningún ejemplo didáctico nuevo de esta ampliación se presenta como ejecución nueva del motor.
 
@@ -61,9 +70,9 @@ Los once capítulos forman una **primera serie introductoria completa**, no un m
 
 Corrientes de materia y energía; mezcladores, divisores, calentadores y enfriadores; separador flash vapor–líquido; bomba y válvula; intercambiador de dos corrientes; reactores de conversión y equilibrio dentro del alcance documentado. El selector termodinámico y la composición se configuran por proyecto.
 
-Hay 13 ejemplos con datos, resolución, referencias y límites, además de conversión de unidades, bases másica/molar, exportaciones CSV/Excel y herramientas de revisión. La guía integrada permite volver al mismo proyecto. Los diálogos se cierran por botón, Escape o clic fuera.
+La biblioteca contiene casos introductorios y otros de recirculación en desarrollo; algunos requieren validación numérica adicional. Además dispone de conversión de unidades, bases másica/molar, exportaciones CSV/Excel y herramientas de revisión. La guía integrada permite volver al mismo proyecto. Los diálogos se cierran por botón, Escape o clic fuera.
 
-El alcance es estacionario, sin recirculaciones. CSTR/PFR cinéticos, columnas y otras operaciones del motor requieren adaptación y validación. Los resultados de los ejemplos son modelos calculados, no mediciones experimentales ni validación física independiente.
+El alcance es estacionario. El gateway admite un primer modo de recirculación simple, con validación cruzada y convergencia aún pendientes para los ejercicios 17–19; no representa todos los métodos de DWSIM. CSTR/PFR cinéticos, columnas y otras operaciones del motor requieren adaptación y validación. Los resultados de los ejemplos son modelos calculados, no mediciones experimentales ni validación física independiente.
 
 ## Recorrido de trabajo
 
@@ -73,10 +82,11 @@ La referencia operativa para los controles de la aplicación, la organización d
 1. Ingresar con el código de clase y comprobar la identidad en el pie.
 2. Crear un proyecto con compuestos/modelo o abrir explícitamente un ejemplo.
 3. Agregar equipos y corrientes, conectar puertos y completar condiciones.
-4. Seleccionar manualmente Motor principal o Motor alternativo, comprobar disponibilidad y calcular.
-5. Revisar mensajes, corrientes y balances; guardar el JSON y exportar resultados si hace falta.
+4. Seleccionar manualmente Windows o Debian en el pie, comprobar disponibilidad y pulsar ▶ Calcular.
+5. Revisar corrientes y balances, y explorar las ecuaciones del proceso con resultados vigentes.
+6. Guardar en la nube con identidad de alumno dentro de una clase, descargar una copia JSON si hace falta y exportar tablas o el informe PDF.
 
-No hay cambio automático de motor. Un servicio caído no impide preparar o guardar el proyecto con una sesión válida, pero no se generan resultados sin cálculo. Guardar antes de salir o volver a ingresar.
+No hay cambio automático de motor. Un servicio caído no impide preparar o guardar el proyecto en nube con una sesión válida, pero no se generan resultados sin cálculo. El guardado en nube, la copia local JSON y la exportación de resultados son acciones distintas.
 
 ## Disponibilidad del cálculo
 

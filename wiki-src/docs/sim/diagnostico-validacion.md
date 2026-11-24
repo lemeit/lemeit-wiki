@@ -8,7 +8,7 @@ Una simulación puede superar una comprobación y fallar otra:
 
 | Nivel | Pregunta | Ejemplo |
 |---|---|---|
-| Estructural | ¿Las corrientes y los puertos están conectados correctamente? | No hay entradas duplicadas ni ciclos prohibidos |
+| Estructural | ¿Las corrientes y los puertos están conectados correctamente? | No hay entradas duplicadas ni lazos incompatibles |
 | Especificaciones | ¿Los datos requeridos son suficientes y admitidos? | Presión, temperatura y composición definidas |
 | Numérico | ¿El motor logró resolver con residuos aceptables? | Balance de masa dentro de tolerancia |
 | Físico | ¿El modelo representa razonablemente la realidad? | Fases y entalpías contrastadas con datos fiables |
@@ -31,13 +31,13 @@ Este ejemplo muestra por qué un valor no exactamente cero no prueba automática
 
 ## 4. Diagnóstico de ΣIM
 
-**Herramientas → Diagnóstico del proyecto** permite revisar errores básicos de alimentación, especificaciones y conexiones. El gateway comprueba adicionalmente tipos de puertos, índices, duplicidades, componentes, límites de parámetros y ausencia de recirculaciones.
+**Herramientas → Diagnóstico del proyecto** permite revisar errores básicos de alimentación, especificaciones y conexiones. El gateway comprueba adicionalmente tipos de puertos, índices, duplicidades, componentes, límites de parámetros y restricciones sobre las recirculaciones admitidas.
 
 **Herramientas → Estado de motores** sirve para conocer disponibilidad y versión observada de Motor principal y Motor alternativo. No equivale a un diagnóstico termodinámico ni permite iniciar o reiniciar remotamente los equipos. La elección de motor es **manual y sin conmutación automática**.
 
 ## 5. Cómo documentar un ensayo reproducible
 
-Conservá como mínimo: fecha, versión de ΣIM y DWSIM, motor motor principal/alternativo, componentes, paquete de propiedades, unidades, especificaciones de todas las alimentaciones, parámetros de cada equipo, proyecto JSON, resultados crudos, residuos/tolerancias y observaciones. Si comparás dos motores DWSIM, estás validando consistencia entre implementaciones, **no** independencia física del modelo.
+Conservá como mínimo: fecha, versión de ΣIM y DWSIM, motor Windows/Debian, componentes, paquete de propiedades, unidades, especificaciones de todas las alimentaciones, parámetros de cada equipo, proyecto JSON, resultados crudos, residuos/tolerancias y observaciones. Si comparás dos motores DWSIM, estás validando consistencia entre implementaciones, **no** independencia física del modelo.
 
 ## 6. Actividad de auditoría
 

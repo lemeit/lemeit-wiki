@@ -1,6 +1,6 @@
 # Taller de prácticas integradoras y ruta de aprendizaje
 
-**Capítulo 11 · Fundamentos de ΣIM.** [Capítulo anterior](diagnostico-validacion.md) · [Biblioteca de trece ejemplos](https://sim.lemeit.ar/ejemplos.html).
+**Capítulo 11 · Fundamentos de ΣIM.** [Capítulo anterior](diagnostico-validacion.md) · [Biblioteca de ejemplos](https://sim.lemeit.ar/ejemplos.html).
 
 ## 1. Método de trabajo de un ingeniero
 
@@ -21,7 +21,7 @@ Evitar comenzar directamente por el botón «Calcular» ayuda a descubrir errore
 | 7 | 13 · Intercambiador | Transferencia de calor | Dos balances sin mezcla |
 | 8 | 07–08 · Reactores | Estequiometría y energía | Balance de elementos |
 
-Estas ocho actividades utilizan los **trece ejemplos existentes** según corresponda, sin inventar equipos ni extender las funciones del portal.
+Estas ocho actividades utilizan casos introductorios de la biblioteca; los ejercicios de recirculación posteriores requieren verificación específica y no se dan por validados por esta guía.
 
 ## 3. Práctica resuelta: mezcla y división
 

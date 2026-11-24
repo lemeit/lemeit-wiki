@@ -1,12 +1,12 @@
 # ΣIM · Process simulation
 
-ΣIM is an educational process simulator with a Spanish-language web interface and DWSIM 10.2.15. Documented portal: **0.17.2**, reviewed **16 November 2026**. The application is published and remains under development; it does not reproduce the entire DWSIM desktop editor.
+ΣIM is an educational process simulator with a Spanish-language web interface and DWSIM 10.2.15. Verified portal: **0.47.4**, reviewed **24 November 2026**. The application is published and remains under development; it does not reproduce the entire DWSIM desktop editor.
 
 ## Links and documentation
 
 - [Sign in](https://sim.lemeit.ar/acceso.html).
 - [Class access and administration](acceso.md).
-- [User guide](https://sim.lemeit.ar/ayuda.html), [13 examples](https://sim.lemeit.ar/ejemplos.html) and [catalogue](https://sim.lemeit.ar/catalogo.html). Portal resources require a valid session.
+- [User guide](https://sim.lemeit.ar/ayuda.html), [example library](https://sim.lemeit.ar/ejemplos.html) and [catalogue](https://sim.lemeit.ar/catalogo.html). Portal resources require a valid session.
 - [Technical index](https://github.com/lemeit/lemeit-sim/blob/main/docs/README.md), [release history](https://github.com/lemeit/lemeit-sim/blob/main/docs/CHANGELOG.md) and [recorded checks](https://github.com/lemeit/lemeit-sim/blob/main/CHECKS.md).
 - [Teaching-site presentation](https://profe.lemeit.ar/en/projects/sim/).
 
@@ -22,17 +22,17 @@ New active class codes remain available to copy from the private list after relo
 
 The editor supports material/energy streams, mixers, splitters, heaters/coolers, vapour–liquid flash separation, pumps, valves, a two-stream heat exchanger, and conversion/equilibrium reactors within documented limits. Components, composition and thermodynamic models are configured per project.
 
-Thirteen guided examples include inputs, worked steps, references and limitations. Tools cover units, mass/molar bases, CSV/Excel exports and process review. The integrated guide returns to the same project; dialogs close with a button, Escape or an outside click.
+The example library includes introductory problems and additional recycle cases undergoing validation. Tools cover units, mass/molar bases, CSV/Excel exports and process review. The integrated guide returns to the same project; dialogs close with a button, Escape or an outside click.
 
-The current scope is steady state without recycle loops. Kinetic CSTR/PFR models, columns and other engine operations still need adaptation and validation. Example results are calculated models, not experimental measurements or independent physical validation.
+The scope is steady state. Initial simple material recycle support is available in the gateway, but convergence and cross-engine validation of examples 17–19 are still incomplete. Kinetic CSTR/PFR models, columns and other engine operations still need adaptation and validation. Example results are calculated models, not experimental measurements or independent physical validation.
 
 1. Sign in with the class code and check the footer identity.
 2. Create a project with compounds/models or explicitly open an example.
 3. Add equipment and streams, connect ports and enter conditions.
 4. Manually select the primary or alternative engine, check availability and calculate.
-5. Review messages, streams and balances; save the JSON project and export results as needed.
+5. Review calculated streams, balances and the step-by-step process explorer; save individual projects to the class cloud library, or download JSON and export tables/PDF as needed.
 
-There is no automatic failover. A valid session can prepare and save projects while an engine is unavailable, but cannot obtain new calculation results. Save before signing out or signing in again.
+The 0.47.4 interface includes categorized menus, dockable panels, on-diagram notes, project metadata, PDF sheets and individual student cloud projects. The energy-report clarification is [under review](https://github.com/lemeit/lemeit-sim/pull/135). There is no automatic failover. A valid session can prepare and save projects while an engine is unavailable, but cannot obtain new calculation results. Save before signing out or signing in again.
 
 ## Architecture and verification
 
