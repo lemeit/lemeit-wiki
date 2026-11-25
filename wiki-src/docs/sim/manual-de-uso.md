@@ -2,7 +2,7 @@
 
 Esta es la **guía operativa central** de [ΣIM · Simulación de procesos](https://sim.lemeit.ar/). Se actualiza junto con la aplicación. Para los fundamentos científicos, ejercicios y modelos, consultá los [16 capítulos de la wiki](index.md). Para enseñar con un ejemplo, abrí la biblioteca de **ejemplos** desde el menú *Ejemplos* del simulador.
 
-ΣIM es un editor web para preparar diagramas estacionarios que se calculan mediante motores DWSIM seleccionados manualmente. **No es la versión de escritorio de DWSIM**, ni incluye todas sus operaciones. Los resultados de cálculo son predicciones de modelos y no equivalen a una validación experimental.
+ΣIM es un editor web para preparar diagramas estacionarios y estudiar la dinámica de tanque mediante DWSIM o un modelo didáctico independiente. **No es la versión de escritorio de DWSIM**, ni incluye todas sus operaciones. Los resultados de cálculo son predicciones de modelos y no equivalen a una validación experimental.
 
 ## 1. Entrar al portal
 
@@ -38,6 +38,14 @@ El **diagrama** puede ampliarse mediante **Solo diagrama**, separarse en otra ve
 
 En teléfonos o pantallas pequeñas se prioriza la disposición acoplada y adaptable: algunas funciones de flotación se desactivan para evitar superposiciones.
 
+### Ajustes visuales y de navegación
+
+- Arrastrá los separadores verticales para ajustar el ancho y el separador horizontal ↕ para repartir la altura entre paneles apilados en un mismo lateral. El doble clic centra este último; también admite teclado.
+- Reordená los grupos de herramientas por arrastre o Alt + flechas, y restablecé su distribución desde Ver.
+- El selector claro/oscuro está en la cabecera y se comparte con acceso y administración. Los símbolos de equipos del diagrama son los de DWSIM; las corrientes de energía se distinguen por trazos.
+- Los indicadores +/− abren o cierran detalles. Explorar proceso mantiene su tamaño y desplaza internamente ecuaciones y balances sin mover el lienzo.
+- En el catálogo de compuestos aparecen favoritos, contador de coincidencias y Mostrar más; la búsqueda abarca el catálogo completo.
+
 ## 5. Modelos termodinámicos, composición y unidades
 
 Elegí un modelo apropiado antes de calcular. Por ejemplo, **IAPWS-IF97** es adecuado para agua pura dentro de sus límites; mezclas como agua–etanol pueden requerir modelos de coeficientes de actividad y parámetros aplicables. Consultá [Modelos termodinámicos](modelos-termodinamicos.md).
@@ -50,7 +58,7 @@ Ver [Unidades y bases](unidades-bases-conversiones.md).
 
 1. Completá las condiciones de alimentación y los parámetros de cada operación.
 2. Usá **Herramientas → Diagnóstico del proyecto** para revisar especificaciones y conexiones. Corregí advertencias sobre puertos, datos incompletos o límites de operaciones.
-3. En el pie, seleccioná explícitamente el motor **Windows** o **Debian** y comprobá su disponibilidad. **No hay conmutación automática** si uno falla.
+3. En el pie, seleccioná explícitamente el motor **Windows** o **Debian** y comprobá su disponibilidad. Con motor fijado no hay conmutación automática. El modo Automático verifica disponibilidad antes de calcular, sin reenviar una solicitud incierta.
 4. Pulsá **▶ Calcular** y verificá la luz de estado. La solicitud llega al gateway y luego al motor DWSIM seleccionado.
 5. Consultá el panel de **Balances y corrientes**, el modelo, las temperaturas, presiones, caudales y los residuos de cada equipo.
 6. Si el cálculo es válido, seleccioná **Explorar proceso…** para recorrer sus resultados, ecuaciones y balances sin volver a ejecutar DWSIM.
@@ -90,10 +98,22 @@ Para problemas de acceso: [Acceso y clases](acceso.md). Para los límites y la i
 
 Un intercambiador puede transferir aproximadamente **40 kW entre sus dos circuitos** y, al mismo tiempo, tener un cambio neto de entalpía global cercano a cero. Este último valor **no significa ausencia de intercambio térmico**. Antes de informar una potencia, distinguí calor cedido por el lado caliente, recibido por el frío y residuo global.
 
-La corrección específica de etiquetas y columnas para exportaciones está [en revisión para 0.47.5](https://github.com/lemeit/lemeit-sim/pull/135); hasta su publicación, interpretar el campo genérico de energía como balance neto del equipo y comprobar los lados con las entalpías y caudales calculados.
+La corrección de etiquetas y columnas está integrada desde 0.47.5. Comprobá la versión efectiva en Ayuda → Acerca de y contrastá los lados mediante entalpías y caudales.
 
-## 11. Alcance y fuentes
+## 11. Dinámica y gráficas científicas
 
-Los cálculos se realizan en régimen estacionario. El gateway incluye un primer soporte de recirculación simple; los Ejemplos 17–19 requieren todavía validación cruzada y pruebas de convergencia antes de considerarse consolidados. Las columnas de destilación, los PFR/CSTR cinéticos y otros equipos avanzados de DWSIM **no deben presentarse como implementados en este editor**.
+A partir de 0.49.0, el diálogo del tanque incorpora un renderizador científico SVG con ejes, unidades, leyendas, cuadrícula, marcadores, escala Y logarítmica y exportación. El diseño de la gráfica es blanco y técnico, independiente del tema de la interfaz.
+
+1. Abrí Ejemplos → 20 y fijá Debian en el selector de motor.
+2. Seleccioná T-01 → Propiedades → Dinámica del tanque · nivel y curvas.
+3. Elegí DWSIM real, si está habilitado, y revisá los parámetros.
+4. Ejecutá la dinámica. Elegí nivel, volumen, caudales, descarga másica o porcentaje de llenado.
+5. Usá Reproducir/Pausar o el deslizador para examinar los datos ya calculados. Descargá CSV o SVG.
+
+La [guía de gráficas científicas](https://github.com/lemeit/lemeit-sim/blob/main/docs/graficas-cientificas.md) explica los controles, las unidades, la interpretación y los datos de referencia. Debian fue comprobado con 121 muestras; Windows aún requiere prueba física. La versión 0.49.0 está integrada en GitHub, con despliegue del portal a confirmar. Guardá las series antes de cerrar: todavía no se persisten con el proyecto. Panel gráfico autónomo, regresiones y datos experimentales están pendientes.
+
+## 12. Alcance y fuentes
+
+El cálculo general del PFD es estacionario; la dinámica del tanque es un módulo específico experimental, no un integrador de cualquier diagrama. El gateway incluye un primer soporte de recirculación simple; los Ejemplos 17–19 requieren todavía validación cruzada y pruebas de convergencia antes de considerarse consolidados. Las columnas de destilación, los PFR/CSTR cinéticos y otros equipos avanzados de DWSIM **no deben presentarse como implementados en este editor**.
 
 **Documentación fuente:** [Repositorio ΣIM](https://github.com/lemeit/lemeit-sim) · [DWSIM: tutoriales oficiales](https://dwsim.org/tutorials/en/index.html). Esta guía es documentación propia de ΣIM, no una traducción oficial de DWSIM.
