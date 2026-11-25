@@ -3,13 +3,13 @@
 [![sitio: sim.lemeit.ar](https://img.shields.io/badge/sitio-sim.lemeit.ar-009688?style=flat-square&labelColor=555555)](https://sim.lemeit.ar/)
 [![código: lemeit-sim](https://img.shields.io/badge/c%C3%B3digo-lemeit--sim-009688?style=flat-square&labelColor=555555)](https://github.com/lemeit/lemeit-sim)
 
-Simulador educativo de procesos con interfaz web en español y motor DWSIM 10.2.15. Portal comprobado: **0.47.4**, revisión del **24 de noviembre de 2026**. La aplicación está publicada y continúa en desarrollo; no reproduce todo el editor de escritorio de DWSIM.
+Simulador educativo de procesos con interfaz web en español y motor DWSIM 10.2.15. Versión integrada: **0.49.0**, revisión del **25 de noviembre de 2026**; comprobar la versión desplegada en Ayuda → Acerca de. La aplicación está publicada y continúa en desarrollo; no reproduce todo el editor de escritorio de DWSIM.
 
 ## Accesos y documentación
 
 - [Ingresar al simulador](https://sim.lemeit.ar/acceso.html).
 - [Acceso por clase y administración](acceso.md).
-- [Manual de uso de ΣIM](manual-de-uso.md) (esta wiki), [13 ejemplos del portal](https://sim.lemeit.ar/ejemplos.html) y [catálogo de equipos](https://sim.lemeit.ar/catalogo.html). Las páginas del portal requieren una sesión válida.
+- [Manual de uso de ΣIM](manual-de-uso.md) (esta wiki), [20 ejemplos del portal](https://sim.lemeit.ar/ejemplos.html) y [catálogo de equipos](https://sim.lemeit.ar/catalogo.html). Las páginas del portal requieren una sesión válida.
 - [Índice técnico](https://github.com/lemeit/lemeit-sim/blob/main/docs/README.md), [historial](https://github.com/lemeit/lemeit-sim/blob/main/docs/CHANGELOG.md) y [comprobaciones](https://github.com/lemeit/lemeit-sim/blob/main/CHECKS.md).
 - [Ficha docente](https://profe.lemeit.ar/projects/sim/).
 
@@ -21,14 +21,17 @@ Los nuevos códigos de clases activas se pueden volver a copiar desde el panel, 
 
 **Estado de motores** es una consulta de disponibilidad para usuarios autenticados; **Administración de clases** requiere administrador. No hay botones remotos para encender o reiniciar equipos. Ver [guía de acceso](acceso.md).
 
-## Novedades de la interfaz 0.47.4
+## Novedades de la interfaz hasta 0.49.0
 
 - Menús y barra por categorías (Archivo, Proyecto, Diagrama, Simulación y Vista), inserción por equipos y corrientes y paleta lateral.
 - Diagramas con desplazamiento mediante Espacio + arrastre o rueda central; puertos de conexión visibles.
 - Resultados separados en vistas de balances y corrientes, con paneles acoplables, flotantes o en ventana independiente.
 - ▶ Calcular y **Explorar proceso…**: navegación didáctica de equipos y corrientes con ecuaciones, valores y balances. No vuelve a ejecutar DWSIM.
 - Ficha de proyecto, actividad y anotaciones editables en el diagrama, reportes PDF A4/A3/Oficio y guardado de proyectos en nube por alumno.
-- La aclaración entre potencia térmica intercambiada y cierre energético está [en revisión técnica](https://github.com/lemeit/lemeit-sim/pull/135) y no se considera publicada hasta fusionar y desplegar.
+- La distinción entre potencia térmica intercambiada y cierre energético está integrada desde 0.47.5.
+- Barra reordenable, controles +/−, tema claro/oscuro común y separadores mínimos entre paneles apilados.
+- Catálogo de compuestos con favoritos, búsqueda completa y Mostrar más; explorador de proceso con altura estable.
+- Ejemplo 20: dinámica de tanque con DWSIM real validada en Debian (121 puntos), Windows pendiente. Gráficas científicas SVG, CSV, marcadores, cuadrícula, eje Y logarítmico y reproducción temporal. Ver [manual de uso](manual-de-uso.md).
 
 ## Fundamentos para aprender simulación
 
@@ -72,7 +75,7 @@ Corrientes de materia y energía; mezcladores, divisores, calentadores y enfriad
 
 La biblioteca contiene casos introductorios y otros de recirculación en desarrollo; algunos requieren validación numérica adicional. Además dispone de conversión de unidades, bases másica/molar, exportaciones CSV/Excel y herramientas de revisión. La guía integrada permite volver al mismo proyecto. Los diálogos se cierran por botón, Escape o clic fuera.
 
-El alcance es estacionario. El gateway admite un primer modo de recirculación simple, con validación cruzada y convergencia aún pendientes para los ejercicios 17–19; no representa todos los métodos de DWSIM. CSTR/PFR cinéticos, columnas y otras operaciones del motor requieren adaptación y validación. Los resultados de los ejemplos son modelos calculados, no mediciones experimentales ni validación física independiente.
+El cálculo general es estacionario, con un módulo de dinámica de tanque específico en desarrollo. El gateway admite un primer modo de recirculación simple, con validación cruzada y convergencia aún pendientes para los ejercicios 17–19; no representa todos los métodos de DWSIM. CSTR/PFR cinéticos, columnas y otras operaciones del motor requieren adaptación y validación. Los resultados de los ejemplos son modelos calculados, no mediciones experimentales ni validación física independiente.
 
 ## Recorrido de trabajo
 
@@ -86,7 +89,7 @@ La referencia operativa para los controles de la aplicación, la organización d
 5. Revisar corrientes y balances, y explorar las ecuaciones del proceso con resultados vigentes.
 6. Guardar en la nube con identidad de alumno dentro de una clase, descargar una copia JSON si hace falta y exportar tablas o el informe PDF.
 
-No hay cambio automático de motor. Un servicio caído no impide preparar o guardar el proyecto en nube con una sesión válida, pero no se generan resultados sin cálculo. El guardado en nube, la copia local JSON y la exportación de resultados son acciones distintas.
+Con motor fijado no hay cambio automático de motor; el modo Automático comprueba disponibilidad antes de calcular. Un servicio caído no impide preparar o guardar el proyecto en nube con una sesión válida, pero no se generan resultados sin cálculo. El guardado en nube, la copia local JSON y la exportación de resultados son acciones distintas.
 
 ## Disponibilidad del cálculo
 

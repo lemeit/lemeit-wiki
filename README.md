@@ -21,7 +21,7 @@ Wiki madre de documentación técnica y bitácora de los proyectos de **lemeit.a
 | — | TeX | [tex.lemeit.ar](https://tex.lemeit.ar/) | [lemeit-tex](https://github.com/lemeit/lemeit-tex) (acceso restringido) |
 | — | ΣIM · Simulación de procesos | [sim.lemeit.ar](https://sim.lemeit.ar/) | [lemeit-sim](https://github.com/lemeit/lemeit-sim) |
 
-La sección [ΣIM](https://wiki.lemeit.ar/sim/) se actualiza para reflejar el portal 0.47.4 (24/11/2026), con guía de acceso y proyectos en nube, manual de uso, recirculaciones en validación y nuevas exportaciones. La corrección energética 0.47.5 está en revisión y no debe presentarse como publicada. La documentación técnica canónica permanece en `lemeit/lemeit-sim`. Su documentación técnica canónica permanece en `lemeit/lemeit-sim`.
+La sección [ΣIM](https://wiki.lemeit.ar/sim/) documenta la versión integrada 0.49.0 (25/11/2026): dinámica de tanque, gráficas científicas, novedades visuales y flujo de trabajo. Debian validado para el Ejemplo 20, Windows pendiente; el despliegue efectivo del portal se comprueba por separado. La documentación técnica canónica permanece en `lemeit/lemeit-sim`.
 
 Más proyectos se suman como secciones nuevas a medida que se documentan (ver "Cómo agregar un proyecto" más abajo).
 
