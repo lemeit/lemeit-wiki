@@ -1,6 +1,6 @@
 # ΣIM · Process simulation
 
-ΣIM is an educational process simulator with a Spanish-language web interface and DWSIM 10.2.15. Version documented in this wiki: **0.51.6**. The application is published and remains under development; it does not reproduce the entire DWSIM desktop editor.
+ΣIM is an educational process simulator with a Spanish-language web interface and DWSIM 10.2.15. Version documented in this wiki: **0.51.7**. The application is published and remains under development; it does not reproduce the entire DWSIM desktop editor.
 
 ## Links and documentation
 
@@ -32,7 +32,7 @@ General flowsheet calculations are steady-state. Example 20 provides experimenta
 2. Create a project with compounds/models or explicitly open an example.
 3. Add equipment and streams, connect ports and enter conditions.
 4. Manually select the primary or alternative engine, check availability and calculate.
-5. Review calculated streams, balances and the step-by-step process explorer; choose **Guardar en nube** to save work to the class cloud library and open it from **Mis proyectos en la nube** next time. Export tables, charts or a PDF for a report. The project keeps chart formatting. Run the calculation again to reconstruct the chart.
+5. Review calculated streams, balances and the step-by-step process explorer; choose **Guardar en nube** to save work to the class cloud library and open it from **Mis proyectos en la nube** next time. Export tables, charts or a PDF for a report. The project keeps its chart formatting and latest valid DWSIM result. When you reopen it, you can view the same tables and curves without rerunning the engine.
 
 The interface includes categorized menus, dockable panels, on-diagram notes, project metadata, PDF sheets and individual student cloud projects. In automatic mode, engine availability and supported operations are checked before calculation. A failed request is never sent again to the other engine automatically. A valid session can prepare and save projects while an engine is unavailable, but cannot obtain new calculation results. Save before signing out or signing in again.
 

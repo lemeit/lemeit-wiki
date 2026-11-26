@@ -1,6 +1,6 @@
 # Acceso y clases
 
-Funciones documentadas hasta ΣIM 0.51.6.
+Funciones documentadas hasta ΣIM 0.51.7.
 
 ## Alumnado
 
