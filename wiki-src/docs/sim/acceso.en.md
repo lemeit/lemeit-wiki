@@ -1,6 +1,6 @@
 # Access and classes
 
-Portal 0.17.2 · reviewed 16 November 2026. Menu and button names below match the Spanish interface.
+Covers features through ΣIM 0.51.2. Menu and button names below match the Spanish interface.
 
 ## Students
 
@@ -28,6 +28,8 @@ The sign-in page indicates an existing session. Close it with **Salir** or **Cer
 **Herramientas → Estado de motores** opens the read-only primary/alternative engines monitor. **Administración de clases** opens the private panel. The selected engine monitor is also available from the footer. These views do not run simulations or remotely start/restart services.
 
 Dialogs close with a button, Escape or an outside click. Save the project before signing out.
+
+In **Administración → Operación y recuperación**, administrators can copy Windows and Debian startup, diagnostics and recovery commands or download the HTML manual for local reference. Run the commands on the corresponding engine host. See the [technical recovery manual in Spanish](https://github.com/lemeit/lemeit-sim/blob/main/docs/operacion-local.md).
 
 ## Technical references
 

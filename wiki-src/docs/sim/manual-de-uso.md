@@ -100,17 +100,14 @@ Un intercambiador puede transferir aproximadamente **40 kW entre sus dos circuit
 
 La corrección de etiquetas y columnas está integrada desde 0.47.5. Comprobá la versión efectiva en Ayuda → Acerca de y contrastá los lados mediante entalpías y caudales.
 
-## 11. Dinámica y gráficas científicas
+## 11. Dinámica y Gráficas
 
-A partir de 0.49.0, el diálogo del tanque incorpora un renderizador científico SVG con ejes, unidades, leyendas, cuadrícula, marcadores, escala Y logarítmica y exportación. El diseño de la gráfica es blanco y técnico, independiente del tema de la interfaz.
+1. Abrí **Ejemplos → 20**. El proyecto abre en **Dinámico**. Comprobá que el motor tenga capacidad dinámica y revisá duración y paso desde **Configuración dinámica**.
+2. Pulsá **Calcular**. DWSIM integra el circuito de agua con tanque y dos válvulas. **Gráficas** abre con el nivel frente al tiempo. El Ejemplo 15 sigue en régimen estacionario.
+3. En **Ver → Gráficas** podés volver al panel, cambiar las variables XY y añadir una segunda curva. Si las unidades de Y difieren, la segunda curva usa el eje derecho. Podés ajustar las escalas por separado.
+4. Ajustá el subtítulo, la paleta, el color, la representación y el grosor de cada serie. Exportá SVG, PNG o JPG para el informe y CSV para conservar las muestras.
 
-1. Abrí Ejemplos → 20 y fijá Debian en el selector de motor.
-2. Seleccioná T-01 → Propiedades → Dinámica del tanque · nivel y curvas.
-3. Elegí DWSIM real, si está habilitado, y revisá los parámetros.
-4. Ejecutá la dinámica. Elegí nivel, volumen, caudales, descarga másica o porcentaje de llenado.
-5. Usá Reproducir/Pausar o el deslizador para examinar los datos ya calculados. Descargá CSV o SVG.
-
-La [guía de gráficas científicas](https://github.com/lemeit/lemeit-sim/blob/main/docs/graficas-cientificas.md) explica los controles, las unidades, la interpretación y los datos de referencia. Debian fue comprobado con 121 muestras; Windows aún requiere prueba física. La versión 0.49.0 está integrada en GitHub, con despliegue del portal a confirmar. Guardá las series antes de cerrar: todavía no se persisten con el proyecto. Panel gráfico autónomo, regresiones y datos experimentales están pendientes.
+La comprobación con DWSIM en Windows y Debian registró 121 muestras en 600 s, con paso de 5 s, nivel final de aproximadamente 0,333 m y descarga final de aproximadamente 10 kg/s. El modelo didáctico del tanque tiene su propio cálculo y reproducción temporal. Ante un fallo de DWSIM, el simulador informa el error. Consultá la [guía de Gráficas](https://github.com/lemeit/lemeit-sim/blob/main/docs/graficas-cientificas.md) y el [registro del Ejemplo 20](https://github.com/lemeit/lemeit-sim/blob/main/docs/ejemplo-20-tanque-dinamico-dwsim.md).
 
 ## 12. Alcance y fuentes
 
