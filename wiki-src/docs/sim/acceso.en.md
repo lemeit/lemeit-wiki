@@ -1,6 +1,6 @@
 # Access and classes
 
-Covers features through ΣIM 0.51.6. Menu and button names below match the Spanish interface.
+Covers features through ΣIM 0.51.7. Menu and button names below match the Spanish interface.
 
 ## Students
 

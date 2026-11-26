@@ -17,7 +17,7 @@ La administración de clases exige credenciales y permisos específicos: consult
 3. Pulsá **Guardar en nube** en la barra. Si es tu primer guardado, ingresá con tu alias y clave de alumno o creá una identidad dentro de la clase. Los cambios posteriores se guardan automáticamente.
 4. Desde **Archivo** y **Gráficas**, exportá las tablas, las imágenes o el PDF que necesites para el informe. Administración puede consultar trabajos por clase y descargar una copia JSON de respaldo desde **Archivo**. El nombre de esa copia se arma con el título del proyecto.
 
-La aplicación no calcula automáticamente cuando abrís un proyecto. Si cambiás condiciones físicas, los resultados anteriores dejan de representar el estado actual y deben recalcularse.
+Cuando abrís un proyecto, ΣIM recupera la última corrida DWSIM si se guardó con él. Los proyectos anteriores pueden abrirse y requieren un cálculo si todavía no tienen una corrida guardada. Si cambiás condiciones físicas, los resultados anteriores dejan de representar el estado actual y deben recalcularse.
 
 ## 3. Diagrama, equipos, corrientes y conexiones
 
@@ -104,7 +104,7 @@ La corrección de etiquetas y columnas está integrada desde 0.47.5. Comprobá l
 1. Abrí **Ejemplos → 20**. El proyecto abre en **Dinámico**. Comprobá que el motor tenga capacidad dinámica y revisá duración y paso desde **Configuración dinámica**.
 2. Pulsá **Calcular**. DWSIM integra el circuito de agua con tanque y dos válvulas. **Gráficas** abre con el nivel frente al tiempo. El Ejemplo 15 sigue en régimen estacionario.
 3. En **Ver → Gráficas** podés volver al panel, cambiar las variables XY y añadir una segunda curva. Si las unidades de Y difieren, la segunda curva usa el eje derecho. Podés ajustar las escalas por separado.
-4. Ajustá el subtítulo, la paleta, el color, la representación y el grosor de cada serie. El proyecto guarda el formato y la selección de variables. Al retomarlo, volvé a calcular para reconstruir la curva. Exportá SVG, PNG o JPG para el informe y CSV para conservar las muestras.
+4. Ajustá el subtítulo, la paleta, el color, la representación y el grosor de cada serie. El proyecto guarda el formato, la selección de variables y la última corrida de DWSIM. Al retomarlo, podés volver a ver la curva y las muestras. Exportá SVG, PNG o JPG para un informe y CSV para usar los datos en una planilla.
 
 La comprobación con DWSIM en Windows y Debian registró 121 muestras en 600 s, con paso de 5 s, nivel final de aproximadamente 0,333 m y descarga final de aproximadamente 10 kg/s. El modelo didáctico del tanque tiene su propio cálculo y reproducción temporal. Ante un fallo de DWSIM, el simulador informa el error. Consultá la [guía de Gráficas](https://github.com/lemeit/lemeit-sim/blob/main/docs/graficas-cientificas.md) y el [registro del Ejemplo 20](https://github.com/lemeit/lemeit-sim/blob/main/docs/ejemplo-20-tanque-dinamico-dwsim.md).
 
