@@ -1,12 +1,12 @@
 # Access and classes
 
-Covers features through ΣIM 0.51.2. Menu and button names below match the Spanish interface.
+Covers features through ΣIM 0.51.6. Menu and button names below match the Spanish interface.
 
 ## Students
 
 Open [sign-in](https://sim.lemeit.ar/acceso.html), select **Alumno** and enter the 12-character class code. No email or individual account is needed. A shared class code does not identify individual students.
 
-The grey footer shows the class name, remaining access and **Salir**. A session lasts up to four hours, limited by the class expiry/deactivation. Sign in again to renew a session while the class remains active. Save the project file before signing out or signing in again.
+The grey footer shows the class name, remaining access and **Salir**. A session lasts up to four hours, limited by the class expiry/deactivation. Sign in again to renew a session while the class remains active. Use **Guardar en nube** before signing out. When prompted, sign in with your student alias and password. Return to the same class and student identity to reopen the project.
 
 An access-ended notice does not close or erase the project, but the server rejects calculations from an invalid session.
 

@@ -1,12 +1,12 @@
 # Acceso y clases
 
-Funciones documentadas hasta ΣIM 0.51.2.
+Funciones documentadas hasta ΣIM 0.51.6.
 
 ## Alumnado
 
 Abrir [el ingreso](https://sim.lemeit.ar/acceso.html), elegir **Alumno** e ingresar el código de 12 caracteres. No se necesita correo ni cuenta personal externa. El código es compartido por la clase; una identidad de alumno dentro de esa clase permite organizar los proyectos individuales en la nube.
 
-El pie gris muestra nombre de clase, tiempo restante y **Salir**. La sesión dura hasta cuatro horas o hasta que venza/se desactive la clase, lo que ocurra primero. Si la clase sigue vigente, volver a ingresar renueva la sesión. Guardar el proyecto en la nube antes de salir o volver a ingresar; si se necesita un respaldo, descargar también una copia JSON.
+El pie gris muestra nombre de clase, tiempo restante y **Salir**. La sesión dura hasta cuatro horas o hasta que venza/se desactive la clase, lo que ocurra primero. Si la clase sigue vigente, volver a ingresar renueva la sesión. Antes de salir, pulsá **Guardar en nube**. Elegí un alias y una clave personal si es tu primer guardado. Volvé a ingresar con la misma clase e identidad para retomar el proyecto.
 
 El aviso de acceso finalizado no cierra ni borra el proyecto, pero el servidor ya no permite calcular con una sesión inválida.
 

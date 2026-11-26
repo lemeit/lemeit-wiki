@@ -3,7 +3,7 @@
 [![sitio: sim.lemeit.ar](https://img.shields.io/badge/sitio-sim.lemeit.ar-009688?style=flat-square&labelColor=555555)](https://sim.lemeit.ar/)
 [![código: lemeit-sim](https://img.shields.io/badge/c%C3%B3digo-lemeit--sim-009688?style=flat-square&labelColor=555555)](https://github.com/lemeit/lemeit-sim)
 
-Simulador educativo de procesos con interfaz web en español y motor DWSIM 10.2.15. Versión documentada en esta wiki: **0.51.2**; comprobar la versión desplegada en Ayuda → Acerca de. La aplicación está publicada y continúa en desarrollo; no reproduce todo el editor de escritorio de DWSIM.
+Simulador educativo de procesos con interfaz web en español y motor DWSIM 10.2.15. Versión documentada en esta wiki: **0.51.6**; comprobar la versión desplegada en Ayuda → Acerca de. La aplicación está publicada y continúa en desarrollo; no reproduce todo el editor de escritorio de DWSIM.
 
 ## Accesos y documentación
 
@@ -21,7 +21,7 @@ Los nuevos códigos de clases activas se pueden volver a copiar desde el panel, 
 
 **Estado de motores** es una consulta de disponibilidad para usuarios autenticados; **Administración de clases** requiere administrador. No hay botones remotos para encender o reiniciar equipos. Ver [guía de acceso](acceso.md).
 
-## Novedades de la interfaz hasta 0.51.2
+## Novedades de la interfaz hasta 0.51.6
 
 - Menús y barra por categorías (Archivo, Proyecto, Diagrama, Simulación y Vista), inserción por equipos y corrientes y paleta lateral.
 - Diagramas con desplazamiento mediante Espacio + arrastre o rueda central; puertos de conexión visibles.
@@ -87,9 +87,9 @@ La referencia operativa para los controles de la aplicación, la organización d
 3. Agregar equipos y corrientes, conectar puertos y completar condiciones.
 4. Seleccionar manualmente Windows o Debian en el pie, comprobar disponibilidad y pulsar ▶ Calcular.
 5. Revisar corrientes y balances, y explorar las ecuaciones del proceso con resultados vigentes.
-6. Guardar en la nube con identidad de alumno dentro de una clase, descargar una copia JSON si hace falta y exportar tablas o el informe PDF.
+6. Usar **Guardar en nube** con identidad de alumno y retomar desde **Mis proyectos en la nube**. Para el informe, exportar las tablas, las gráficas o el PDF.
 
-Con motor fijado no hay cambio automático de motor; el modo Automático comprueba disponibilidad antes de calcular. Un servicio caído no impide preparar o guardar el proyecto en nube con una sesión válida, pero no se generan resultados sin cálculo. El guardado en nube, la copia local JSON y la exportación de resultados son acciones distintas.
+Con motor fijado no hay cambio automático de motor; el modo Automático comprueba disponibilidad antes de calcular. Un servicio caído no impide preparar o guardar el proyecto en nube con una sesión válida, pero no se generan resultados sin cálculo. En la nube quedan el diagrama, las condiciones y el formato de Gráficas. Volvé a calcular para recuperar resultados o exportá las muestras en CSV.
 
 ## Disponibilidad del cálculo
 
