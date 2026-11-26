@@ -1,6 +1,6 @@
 # Acceso y clases
 
-Portal 0.47.4 · revisión 24/11/2026.
+Funciones documentadas hasta ΣIM 0.51.2.
 
 ## Alumnado
 
@@ -28,6 +28,8 @@ El ingreso avisa si ya hay una sesión abierta. Para cambiar de acceso, cerrarla
 **Herramientas → Estado de motores** abre una consulta de motor principal/alternativo; **Administración de clases** abre el panel privado. El monitor del motor elegido también se abre desde el pie. Estas vistas no ejecutan simulaciones ni permiten encender/reiniciar servicios.
 
 Los diálogos se cierran por botón, Escape o clic fuera. Para cambiar de alumno dentro de la clase, usar la opción de cambio de identidad desde la biblioteca de proyectos en nube. Los proyectos se mantienen separados por identidad. Guardar antes de cerrar sesión.
+
+En **Administración → Operación y recuperación**, podés copiar los comandos de diagnóstico, arranque y recuperación para Windows o Debian, o descargar la copia HTML para consulta local. Ejecutá los comandos en el equipo correspondiente. Ver [manual técnico de recuperación](https://github.com/lemeit/lemeit-sim/blob/main/docs/operacion-local.md).
 
 ## Documentación técnica
 
