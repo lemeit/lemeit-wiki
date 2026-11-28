@@ -27,7 +27,9 @@ Registrar al menos:
 6. Salidas principales, balances y residuos con tolerancias elegidas.
 7. Advertencias, limitaciones y próxima comprobación necesaria.
 
-En ΣIM se pueden guardar proyectos individuales por alumno en la nube, descargar copias JSON y exportar tablas CSV/Excel e informes PDF con diagrama, rótulo, actividad y balances según la selección. No insertar claves de acceso, tokens, rutas privadas ni credenciales en informes públicos.
+En ΣIM se pueden guardar proyectos individuales por alumno en la nube, descargar copias JSON en Online, guardar archivos .sim nativos en Desktop y exportar tablas CSV/Excel e informes PDF con diagrama, rótulo, actividad y balances según la selección. No insertar claves de acceso, tokens, rutas privadas ni credenciales en informes públicos.
+
+Las copias de proyecto incluyen el formato de Gráficas y la última corrida válida cuando está disponible. Reabrí la copia antes de entregar para verificar que recupera el estado esperado.
 
 ## 3. Ejemplo de informe: mezcla de agua
 

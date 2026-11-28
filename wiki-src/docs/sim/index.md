@@ -3,7 +3,7 @@
 [![sitio: sim.lemeit.ar](https://img.shields.io/badge/sitio-sim.lemeit.ar-009688?style=flat-square&labelColor=555555)](https://sim.lemeit.ar/)
 [![código: lemeit-sim](https://img.shields.io/badge/c%C3%B3digo-lemeit--sim-009688?style=flat-square&labelColor=555555)](https://github.com/lemeit/lemeit-sim)
 
-Simulador educativo de procesos con interfaz web en español y motor DWSIM 10.2.15. Versión documentada en esta wiki: **0.51.7**; comprobar la versión desplegada en Ayuda → Acerca de. La aplicación está publicada y continúa en desarrollo; no reproduce todo el editor de escritorio de DWSIM.
+Simulador educativo de procesos con interfaz web en español y motor DWSIM 10.2.15. Versión documentada en esta wiki: **0.53.3**; comprobar la versión desplegada en Ayuda → Acerca de. La aplicación está publicada y continúa en desarrollo; no reproduce todo el editor de escritorio de DWSIM.
 
 ## Accesos y documentación
 
@@ -21,7 +21,7 @@ Los nuevos códigos de clases activas se pueden volver a copiar desde el panel, 
 
 **Estado de motores** es una consulta de disponibilidad para usuarios autenticados; **Administración de clases** requiere administrador. No hay botones remotos para encender o reiniciar equipos. Ver [guía de acceso](acceso.md).
 
-## Novedades de la interfaz hasta 0.51.7
+## Novedades de la interfaz hasta 0.53.3
 
 - Menús y barra por categorías (Archivo, Proyecto, Diagrama, Simulación y Vista), inserción por equipos y corrientes y paleta lateral.
 - Diagramas con desplazamiento mediante Espacio + arrastre o rueda central; puertos de conexión visibles.
@@ -32,6 +32,9 @@ Los nuevos códigos de clases activas se pueden volver a copiar desde el panel, 
 - Barra reordenable, controles +/−, tema claro/oscuro común y separadores mínimos entre paneles apilados.
 - Catálogo de compuestos con favoritos, búsqueda completa y Mostrar más; explorador de proceso con altura estable.
 - Ejemplo 20: dinámica de tanque con DWSIM comprobada en Windows y Debian (121 muestras por motor). Gráficas admite dos curvas, un segundo eje Y para unidades distintas, formato por serie y exportación SVG, PNG, JPG y CSV. Ver [manual de uso](manual-de-uso.md).
+
+- Desktop 0.53.3-alpha.1 guarda copias `.sim` desde el selector del sistema. Online conserva la biblioteca en nube y la descarga JSON.
+- La barra concentra **Calcular** junto a los controles de simulación. Las viñetas de exploración se pueden anclar al diagrama, mover y redimensionar.
 
 ## Fundamentos para aprender simulación
 
