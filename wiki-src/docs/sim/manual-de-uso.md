@@ -19,6 +19,21 @@ La administración de clases exige credenciales y permisos específicos: consult
 
 Cuando abrís un proyecto, ΣIM recupera la última corrida DWSIM si se guardó con él. Los proyectos anteriores pueden abrirse y requieren un cálculo si todavía no tienen una corrida guardada. Si cambiás condiciones físicas, los resultados anteriores dejan de representar el estado actual y deben recalcularse.
 
+### Guardar y recuperar proyectos en Desktop
+
+ΣIM Desktop es una aplicación Tauri en desarrollo que usa el motor local. En la versión **0.53.3-alpha.1**, el disquete, **Ctrl + S** y **Archivo → Guardar copia de proyecto (.sim)…** abren el selector del sistema. Confirmá nombre y carpeta. El aviso posterior indica la ruta escrita. Si cancelás, podés seguir trabajando en el proyecto.
+
+La copia `.sim` conserva el diagrama, la configuración de Gráficas y la última corrida válida, cuando existe. **Archivo → Abrir proyecto…** admite `.sim` y los archivos `.json` de Online. **Biblioteca local…** guarda dentro de Desktop en el equipo actual y **Recuperar borrador local** retoma el último borrador.
+
+| Dónde estás trabajando | Acción | Dónde queda |
+| --- | --- | --- |
+| Online | **Guardar en nube** | En la biblioteca de tu identidad de alumno |
+| Online | **Descargar copia JSON** | En las descargas del navegador o en la ubicación elegida |
+| Desktop | **Guardar copia de proyecto (.sim)…** | En la carpeta elegida en el selector nativo |
+| Desktop | **Biblioteca local…** | En el almacenamiento local de Desktop |
+
+[Guía de ejecución de Desktop](https://github.com/lemeit/lemeit-sim/tree/main/desktop).
+
 ## 3. Diagrama, equipos, corrientes y conexiones
 
 La **biblioteca Equipos y corrientes** contiene los símbolos disponibles. Se pueden agregar al diagrama con clic o arrastre, mover los símbolos y conectar los extremos de las corrientes con los puertos del equipo. Cada conexión debe enlazar una corriente y una operación, no dos equipos directamente.

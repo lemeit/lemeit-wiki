@@ -1,6 +1,6 @@
 # ΣIM · Process simulation
 
-ΣIM is an educational process simulator with a Spanish-language web interface and DWSIM 10.2.15. Version documented in this wiki: **0.51.7**. The application is published and remains under development; it does not reproduce the entire DWSIM desktop editor.
+ΣIM is an educational process simulator with a Spanish-language web interface and DWSIM 10.2.15. Version documented in this wiki: **0.53.3**. The application is published and remains under development; it does not reproduce the entire DWSIM desktop editor.
 
 ## Links and documentation
 
@@ -9,6 +9,12 @@
 - [User guide](https://sim.lemeit.ar/ayuda.html), [example library](https://sim.lemeit.ar/ejemplos.html) and [catalogue](https://sim.lemeit.ar/catalogo.html). Portal resources require a valid session.
 - [Technical index](https://github.com/lemeit/lemeit-sim/blob/main/docs/README.md), [release history](https://github.com/lemeit/lemeit-sim/blob/main/docs/CHANGELOG.md) and [recorded checks](https://github.com/lemeit/lemeit-sim/blob/main/CHECKS.md).
 - [Teaching-site presentation](https://profe.lemeit.ar/en/projects/sim/).
+
+## Desktop project files
+
+ΣIM Desktop 0.53.3-alpha.1 runs as a Tauri application with a local calculation engine. Use **Archivo → Guardar copia de proyecto (.sim)…** or **Ctrl+S** to choose the file location. The saved copy holds the diagram, chart settings, and the last valid run when available. Desktop opens `.sim` and Online `.json` files. Online also offers the class cloud library.
+
+[Desktop development guide in Spanish](https://github.com/lemeit/lemeit-sim/tree/main/desktop).
 
 ## Class access
 
