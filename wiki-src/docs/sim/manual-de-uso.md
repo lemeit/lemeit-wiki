@@ -19,6 +19,10 @@ La administración de clases exige credenciales y permisos específicos: consult
 
 Cuando abrís un proyecto, ΣIM recupera la última corrida DWSIM si se guardó con él. Los proyectos anteriores pueden abrirse y requieren un cálculo si todavía no tienen una corrida guardada. Si cambiás condiciones físicas, los resultados anteriores dejan de representar el estado actual y deben recalcularse.
 
+### Abrir la ayuda
+
+En Desktop, **F1** y **Ayuda → Manual de usuario · F1** abren la guía breve incluida con la aplicación. En Online, **Ayuda → Manual de uso** abre esta wiki. La guía local de Desktop está disponible sin conexión.
+
 ### Guardar y recuperar proyectos en Desktop
 
 ΣIM Desktop es una aplicación Tauri en desarrollo que usa el motor local. En la versión **0.53.3-alpha.1**, el disquete, **Ctrl + S** y **Archivo → Guardar copia de proyecto (.sim)…** abren el selector del sistema. Confirmá nombre y carpeta. El aviso posterior indica la ruta escrita. Si cancelás, podés seguir trabajando en el proyecto.
@@ -55,7 +59,7 @@ En teléfonos o pantallas pequeñas se prioriza la disposición acoplada y adapt
 ### Ajustes visuales y de navegación
 
 - Arrastrá los separadores verticales para ajustar el ancho y el separador horizontal ↕ para repartir la altura entre paneles apilados en un mismo lateral. El doble clic centra este último; también admite teclado.
-- Reordená los grupos de herramientas por arrastre o Alt + flechas, y restablecé su distribución desde Ver.
+- La barra sigue el orden Archivo, Proyecto, Simulación, Diagrama, Vista y Herramientas en Online y Desktop. Al achicar la ventana, los grupos pasan a otra fila. Los paneles del área de trabajo se ajustan desde sus cabeceras o desde Ver.
 - El selector claro/oscuro está en la cabecera y se comparte con acceso y administración. Los símbolos de equipos del diagrama son los de DWSIM; las corrientes de energía se distinguen por trazos.
 - Los indicadores +/− abren o cierran detalles. Explorar proceso mantiene su tamaño y desplaza internamente ecuaciones y balances sin mover el lienzo.
 - En el catálogo de compuestos aparecen favoritos, contador de coincidencias y Mostrar más; la búsqueda abarca el catálogo completo.
